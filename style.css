@@ -60,4 +60,20 @@ footer{border-top:var(--border-w) solid var(--black);margin-top:3rem}
 @media (max-width:480px){
   .chips .chip{width:100%}
   .wrap{margin:2.2rem auto 3rem}
+
+/* Type badges (brand palette) */
+.badges { display:flex; gap:.5rem; flex-wrap:wrap; margin:.4rem 0 .2rem }
+.badge {
+  display:inline-flex; align-items:center; padding:.18rem .55rem;
+  border:2px solid var(--black); border-radius:12px;
+  font-weight:700; font-size:.8rem; line-height:1;
 }
+.badge.article  { background:var(--pink);   color:var(--black); }   /* Article */
+.badge.research { background:var(--green);  color:var(--white); }   /* Research */
+.badge.post     { background:var(--purple); color:var(--black); }   /* Post */
+.badge.blog     { background:var(--yellow); color:var(--black); }   /* Blog */
+.badge.media    { background:var(--red);    color:var(--white); }   /* Media */
+.meta { color:var(--muted); font-size:.9rem }
+  
+}
+
