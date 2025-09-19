@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Blog — MarceloReFi</title>
+  <meta name="description" content="Personal notes and updates by MarceloReFi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a class="brand" href="/">MarceloReFi</a>
+      <span class="spacer"></span>
+      <a class="link" href="articles.html">Articles</a>
+      <a class="link" href="projects.html">Projects</a>
+      <a class="link" href="blog.html">Personal Blog</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <h1>Personal Blog</h1>
+    <p class="lead">Short reflections, field notes, and work-in-progress ideas.</p>
+
+    <div class="list">
+      <article class="card">
+        <h3>Why local-first matters for ReFi</h3>
+        <p>Sketching a framework for regional pathways and community-owned outcomes.</p>
+        <a href="#" target="_blank" rel="noopener">Read →</a>
+      </article>
+
+      <article class="card">
+        <h3>Notes from the road</h3>
+        <p>What I’m learning visiting communities and builders across Brazil.</p>
+        <a href="#" target="_blank" rel="noopener">Read →</a>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
