@@ -4,46 +4,91 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marcelo Silva — MarceloReFi</title>
-  <meta name="description" content="Marcelo Silva (aka MarceloReFi) is a Web3 researcher and founder exploring blockchain, regenerative finance, and local-first innovation in Latin America.">
+  <meta name="description" content="Marcelo Silva (aka MarceloReFi) is a Web3 researcher and founder exploring blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil, he has contributed to leading Web3 initiatives and holds a PhD in institutional analysis.">
+  <meta property="og:title" content="Marcelo Silva — MarceloReFi" />
+  <meta property="og:description" content="Web3 researcher & founder. Brazil. ReFi, governance, local-first innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="avatar.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* TheOffice – Branding Kit */
+      --navy: #2B325C;
+      --purple: #C36DF0;
+      --yellow: #FFF244;
+      --green: #636D4F;
+      --red: #D96E5F;
+      --pink: #EBDAD8;
+      --black: #000000;
+      --white: #FFFFFF;
+
       --maxw: 880px;
-      --fg: #2a2a2a;      /* 90% black */
-      --muted: #6c6c6c;   /* softer black */
-      --chip-pad: 0.55rem 1rem;
-      --chip-radius: 16px;
+      --fg: var(--navy);
+      --muted: #666b86; /* softened navy-gray for body */
+      --chip-pad: 0.6rem 1.05rem;
+      --chip-radius: 18px;
+      --border-w: 2px; /* bold black outlines per kit */
     }
-    html,body { margin:0; padding:0; }
+
+    html, body { margin:0; padding:0; }
     body {
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-family: 'Courier Prime', monospace;
       color: var(--fg);
-      background: #fff;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
     .wrap { max-width: var(--maxw); margin: 6rem auto; padding: 0 1rem; }
     .top { display: flex; gap: 1.25rem; align-items: center; margin-bottom: 2rem; }
+
     .avatar {
-      width: 170px; height: 170px; /* 50% bigger */
-      border-radius: 70%;
-      object-fit: cover; border: 3px dotted #ddd; padding: 6px;
+      width: 138px; height: 138px; /* 50% bigger */
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--black); /* black outline per brand */
+      padding: 4px;
+      background: var(--white);
     }
-    h1 { font-size: clamp(1.8rem, 3.6vw, 3rem); margin: 0.2rem 0 0.6rem; line-height: 1.15; }
-    h1 b { font-weight: 800; }
-    p.lead { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--muted); margin: 0.2rem 0 1.2rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
+
+    h1 {
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      margin: 0.2rem 0 0.6rem;
+      line-height: 1.15;
+      font-weight: 700; /* bold for headings per kit */
+    }
+
+    p.lead {
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+      color: var(--muted);
+      margin: 0.25rem 0 1.1rem;
+      font-weight: 400; /* normal for descriptions per kit */
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.2rem; }
     .chip {
       display: inline-flex; align-items: center;
-      padding: var(--chip-pad); border-radius: var(--chip-radius);
-      text-decoration: none; font-weight: 700; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
-      transition: transform .06s ease;
+      padding: var(--chip-pad);
+      border-radius: var(--chip-radius);
+      text-decoration: none;
+      font-weight: 700;
+      border: var(--border-w) solid var(--black);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+      transition: filter 0.2s ease, transform 0.06s ease;
     }
-    .chip:hover { transform: translateY(-1px); }
-    /* New color scheme */
-    .brown { background:#e8d8c3; }   /* soft brown */
-    .green { background:#e0f2e0; }   /* soft green */
-    .red   { background:#ffd9d9; }   /* soft red */
-    .white { background:#f8f8f8; }   /* neutral white */
-    .note { margin-top: 2.5rem; color: var(--muted); font-size: 0.95rem; }
+    .chip:hover { filter: saturate(1.08) brightness(1.02); transform: translateY(-1px); }
+
+    /* Chip color mappings */
+    .chip.purple { background: var(--purple); color: var(--black); }
+    .chip.yellow { background: var(--yellow); color: var(--black); }
+    .chip.green  { background: var(--green); color: var(--white); }
+    .chip.red    { background: var(--red); color: var(--white); }
+    .chip.pink   { background: var(--pink); color: var(--black); }
+
+    .note { margin-top: 2.3rem; color: var(--muted); font-size: 0.95rem; }
+
     @media (max-width: 700px) { .top { align-items:flex-start; } }
   </style>
 </head>
@@ -59,15 +104,15 @@
     </section>
 
     <section>
-      <p>
+      <p class="lead" style="margin-top:0">
         <strong>Marcelo Silva (aka MarceloReFi)</strong> is a Web3 researcher and founder exploring the intersections of blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil, he has contributed to initiatives such as ReFi Spring, ReFiDAO, Impact Plus, Blockchain na Escola, CeLatam, Crypto Commons Association, Zebra Regen House, UNESCO-SOST, General Magic Web3, and Prensa.Li, and facilitated the first Token Engineering Commons 360 Academy course in Brazil. He holds a PhD in institutional analysis.
       </p>
       <div class="chips">
-        <a class="chip brown" href="https://linktr.ee/YOUR_LINKTREE" target="_blank" rel="noopener">Linktree ✺</a>
-        <a class="chip green" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="chip red" href="https://twitter.com/YOUR_TWITTER" target="_blank" rel="noopener">Twitter</a>
-        <a class="chip white" href="https://YOUR_PROJECTS_URL" target="_blank" rel="noopener">Projects</a>
-        <a class="chip brown" href="https://YOUR_BLOG_URL" target="_blank" rel="noopener">Blog</a>
+        <a class="chip pink"   href="https://linktr.ee/YOUR_LINKTREE" target="_blank" rel="noopener">Linktree</a>
+        <a class="chip purple" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip red"    href="https://twitter.com/YOUR_TWITTER" target="_blank" rel="noopener">Twitter</a>
+        <a class="chip green"  href="https://YOUR_PROJECTS_URL" target="_blank" rel="noopener">Projects</a>
+        <a class="chip yellow" href="https://YOUR_BLOG_URL" target="_blank" rel="noopener">Blog</a>
       </div>
       <p class="note">📍 Brazil · ✉️ you@domain.com</p>
     </section>
