@@ -15,16 +15,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="header">
-    <nav class="nav">
-      <a class="brand" href="/">MarceloReFi</a>
-      <span class="spacer"></span>
-      <a class="link" href="articles.html">Articles</a>
-      <a class="link" href="projects.html">Projects</a>
-      <a class="link" href="blog.html">Personal Blog</a>
-    </nav>
-  </header>
-
   <main class="wrap">
     <section class="top">
       <img class="avatar" src="avatar.jpg" alt="Marcelo Silva avatar" />
@@ -39,13 +29,14 @@
       <p class="lead" style="margin-top:0">
         <strong>Marcelo Silva (aka MarceloReFi)</strong> is a Web3 researcher and founder exploring the intersections of blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil, he has contributed to initiatives such as ReFi Spring, ReFiDAO, Impact Plus, Blockchain na Escola, CeLatam, Crypto Commons Association, Zebra Regen House, UNESCO-SOST, General Magic Web3, and Prensa.Li, and facilitated the first Token Engineering Commons 360 Academy course in Brazil. He holds a PhD in institutional analysis.
       </p>
+
+      <!-- Chip-based navigation -->
       <div class="chips">
-        <a class="chip pink"   href="https://linktr.ee/YOUR_LINKTREE" target="_blank" rel="noopener">Linktree</a>
-        <a class="chip purple" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="chip red"    href="https://twitter.com/YOUR_TWITTER" target="_blank" rel="noopener">Twitter</a>
+        <a class="chip pink"   href="articles.html">Articles</a>
         <a class="chip green"  href="projects.html">Projects</a>
-        <a class="chip yellow" href="blog.html">Blog</a>
+        <a class="chip yellow" href="blog.html">Personal Blog</a>
       </div>
+
       <p class="note">📍 Brazil · ✉️ you@domain.com</p>
     </section>
   </main>
@@ -53,7 +44,6 @@
   <footer>
     <div class="footer-inner">© <span id="y"></span> Marcelo Silva. All rights reserved.</div>
   </footer>
-
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
