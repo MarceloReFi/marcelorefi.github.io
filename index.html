@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marcelo Silva — MarceloReFi</title>
-  <meta name="description" content="Marcelo Silva (aka MarceloReFi) is a Web3 researcher and founder exploring blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil, he has contributed to leading Web3 initiatives and holds a PhD in institutional analysis.">
+  <meta name="description" content="Marcelo Silva (aka MarceloReFi) is a Web3 researcher and founder exploring blockchain, regenerative finance, and local-first innovation in Latin America.">
   <style>
     :root {
       --maxw: 880px;
-      --fg: #2a2a2a;
-      --muted: #6c6c6c;
+      --fg: #2a2a2a;      /* 90% black */
+      --muted: #6c6c6c;   /* softer black */
       --chip-pad: 0.55rem 1rem;
       --chip-radius: 16px;
     }
@@ -22,12 +22,13 @@
     .wrap { max-width: var(--maxw); margin: 6rem auto; padding: 0 1rem; }
     .top { display: flex; gap: 1.25rem; align-items: center; margin-bottom: 2rem; }
     .avatar {
-      width: 92px; height: 92px; border-radius: 50%;
+      width: 138px; height: 138px; /* 50% bigger */
+      border-radius: 50%;
       object-fit: cover; border: 3px dotted #ddd; padding: 6px;
     }
     h1 { font-size: clamp(1.8rem, 3.6vw, 3rem); margin: 0.2rem 0 0.6rem; line-height: 1.15; }
     h1 b { font-weight: 800; }
-    p.lead { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--muted); margin: 0.2rem 0 2rem; }
+    p.lead { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--muted); margin: 0.2rem 0 1.2rem; }
     .chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
     .chip {
       display: inline-flex; align-items: center;
@@ -37,9 +38,11 @@
       transition: transform .06s ease;
     }
     .chip:hover { transform: translateY(-1px); }
-    .lilac{ background:#efe3ff; } .blue{ background:#dff0ff; }
-    .green{ background:#e6f7e6; } .rose{ background:#ffe3e3; }
-    .peach{ background:#ffe9d6; }
+    /* New color scheme */
+    .brown { background:#e8d8c3; }   /* soft brown */
+    .green { background:#e0f2e0; }   /* soft green */
+    .red   { background:#ffd9d9; }   /* soft red */
+    .white { background:#f8f8f8; }   /* neutral white */
     .note { margin-top: 2.5rem; color: var(--muted); font-size: 0.95rem; }
     @media (max-width: 700px) { .top { align-items:flex-start; } }
   </style>
@@ -51,6 +54,7 @@
       <div>
         <h1>Hi, I'm <b>Marcelo Silva</b>.</h1>
         <p class="lead">Researcher, Founder, and always-soon-to-be Solidity Developer.</p>
+        <p class="lead">I'm an enthusiast of the intersection of Web3, Climate, and International Development from a civilian point of view.</p>
       </div>
     </section>
 
@@ -59,11 +63,11 @@
         <strong>Marcelo Silva (aka MarceloReFi)</strong> is a Web3 researcher and founder exploring the intersections of blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil, he has contributed to initiatives such as ReFi Spring, ReFiDAO, Impact Plus, Blockchain na Escola, CeLatam, Crypto Commons Association, Zebra Regen House, UNESCO-SOST, General Magic Web3, and Prensa.Li, and facilitated the first Token Engineering Commons 360 Academy course in Brazil. He holds a PhD in institutional analysis.
       </p>
       <div class="chips">
-        <a class="chip lilac" href="https://linktr.ee/YOUR_LINKTREE" target="_blank" rel="noopener">Linktree ✺</a>
-        <a class="chip blue"   href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="chip green"  href="https://twitter.com/YOUR_TWITTER" target="_blank" rel="noopener">Twitter</a>
-        <a class="chip rose"   href="https://YOUR_PROJECTS_URL" target="_blank" rel="noopener">Projects</a>
-        <a class="chip peach"  href="https://YOUR_BLOG_URL" target="_blank" rel="noopener">Blog</a>
+        <a class="chip brown" href="https://linktr.ee/YOUR_LINKTREE" target="_blank" rel="noopener">Linktree ✺</a>
+        <a class="chip green" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip red" href="https://twitter.com/YOUR_TWITTER" target="_blank" rel="noopener">Twitter</a>
+        <a class="chip white" href="https://YOUR_PROJECTS_URL" target="_blank" rel="noopener">Projects</a>
+        <a class="chip brown" href="https://YOUR_BLOG_URL" target="_blank" rel="noopener">Blog</a>
       </div>
       <p class="note">📍 Brazil · ✉️ you@domain.com</p>
     </section>
