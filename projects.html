@@ -9,164 +9,122 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .filters { margin: 1.5rem 0; display:flex; gap:.6rem; flex-wrap:wrap }
-    .filters .chip { cursor:pointer }
-    .filters .chip.active { border:2px solid var(--black); font-weight:700 }
-  </style>
 </head>
 <body>
-  <a class="home-btn" href="index.html" title="Home">Home</a>
-  <div class="nav-fabs">
-    <button title="Back" onclick="history.back()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <button title="Forward" onclick="history.forward()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg></button>
-  </div>
+  <div class="wrap">
 
-  <main class="wrap">
-    <div class="chips">
-      <a class="chip pink"   href="articles.html">Articles</a>
-      <a class="chip green"  href="projects.html">Projects</a>
-      <a class="chip yellow" href="blog.html">Personal Blog</a>
-    </div>
+    <!-- Home chip -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
 
-    <h1>Projects</h1>
-    <p class="lead">Grouped by engagement: <b>Active</b>, <b>Seasonal</b>, and <b>Past</b> contributions.</p>
-
-    <div class="filters">
-      <span class="chip active" data-filter="all">All</span>
-      <span class="chip green" data-filter="active">Active</span>
-      <span class="chip yellow" data-filter="seasonal">Seasonal</span>
-      <span class="chip pink" data-filter="past">Past</span>
-    </div>
+    <header class="top">
+      <img src="avatar.jpg" alt="Marcelo Silva avatar" class="avatar" />
+      <div class="info">
+        <h1>Projects</h1>
+        <p class="lead">Active contribution, seasonal contribution, and past contribution.</p>
+      </div>
+    </header>
 
     <!-- Active -->
-    <section class="section filter-target active" id="active">
-      <h2><span class="band active"></span> Active Contribution</h2>
+    <section class="section">
+      <h2>Active Contribution</h2>
       <div class="list">
+
         <article class="card">
           <h3><a href="https://www.celatam.org/" target="_blank" rel="noopener">CeLatam</a></h3>
-          <div class="badges"><span class="badge researcher">Researcher</span></div>
-          <p class="meta">Stablecoins · RWAs · ReFi</p>
-          <p>Guiding research and publishing analysis; work presented at DevCon Thailand to key stakeholders.</p>
+          <p class="meta">Role: Researcher</p>
+          <p>Insights, articles, and research coordination across ReFi, RWAs, and stablecoins.</p>
         </article>
 
         <article class="card">
-          <h3><a href="https://ekonavi.com/" target="_blank" rel="noopener">Ekonavi</a></h3>
-          <div class="badges">
-            <span class="badge partner">Partner</span>
-            <span class="badge researcher">Researcher</span>
-            <span class="badge lead">Web3 Lead</span>
-          </div>
-          <p class="meta">Lift Lab — Central Bank of Brazil</p>
-          <p>Leading research and Web3 strategy for agroforestry incentives and verifiable impact.</p>
+          <h3><a href="https://ekonavi.org/" target="_blank" rel="noopener">Ekonavi</a></h3>
+          <p class="meta">Role: Partner — Researcher & Web3 Lead</p>
+          <p>Leading research for the Lift Lab program by the Central Bank of Brazil and Web3 integration.</p>
         </article>
+
       </div>
     </section>
 
     <!-- Seasonal -->
-    <section class="section filter-target seasonal" id="seasonal">
-      <h2><span class="band seasonal"></span> Seasonal Contribution</h2>
+    <section class="section">
+      <h2>Seasonal Contribution</h2>
       <div class="list">
+
         <article class="card">
-          <h3><a href="https://blockchainnaescola.com/" target="_blank" rel="noopener">Blockchain na Escola</a></h3>
-          <div class="badges"><span class="badge advisor">Advisor</span></div>
-          <p>Advising on governance, fundraising, and Web3 positioning.</p>
+          <h3><a href="https://www.instagram.com/refaz_brasil/" target="_blank" rel="noopener">ReFaz</a></h3>
+          <p class="meta">Role: Founder</p>
+          <p>Community initiative bridging local action and the global ReFi ecosystem.</p>
         </article>
 
         <article class="card">
-          <h3><a href="https://www.transcriativa.org/" target="_blank" rel="noopener">UNESCO–SOST Transcriativa</a></h3>
-          <div class="badges"><span class="badge advisor">Advisory Board</span></div>
-          <p>Supporting Brazilian initiatives bridging SDGs and entrepreneurship.</p>
+          <h3><a href="https://fablabtranscriativa.org/" target="_blank" rel="noopener">UNESCO-SOST Transcriativa</a></h3>
+          <p class="meta">Role: Advisory Board (Part-time)</p>
+          <p>Advising entrepreneurship aligned with SDGs; supporting initiatives like AgroForestDAO and Ekonavi.</p>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://blockchainnaescola.com.br/" target="_blank" rel="noopener">Blockchain na Escola</a></h3>
+          <p class="meta">Role: Founder → Advisor</p>
+          <p>Governance, fundraising, and Web3 positioning for education-focused impact.</p>
         </article>
 
         <article class="card">
           <h3><a href="https://www.instagram.com/ligacolaborativadospovos/" target="_blank" rel="noopener">Liga Colaborativa dos Povos</a></h3>
-          <div class="badges"><span class="badge lead">Web3 Integration Lead</span></div>
-          <p>Driving liquidity + privacy mechanisms for community finance.</p>
+          <p class="meta">Role: Web3 Lead</p>
+          <p>Driving Web3 integration with emphasis on liquidity and privacy.</p>
         </article>
 
         <article class="card">
-          <h3><a href="https://paragraph.xyz/@0x16204069922fc4242fbbc5c664970c9601015865/witnessing-the-rise-of-gira-hub-web3" target="_blank" rel="noopener">GiraHub Web3</a></h3>
-          <div class="badges">
-            <span class="badge co-founder">Co-founder</span>
-            <span class="badge source">Source</span>
-          </div>
-          <p>Weaving Web3 tools with cooperatives and community orgs.</p>
+          <h3><a href="https://paragraph.xyz/@gira-hub" target="_blank" rel="noopener">GiraHub Web3</a></h3>
+          <p class="meta">Role: Co-founder · Source</p>
+          <p>Collaborative hub connecting regenerative builders, knowledge, and funding.</p>
         </article>
 
         <article class="card">
           <h3><a href="https://staging.balaio.xyz/" target="_blank" rel="noopener">Balaio</a></h3>
-          <div class="badges">
-            <span class="badge founder">Founder</span>
-            <span class="badge researcher">Researcher</span>
-            <span class="badge contributor">Designer</span>
-            <span class="badge contributor">Developer</span>
-          </div>
-          <p>Local-first platform for cultural & cooperative economies.</p>
+          <p class="meta">Role: Founder · Researcher · Designer · Developer</p>
+          <p>Exploring local-first coordination tools for communities and creators.</p>
         </article>
 
-        <article class="card">
-          <h3><a href="https://www.instagram.com/refaz_brasil/" target="_blank" rel="noopener">ReFaz</a></h3>
-          <div class="badges">
-            <span class="badge founder">Founder</span>
-          </div>
-          <p>Seasonal community initiative catalyzing local-first ReFi action across Brazil.</p>
-        </article>
       </div>
     </section>
 
     <!-- Past -->
-    <section class="section filter-target past" id="past">
-      <h2><span class="band past"></span> Past Contribution</h2>
+    <section class="section">
+      <h2>Past Contribution</h2>
       <div class="list">
+
         <article class="card">
-          <h3><a href="https://www.zebrahouse.org/" target="_blank" rel="noopener">Zebra Regen House</a></h3>
-          <div class="badges"><span class="badge lead">ReFi Lead</span></div>
-          <p>Developed ReFi tech stack for ClimateTech startups.</p>
+          <h3><a href="https://zebrahouse.co/" target="_blank" rel="noopener">Zebra Regen House</a></h3>
+          <p class="meta">Role: ReFi Lead</p>
+          <p>Consulting and creating a ReFi tech stack for ClimateTech startups.</p>
         </article>
 
         <article class="card">
-          <h3><a href="https://generalmagic.io/" target="_blank" rel="noopener">General Magic</a></h3>
-          <div class="badges"><span class="badge contributor">Grants Manager</span></div>
-          <p>Managed grants (~$3M) for onchain public goods.</p>
+          <h3><a href="https://general-magic.gitbook.io/" target="_blank" rel="noopener">General Magic</a></h3>
+          <p class="meta">Role: Grants Manager</p>
+          <p>Coordinated grants for public goods projects (Giveth, Upe, Ekonavi, DeTrash, etc.).</p>
         </article>
 
         <article class="card">
           <h3><a href="https://blog.refidao.com/refi-spring-has-merged-with-refi-dao/" target="_blank" rel="noopener">ReFi Spring</a></h3>
-          <div class="badges"><span class="badge co-founder">Co-founder</span></div>
-          <p>Seeded global wave of ReFi organizers.</p>
+          <p class="meta">Role: Co-founder</p>
+          <p>Grants manager and community builder; helped transition into ReFi DAO.</p>
         </article>
 
         <article class="card">
           <h3><a href="https://impact-plus.io/" target="_blank" rel="noopener">Impact Plus</a></h3>
-          <div class="badges"><span class="badge researcher">Research Officer</span></div>
-          <p>Provided strategic analysis at the intersection of Web3, social development, and impact organizations.</p>
+          <p class="meta">Role: Research Officer</p>
+          <p>Strategic analysis at the intersection of Web3, supply chains, and international development.</p>
         </article>
+
       </div>
     </section>
 
-  </main>
+    <footer>
+      <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+    </footer>
+  </div>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    const filters = document.querySelectorAll('.filters .chip');
-    const sections = document.querySelectorAll('.filter-target');
-    filters.forEach(f => {
-      f.addEventListener('click', () => {
-        filters.forEach(x=>x.classList.remove('active'));
-        f.classList.add('active');
-        const val = f.dataset.filter;
-        sections.forEach(s => {
-          if(val==='all') s.style.display='block';
-          else s.style.display = s.classList.contains(val)?'block':'none';
-        });
-      });
-    });
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
