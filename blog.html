@@ -4,15 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Personal Blog — MarceloReFi</title>
-  <meta name="description" content="Personal notes and updates by MarceloReFi." />
+  <meta name="description" content="Short notes and essays by MarceloReFi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a class="home-btn" href="index.html" title="Home">Home</a>
+  <div class="nav-fabs">
+    <button title="Back" onclick="history.back()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button title="Forward" onclick="history.forward()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+
   <main class="wrap">
-    <!-- Chip-based navigation -->
     <div class="chips">
       <a class="chip pink"   href="articles.html">Articles</a>
       <a class="chip green"  href="projects.html">Projects</a>
@@ -20,19 +25,19 @@
     </div>
 
     <h1>Personal Blog</h1>
-    <p class="lead">Short reflections, field notes, and work-in-progress ideas.</p>
+    <p class="lead">Short notes and WIP ideas. More coming soon.</p>
 
     <div class="list">
       <article class="card">
         <h3>Why local-first matters for ReFi</h3>
-        <p>Sketching a framework for regional pathways and community-owned outcomes.</p>
-        <a href="#" target="_blank" rel="noopener">Read →</a>
+        <p class="meta">Note</p>
+        <p>Sketching a model for local-first coordination where small wins compound into regional capacity.</p>
       </article>
 
       <article class="card">
         <h3>Notes from the road</h3>
-        <p>What I’m learning visiting communities and builders across Brazil.</p>
-        <a href="#" target="_blank" rel="noopener">Read →</a>
+        <p class="meta">Field</p>
+        <p>Fragments from meetings, pilots, and community workshops across Brazil.</p>
       </article>
     </div>
   </main>
