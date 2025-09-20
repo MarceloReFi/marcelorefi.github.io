@@ -3,48 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Netx to be built > Personal Blog — MarceloReFi</title>
-  <meta name="description" content="Short notes and essays by MarceloReFi." />
+  <title>Personal Blog — MarceloReFi</title>
+  <meta name="description" content="Personal notes and informal posts by MarceloReFi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a class="home-btn" href="index.html" title="Home">Home</a>
-  <div class="nav-fabs">
-    <button title="Back" onclick="history.back()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <button title="Forward" onclick="history.forward()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="wrap">
+
+    <!-- Home chip -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+
+    <header class="top">
+      <img src="avatar.jpg" alt="Marcelo Silva avatar" class="avatar" />
+      <div class="info">
+        <h1>Personal Blog</h1>
+        <p class="lead">Short notes, travel logs, and work-in-progress ideas.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>2025</h2>
+      <div class="list">
+        <article class="card">
+          <h3>Notes from the road — Bogotá → Rio</h3>
+          <p class="meta">Jan 2025</p>
+          <p>Sketches on community governance patterns I keep seeing across LatAm.</p>
+        </article>
+        <article class="card">
+          <h3>Local-first tools I’m testing</h3>
+          <p class="meta">Jan 2025</p>
+          <p>Quick experiments with offline-friendly, sync-later workflows for small teams.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2024</h2>
+      <div class="list">
+        <article class="card">
+          <h3>Why RWAs need better stories</h3>
+          <p class="meta">Dec 2024</p>
+          <p>It’s not just risk and yield—it's context, purpose, and local capacity.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+    </footer>
   </div>
 
-  <main class="wrap">
-    <div class="chips">
-      <a class="chip pink"   href="articles.html">Articles</a>
-      <a class="chip green"  href="projects.html">Projects</a>
-      <a class="chip yellow" href="blog.html">Personal Blog</a>
-    </div>
-
-    <h1>Personal Blog</h1>
-    <p class="lead">Short notes and WIP ideas. More coming soon.</p>
-
-    <div class="list">
-      <article class="card">
-        <h3>Why local-first matters for ReFi</h3>
-        <p class="meta">Note</p>
-        <p>Sketching a model for local-first coordination where small wins compound into regional capacity.</p>
-      </article>
-
-      <article class="card">
-        <h3>Notes from the road</h3>
-        <p class="meta">Field</p>
-        <p>Fragments from meetings, pilots, and community workshops across Brazil.</p>
-      </article>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
