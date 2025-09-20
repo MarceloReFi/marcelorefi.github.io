@@ -4,15 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects — MarceloReFi</title>
-  <meta name="description" content="Selected projects and pilots led or contributed by MarceloReFi." />
+  <meta name="description" content="Active, seasonal, and past contributions by MarceloReFi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* --- Remove if already in your style.css --- */
+    .section { margin-top: 2.2rem; }
+    .section h2 {
+      display:flex; align-items:center; gap:.6rem; margin:.2rem 0 1rem;
+      font-size:1.4rem;
+    }
+    .band {display:inline-block; height:12px; width:28px; border:2px solid var(--black); border-radius:10px;}
+    .band.active{background:var(--green)}
+    .band.seasonal{background:var(--yellow)}
+    .band.past{background:var(--pink)}
+
+    .badges { display:flex; gap:.5rem; flex-wrap:wrap; margin:.2rem 0 .5rem }
+    .badge {
+      display:inline-flex; align-items:center; padding:.2rem .6rem;
+      border:2px solid var(--black); border-radius:12px;
+      font-weight:700; font-size:.8rem; line-height:1;
+    }
+    .badge.founder     { background:var(--green);  color:var(--white) }
+    .badge.co-founder  { background:var(--purple); color:var(--black) }
+    .badge.partner     { background:var(--red);    color:var(--white) }
+    .badge.contributor { background:var(--yellow); color:var(--black) }
+    .badge.freelancer  { background:var(--pink);   color:var(--black) }
+    .badge.advisor     { background:var(--yellow); color:var(--black) }
+    .badge.researcher  { background:var(--green);  color:var(--white) }
+    .badge.lead        { background:var(--purple); color:var(--black) }
+    .badge.source      { background:var(--black);  color:var(--white) }
+
+    .card h3 a { text-decoration:none }
+    .card .meta { color:var(--muted); font-size:.95rem; margin:.1rem 0 .6rem }
+
+    /* filter bar */
+    .filters { margin: 1.5rem 0; display:flex; gap:.6rem; flex-wrap:wrap }
+    .filters .chip { cursor:pointer; }
+    .filters .chip.active { border:2px solid var(--black); font-weight:700 }
+  </style>
 </head>
 <body>
   <main class="wrap">
-    <!-- Chip-based navigation -->
+    <!-- main nav chips -->
     <div class="chips">
       <a class="chip pink"   href="articles.html">Articles</a>
       <a class="chip green"  href="projects.html">Projects</a>
@@ -20,32 +57,126 @@
     </div>
 
     <h1>Projects</h1>
-    <p class="lead">Pilots, accelerators, and initiatives across ReFi, governance, and local-first adoption.</p>
+    <p class="lead">Grouped by engagement: <b>Active</b>, <b>Seasonal</b>, and <b>Past</b> contributions.</p>
 
-    <div class="list">
-      <article class="card">
-        <h3>EkonaviDAO</h3>
-        <p>Connecting sustainable agriculture with on-chain reporting and incentives.</p>
-        <a href="#" target="_blank" rel="noopener">Learn more →</a>
-      </article>
-
-      <article class="card">
-        <h3>MiniApps LatAm Accelerator</h3>
-        <p>Teaching students to deploy MiniApps on MiniPay with micro-rewards and DAO primitives.</p>
-        <a href="#" target="_blank" rel="noopener">Learn more →</a>
-      </article>
-
-      <article class="card">
-        <h3>CeLatam Pilots & Governance</h3>
-        <p>Designing community-led structures and research for CEL2 and regional adoption.</p>
-        <a href="#" target="_blank" rel="noopener">Learn more →</a>
-      </article>
+    <!-- filter bar -->
+    <div class="filters">
+      <span class="chip active" data-filter="all">All</span>
+      <span class="chip green" data-filter="active">Active</span>
+      <span class="chip yellow" data-filter="seasonal">Seasonal</span>
+      <span class="chip pink" data-filter="past">Past</span>
     </div>
-  </main>
 
+    <!-- =========== Active Section =========== -->
+    <section class="section filter-target active" id="active">
+      <h2><span class="band active"></span> Active Contribution</h2>
+      <div class="list">
+        <article class="card">
+          <h3><a href="https://www.celatam.org/" target="_blank">CeLatam</a></h3>
+          <div class="badges"><span class="badge researcher">Researcher</span></div>
+          <p class="meta">Stablecoins · RWAs · ReFi</p>
+          <p>Guiding research and publishing analysis; work presented at DevCon Thailand to key stakeholders.</p>
+        </article>
+
+        <article class="card">
+          <h3><a href="https://ekonavi.io/" target="_blank">Ekonavi</a></h3>
+          <div class="badges">
+            <span class="badge partner">Partner</span>
+            <span class="badge researcher">Researcher</span>
+            <span class="badge lead">Web3 Lead</span>
+          </div>
+          <p class="meta">Lift Lab — Central Bank of Brazil</p>
+          <p>Leading research and Web3 strategy for agroforestry incentives and verifiable impact.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========== Seasonal Section =========== -->
+    <section class="section filter-target seasonal" id="seasonal">
+      <h2><span class="band seasonal"></span> Seasonal Contribution</h2>
+      <div class="list">
+        <article class="card">
+          <h3><a href="https://blockchainnaescola.com/" target="_blank">Blockchain na Escola</a></h3>
+          <div class="badges"><span class="badge advisor">Advisor</span></div>
+          <p>Advising on governance, fundraising, and Web3 positioning.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://www.transcriativa.org/" target="_blank">UNESCO–SOST Transcriativa</a></h3>
+          <div class="badges"><span class="badge advisor">Advisory Board</span></div>
+          <p>Supporting Brazilian initiatives bridging SDGs and entrepreneurship.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://www.instagram.com/ligacolaborativadospovos/" target="_blank">Liga Colaborativa dos Povos</a></h3>
+          <div class="badges"><span class="badge lead">Web3 Integration Lead</span></div>
+          <p>Driving liquidity + privacy mechanisms for community finance.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://paragraph.xyz/@0x16204069922fc4242fbbc5c664970c9601015865/witnessing-the-rise-of-gira-hub-web3" target="_blank">GiraHub Web3</a></h3>
+          <div class="badges">
+            <span class="badge co-founder">Co-founder</span>
+            <span class="badge source">Source</span>
+          </div>
+          <p>Weaving Web3 tools with cooperatives and community orgs.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://staging.balaio.xyz/" target="_blank">Balaio</a></h3>
+          <div class="badges">
+            <span class="badge founder">Founder</span>
+            <span class="badge researcher">Researcher</span>
+            <span class="badge contributor">Designer</span>
+            <span class="badge contributor">Developer</span>
+          </div>
+          <p>Local-first platform for cultural & cooperative economies.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========== Past Section =========== -->
+    <section class="section filter-target past" id="past">
+      <h2><span class="band past"></span> Past Contribution</h2>
+      <div class="list">
+        <article class="card">
+          <h3><a href="https://www.zebrahouse.org/" target="_blank">Zebra Regen House</a></h3>
+          <div class="badges"><span class="badge lead">ReFi Lead</span></div>
+          <p>Developed ReFi tech stack for ClimateTech startups.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://generalmagic.io/" target="_blank">General Magic</a></h3>
+          <div class="badges"><span class="badge contributor">Grants Manager</span></div>
+          <p>Managed grants (~$3M) for onchain public goods.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://blog.refidao.com/refi-spring-has-merged-with-refi-dao/" target="_blank">ReFi Spring</a></h3>
+          <div class="badges"><span class="badge co-founder">Co-founder</span></div>
+          <p>Seeded global wave of ReFi organizers.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
   <footer>
     <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // filter logic
+    const filters = document.querySelectorAll('.filters .chip');
+    const sections = document.querySelectorAll('.filter-target');
+
+    filters.forEach(f => {
+      f.addEventListener('click', () => {
+        filters.forEach(x => x.classList.remove('active'));
+        f.classList.add('active');
+        const val = f.dataset.filter;
+        sections.forEach(s => {
+          if(val==='all') s.style.display = 'block';
+          else s.style.display = s.classList.contains(val) ? 'block':'none';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
