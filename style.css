@@ -74,6 +74,36 @@ footer{border-top:var(--border-w) solid var(--black);margin-top:3rem}
 .badge.blog     { background:var(--yellow); color:var(--black); }   /* Blog */
 .badge.media    { background:var(--red);    color:var(--white); }   /* Media */
 .meta { color:var(--muted); font-size:.9rem }
-  
+
+  /* Section headers with soft color bands */
+.section {
+  margin-top: 2.2rem;
+}
+.section h2 {
+  display:flex;align-items:center;gap:.6rem;margin:.2rem 0 1rem;
+  font-size:1.4rem;
+}
+.band {display:inline-block;height:12px;width:28px;border:2px solid var(--black);border-radius:10px;}
+.band.active{background:var(--green)}
+.band.seasonal{background:var(--yellow)}
+.band.past{background:var(--pink)}
+
+/* Role badges */
+.badges { display:flex; gap:.5rem; flex-wrap:wrap; margin:.2rem 0 .5rem }
+.badge {
+  display:inline-flex; align-items:center; padding:.18rem .55rem;
+  border:2px solid var(--black); border-radius:12px;
+  font-weight:700; font-size:.8rem; line-height:1;
+}
+.badge.founder     { background:var(--green);  color:var(--white) }
+.badge.co-founder  { background:var(--purple); color:var(--black) }
+.badge.contributor { background:var(--yellow); color:var(--black) }
+.badge.freelancer  { background:var(--pink);   color:var(--black) }
+.badge.partner     { background:var(--red);    color:var(--white) }
+
+/* Project card tweaks */
+.card h3 a { text-decoration:none }
+.card .meta { color:var(--muted); font-size:.95rem; margin:.1rem 0 .6rem }
+
 }
 
