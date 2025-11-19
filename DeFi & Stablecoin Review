@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DeFi & Stablecoins Research ” MarceloReFi</title>
+  <title>DeFi & Stablecoins Research — MarceloReFi</title>
   <meta name="description" content="Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,15 +52,9 @@
       border-bottom: 2px dashed var(--black);
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-    }
-
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1rem;
     }
 
@@ -76,13 +70,14 @@
     }
 
     .big-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: .75rem;
     }
 
     .big-card p {
       margin-bottom: .75rem;
       flex-grow: 1;
+      font-size: .95rem;
     }
 
     .highlight-box {
@@ -94,7 +89,7 @@
     }
 
     .highlight-box h4 {
-      font-size: .9rem;
+      font-size: .85rem;
       font-weight: 700;
       margin-bottom: .5rem;
       text-transform: uppercase;
@@ -108,11 +103,11 @@
 
     .highlight-box li {
       padding: .25rem 0;
-      font-size: .95rem;
+      font-size: .9rem;
     }
 
     .highlight-box li:before {
-      content: "â–¸ ";
+      content: "▸ ";
       font-weight: bold;
       margin-right: .5rem;
     }
@@ -179,7 +174,7 @@
         font-size: 1.5rem;
       }
       
-      .grid-2, .grid-3 {
+      .grid-3 {
         grid-template-columns: 1fr;
       }
 
@@ -194,7 +189,7 @@
   <div class="wrap">
 
     <!-- Home button -->
-    <a href="index.html" class="chip home-btn">  Home</a>
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
 
     <!-- Hero section -->
     <div class="hero">
@@ -203,7 +198,7 @@
         Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design 
         experiments for real-world applications in emerging markets.
       </p>
-      <p class="meta">Research Project â€¢ Wonderland Research Challenge â€¢ 2024-2025</p>
+      <p class="meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
     </div>
 
     <!-- Sticky navigation chips -->
@@ -233,7 +228,7 @@
         </p>
         <p>
           <strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital 
-          efficiency, and decentralization while addressing real-world market needsâ€”particularly in emerging 
+          efficiency, and decentralization while addressing real-world market needs—particularly in emerging 
           economies like Latin America?
         </p>
       </div>
@@ -243,10 +238,10 @@
     <section class="section">
       <h2>Research Components</h2>
       
-      <div class="grid-2">
+      <div class="grid-3">
         <!-- Comparative Analysis -->
         <div id="comparative" class="big-card">
-          <h3>“Š Comparative Analysis</h3>
+          <h3>Comparative Analysis</h3>
           <p>
             In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
             Infrastructure, and Governance.
@@ -255,31 +250,21 @@
           <div class="highlight-box">
             <h4>Stablecoins Analyzed</h4>
             <ul>
-              <li><strong>USDC:</strong> Fiat-backed, centralized, regulatory compliance</li>
-              <li><strong>DAI:</strong> Crypto-collateralized, decentralized, DeFi-native</li>
-              <li><strong>$BREAD:</strong> Real-World Assets (RWAs), community governance</li>
-            </ul>
-          </div>
-
-          <div class="highlight-box">
-            <h4>Key Insights</h4>
-            <ul>
-              <li>The "Impossible Triangle" constraint in stablecoin design</li>
-              <li>Trade-offs between capital efficiency vs. decentralization</li>
-              <li>Impact of governance models on protocol resilience</li>
-              <li>SVB crisis effects on fiat-backed stablecoins</li>
+              <li><strong>USDC:</strong> Fiat-backed, centralized</li>
+              <li><strong>DAI:</strong> Crypto-collateralized, decentralized</li>
+              <li><strong>$BREAD:</strong> Real-World Assets (RWAs)</li>
             </ul>
           </div>
 
           <p style="margin-top: auto;">
             <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip yellow" target="_blank">View Full Analysis â†’</a>
+               class="chip yellow" target="_blank">View Full Analysis →</a>
           </p>
         </div>
 
         <!-- Design Experiments -->
         <div id="designs" class="big-card">
-          <h3>ðŸ”¬ Design Experiments</h3>
+          <h3>Design Experiments</h3>
           <p>
             Five experimental stablecoin architectures addressing specific market needs, from theoretical 
             frameworks to real-world implementation proposals.
@@ -288,32 +273,22 @@
           <div class="highlight-box">
             <h4>Experiments</h4>
             <ul>
-              <li><strong>Perfect Collateral:</strong> Theoretical baseline (ETH-backed)</li>
-              <li><strong>Volatile Collateral:</strong> Capital efficiency challenges</li>
-              <li><strong>CONCORDIA:</strong> Commodity-backed for trade </li>
-              <li><strong>$DUX:</strong> Creator economy receivables-backed (Brazil)</li>
-            </ul>
-          </div>
-
-          <div class="highlight-box">
-            <h4>Focus Areas</h4>
-            <ul>
-              <li>Geopolitical neutrality via Web3 infrastructure</li>
-              <li>Liquidity gaps in creator economies</li>
-              <li>Dynamic collateralization frameworks</li>
-              <li>Multi-sovereign governance models</li>
+              <li><strong>Perfect Collateral:</strong> Theoretical baseline</li>
+              <li><strong>Volatile Collateral:</strong> Capital efficiency</li>
+              <li><strong>CONCORDIA:</strong> Commodity-backed (🇧🇷🇨🇱🇺🇸🇨🇳)</li>
+              <li><strong>$DUX:</strong> Creator economy (Brazil)</li>
             </ul>
           </div>
 
           <p style="margin-top: auto;">
             <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip green" target="_blank">View Design Docs â†’</a>
+               class="chip green" target="_blank">View Design Docs →</a>
           </p>
         </div>
 
         <!-- Security Analysis -->
         <div id="security" class="big-card">
-          <h3>ðŸ›¡ï¸ Attack Modeling & Security</h3>
+          <h3>Security Analysis</h3>
           <p>
             Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus 
             on oracle manipulation and circuit breaker vulnerabilities.
@@ -322,25 +297,15 @@
           <div class="highlight-box">
             <h4>Protocols Analyzed</h4>
             <ul>
-              <li><strong>Mento Protocol:</strong> Circuit breaker bypass attacks</li>
-              <li><strong>Sonne Finance:</strong> Oracle manipulation via donation</li>
-              <li><strong>Velodrome:</strong> Multi-step exploit chains</li>
-            </ul>
-          </div>
-
-          <div class="highlight-box">
-            <h4>Attack Vectors</h4>
-            <ul>
-              <li>Oracle manipulation during depeg events</li>
-              <li>Circuit breaker design flaws (monitoring gaps)</li>
-              <li>Coordinated multi-protocol exploits</li>
-              <li>Geopolitical-scale threat modeling</li>
+              <li><strong>Mento Protocol:</strong> Circuit breaker bypass</li>
+              <li><strong>Sonne Finance:</strong> Oracle manipulation</li>
+              <li><strong>Velodrome:</strong> Multi-step exploits</li>
             </ul>
           </div>
 
           <p style="margin-top: auto;">
             <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip pink" target="_blank">View Security Analysis â†’</a>
+               class="chip pink" target="_blank">View Security Analysis →</a>
           </p>
         </div>
       </div>
@@ -359,7 +324,7 @@
 
       <div class="grid-3" style="margin-top: 1rem;">
         <div class="card">
-          <h3>ðŸ“ Three-Dimensional Framework</h3>
+          <h3>Three-Dimensional Framework</h3>
           <p class="meta">Analysis Approach</p>
           <p>
             Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture), 
@@ -368,7 +333,7 @@
         </div>
 
         <div class="card">
-          <h3>ðŸ” Attack Simulation</h3>
+          <h3>Attack Simulation</h3>
           <p class="meta">Security Modeling</p>
           <p>
             Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime, 
@@ -377,7 +342,7 @@
         </div>
 
         <div class="card">
-          <h3>ðŸ“Š Comparative Analysis</h3>
+          <h3>Comparative Analysis</h3>
           <p class="meta">Protocol Evaluation</p>
           <p>
             Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization, 
@@ -386,7 +351,7 @@
         </div>
 
         <div class="card">
-          <h3>ðŸ—ï¸ Design Experimentation</h3>
+          <h3>Design Experimentation</h3>
           <p class="meta">Architecture Testing</p>
           <p>
             Creating experimental architectures to test hypotheses about collateral types, market fit, and 
@@ -395,7 +360,7 @@
         </div>
 
         <div class="card">
-          <h3>ðŸ“ˆ Case Study Integration</h3>
+          <h3>Case Study Integration</h3>
           <p class="meta">Real-World Validation</p>
           <p>
             Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate 
@@ -404,7 +369,7 @@
         </div>
 
         <div class="card">
-          <h3>ðŸŒŽ Geographic Focus</h3>
+          <h3>Geographic Focus</h3>
           <p class="meta">Latin America</p>
           <p>
             Special attention to LatAm markets, examining how stablecoins can address regional challenges 
@@ -422,7 +387,7 @@
         <h3>The Impossible Triangle</h3>
         <p>
           Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. 
-          Every design involves trade-offsâ€”USDC chooses centralization for stability, DAI sacrifices capital 
+          Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital 
           efficiency for decentralization, and experimental designs explore new compromises.
         </p>
       </div>
@@ -458,7 +423,7 @@
         <h3>Multi-Layered Security Necessity</h3>
         <p>
           Single-layer protections are insufficient against sophisticated adversaries. Effective security requires 
-          overlapping systems with different monitoring approachesâ€”but even multi-layered defense has exploitable 
+          overlapping systems with different monitoring approaches—but even multi-layered defense has exploitable 
           gaps when layers share assumptions.
         </p>
       </div>
@@ -482,28 +447,28 @@
 
       <ul class="doc-list">
         <li>
-          <strong>ðŸ“˜ Master Document</strong>
+          <strong>📘 Master Document</strong>
           <br>
           <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-             class="chip pink" target="_blank" style="margin-top: .5rem;">View Document â†’</a>
+             class="chip pink" target="_blank" style="margin-top: .5rem;">View Document →</a>
         </li>
         <li>
-          <strong>ðŸ›ï¸ CONCORDIA Protocol</strong>
+          <strong>🏛️ CONCORDIA Protocol</strong>
           <br>
           <a href="https://docs.google.com/document/d/17xAimDjhKnpL5-buO0YqcIgIQPcPARfz3Ef24NAKF2Y/edit" 
-             class="chip green" target="_blank" style="margin-top: .5rem;">View Document â†’</a>
+             class="chip green" target="_blank" style="margin-top: .5rem;">View Document →</a>
         </li>
         <li>
-          <strong>ðŸ’° $DUX Stablecoin</strong>
+          <strong>💰 $DUX Stablecoin</strong>
           <br>
           <a href="https://docs.google.com/document/d/14tYxg38eatt2426FYMCuqBniFz0UYp5BPPojMuVww5U/edit" 
-             class="chip yellow" target="_blank" style="margin-top: .5rem;">View Document â†’</a>
+             class="chip yellow" target="_blank" style="margin-top: .5rem;">View Document →</a>
         </li>
         <li>
-          <strong>ðŸ”’ Security Analysis</strong>
+          <strong>🔒 Security Analysis</strong>
           <br>
           <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit#heading=h.attack_modeling" 
-             class="chip pink" target="_blank" style="margin-top: .5rem;">View Document â†’</a>
+             class="chip pink" target="_blank" style="margin-top: .5rem;">View Document →</a>
         </li>
       </ul>
     </section>
@@ -511,7 +476,7 @@
   </div>
 
   <footer>
-    <div class="footer-inner">Â© <span id="y"></span> Marcelo Silva.</div>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
   </footer>
 
   <script>
