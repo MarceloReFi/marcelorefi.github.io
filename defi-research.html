@@ -224,11 +224,11 @@
         <p>
           The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical 
           implementations (CONCORDIA for commodity trade, $DUX for creator economy), while incorporating lessons 
-          from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.
+          from real-world incidents like the Silicon Valley Bank crisis and the potential for Criminal Factions to leverage their on-ramp off-ramp capacity to perform protocol-specific attacks.
         </p>
         <p>
-          <strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital 
-          efficiency, and decentralization while addressing real-world market needs—particularly in emerging 
+          <strong>Summarizing the research into a single question:</strong> How can we design stablecoins that maintain stability, capital 
+          efficiency, and decentralization, while addressing real-world market needs—particularly in emerging 
           economies like Latin America?
         </p>
       </div>
@@ -244,15 +244,15 @@
           <h3>Comparative Analysis</h3>
           <p>
             In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
-            Infrastructure, and Governance.
+            Infrastructure and Governance.
           </p>
           
           <div class="highlight-box">
             <h4>Stablecoins Analyzed</h4>
             <ul>
-              <li><strong>USDC:</strong> Fiat-backed, centralized</li>
-              <li><strong>DAI:</strong> Crypto-collateralized, decentralized</li>
-              <li><strong>$BREAD:</strong> Real-World Assets (RWAs)</li>
+              <li><strong>USDC:</strong> 100% dependency on the US Dolar US politics - Fiat-backed, centralized</li>
+              <li><strong>DAI:</strong> Crypto-collateralized, marginal dependency on US Dolar through USDC</li>
+              <li><strong>$BREAD:</strong> Mission - oriented, decentralized, marginal dependency on US Dolar through $DAI</li>
             </ul>
           </div>
 
@@ -266,15 +266,13 @@
         <div id="designs" class="big-card">
           <h3>Design Experiments</h3>
           <p>
-            Five experimental stablecoin architectures addressing specific market needs, from theoretical 
+            Two experimental stablecoin architectures addressing specific market needs, from theoretical 
             frameworks to real-world implementation proposals.
           </p>
 
           <div class="highlight-box">
             <h4>Experiments</h4>
             <ul>
-              <li><strong>Perfect Collateral:</strong> Theoretical baseline</li>
-              <li><strong>Volatile Collateral:</strong> Capital efficiency</li>
               <li><strong>CONCORDIA:</strong> Commodity-backed (🇧🇷🇨🇱🇺🇸🇨🇳)</li>
               <li><strong>$DUX:</strong> Creator economy (Brazil)</li>
             </ul>
@@ -316,8 +314,8 @@
       <h2>Research Methodology</h2>
       <div class="card">
         <p>
-          This research employs a multi-dimensional analytical framework examining stablecoins across technical, 
-          economic, and governance dimensions. The methodology combines academic rigor with practical implementation 
+         I used a multi-dimensional analytical framework examining stablecoins across technical, 
+          economic, and governance dimensions. I tried to find a balance between academic rigor and practical implementation 
           insights.
         </p>
       </div>
@@ -386,9 +384,9 @@
       <div class="finding-card">
         <h3>The Impossible Triangle</h3>
         <p>
-          Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. 
+          Stablecoin projects cannot, until now, simultaneously optimize capital efficiency, decentralization, and stability. 
           Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital 
-          efficiency for decentralization, and experimental designs explore new compromises.
+          efficiency for decentralization, and BREAD explores new compromises.
         </p>
       </div>
 
@@ -397,7 +395,7 @@
         <p>
           Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable 
           arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and 
-          real market prices to extract value while appearing compliant with safety mechanisms.
+          real market prices to extract value while appearing compliant with safety mechanisms. Without solving the challenge of following onchain transactions at a reasonable price, Circuit Breakers will still face this challenge. 
         </p>
       </div>
 
