@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DeFi & Stablecoins Research â€” MarceloReFi</title>
+  <title>DeFi & Stablecoins Research ” MarceloReFi</title>
   <meta name="description" content="Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,7 +194,7 @@
   <div class="wrap">
 
     <!-- Home button -->
-    <a href="index.html" class="chip home-btn">ðŸ  Home</a>
+    <a href="index.html" class="chip home-btn">  Home</a>
 
     <!-- Hero section -->
     <div class="hero">
@@ -246,7 +246,7 @@
       <div class="grid-2">
         <!-- Comparative Analysis -->
         <div id="comparative" class="big-card">
-          <h3>ðŸ“Š Comparative Analysis</h3>
+          <h3>“Š Comparative Analysis</h3>
           <p>
             In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
             Infrastructure, and Governance.
@@ -290,7 +290,7 @@
             <ul>
               <li><strong>Perfect Collateral:</strong> Theoretical baseline (ETH-backed)</li>
               <li><strong>Volatile Collateral:</strong> Capital efficiency challenges</li>
-              <li><strong>CONCORDIA:</strong> Commodity-backed for trade (ðŸ‡§ðŸ‡·ðŸ‡¨ðŸ‡±ðŸ‡ºðŸ‡¸ðŸ‡¨ðŸ‡³)</li>
+              <li><strong>CONCORDIA:</strong> Commodity-backed for trade </li>
               <li><strong>$DUX:</strong> Creator economy receivables-backed (Brazil)</li>
             </ul>
           </div>
