@@ -12,7 +12,7 @@
   <style>
     /* Additional styles specific to this research page */
     .hero {
-      padding: 2rem 1.5rem;x
+      padding: 2rem 1.5rem;
       border: 2px solid var(--black);
       border-radius: 12px;
       background: var(--yellow);
@@ -56,60 +56,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1rem;
-    }
-
-    .big-card {
-      padding: 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .big-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: .75rem;
-    }
-
-    .big-card p {
-      margin-bottom: .75rem;
-      flex-grow: 1;
-      font-size: .95rem;
-    }
-
-    .highlight-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .highlight-box h4 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .highlight-box ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .highlight-box li {
-      padding: .25rem 0;
-      font-size: .9rem;
-    }
-
-    .highlight-box li:before {
-      content: "▸ ";
-      font-weight: bold;
-      margin-right: .5rem;
     }
 
     .findings-section {
@@ -204,9 +150,7 @@
     <!-- Sticky navigation chips -->
     <nav class="nav-chips">
       <a href="#overview" class="chip yellow">Overview</a>
-      <a href="#comparative" class="chip pink">Comparative</a>
-      <a href="#designs" class="chip green">Designs</a>
-      <a href="#security" class="chip pink">Security</a>
+      <a href="#components" class="chip pink">Components</a>
       <a href="#methodology" class="chip yellow">Methodology</a>
       <a href="#findings" class="chip green">Findings</a>
     </nav>
@@ -235,77 +179,56 @@
     </section>
 
     <!-- Research Components -->
-    <section class="section">
+    <section id="components" class="findings-section">
       <h2>Research Components</h2>
       
-      <div class="grid-3">
-        <!-- Comparative Analysis -->
-        <div id="comparative" class="big-card">
-          <h3>Comparative Analysis</h3>
-          <p>
-            In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
-            Infrastructure and Governance.
-          </p>
-          
-          <div class="highlight-box">
-            <h4>Stablecoins Analyzed</h4>
-            <ul>
-              <li><strong>USDC:</strong> 100% dependency on the US Dolar US politics - Fiat-backed, centralized</li>
-              <li><strong>DAI:</strong> Crypto-collateralized, marginal dependency on US Dolar through USDC</li>
-              <li><strong>$BREAD:</strong> Mission - oriented, decentralized, marginal dependency on US Dolar through $DAI</li>
-            </ul>
-          </div>
+      <div class="finding-card">
+        <h3>Comparative Analysis</h3>
+        <p>
+          In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
+          Infrastructure and Governance.
+        </p>
+        <p>
+          <strong>Stablecoins Analyzed:</strong> USDC (100% dependency on the US Dollar and US politics - Fiat-backed, centralized), 
+          DAI (Crypto-collateralized, marginal dependency on US Dollar through USDC), and 
+          $BREAD (Mission-oriented, decentralized, marginal dependency on US Dollar through $DAI).
+        </p>
+        <p style="margin-top: .75rem;">
+          <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
+             class="chip yellow" target="_blank">View Full Analysis →</a>
+        </p>
+      </div>
 
-          <p style="margin-top: auto;">
-            <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip yellow" target="_blank">View Full Analysis →</a>
-          </p>
-        </div>
+      <div class="finding-card">
+        <h3>Design Experiments</h3>
+        <p>
+          Two experimental stablecoin architectures addressing specific market needs, from theoretical 
+          frameworks to real-world implementation proposals.
+        </p>
+        <p>
+          <strong>Experiments:</strong> CONCORDIA (Commodity-backed for trade between 🇧🇷🇨🇱🇺🇸🇨🇳) and 
+          $DUX (Creator economy receivables-backed in Brazil).
+        </p>
+        <p style="margin-top: .75rem;">
+          <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
+             class="chip green" target="_blank">View Design Docs →</a>
+        </p>
+      </div>
 
-        <!-- Design Experiments -->
-        <div id="designs" class="big-card">
-          <h3>Design Experiments</h3>
-          <p>
-            Two experimental stablecoin architectures addressing specific market needs, from theoretical 
-            frameworks to real-world implementation proposals.
-          </p>
-
-          <div class="highlight-box">
-            <h4>Experiments</h4>
-            <ul>
-              <li><strong>CONCORDIA:</strong> Commodity-backed (🇧🇷🇨🇱🇺🇸🇨🇳)</li>
-              <li><strong>$DUX:</strong> Creator economy (Brazil)</li>
-            </ul>
-          </div>
-
-          <p style="margin-top: auto;">
-            <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip green" target="_blank">View Design Docs →</a>
-          </p>
-        </div>
-
-        <!-- Security Analysis -->
-        <div id="security" class="big-card">
-          <h3>Security Analysis</h3>
-          <p>
-            Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus 
-            on oracle manipulation and circuit breaker vulnerabilities.
-          </p>
-
-          <div class="highlight-box">
-            <h4>Protocols Analyzed</h4>
-            <ul>
-              <li><strong>Mento Protocol:</strong> Circuit breaker bypass</li>
-              <li><strong>Sonne Finance:</strong> Oracle manipulation</li>
-              <li><strong>Velodrome:</strong> Multi-step exploits</li>
-            </ul>
-          </div>
-
-          <p style="margin-top: auto;">
-            <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
-               class="chip pink" target="_blank">View Security Analysis →</a>
-          </p>
-        </div>
+      <div class="finding-card">
+        <h3>Security Analysis</h3>
+        <p>
+          Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus 
+          on oracle manipulation and circuit breaker vulnerabilities.
+        </p>
+        <p>
+          <strong>Protocols Analyzed:</strong> Mento Protocol (Circuit breaker bypass), 
+          Sonne Finance (Oracle manipulation), and Velodrome (Multi-step exploits).
+        </p>
+        <p style="margin-top: .75rem;">
+          <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
+             class="chip pink" target="_blank">View Security Analysis →</a>
+        </p>
       </div>
     </section>
 
@@ -314,7 +237,7 @@
       <h2>Research Methodology</h2>
       <div class="card">
         <p>
-         I used a multi-dimensional analytical framework examining stablecoins across technical, 
+          I used a multi-dimensional analytical framework examining stablecoins across technical, 
           economic, and governance dimensions. I tried to find a balance between academic rigor and practical implementation 
           insights.
         </p>
@@ -395,7 +318,7 @@
         <p>
           Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable 
           arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and 
-          real market prices to extract value while appearing compliant with safety mechanisms. Without solving the challenge of following onchain transactions at a reasonable price, Circuit Breakers will still face this challenge. 
+          real market prices to extract value while appearing compliant with safety mechanisms. Without solving the challenge of following onchain transactions at a reasonable price, Circuit Breakers will still face this challenge.
         </p>
       </div>
 
