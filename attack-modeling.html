@@ -469,7 +469,7 @@
       <div class="adversary-card">
         <h4>Organized Crime (PCC - Brazil)</h4>
         <p>
-          <strong>Budget:</strong> $100K-500K | 
+          <strong>Budget:</strong> ~$27Bi USD yearly | 
           <strong>Capabilities:</strong> BRL liquidity, crypto offramps, local payment infrastructure | 
           <strong>Motivation:</strong> Money laundering, capital flight
         </p>
@@ -484,14 +484,6 @@
         </p>
       </div>
 
-      <div class="adversary-card">
-        <h4>Rogue DeFi Actor</h4>
-        <p>
-          <strong>Budget:</strong> $50K-200K | 
-          <strong>Capabilities:</strong> Protocol knowledge, bot operation, technical expertise | 
-          <strong>Motivation:</strong> Direct profit extraction
-        </p>
-      </div>
 
       <h3>Critical Vulnerability Discovery</h3>
       <p>Mento's circuit breakers have a <strong>blind spot:</strong></p>
@@ -499,7 +491,7 @@
         <li>✓ Monitor oracle prices (internal)</li>
         <li>✗ Don't monitor external market prices (DEX, CEX)</li>
         <li>✗ Don't detect slow distributed attacks</li>
-        <li>✗ Zero trading limits on cReal (unlimited drain possible)</li>
+        <li>✗ Zero trading limits on cReal smartcontract, while keeping high defenses within Mento ecosystem </li>
       </ul>
       <p style="margin-top: .75rem;">
         This enabled three attack scenarios, ranging from immediately profitable to catastrophic.
@@ -508,7 +500,7 @@
 
     <!-- Scenario 1 -->
     <section id="scenarios" class="scenario-section scenario-1">
-      <h2>Scenario 1: "Slow Bleed" Attack</h2>
+      <h2>Scenario 1: "Slow Bleed" Attack (Work at small scale) </h2>
       
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
@@ -586,14 +578,14 @@
         sophisticated attacks from nation-states and organized crime.
       </p>
       <p>
-        The protocol is paradoxically protected by being "too small to care about" — but this protection 
+        The currency (cReal) is paradoxically protected by being "too small to care about" — but this protection 
         disappears as adoption grows.
       </p>
     </section>
 
     <!-- Scenario 2 -->
     <section class="scenario-section scenario-2">
-      <h2>Scenario 2: "Flash Crisis"</h2>
+      <h2>Scenario 2: "Flash Crisis" (Failed attempt) </h2>
       
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
@@ -620,7 +612,6 @@
         <strong>Strategic Recommendation: NOT VIABLE</strong>
         <p>
           Exclude from realistic attack portfolio. Circuit breakers are effective against flash attacks. 
-          This scenario proves that some defenses actually work when properly designed.
         </p>
       </div>
     </section>
@@ -631,17 +622,16 @@
       
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
-        <p><strong>Target:</strong> Entire Optimism DeFi ecosystem</p>
-        <p><strong>Method:</strong> Amplify Brazilian crisis into multi-protocol contagion</p>
+        <p><strong>Target:</strong> cReal </p>
+        <p><strong>Method:</strong> Amplify Brazilian - USA crisis into contagion</p>
         <p><strong>Why it works:</strong> Organic crisis + coordinated attack + shared dependencies = unstoppable momentum</p>
       </div>
 
-      <h3>Six-Phase Cascade</h3>
+      <h3>Six-Phase Cascade (Theory)</h3>
       <ul>
-        <li><strong>T+0hr:</strong> Brazilian crisis catalyst (economic shock, political instability, BRL collapse)</li>
+        <li><strong>T+0hr:</strong> Brazilian crisis catalyst (economic shock, political instability, (happens every 4y during the election, if the guy on the right is winning, dolar will fall, if the guy on the left is winning dolar will rise)</li>
+          <li><strong>T+6hr:</strong> PCC can pump cReal turning it into a attractive asset, just to dump it during the crisis</li>
         <li><strong>T+6hr:</strong> cReal depegs 10-15% as Brazilian users panic-sell</li>
-        <li><strong>T+12hr:</strong> Velodrome liquidity drops 40% due to contagion fears</li>
-        <li><strong>T+24hr:</strong> Sonne bank run begins as users withdraw from Optimism protocols</li>
         <li><strong>T+48hr:</strong> Protocol interdependencies break down across ecosystem</li>
         <li><strong>T+72hr:</strong> System-wide instability, multiple protocol failures</li>
       </ul>
@@ -719,7 +709,7 @@
 
       <h3>Critical Vulnerabilities</h3>
       <div class="highlight-box">
-        <p><strong>1. Zero Trading Limits</strong> → Unlimited drain possible</p>
+        <p><strong>1. Zero Trading Limits in the currency smartcontract </strong> → Unlimited drain possible</p>
         <p><strong>2. External Price Blind Spot</strong> → Circuit breakers don't watch DEX prices</p>
         <p><strong>3. Low Liquidity</strong> → $28K TVL for $372K market (easy to manipulate)</p>
       </div>
@@ -810,9 +800,7 @@
     <section class="section">
       <h2>Responsible Disclosure</h2>
       <div class="card" style="background: #f0f0f0;">
-        <p>
-          All vulnerabilities disclosed to <strong>cLabs Team</strong>.
-        </p>
+       
         <p>
           <strong>No attacks were executed.</strong> All analysis is theoretical/simulated. This research was 
           conducted to improve protocol security, not to exploit vulnerabilities.
