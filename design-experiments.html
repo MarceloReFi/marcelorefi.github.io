@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stablecoin Design Experiments — MarceloReFi</title>
+  <meta name="description" content="Building sustainable stablecoin architectures for opposite realities: from perfect collateral to volatile assets, and real-world applications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific styles */
+    .hero {
+      padding: 2rem 1.5rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      background: var(--green);
+      box-shadow: 4px 4px 0 var(--black);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .hero p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: .5rem;
+      background: var(--white);
+      padding: .75rem 0;
+      z-index: 10;
+      border-bottom: 2px dashed var(--black);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .big-card {
+      padding: 1.5rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 3px 3px 0 var(--black);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .big-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: .75rem;
+    }
+
+    .big-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1rem 0 .5rem;
+    }
+
+    .big-card p {
+      margin-bottom: .75rem;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    .big-card ul {
+      margin: .5rem 0 .75rem 1.25rem;
+      font-size: .95rem;
+    }
+
+    .big-card li {
+      margin-bottom: .35rem;
+    }
+
+    .highlight-box {
+      background: #f5f5f5;
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: .75rem;
+      margin: .75rem 0;
+    }
+
+    .highlight-box h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .highlight-box p {
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-box ul {
+      margin: .5rem 0 0 1rem;
+      font-size: .9rem;
+    }
+
+    .highlight-box li {
+      margin-bottom: .25rem;
+    }
+
+    .experiment-section {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .experiment-section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .experiment-section h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .experiment-section p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .concordia-section {
+      background: var(--pink);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .concordia-section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .concordia-section h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .concordia-section h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1rem 0 .5rem;
+    }
+
+    .concordia-section p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .concordia-section ul {
+      margin: .5rem 0 .75rem 1.25rem;
+      font-size: .95rem;
+    }
+
+    .concordia-section li {
+      margin-bottom: .35rem;
+    }
+
+    .findings-section {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .findings-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .findings-section h3 {
+      font-size: 1.2rem;
+      margin: 1.25rem 0 .75rem;
+    }
+
+    .findings-section p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .findings-section ul {
+      margin: .5rem 0 .75rem 1.25rem;
+      font-size: .95rem;
+    }
+
+    .findings-section li {
+      margin-bottom: .35rem;
+    }
+
+    .insight-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .insight-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .insight-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+
+    .insight-card p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .5rem;
+    }
+
+    .insight-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .triangle-card {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 3px 3px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .triangle-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .triangle-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .triangle-card ul {
+      margin: 1rem 0 1rem 1.25rem;
+    }
+
+    .triangle-card li {
+      margin-bottom: .5rem;
+      font-size: .95rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-chips {
+        position: relative;
+        top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Home button -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+
+    <!-- Hero section -->
+    <div class="hero">
+      <h1>Stablecoin Design Experiments</h1>
+      <p>
+        Building sustainable architectures for opposite realities: from perfect collateral to volatile assets, 
+        with real-world implementations for commodity trade and creator economies.
+      </p>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div style="margin-bottom: 1.5rem;">
+      <a href="defi-research.html" class="chip pink">← Back to DeFi Research</a>
+    </div>
+
+    <!-- Sticky navigation chips -->
+    <nav class="nav-chips">
+      <a href="#overview" class="chip yellow">Overview</a>
+      <a href="#scenarios" class="chip pink">Idealized Scenarios</a>
+      <a href="#concordia" class="chip green">CONCORDIA</a>
+      <a href="#dux" class="chip yellow">$DUX</a>
+      <a href="#insights" class="chip pink">Key Insights</a>
+    </nav>
+
+    <!-- Overview section -->
+    <section id="overview" class="section">
+      <h2>Overview</h2>
+      <div class="card">
+        <p>
+          What would you build if you could start stablecoins over from scratch, with a clear view of every 
+          failure mode we've already seen?
+        </p>
+        <p>
+          This section runs that thought experiment in two directions. First: imagine collateral that basically 
+          can't lose value. Second: assume the opposite — collateral is wildly volatile, liquidations are normal, 
+          and risk never goes away.
+        </p>
+        <p>
+          From those extremes, we sketch four design experiments: two idealized architectures for boundary 
+          conditions, and two grounded proposals meant for specific economic and regional realities. All four 
+          are shaped by the comparative work, the attack models, and the DeFi security research.
+        </p>
+        <p>
+          <strong>Core idea:</strong> sustainable stablecoins, with the current tech we have, aren't about 
+          finding a perfect design. They're about choosing what to optimize for, then being honest (and prepared) 
+          about what you're giving up.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Design Challenge -->
+    <section class="triangle-card">
+      <h2>The Design Challenge: The Impossible Triangle</h2>
+      <p>
+        Across every model we studied, the same constraint shows up. You can't maximize all three at once:
+      </p>
+      <ul>
+        <li><strong>Capital efficiency</strong> (low collateral ratios)</li>
+        <li><strong>Decentralization</strong> (no single choke points)</li>
+        <li><strong>Stability</strong> (a reliable peg under stress)</li>
+      </ul>
+      <p>
+        So instead of designing as if this constraint doesn't exist, each experiment here makes explicit 
+        trade-offs based on its intended use case, and builds serious mitigation around the dimensions it 
+        deprioritizes.
+      </p>
+    </section>
+
+    <!-- Design Methodology -->
+    <section class="section">
+      <h2>Design Methodology</h2>
+      <div class="card">
+        <p>
+          Each experiment follows the same three-part integration framework:
+        </p>
+        <ul style="margin-left: 1.25rem; margin-top: .75rem;">
+          <li><strong>Purpose</strong> — what problem are we actually solving?</li>
+          <li><strong>Infrastructure</strong> — how does the peg hold, mechanically and economically?</li>
+          <li><strong>Governance</strong> — who is trusted (and empowered) to act in moments of stress?</li>
+        </ul>
+        <p style="margin-top: .75rem;">
+          That keeps the technical layer, incentive layer, and decision layer aligned. No accidental contradictions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Idealized Scenarios -->
+    <section id="scenarios" class="section">
+      <h2>The Two Idealized Scenarios</h2>
+      
+      <div class="grid-2">
+        <!-- Scenario 1: Perfect Collateral -->
+        <div class="big-card">
+          <h3>Scenario 1: Perfect Collateral</h3>
+          <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
+            Near-zero liquidation risk
+          </p>
+          
+          <h4>Premise</h4>
+          <p>Collateral never meaningfully loses value.</p>
+          <p>Think of backing like:</p>
+          <ul>
+            <li>Fiat reserves at high-trust institutions</li>
+            <li>Government bonds with sovereign guarantees</li>
+            <li>Verifiable physical commodities</li>
+            <li>Anything where liquidation risk is close to zero</li>
+          </ul>
+
+          <div class="highlight-box">
+            <h4>Design Choices</h4>
+            <ul>
+              <li><strong>Near-parity collateralization:</strong> roughly 100–120%</li>
+              <li><strong>Efficiency-first:</strong> capital efficiency becomes a primary win</li>
+              <li><strong>Focus shifts to:</strong> censorship resistance, transparency, governance fairness</li>
+            </ul>
+          </div>
+
+          <h4>Governance Innovation</h4>
+          <p>A three-tier system:</p>
+          <ul>
+            <li><strong>Operational:</strong> fast, small multi-sig</li>
+            <li><strong>Critical:</strong> larger multi-sig for reserve moves/upgrades</li>
+            <li><strong>Constitutional:</strong> token holders decide protocol fundamentals</li>
+          </ul>
+
+          <p style="margin-top: 1rem; font-style: italic;">
+            In this world, "stability" is easy. The hard part is trust and control.
+          </p>
+        </div>
+
+        <!-- Scenario 2: Volatile Collateral -->
+        <div class="big-card">
+          <h3>Scenario 2: Volatile Collateral</h3>
+          <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
+            Maximum liquidation risk
+          </p>
+          
+          <h4>Premise</h4>
+          <p>Collateral is highly volatile and liquidations are routine.</p>
+          <p>Backing examples:</p>
+          <ul>
+            <li>Altcoins and high-beta assets</li>
+            <li>Experimental DeFi collateral</li>
+            <li>Correlated crypto baskets</li>
+            <li>Anything where liquidation risk is structurally high</li>
+          </ul>
+
+          <div class="highlight-box">
+            <h4>Design Choices</h4>
+            <ul>
+              <li><strong>Adaptive hyper-collateralization:</strong> ~200–500% depending on real-time risk</li>
+              <li><strong>Risk-weighted collateral buckets:</strong> concentration limits, volatility caps</li>
+              <li><strong>Four-stage liquidation engine:</strong> early warnings → soft liquidation → hard liquidation → emergency unwind</li>
+              <li><strong>Insurance reserve:</strong> 15–20% of penalties routed to backstop fund</li>
+            </ul>
+          </div>
+
+          <h4>Core Innovation</h4>
+          <p>
+            <strong>Real-time risk scoring</strong> adjusts required CR based on volatility, liquidity depth, 
+            correlation, and smart-contract risk.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCORDIA Protocol -->
+    <section id="concordia" class="concordia-section">
+      <h2>CONCORDIA Protocol — Commodity-Backed Stablecoin</h2>
+      
+      <div class="highlight-box" style="background: var(--white);">
+        <h4>Quick Facts</h4>
+        <p><strong>Partners (pilot):</strong> Brazil, Chile, USA, China</p>
+        <p><strong>Collateral:</strong> 500k tons copper (Chile) + 500k tons niobium (Brazil) ≈ $25B</p>
+        <p><strong>Token:</strong> $CNC, pegged to a basket of partner currencies</p>
+        <p><strong>Chain:</strong> Celo, implemented through Mento</p>
+      </div>
+
+      <h3>The Problem This Is Trying to Solve</h3>
+      <p>
+        Latin America controls a large share of strategic minerals (rare earths, copper, niobium), but still 
+        operates inside a trade and debt system designed elsewhere. Commodity settlement is slow (days), opaque 
+        (off-chain pricing), and intermediary-heavy.
+      </p>
+      <p>
+        At the same time, the region sits in a structural geopolitical bind: China dominates processing capacity 
+        and is a major trade partner; the US is still the largest total trade bloc. Neutrality is hard to sustain 
+        without better infrastructure.
+      </p>
+      <p>
+        <strong>In short:</strong> the region has leverage on paper, but not in the pipes.
+      </p>
+
+      <h3>The Proposal</h3>
+      <p>
+        CONCORDIA treats strategic commodities as transparent, verifiable collateral for a neutral, 
+        instant-settlement trade layer. The stablecoin isn't the "product." The product is a settlement and 
+        coordination system.
+      </p>
+
+      <h4>For Trade:</h4>
+      <ul>
+        <li>Settles in seconds instead of 3–5 days</li>
+        <li>Makes pricing auditable on-chain</li>
+        <li>Reduces intermediary rent extraction</li>
+        <li>Lowers counterparty friction through programmable enforcement</li>
+      </ul>
+
+      <h4>For Geopolitics:</h4>
+      <ul>
+        <li>Creates neutral shared infrastructure</li>
+        <li>Turns reserves into liquidity without selling the commodities</li>
+        <li>Supports debt-relief leverage via verifiable commitments</li>
+        <li>Gives Latin America a credible seat at the table as system-designer, not just supplier</li>
+      </ul>
+
+      <h3>Pilot Structure (Model)</h3>
+      <ul>
+        <li><strong>Collateralization target:</strong> ~120–150%, adjustable</li>
+        <li><strong>Supply:</strong> ~$18–21B in $CNC for a 12–24 month pilot</li>
+        <li><strong>Governance:</strong> 4-nation multi-sig, 3-of-4 approval</li>
+        <li><strong>DeFi exposure cap:</strong> TradeLimit — no more than 20% DeFi exposure per country during pilot</li>
+      </ul>
+
+      <h3>Core Mechanics (Condensed)</h3>
+      
+      <h4>Dynamic Collateralization:</h4>
+      <p>
+        Brazil enters at a lower CR target (around 120%) due to higher debt pressure. Chile enters higher 
+        (around 145%) with more stability cushion. System CR floats between ranges with transparent rebalancing.
+      </p>
+
+      <h4>Quarterly Revaluation:</h4>
+      <p>Revaluation can be triggered by:</p>
+      <ul>
+        <li>Scheduled quarterly checks</li>
+        <li>Major commodity price moves</li>
+        <li>Shared governance request</li>
+      </ul>
+      <p>Adjustments happen through: add collateral, reduce supply (buyback/burn), or adjust CR targets.</p>
+
+      <h4>Physical Custody & Verification:</h4>
+      <ul>
+        <li>Commodities stay in government-controlled warehouses</li>
+        <li>Third-party audit firms verify quarterly</li>
+        <li>Audit results and reserve states posted on-chain</li>
+        <li>Redemption follows normal commodity settlement rails (T+2)</li>
+      </ul>
+
+      <h3>Key Innovations</h3>
+      
+      <div class="highlight-box" style="background: var(--white);">
+        <h4>1) TradeLimit (Pilot-Sandbox)</h4>
+        <p>
+          A hard cap on DeFi exposure during the pilot: 20% max per country, optional opt-in. Prevents systemic 
+          collapse if experiments fail while preserving a conservative core.
+        </p>
+      </div>
+
+      <div class="highlight-box" style="background: var(--white);">
+        <h4>2) Multi-Sovereign Equal Governance</h4>
+        <p>
+          One key per country, 3-of-4 required for major moves. Prevents capture by any single party, including 
+          superpowers.
+        </p>
+      </div>
+
+      <div class="highlight-box" style="background: var(--white);">
+        <h4>3) Debt-to-Leverage Conversion</h4>
+        <p>
+          Reserves become strategic liquidity without forcing asset sales — meaning debt negotiations can be 
+          linked to enforceable mineral access instead of informal political bargaining.
+        </p>
+      </div>
+
+      <h3>Critical Vulnerabilities (Still Real)</h3>
+      <ul>
+        <li>Commodity price volatility (mitigated by CR buffer + revaluation)</li>
+        <li>Cross-sovereign coordination friction</li>
+        <li>Neutrality fragility if US–China dynamics harden sharply</li>
+        <li>Concentration risk in specific commodities</li>
+        <li>Oracle integrity risk (mitigated through redundancy)</li>
+      </ul>
+
+      <p style="margin-top: 1rem; font-style: italic; font-size: 1rem;">
+        <strong>CONCORDIA is less about "a new stablecoin" and more about proving that public, verifiable 
+        stable infrastructures can unlock geopolitical coordination that traditional finance can't.</strong>
+      </p>
+    </section>
+
+    <!-- $DUX -->
+    <section id="dux" class="experiment-section">
+      <h2>$DUX — Receivables-Backed Stablecoin</h2>
+      
+      <div class="highlight-box" style="background: var(--white);">
+        <h4>Quick Facts</h4>
+        <p><strong>Geography:</strong> Brazil (creator economy focus)</p>
+        <p><strong>Peg:</strong> BRL 1:1</p>
+        <p><strong>Backing:</strong> Three-layer hybrid system</p>
+      </div>
+
+      <h3>The Problem</h3>
+      <p>
+        Creators with verified brand contracts often wait 30–90 days for payment. Traditional factoring is 
+        expensive (monthly fees that add up fast), and DeFi rarely touches receivables in emerging markets 
+        because verification and underwriting are messy.
+      </p>
+
+      <h3>The Proposal</h3>
+      <p>
+        $DUX blends company-backed liquidity with DeFi transparency. It's explicitly not trying to be maximally 
+        decentralized in phase one — it's trying to solve a real cash-flow problem without pretending the 
+        off-chain part doesn't exist.
+      </p>
+
+      <h3>Layered Backing Model</h3>
+      <ul>
+        <li>
+          <strong>Layer 1 (primary treasury):</strong> Conservative stable reserve + major crypto buffer
+          <br>Minimum CR around 150%, with emergency threshold near 130%
+        </li>
+        <li>
+          <strong>Layer 2 (receivables yield):</strong> Verified contracts anticipated by the DUX operator
+          <br>Brand payments mature into yield + treasury growth
+        </li>
+        <li>
+          <strong>Layer 3 (growth treasury):</strong> Optional risk layer funded by fees and DeFi experiments
+        </li>
+      </ul>
+
+      <h3>Investor Paths</h3>
+      <ul>
+        <li>Mint 1:1 with USDC</li>
+        <li>Either hold liquidly (no yield)</li>
+        <li>Or lock into yield tiers (30/90/180 days) with fixed returns</li>
+      </ul>
+
+      <h3>Circuit Breakers (Five)</h3>
+      <p>
+        CR thresholds, peg deviation rules, crypto drawdown alerts, receivables default limits, and 
+        redemption-velocity caps.
+      </p>
+
+      <h3>Main Vulnerability</h3>
+      <p>
+        <strong>Operator risk and underwriting quality.</strong> The system lives or dies by credit discipline 
+        — which is why centralization is accepted upfront, not papered over.
+      </p>
+    </section>
+
+    <!-- How They Map Together -->
+    <section class="section">
+      <h2>How the Four Experiments Map Together</h2>
+      <div class="card">
+        <ul style="margin-left: 1.25rem;">
+          <li><strong>Scenario 1:</strong> Efficiency-first stablecoin for near-perfect collateral</li>
+          <li><strong>Scenario 2:</strong> Resilience-first stablecoin for highly volatile collateral</li>
+          <li><strong>CONCORDIA:</strong> Commodity trade + neutral multi-sovereign settlement</li>
+          <li><strong>$DUX:</strong> Receivables liquidity for creators in Brazil</li>
+        </ul>
+        
+        <p style="margin-top: 1.5rem;"><strong>Patterns that show up:</strong></p>
+        <ul style="margin-left: 1.25rem; margin-top: .5rem;">
+          <li><strong>Efficiency champions:</strong> Scenario 1, CONCORDIA</li>
+          <li><strong>Resilience champion:</strong> Scenario 2</li>
+          <li><strong>Geopolitical innovation:</strong> CONCORDIA</li>
+          <li><strong>Economic-sector innovation:</strong> $DUX</li>
+          <li><strong>Governance innovation:</strong> Scenario 1 and CONCORDIA (tiered / multi-sovereign)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lessons from Research -->
+    <section class="findings-section">
+      <h2>Lessons Carried from Research into Design</h2>
+
+      <h3>From USDC:</h3>
+      <ul>
+        <li>Role-based contract security</li>
+        <li>Reserve-reporting norms</li>
+        <li>Real-world compliance realism</li>
+      </ul>
+      <p>Applied most directly to $DUX and CONCORDIA's attestation process.</p>
+
+      <h3>From DAI:</h3>
+      <ul>
+        <li>Dynamic CR logic</li>
+        <li>Multi-collateral risk weighting</li>
+        <li>Governance security modules and delays</li>
+      </ul>
+      <p>Applied most directly to Scenario 2 and CONCORDIA's flexible CR model.</p>
+
+      <h3>From Attack Modeling:</h3>
+      <ul>
+        <li>Trading limits to prevent slow-bleed drains</li>
+        <li>External price monitoring beyond oracles</li>
+        <li>Coordinated-wallet pattern detection</li>
+      </ul>
+      <p>Reflected in TradeLimit, circuit breakers, and liquidation staging.</p>
+
+      <h3>From DeFi Security Work:</h3>
+      <ul>
+        <li>Defense-in-depth rather than single mechanisms</li>
+        <li>Keeper incentives</li>
+        <li>Formal verification + continuous audits</li>
+      </ul>
+    </section>
+
+    <!-- Strategic Design Moves -->
+    <section class="section">
+      <h2>Strategic Design Moves That Matter</h2>
+      
+      <div class="card" style="margin-bottom: 1rem;">
+        <h3>1. Pilot-Sandbox Deployment</h3>
+        <p>
+          Safe core + limited-exposure experimentation beats "ship everything at once." If you can't bound risk, 
+          you can't learn safely.
+        </p>
+      </div>
+
+      <div class="card" style="margin-bottom: 1rem;">
+        <h3>2. Hybrid / Tiered Governance</h3>
+        <p>
+          Speed for daily ops, consensus for reserves/upgrades, legitimacy for constitutional changes. 
+          Governance should match the stakes.
+        </p>
+      </div>
+
+      <div class="card" style="margin-bottom: 1rem;">
+        <h3>3. Defense-in-Depth Security</h3>
+        <p>
+          Assume any single layer can fail. Build redundancy across reserves, prices, patterns, and stress tests.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>4. Real-World Utility First</h3>
+        <p>
+          Stablecoins don't stay stable because the math is pretty. They stay stable because people need them 
+          in non-speculative contexts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Insights -->
+    <section id="insights" class="findings-section">
+      <h2>Key Insights for Sustainable Stablecoin Design</h2>
+
+      <div class="insight-card">
+        <h3>1. Explicit trade-offs build trust</h3>
+        <p>
+          Systems fail faster when they pretend to be something they're not.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>2. Multiple defenses beat one clever trick</h3>
+        <p>
+          Every mechanism is attackable in isolation.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>3. Utility creates demand that survives market cycles</h3>
+        <p>
+          Trade settlement and creator financing don't disappear in a bear market.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>4. Bounded experiments scale better than ideology</h3>
+        <p>
+          Learn inside guardrails before expanding.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>5. Governance must fit collateral reality</h3>
+        <p>
+          Mismatch creates fragility (DAI is the clearest example).
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>6. Geopolitical context is part of the design space</h3>
+        <p>
+          CONCORDIA's contribution is showing stablecoins can be coordination infrastructure, not just 
+          financial instruments.
+        </p>
+      </div>
+    </section>
+
+    <!-- Full Document Link -->
+    <section class="section">
+      <h2>Full Research Document</h2>
+      <div class="card">
+        <p>
+          For complete technical architecture, detailed mechanics, and full protocol specifications, view the 
+          full research documentation:
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="https://docs.google.com/document/d/1IaaeyCpo4KYGDGO80sMZ1NU1q5GT-6SwadAA-c83Q5M/edit" 
+             class="chip green" target="_blank">View Full Document →</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
