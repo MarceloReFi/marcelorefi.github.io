@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Depeg Events: cREAL & WETH Analysis — MarceloReFi</title>
+  <meta name="description" content="Analysis of cREAL micro-depegs and WETH catastrophic depeg following Celo's L2 migration—examining liquidity crises, arbitrage failure, and systemic lessons." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      padding: 2rem 1.5rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      background: var(--green);
+      box-shadow: 4px 4px 0 var(--black);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .hero .meta {
+      font-size: .9rem;
+      color: var(--gray);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--black);
+    }
+
+    .nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: .5rem;
+      background: var(--white);
+      padding: .75rem 0;
+      z-index: 10;
+      border-bottom: 2px dashed var(--black);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+
+    .creal-section {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .weth-section {
+      background: var(--pink);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .lessons-section {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .incident-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .incident-card h4 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .stat-highlight {
+      background: #f5f5f5;
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: .75rem;
+      margin: .75rem 0;
+    }
+
+    .stat-highlight .number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      display: block;
+    }
+
+    .critical-box {
+      background: #ffe6e6;
+      border: 3px solid #cc0000;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .critical-box h3 {
+      color: #cc0000;
+      font-size: 1.2rem;
+      margin-bottom: .75rem;
+    }
+
+    .timeline-item {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: .75rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .timeline-item .date {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      padding: .25rem .75rem;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .comparison-box {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .comparison-box h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: .75rem;
+    }
+
+    .comparison-col {
+      padding: .75rem;
+      background: #f5f5f5;
+      border: 2px solid var(--black);
+      border-radius: 6px;
+    }
+
+    .lesson-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .lesson-card h4 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .grid-2, .comparison-row {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-chips {
+        position: relative;
+        top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Navigation -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+    <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Depeg Events: cREAL Micro-Depegs & WETH Crisis</h1>
+      <p>
+        Two contrasting case studies from Celo's L2 migration: cREAL's persistent 1-2% deviations 
+        revealing structural inefficiencies, and WETH's catastrophic 10-20% depeg demonstrating 
+        complete liquidity failure. This analysis examines why arbitrage failed, what this reveals 
+        about minimum viable liquidity, and why Mento's design validation paradoxically emerges 
+        from WETH's collapse.
+      </p>
+      <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
+    </div>
+
+    <!-- Sticky navigation -->
+    <nav class="nav-chips">
+      <a href="#overview" class="chip green">Overview</a>
+      <a href="#creal" class="chip yellow">cREAL Micro-Depegs</a>
+      <a href="#weth" class="chip pink">WETH Crisis</a>
+      <a href="#paradox" class="chip green">The Paradox</a>
+      <a href="#lessons" class="chip green">Systemic Lessons</a>
+    </nav>
+
+    <!-- Overview -->
+    <section id="overview" class="section">
+      <h2>Key Findings Summary</h2>
+      
+      <div class="grid-2">
+        <div class="incident-card">
+          <h4>cREAL: Persistent Micro-Depegs</h4>
+          <div class="stat-highlight">
+            <span class="number">1-2%</span>
+            <p>Typical deviation from peg</p>
+          </div>
+          <div class="stat-highlight">
+            <span class="number">$323K</span>
+            <p>Total supply</p>
+          </div>
+          <div class="stat-highlight">
+            <span class="number">$50.8M</span>
+            <p>Historical trading volume</p>
+          </div>
+          <p><strong>Pattern:</strong> Chronic low-grade inefficiencies lasting hours to days</p>
+          <p><strong>Outcome:</strong> Functional but suboptimal, never catastrophic</p>
+        </div>
+
+        <div class="incident-card">
+          <h4>WETH: Catastrophic Depeg</h4>
+          <div class="stat-highlight">
+            <span class="number">10-20%</span>
+            <p>Deviation from mainnet ETH</p>
+          </div>
+          <div class="stat-highlight">
+            <span class="number">$2,123</span>
+            <p>Primary pool liquidity</p>
+          </div>
+          <div class="stat-highlight">
+            <span class="number">$54.75</span>
+            <p>24-hour trading volume</p>
+          </div>
+          <p><strong>Pattern:</strong> Complete liquidity death spiral, persistent months</p>
+          <p><strong>Outcome:</strong> Bridge asset considered "unbridgeable" by users</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1rem;">
+        <h3>The Critical Context</h3>
+        <p>
+          Both depegs occurred following Celo's March 2025 migration from Layer 1 to Layer 2 (Optimism 
+          Superchain). The migration created months of instability as liquidity fragmented across L1/L2 
+          chains and market makers waited for "dust to settle" before engaging.
+        </p>
+      </div>
+    </section>
+
+    <!-- cREAL Analysis -->
+    <section id="creal" class="creal-section">
+      <h2>cREAL: The Persistent Micro-Depeg Pattern</h2>
+      
+      <div class="incident-card">
+        <h4>Observed Pattern (March-October 2025)</h4>
+        <p>
+          Brazilian Real stablecoin exhibits chronic 1-2% deviations from its 1 BRL peg, both above 
+          and below parity. Unlike catastrophic depegs (Terra/LUNA), these are persistent low-grade 
+          inefficiencies signaling structural problems.
+        </p>
+        <p><strong>Characteristics:</strong></p>
+        <p>
+          • <strong>Magnitude:</strong> ±$0.01-0.02 per BRL (1-2% from peg)<br>
+          • <strong>Duration:</strong> Hours to days before self-correcting<br>
+          • <strong>Frequency:</strong> Multiple times per week<br>
+          • <strong>Direction:</strong> Both upward and downward (not systematic)
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Root Cause 1: Insufficient DEX Liquidity</h4>
+        <p><strong>The Arbitrage Failure:</strong> For pegs to maintain, arbitrageurs must find it 
+        profitable to correct deviations. cREAL's low liquidity makes arbitrage unprofitable.</p>
+        
+        <p><strong>Economic Example (Depeg Below Peg):</strong></p>
+        <p class="meta">
+          Scenario: cREAL trades at $0.98 (2% below peg)<br>
+          1. Mint cREAL from Mento at $1.00 (spend $1,000 CELO)<br>
+          2. Receive 1,000 cREAL<br>
+          3. Sell on DEX at $0.98 = $980 revenue<br>
+          4. <strong>LOSS: $20 (2% loss)</strong>
+        </p>
+
+        <p><strong>Profitability Threshold:</strong> After gas fees (~$1-2), slippage (~0.5-1%), 
+        and execution risk, arbitrageurs need >2-3% deviation to profit. cREAL's 1-2% deviations 
+        fall below this threshold → no one arbitrages → depegs persist.</p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Root Cause 2: Trading Limit Constraints</h4>
+        <p>Mento's trading limits, designed for security, inadvertently prevent rapid corrections:</p>
+        <p>
+          <strong>L0 Limit:</strong> ~$2,000 per 5 minutes<br>
+          <strong>L1 Limit:</strong> ~$25,000 per day
+        </p>
+        <p class="meta">
+          Even if depeg becomes profitable (>3%), arbitrageurs cannot scale. Would take 30+ minutes 
+          to fully arbitrage a $300K depeg. By then, other factors may change, making risk/reward 
+          insufficient.
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Root Cause 3: L2 Migration Impact</h4>
+        <p>March 2025 migration created months of liquidity fragmentation:</p>
+        <p>
+          • <strong>Dual Chains:</strong> Assets exist on Celo L1 and L2 simultaneously<br>
+          • <strong>Bridge Delays:</strong> Moving cREAL between L1/L2 takes hours<br>
+          • <strong>LP Confusion:</strong> Many withdrew entirely, waiting for clarity<br>
+          • <strong>Market Maker Absence:</strong> Professionals wait 3-6 months to assess viability
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Root Cause 4: Oracle Update Frequency</h4>
+        <p>
+          Mento's oracles update periodically (5-10 minutes), not continuously. During these windows, 
+          BRL forex movements create gaps that sophisticated arbitrageurs exploit, causing temporary 
+          micro-depegs.
+        </p>
+        <p class="meta">
+          BRL is more volatile than EUR or USD (emerging market currency) → more frequent intra-update 
+          movements → larger gaps → higher-frequency micro-depegs.
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Root Cause 5: Low Trading Volume</h4>
+        <p><strong>Chicken-and-Egg Problem:</strong></p>
+        <p class="meta">
+          Low Liquidity → Wide Spreads → Unprofitable Arbitrage → Low Trading Volume → Low Liquidity
+        </p>
+        <p>
+          <strong>Statistics:</strong> cREAL daily volume often <$10,000 (compare to cUSD: $100M+ daily). 
+          Results in 2-5% bid-ask spreads vs 0.1% for cUSD.
+        </p>
+      </div>
+    </section>
+
+    <!-- WETH Crisis -->
+    <section id="weth" class="weth-section">
+      <h2>WETH: The Catastrophic Depeg Event</h2>
+
+      <div class="critical-box">
+        <h3>🚨 Critical Statistics</h3>
+        <p>
+          <strong>Launch:</strong> March 26, 2025 (same day as L2 migration)<br>
+          <strong>Primary Pool Liquidity:</strong> $2,123 (catastrophic)<br>
+          <strong>24-Hour Volume:</strong> $54.75 (dead market)<br>
+          <strong>Concentration:</strong> 85% held by just 2 accounts<br>
+          <strong>CEX Support:</strong> ZERO centralized exchanges<br>
+          <strong>Price Deviation:</strong> 10-20% below mainnet ETH<br>
+          <strong>Duration:</strong> Persistent 7+ months (still ongoing)
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Timeline of Collapse</h4>
+        
+        <div class="timeline-item">
+          <span class="date">March 26, 2025</span>
+          <p><strong>L2 Migration Launch</strong> — Native WETH bridge goes live, initial supply ~1,000 WETH</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">March 27-31</span>
+          <p><strong>Early Warning</strong> — WETH pools launched, initial $150K liquidity, <$1,000 daily volume</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">April 1-15</span>
+          <p><strong>Concentration Apparent</strong> — 85% in 2 accounts: 58% Velodrome pool (single LP 66%), 32% multisig</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">April 16-30</span>
+          <p><strong>Depeg Accelerates</strong> — WETH trading 5-15% below mainnet, arbitrage unprofitable</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="date">May-October</span>
+          <p><strong>Death Spiral</strong> — 10-20% persistent depeg, no CEX integration, considered unbridgeable</p>
+        </div>
+      </div>
+
+      <div class="incident-card">
+        <h4>Market Structure Breakdown</h4>
+        <p><strong>WETH Distribution (Total: ~1,000 WETH ≈ $2.3M)</strong></p>
+        <div class="stat-highlight">
+          <p><strong>58%</strong> — Velodrome USDT/WETH Pool (580 WETH)</p>
+          <p class="meta">→ Single LP controls 66% of this pool (383 WETH)</p>
+        </div>
+        <div class="stat-highlight">
+          <p><strong>32%</strong> — 2/6 Multisig (320 WETH)</p>
+          <p class="meta">→ Locked for future incentives, cannot be sold</p>
+        </div>
+        <div class="stat-highlight">
+          <p><strong>5%</strong> — Free Circulation (~50 WETH)</p>
+          <p class="meta">→ Actual users/traders</p>
+        </div>
+        <p><strong>Total Tradeable Liquidity:</strong> ~100 WETH ($230K) — catastrophically insufficient</p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Why Arbitrage Failed</h4>
+        <p><strong>Cost Breakdown for $10K Arbitrage Attempt:</strong></p>
+        <p>
+          <strong>Bridge Costs:</strong> $2.50 + 0.1%<br>
+          <strong>Ethereum Gas:</strong> ~$5 (can be $10-50 during congestion)<br>
+          <strong>Slippage:</strong> 5% buying on Celo + 0.1% selling on mainnet<br>
+          <strong>Time Delay Risk:</strong> 7-day withdrawal finality (±10% ETH volatility)<br>
+          <strong>Total Costs:</strong> ~$528.50
+        </p>
+        <p class="meta">
+          <strong>Profit on 10% depeg:</strong> $580.50<br>
+          <strong>Risk-adjusted return:</strong> Near zero after 7-day price movement risk<br>
+          <strong>Verdict:</strong> Not worth $10K capital lock
+        </p>
+      </div>
+
+      <div class="incident-card">
+        <h4>Why Large Arbitrageurs Don't Participate</h4>
+        <p>Professional arbitrageurs (Wintermute, Jump, etc.) require:</p>
+        <p>
+          ✗ Profit >1% after costs (failed: near-zero after risk)<br>
+          ✗ Execution time <1 hour (failed: 7-day finality)<br>
+          ✗ Ability to scale to $1M+ (failed: liquidity exhausted at $100K)<br>
+          ✗ Low principal risk (failed: high price movement + depeg worsening)
+        </p>
+      </div>
+
+      <div class="comparison-box">
+        <h4>Comparison: Successful L2 WETH Launches vs Celo</h4>
+        <div class="comparison-row">
+          <div class="comparison-col">
+            <p><strong>Arbitrum (Aug 2021)</strong></p>
+            <p>$500M+ liquidity at 1 month</p>
+          </div>
+          <div class="comparison-col">
+            <p><strong>Celo (Mar 2025)</strong></p>
+            <p>$2,123 liquidity at 1 month</p>
+          </div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-col">
+            <p><strong>Success Factors:</strong></p>
+            <p>Pre-seeded liquidity, CEX integration, market maker partnerships, fast withdrawals</p>
+          </div>
+          <div class="comparison-col">
+            <p><strong>Celo Failures:</strong></p>
+            <p>No pre-seed, no CEX, no market makers, 7-day withdrawals</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Paradox -->
+    <section id="paradox" class="section">
+      <h2>The Paradox: WETH Crisis Validates Mento</h2>
+
+      <div class="card">
+        <h3>Initial Observation</h3>
+        <p>
+          One might assume WETH failure indicates all Celo assets are failing. Instead, it reveals 
+          the opposite: well-designed stablecoin infrastructure is MORE critical when bridge assets fail.
+        </p>
+      </div>
+
+      <div class="comparison-box">
+        <h4>Why Mento Didn't Fail</h4>
+        <div class="comparison-row">
+          <div class="comparison-col">
+            <p><strong>WETH</strong></p>
+            <p>
+              Liquidity: $2,123 (catastrophic)<br>
+              Collateralization: 1:1 bridge<br>
+              Oracles: Single bridge feed<br>
+              Circuit Breakers: None<br>
+              Trading Limits: None<br>
+              Governance: 2/6 multisig only<br>
+              CEX Integration: None
+            </p>
+          </div>
+          <div class="comparison-col">
+            <p><strong>Mento cREAL</strong></p>
+            <p>
+              Liquidity: $150K+ (low but functional)<br>
+              Collateralization: 2.96x over-collateralized<br>
+              Oracles: Dual (Chainlink + RedStone)<br>
+              Circuit Breakers: Multiple automated<br>
+              Trading Limits: L0/L1/LG three-tier<br>
+              Governance: MENTO DAO + Watchdog<br>
+              CEX Integration: Not needed (mint/burn)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: var(--green);">
+        <h3>The Validation</h3>
+        <p>
+          Mento's cREAL has micro-depegs (1-2%) but never broke catastrophically (>10%). It's 
+          self-correcting within hours/days, reserve never at risk, users maintain confidence. 
+          When external assets (WETH) fail due to bridge/liquidity issues, native protocol assets 
+          (Mento stablecoins) become critical infrastructure for ecosystem survival.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Celo DeFi After WETH Failure</h3>
+        <p>
+          Protocols avoided WETH as collateral (too risky) and shifted to cUSD, cEUR as primary 
+          stablecoins. Mento became de facto "safe haven" during WETH crisis. Trading volume shifted 
+          from WETH pairs to Mento stablecoin pairs.
+        </p>
+        <p style="margin-top: .75rem;">
+          <strong>Systemic Importance:</strong> If Mento had ALSO failed during this period, Celo 
+          DeFi would have collapsed entirely. No reliable store of value = no lending, no trading, 
+          no functionality.
+        </p>
+      </div>
+    </section>
+
+    <!-- Systemic Lessons -->
+    <section id="lessons" class="lessons-section">
+      <h2>Systemic Lessons for DeFi Security</h2>
+
+      <div class="lesson-card">
+        <h4>1. L2 Migrations Are High-Risk Events</h4>
+        <p>
+          Migrating from L1 to L2 creates months of instability as liquidity fragments. Dual-chain 
+          existence creates confusion, bridge delays prevent arbitrage, market makers wait 6-12 months 
+          to assess viability.
+        </p>
+        <p><strong>Best Practices:</strong></p>
+        <p>
+          • Plan 12-18 month timeline for full migration<br>
+          • Pre-seed L2 liquidity before user migration<br>
+          • Incentivize liquidity heavily during transition (2-3x normal rewards)<br>
+          • Communicate clearly which chain is canonical<br>
+          • Deprecate L1 assets quickly
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>2. Minimum Viable Liquidity Is Higher Than Expected</h4>
+        <p><strong>The Data:</strong></p>
+        <p>
+          • WETH: $2,123 liquidity = complete failure<br>
+          • cREAL: $150K liquidity = functional but suboptimal<br>
+          • cUSD: $10M+ liquidity = healthy
+        </p>
+        <p><strong>Minimum Thresholds:</strong></p>
+        <p>
+          • For trading pairs: >$1M liquidity minimum<br>
+          • For collateral use: >$10M required<br>
+          • For institutional users: >$50M expected
+        </p>
+        <p class="meta">
+          Why so high? 5% price impact on $10K trade is unacceptable. Institutional traders execute 
+          $100K-$1M orders. Lower liquidity = higher manipulation risk.
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>3. CEX Integration Is Non-Optional</h4>
+        <p>
+          Every successful L2 has CEX integration within 3 months (Arbitrum, Optimism, Base). CEXs 
+          provide arbitrage pathways, liquidity backstop, price discovery, and fiat on/off-ramps.
+        </p>
+        <p>
+          Celo WETH: No CEX integration after 7 months = persistent failure.
+        </p>
+        <p><strong>Best Practices:</strong></p>
+        <p>
+          • Prioritize CEX listings as part of L2 launch strategy<br>
+          • Pay listing fees if necessary (worth it for liquidity)<br>
+          • Work with CEX market makers for deep order books<br>
+          • Integrate CEX APIs with DEX aggregators
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>4. Oracle System Redundancy Is Critical</h4>
+        <p>
+          Single oracle = single point of failure. Iron Finance (single Chainlink feed) lost $1.75B. 
+          Venus Protocol (single oracle) manipulated multiple times. Mento Protocol (dual: Chainlink 
+          + RedStone) has zero oracle exploits.
+        </p>
+        <p><strong>Best Practices:</strong></p>
+        <p>
+          • Minimum 2 independent oracle providers<br>
+          • Median aggregation across ≥5 nodes per provider<br>
+          • Circuit breakers detecting anomalies<br>
+          • Time-weighted averages to smooth manipulation<br>
+          • Manual governance override for emergency pausing
+        </p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>5. Trading Limits Are Double-Edged Swords</h4>
+        <p><strong>The Tradeoff:</strong></p>
+        <p>
+          • Too Low: Prevents legitimate arbitrage (cREAL 1-2% depegs persist)<br>
+          • Too High: Enables rapid reserve drainage during attacks<br>
+          • Sweet Spot: Difficult to find, varies by asset volatility
+        </p>
+        <p><strong>Solution: Dynamic Limits</strong></p>
+        <p>
+          Rather than static limits, implement adaptive system that adjusts based on market volatility, 
+          trading volume anomalies, oracle warnings, and time of day.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top: 2rem; background: #ffe6e6;">
+        <h3>⚠️ The Ultimate Lesson</h3>
+        <p>
+          Technology alone doesn't ensure success. Mento Protocol's sophisticated architecture couldn't 
+          prevent cREAL micro-depegs because <strong>economics and liquidity matter more than code</strong>. 
+          Conversely, WETH's technical soundness (OP Stack audits, proven bridge) couldn't save it from 
+          a liquidity death spiral.
+        </p>
+      </div>
+    </section>
+
+    <!-- Full Document Link -->
+    <section class="section">
+      <div class="card">
+        <h3>📄 Complete Depeg Analysis</h3>
+        <p>
+          This page presents highlights from the full research document. For comprehensive data analysis, 
+          market structure breakdowns, technical appendices, and detailed recommendations:
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="https://docs.google.com/document/d/1cPkJyxtro_JnDZK-_XxlbSXtaKf0kXQXCRHCCOGH_Ho/edit" 
+             class="chip green" target="_blank">View Full Document →</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
