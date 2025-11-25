@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mento Protocol: Security Research — MarceloReFi</title>
+  <meta name="description" content="Comprehensive security analysis of Mento Protocol's architecture, governance, defensive mechanisms, and potential vulnerabilities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      padding: 2rem 1.5rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      background: var(--yellow);
+      box-shadow: 4px 4px 0 var(--black);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .hero .meta {
+      font-size: .9rem;
+      color: var(--gray);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--black);
+    }
+
+    .nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: .5rem;
+      background: var(--white);
+      padding: .75rem 0;
+      z-index: 10;
+      border-bottom: 2px dashed var(--black);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .stat-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: .75rem;
+    }
+
+    .stat-card .big-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+      margin: .5rem 0;
+    }
+
+    .tech-section {
+      background: var(--pink);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .security-section {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .mechanism-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .mechanism-card h4 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .pro-con-box {
+      background: #f5f5f5;
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: .75rem;
+      margin: .75rem 0;
+    }
+
+    .pro-con-box h5 {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+    }
+
+    .attack-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .attack-card .difficulty {
+      display: inline-block;
+      padding: .25rem .75rem;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-top: .5rem;
+    }
+
+    .diff-high {
+      background: #ffcccc;
+      border: 2px solid #cc0000;
+    }
+
+    .diff-medium {
+      background: #fff3cd;
+      border: 2px solid #ff9900;
+    }
+
+    .diff-low {
+      background: #d4edda;
+      border: 2px solid #28a745;
+    }
+
+    .comparison-table {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 3px 3px 0 var(--black);
+      overflow-x: auto;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: .75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .comparison-table th {
+      font-weight: 700;
+      background: #f5f5f5;
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-chips {
+        position: relative;
+        top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Navigation -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+    <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Mento Protocol: Comprehensive Security Research</h1>
+      <p>
+        In-depth analysis of Mento's multi-currency stablecoin system: technical architecture, 
+        security mechanisms, governance structure, and potential attack vectors. From circuit breakers 
+        to oracle systems, this research examines how Mento's defense-in-depth protects 15+ stablecoins 
+        backed by $65M in reserves.
+      </p>
+      <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
+    </div>
+
+    <!-- Sticky navigation -->
+    <nav class="nav-chips">
+      <a href="#overview" class="chip yellow">Overview</a>
+      <a href="#architecture" class="chip pink">Architecture</a>
+      <a href="#security" class="chip green">Security</a>
+      <a href="#governance" class="chip yellow">Governance</a>
+      <a href="#attacks" class="chip pink">Attack Vectors</a>
+      <a href="#comparison" class="chip green">Comparison</a>
+    </nav>
+
+    <!-- Overview -->
+    <section id="overview" class="section">
+      <h2>Executive Summary</h2>
+      
+      <div class="grid-2">
+        <div class="stat-card">
+          <h3>Reserve Statistics</h3>
+          <div class="big-number">$65.4M</div>
+          <p>Total reserve backing</p>
+          <div class="big-number">$22M</div>
+          <p>Stablecoin supply</p>
+          <div class="big-number">2.96x</div>
+          <p>Collateralization ratio</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Protocol Status</h3>
+          <p><strong>Launch:</strong> 2020 (Celo L1)</p>
+          <p><strong>Migration:</strong> March 2025 (Optimism L2)</p>
+          <p><strong>Currencies:</strong> 15+ stablecoins</p>
+          <p><strong>Track Record:</strong> Zero exploits since launch</p>
+          <p><strong>Governance:</strong> MENTO token (June 2024 transition)</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1rem;">
+        <h3>Core Innovation</h3>
+        <p>
+          Unlike most stablecoins focused on USD parity, Mento provides stable assets for local 
+          currencies: Brazilian Real (cREAL), Kenyan Shilling (cKES), Philippine Peso (PUSO), 
+          and 12+ others. This enables financial access without forex conversion costs.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Key Findings</h3>
+        <p>
+          <strong>✓ Strengths:</strong> Multi-layer defense (circuit breakers, trading limits, 
+          oracle aggregation), 2.96x over-collateralization, 110% minimum in USDC/DAI<br>
+          <strong>⚠️ Concerns:</strong> Oracle dependency, reserve concentration in USDC/DAI, 
+          governance centralization (30% team/investors), complexity increases attack surface
+        </p>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="tech-section">
+      <h2>Technical Architecture</h2>
+      
+      <div class="mechanism-card">
+        <h4>Hybrid Stability Model</h4>
+        <p>
+          Mento combines four mechanisms that work together to maintain stablecoin pegs:
+        </p>
+        <p>
+          <strong>1. Over-Collateralization:</strong> Reserve assets worth 2.96x the stablecoin supply<br>
+          <strong>2. Algorithmic Minting/Burning:</strong> Supply expands and contracts with demand<br>
+          <strong>3. Virtual AMM (vAMM):</strong> Automated market making without user liquidity<br>
+          <strong>4. Oracle-Based Pricing:</strong> External price feeds with median aggregation
+        </p>
+      </div>
+
+      <div class="mechanism-card">
+        <h4>The Mento Reserve</h4>
+        <p><strong>Asset Allocation Mandate:</strong></p>
+        <p>
+          • <strong>110% coverage</strong> in stablecoins (USDC + DAI) — minimum safe backing<br>
+          • <strong>Remainder diversified</strong> into BTC, ETH, CELO<br>
+          • <strong>Small experimental allocation</strong> in nature-backed assets
+        </p>
+        <p class="meta" style="margin-top: .75rem;">
+          <strong>Key Insight:</strong> The 110% stable asset minimum ensures protocol could wind 
+          down all stablecoins safely even if volatile assets (BTC, ETH, CELO) went to zero.
+        </p>
+      </div>
+
+      <div class="mechanism-card">
+        <h4>Smart Contract Core</h4>
+        <p><strong>Primary Components:</strong></p>
+        <p>
+          <strong>Broker Contract:</strong> Entry point, only contract with reserve spending rights<br>
+          <strong>BiPoolManager:</strong> Manages two-asset virtual pools, supports constant sum/product<br>
+          <strong>SortedOracles:</strong> Stores price reports, checks circuit breakers<br>
+          <strong>BreakerBox:</strong> On-chain circuit breaker system<br>
+          <strong>Reserve Contract:</strong> Holds all Celo-native collateral
+        </p>
+      </div>
+
+      <div class="mechanism-card">
+        <h4>Virtual AMM Distinction</h4>
+        <p><strong>Traditional AMM:</strong> User-provided liquidity, real assets locked, price 
+        from reserve ratios, LPs earn fees</p>
+        <p><strong>Mento vAMM:</strong> Protocol-managed virtual buckets, no real assets in pools, 
+        mathematical price discovery, enables minting/burning against reserve</p>
+        <p class="meta" style="margin-top: .75rem;">
+          Uses Constant Product (x × y = k) for volatile pairs and Constant Sum (x + y = k) for 
+          stable pairs to minimize slippage.
+        </p>
+      </div>
+    </section>
+
+    <!-- Security Mechanisms -->
+    <section id="security" class="security-section">
+      <h2>Defense-in-Depth Security</h2>
+      
+      <div class="mechanism-card">
+        <h4>1. Circuit Breakers (Primary Defense)</h4>
+        <p>
+          On-chain circuit breakers automatically halt trading when abnormal conditions detected. 
+          Every oracle report triggers checks against pre-defined thresholds.
+        </p>
+        <p><strong>Breaker Types:</strong></p>
+        <p>
+          • <strong>Price Deviation:</strong> Triggers when price moves >X% from expected range<br>
+          • <strong>Rate of Change:</strong> Monitors velocity of price movements<br>
+          • <strong>Liquidity Breakers:</strong> Ensures oracle data from liquid markets
+        </p>
+        
+        <div class="pro-con-box">
+          <h5>✓ Strengths</h5>
+          <p>Automated (no lag), modular design, granular per-asset-pair, multiple independent triggers</p>
+        </div>
+        
+        <div class="pro-con-box">
+          <h5>⚠️ Limitations</h5>
+          <p>Increased gas costs, breaker manipulation risk, manual override vulnerability, no 
+          protection against gradual manipulation under thresholds</p>
+        </div>
+      </div>
+
+      <div class="mechanism-card">
+        <h4>2. Trading Limits (Rate Limiting)</h4>
+        <p>Three-tier limit system prevents rapid reserve drainage:</p>
+        <p>
+          <strong>L0 Limit (5 minutes):</strong> Caps net flow between oracle updates. Example: 
+          Max 100K cUSD per 5 minutes in CELO/cUSD pair<br>
+          <strong>L1 Limit (24 hours):</strong> Daily trading cap per asset/exchange. Example: 
+          Max 1M cUSD per day<br>
+          <strong>LG Limit (Global):</strong> Absolute cap, reset only via governance
+        </p>
+        <p class="meta" style="margin-top: .75rem;">
+          <strong>Asset-Pair Specific:</strong> Low-risk pairs (cUSD/USDC) have higher limits; 
+          high-risk pairs (cUSD/CELO) have lower limits.
+        </p>
+      </div>
+
+      <div class="mechanism-card">
+        <h4>3. Oracle System (Dual Redundancy)</h4>
+        <p><strong>Architecture:</strong></p>
+        <p>
+          • <strong>Multiple Oracle Clients:</strong> Independent off-chain clients from different sources<br>
+          • <strong>Median Aggregation:</strong> Uses median value, not average (outlier resistant)<br>
+          • <strong>Report Validation:</strong> Timestamp checks, source validation, circuit breaker triggers<br>
+          • <strong>Dual Providers:</strong> Chainlink + RedStone for redundancy
+        </p>
+        <p class="meta" style="margin-top: .75rem;">
+          <strong>Protection Level:</strong> Attacker must compromise majority of oracles AND 
+          stay under circuit breaker thresholds to manipulate prices.
+        </p>
+      </div>
+    </section>
+
+    <!-- Governance -->
+    <section id="governance" class="section">
+      <h2>Governance Structure</h2>
+
+      <div class="card">
+        <h3>MENTO Token Transition</h3>
+        <p>
+          Until June 2024, Mento was governed by CELO token holders. The spin-off (CGP#180) 
+          transitioned to independent MENTO token governance, enabling faster iteration without 
+          Celo-wide approval.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="stat-card">
+          <h3>Token Distribution</h3>
+          <div class="big-number">1B</div>
+          <p>Total MENTO supply</p>
+          <p><strong>45%</strong> Community Treasury</p>
+          <p><strong>30%</strong> Team/Investors/Advisors</p>
+          <p><strong>20%</strong> Ecosystem & Liquidity</p>
+          <p><strong>5%</strong> Airdrop</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>veMENTO Model</h3>
+          <p><strong>Lock Period:</strong> 1 week to 4 years</p>
+          <p><strong>Voting Power:</strong> Longer lock = more power</p>
+          <p><strong>Decay:</strong> Linear until unlock</p>
+          <p><strong>Permalock:</strong> Always treated as 4-year lock (max power, no decay)</p>
+        </div>
+      </div>
+
+      <div class="mechanism-card" style="margin-top: 1rem;">
+        <h4>Governance Security</h4>
+        
+        <div class="pro-con-box">
+          <h5>✓ Strengths</h5>
+          <p>Timelock prevents instant changes, Watchdog multisig can veto attacks, transparent 
+          on-chain voting, veMENTO aligns long-term interests</p>
+        </div>
+        
+        <div class="pro-con-box">
+          <h5>⚠️ Weaknesses</h5>
+          <p>10,000 veMENTO threshold may be too low (vote buying risk), Watchdog is centralization 
+          point, 30% team/investor distribution, non-transferable tokens limit market discovery</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attack Vectors -->
+    <section id="attacks" class="section">
+      <h2>Potential Attack Vectors</h2>
+
+      <div class="attack-card">
+        <h3>1. Oracle Manipulation</h3>
+        <p>
+          <strong>Scenario:</strong> Attacker gains control of majority of oracle clients and 
+          reports false exchange rates (e.g., cUSD worth $0.80 instead of $1.00).
+        </p>
+        <p><strong>Attack Path:</strong></p>
+        <p>
+          1. Compromise >50% of oracle node operators<br>
+          2. Report false rates staying under circuit breaker thresholds<br>
+          3. Mint maximum cUSD at favorable rate<br>
+          4. Sell on external markets for arbitrage<br>
+          5. Repeat to drain reserve over time
+        </p>
+        <p><strong>Mitigations:</strong> Median aggregation (requires majority control), circuit 
+        breakers (catch large deviations), trading limits (cap extraction), governance intervention</p>
+        <span class="difficulty diff-high">DIFFICULTY: HIGH</span>
+      </div>
+
+      <div class="attack-card">
+        <h3>2. Trading Limit Exploitation</h3>
+        <p>
+          <strong>Scenario:</strong> Attacker exploits predictable limit reset windows to maximize 
+          extraction efficiency.
+        </p>
+        <p><strong>Attack Path:</strong></p>
+        <p>
+          1. Monitor trading limit reset times (publicly visible on-chain)<br>
+          2. Prepare maximum extraction trades<br>
+          3. Execute at exact reset moment<br>
+          4. Repeat every reset period
+        </p>
+        <p><strong>Mitigations:</strong> L1 daily limit prevents full exploitation, requires oracle 
+        manipulation for profitable rates, reserve over-collateralization provides buffer</p>
+        <span class="difficulty diff-medium">DIFFICULTY: MEDIUM (requires oracle attack first)</span>
+      </div>
+
+      <div class="attack-card">
+        <h3>3. Reserve Asset Correlation Cascade</h3>
+        <p>
+          <strong>Scenario:</strong> Broader crypto market crash affecting multiple reserve assets 
+          simultaneously (not malicious, but systemic risk).
+        </p>
+        <p><strong>Attack Path (Natural Disaster):</strong></p>
+        <p>
+          1. Market crash event (BTC, ETH, CELO all decline 50-80%)<br>
+          2. Reserve value drops below 110% threshold<br>
+          3. Stablecoin holders panic and rush to redeem<br>
+          4. Reserve must sell remaining volatile assets into crashed market<br>
+          5. Death spiral: selling → lower prices → lower collateralization
+        </p>
+        <p><strong>Mitigations:</strong> 110% minimum in USDC/DAI (safe haven), 2.96x total 
+        collateralization (large buffer), trading limits slow redemption</p>
+        <span class="difficulty diff-low">DIFFICULTY: LOW (market-driven)</span>
+        <p class="meta" style="margin-top: .5rem;"><strong>Probability:</strong> MEDIUM (crypto 
+        crashes happen periodically)</p>
+      </div>
+
+      <div class="attack-card">
+        <h3>4. Governance Attack</h3>
+        <p>
+          <strong>Scenario:</strong> Attacker accumulates enough veMENTO to pass malicious proposals.
+        </p>
+        <p><strong>Attack Path:</strong></p>
+        <p>
+          1. Acquire MENTO tokens<br>
+          2. Lock for max period (4 years) to maximize veMENTO<br>
+          3. Create proposal to reduce circuit breakers, increase trading limits, or transfer reserve<br>
+          4. Vote with acquired veMENTO + convince/bribe others<br>
+          5. If proposal passes, execute malicious changes
+        </p>
+        <p><strong>Mitigations:</strong> Watchdog multisig can veto, timelock provides warning, 
+        veMENTO rewards long-term holders</p>
+        <span class="difficulty diff-high">DIFFICULTY: HIGH (expensive, high coordination)</span>
+      </div>
+
+      <div class="card" style="margin-top: 2rem; background: #ffe6e6;">
+        <h3>⚠️ Defense-in-Depth Requirement</h3>
+        <p>
+          For catastrophic failure, attacker must: compromise majority of oracles AND stay under 
+          circuit breaker thresholds AND drain faster than trading limits reset AND overcome reserve 
+          over-collateralization AND avoid governance detection.
+        </p>
+        <p style="margin-top: .75rem;">
+          This multi-layer requirement explains Mento's zero-exploit track record since 2020.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section id="comparison" class="section">
+      <h2>Comparison: Mento vs Other Stablecoins</h2>
+
+      <div class="comparison-table">
+        <h3>Mento vs USDC (Centralized, Fiat-Backed)</h3>
+        <table>
+          <tr>
+            <th>Aspect</th>
+            <th>USDC</th>
+            <th>Mento</th>
+          </tr>
+          <tr>
+            <td><strong>Backing</strong></td>
+            <td>1:1 USD in banks</td>
+            <td>2.96x crypto collateral</td>
+          </tr>
+          <tr>
+            <td><strong>Decentralization</strong></td>
+            <td>Centralized (Circle)</td>
+            <td>Decentralized (governance)</td>
+          </tr>
+          <tr>
+            <td><strong>Transparency</strong></td>
+            <td>Monthly attestations</td>
+            <td>Real-time on-chain</td>
+          </tr>
+          <tr>
+            <td><strong>Censorship</strong></td>
+            <td>Can freeze addresses</td>
+            <td>Permissionless</td>
+          </tr>
+          <tr>
+            <td><strong>Currencies</strong></td>
+            <td>USD only</td>
+            <td>15+ currencies</td>
+          </tr>
+          <tr>
+            <td><strong>Scalability</strong></td>
+            <td>High (mint on demand)</td>
+            <td>Limited by collateral</td>
+          </tr>
+          <tr>
+            <td><strong>Depeg Risk</strong></td>
+            <td>Banking system failure</td>
+            <td>Collateral crash + oracle attack</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="comparison-table">
+        <h3>Mento vs DAI (Crypto-Collateralized)</h3>
+        <table>
+          <tr>
+            <th>Aspect</th>
+            <th>DAI</th>
+            <th>Mento</th>
+          </tr>
+          <tr>
+            <td><strong>Backing</strong></td>
+            <td>ETH, USDC, RWAs</td>
+            <td>BTC, ETH, CELO, USDC, DAI</td>
+          </tr>
+          <tr>
+            <td><strong>Decentralization</strong></td>
+            <td>Decentralized</td>
+            <td>Decentralized</td>
+          </tr>
+          <tr>
+            <td><strong>Currencies</strong></td>
+            <td>USD only</td>
+            <td>15+ currencies</td>
+          </tr>
+          <tr>
+            <td><strong>Collateral Ratio</strong></td>
+            <td>150-200% typical</td>
+            <td>296% aggregate</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidation</strong></td>
+            <td>Automated vaults</td>
+            <td>No liquidation (protocol mints/burns)</td>
+          </tr>
+          <tr>
+            <td><strong>Complexity</strong></td>
+            <td>HIGH (many vault types)</td>
+            <td>VERY HIGH (multi-currency)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top: 1rem;">
+        <h3>Key Differentiation</h3>
+        <p>
+          Mento's unique value: enabling local currency stablecoins without forex conversion. 
+          Kenyan farmer gets paid in cKES directly (no USD→KES conversion), Brazilian merchant 
+          avoids USD/BRL exchange rate risk, Philippine OFW remitting home loses no conversion costs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Full Document Link -->
+    <section class="section">
+      <div class="card">
+        <h3>📄 Complete Technical Analysis</h3>
+        <p>
+          This page presents highlights from the comprehensive research document. For full technical 
+          specifications, smart contract addresses, governance details, audit status, and complete 
+          attack vector modeling:
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="https://docs.google.com/document/d/1YbRCCa98BI0RosWq1vUdrGb7iFURNLyoLvQHr1Sxfo8/edit" 
+             class="chip yellow" target="_blank">View Full Document →</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
