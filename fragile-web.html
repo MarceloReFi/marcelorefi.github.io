@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Fragile Web: Stablecoin Dependencies — MarceloReFi</title>
+  <meta name="description" content="Analysis of stablecoin dependencies and systemic risk in Optimism's DeFi ecosystem through Mento, Sonne, and Velodrome protocols." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      padding: 2rem 1.5rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      background: var(--pink);
+      box-shadow: 4px 4px 0 var(--black);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .hero .meta {
+      font-size: .9rem;
+      color: var(--gray);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--black);
+    }
+
+    .nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: .5rem;
+      background: var(--white);
+      padding: .75rem 0;
+      z-index: 10;
+      border-bottom: 2px dashed var(--black);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .protocol-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 3px 3px 0 var(--black);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .protocol-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: .75rem;
+    }
+
+    .protocol-card .stat-box {
+      background: #f5f5f5;
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: .75rem;
+      margin: .75rem 0;
+    }
+
+    .protocol-card .stat-box h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+    }
+
+    .alert-box {
+      background: #ffe6e6;
+      border: 3px solid #cc0000;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .alert-box h3 {
+      color: #cc0000;
+      font-size: 1.2rem;
+      margin-bottom: .75rem;
+    }
+
+    .dependency-section {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .cascade-section {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .phase-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .phase-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .phase-card h4 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .phase-card .phase-number {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-right: .5rem;
+    }
+
+    .lesson-box {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-chips {
+        position: relative;
+        top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Navigation -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+    <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>The Fragile Web: Stablecoin Dependencies in Optimism DeFi</h1>
+      <p>
+        Beneath the efficiency of interconnected DeFi protocols lies a dangerous web of stablecoin 
+        dependencies. This analysis examines how Mento Protocol, Sonne Finance, and Velodrome Finance 
+        create systemic risk through shared reliance on USDC and DAI—where one failure can cascade 
+        across the entire ecosystem.
+      </p>
+      <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
+    </div>
+
+    <!-- Sticky navigation -->
+    <nav class="nav-chips">
+      <a href="#overview" class="chip pink">Overview</a>
+      <a href="#protocols" class="chip yellow">Three Protocols</a>
+      <a href="#dependencies" class="chip yellow">Dependencies</a>
+      <a href="#cascade" class="chip green">Cascade Scenario</a>
+      <a href="#lessons" class="chip pink">Lessons</a>
+    </nav>
+
+    <!-- Overview -->
+    <section id="overview" class="section">
+      <h2>The Illusion of Stability</h2>
+      <div class="card">
+        <p>
+          The Optimism Superchain represents one of the most ambitious experiments in scaling 
+          decentralized finance. With billions flowing through its protocols, it promises faster 
+          transactions and lower fees. But this efficiency comes with a hidden cost: systemic risk 
+          concentrated around a handful of stablecoin assets.
+        </p>
+        <p>
+          This research examines the intricate dependencies between three critical protocols that 
+          collectively demonstrate how stablecoin reliance creates cascading failure points in 
+          modern DeFi architecture.
+        </p>
+      </div>
+
+      <div class="alert-box">
+        <h3>⚠️ Critical Finding</h3>
+        <p>
+          All three protocols share fundamental dependency on USDC and DAI. A single USDC depegging 
+          event would simultaneously: devalue Mento's reserve collateral, trigger mass liquidations 
+          on Sonne, and drain liquidity from Velodrome's pools. This creates what systems theorists 
+          call "common mode failure"—where a single event disables multiple systems simultaneously.
+        </p>
+      </div>
+    </section>
+
+    <!-- Three Protocols -->
+    <section id="protocols" class="section">
+      <h2>The Three Pillars of Optimism DeFi</h2>
+      
+      <div class="grid-3">
+        <!-- Mento -->
+        <div class="protocol-card">
+          <h3>Mento Protocol</h3>
+          <p class="meta">Multi-Currency Stablecoin System</p>
+          
+          <div class="stat-box">
+            <h4>Key Statistics</h4>
+            <p><strong>Reserves:</strong> $65.4M backing $22M stablecoins</p>
+            <p><strong>Collateralization:</strong> 2.96x over-collateralized</p>
+            <p><strong>Currencies:</strong> 15+ fiat-pegged stablecoins</p>
+            <p><strong>Migration:</strong> Celo L1 → Optimism L2 (March 2025)</p>
+          </div>
+
+          <p>
+            Mento enables creation of stablecoins pegged to various fiat currencies—from Brazilian 
+            Real (cREAL) to Kenyan Shilling (cKES). Uses hybrid model combining over-collateralization 
+            with algorithmic minting and virtual AMM.
+          </p>
+
+          <div class="stat-box">
+            <h4>Stability Model</h4>
+            <p>• Over-collateralization (2.96x)</p>
+            <p>• Algorithmic minting/burning</p>
+            <p>• Virtual AMM (vAMM)</p>
+            <p>• Dual oracle system</p>
+          </div>
+
+          <p style="margin-top: auto;">
+            <strong>Critical Dependency:</strong> Holds USDC as major reserve component. USDC depeg 
+            threatens backing of all 15+ stablecoins.
+          </p>
+        </div>
+
+        <!-- Sonne -->
+        <div class="protocol-card">
+          <h3>Sonne Finance</h3>
+          <p class="meta">Lending & Borrowing Protocol</p>
+          
+          <div class="stat-box">
+            <h4>Key Statistics</h4>
+            <p><strong>Type:</strong> Compound V2 fork</p>
+            <p><strong>Security:</strong> 2/3 multisig governance</p>
+            <p><strong>Track Record:</strong> $20M exploit (May 2024)</p>
+            <p><strong>Audits:</strong> No formal audits</p>
+          </div>
+
+          <p>
+            Built as a fork of Compound Finance, Sonne launched on Optimism with promise of proven 
+            lending technology. Users deposit assets for interest-bearing tokens (soTokens), borrowers 
+            take loans against collateral.
+          </p>
+
+          <div class="stat-box">
+            <h4>May 2024 Exploit</h4>
+            <p>• <strong>Attack:</strong> Donation attack pattern</p>
+            <p>• <strong>Loss:</strong> $20 million</p>
+            <p>• <strong>Method:</strong> Exploited timelock mechanism</p>
+            <p>• <strong>Weakness:</strong> Inherited Compound v2 vulnerability</p>
+          </div>
+
+          <p style="margin-top: auto;">
+            <strong>Critical Dependency:</strong> Relies on USDC/DAI as safest collateral. Depeg 
+            triggers mass liquidations as collateral values become uncertain.
+          </p>
+        </div>
+
+        <!-- Velodrome -->
+        <div class="protocol-card">
+          <h3>Velodrome Finance</h3>
+          <p class="meta">Primary DEX & Liquidity Hub</p>
+          
+          <div class="stat-box">
+            <h4>Key Statistics</h4>
+            <p><strong>TVL:</strong> $128 million</p>
+            <p><strong>Role:</strong> Primary DEX for Optimism Superchain</p>
+            <p><strong>Model:</strong> ve(3,3) tokenomics</p>
+            <p><strong>Innovation:</strong> Combines Curve + Convex + Uniswap</p>
+          </div>
+
+          <p>
+            Central nervous system of Optimism DeFi. Offers stable pools (USDC/DAI), volatile pools 
+            (ETH/USDC), and concentrated liquidity. ve(3,3) tokenomics create flywheel: lock VELO → 
+            get veVELO → vote on emissions → earn 100% of fees.
+          </p>
+
+          <div class="stat-box">
+            <h4>Pool Types</h4>
+            <p>• <strong>Stable:</strong> Efficient for correlated pairs</p>
+            <p>• <strong>Volatile:</strong> For uncorrelated assets</p>
+            <p>• <strong>Concentrated:</strong> Maximum capital efficiency</p>
+          </div>
+
+          <p style="margin-top: auto;">
+            <strong>Critical Dependency:</strong> Largest pools involve stablecoin pairs. USDC/DAI 
+            depeg drains liquidity as panic trading overwhelms AMM capacity.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 2rem;">
+        <h3>Vulnerability Hierarchy</h3>
+        <p>
+          <strong>Most Vulnerable:</strong> Sonne Finance (proven exploit, weak governance)<br>
+          <strong>Highest Systemic Risk:</strong> Velodrome Finance ($128M TVL, no reserves)<br>
+          <strong>Most Complex:</strong> Mento Protocol (multiple attack vectors, strongest defense)
+        </p>
+      </div>
+    </section>
+
+    <!-- Dependencies -->
+    <section id="dependencies" class="dependency-section">
+      <h2>The Web of Dependencies</h2>
+      <p style="margin-bottom: 1.5rem;">
+        The real danger emerges not from examining each protocol in isolation, but from mapping 
+        the interconnections between them. These create cascading failure points where efficiency 
+        becomes fragility.
+      </p>
+
+      <div class="lesson-box">
+        <h3>1. The Stablecoin Foundation</h3>
+        <p>
+          All three protocols converge on the same stablecoin assets: USDC and DAI. This creates 
+          "common mode failure" where a single event disables multiple systems.
+        </p>
+        <p><strong>USDC Depeg Impact Chain:</strong></p>
+        <p>
+          → Mento reserve devaluation (threatens all 15+ stablecoins)<br>
+          → Sonne mass liquidations (USDC collateral loses value)<br>
+          → Velodrome liquidity drain (panic trading in USDC/DAI pools)<br>
+          → Ecosystem-wide contagion
+        </p>
+        <p class="meta" style="margin-top: .75rem;">
+          The March 2023 USDC depeg (SVB crisis, $0.88) previewed this scenario. DeFi TVL dropped 
+          15% in 48 hours as protocols scrambled to adjust.
+        </p>
+      </div>
+
+      <div class="lesson-box">
+        <h3>2. The Liquidity Nexus</h3>
+        <p>
+          Velodrome's role as primary DEX creates second-layer interconnection. Sonne uses Velodrome 
+          for SONNE token liquidity, actively bribing voters for emissions. Mento stablecoins require 
+          Velodrome pools to be tradable.
+        </p>
+        <p><strong>Velodrome Failure Impact:</strong></p>
+        <p>
+          → Sonne loses governance token market<br>
+          → Mento stablecoins become illiquid<br>
+          → Super USDT initiative collapses<br>
+          → Entire Superchain liquidity infrastructure disabled
+        </p>
+      </div>
+
+      <div class="lesson-box">
+        <h3>3. The Oracle Overlay</h3>
+        <p>
+          Both Mento and Sonne rely on external price feeds. Most DeFi protocols use the same oracle 
+          provider—primarily Chainlink. Oracle manipulation or Chainlink compromise would simultaneously 
+          affect multiple protocols.
+        </p>
+        <p><strong>Oracle Dependency Risk:</strong></p>
+        <p>
+          • Mento needs accurate exchange rates (BRL/USD manipulation → drain reserve)<br>
+          • Sonne needs asset prices (false liquidation thresholds)<br>
+          • Velodrome uses 30-min TWAPs (longer manipulation windows)<br>
+          • Single Chainlink compromise affects all three
+        </p>
+        <p class="meta" style="margin-top: .75rem;">
+          Oracle manipulation has been vector in numerous exploits, including 2024 Rodeo Finance 
+          hack specifically referenced in Mento documentation.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cascade Scenario -->
+    <section id="cascade" class="cascade-section">
+      <h2>The Cascade Scenario: How One Failure Becomes Many</h2>
+      <p style="margin-bottom: 1.5rem;">
+        The most realistic and devastating attack doesn't target protocols in isolation but exploits 
+        their interconnections. Here's how such an attack might unfold:
+      </p>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">1</span>Initial Breach</h4>
+        <p>
+          Attacker exploits Sonne Finance using variation of proven donation attack, amplified with 
+          flash loans. Drains significant value from lending pools, triggers mass liquidations as 
+          collateral values plummet.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">2</span>Market Panic</h4>
+        <p>
+          News of Sonne exploit spreads rapidly. USDC and DAI holders on Optimism begin withdrawing 
+          from all protocols, not just Sonne. Bank run scenario emerges across ecosystem.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">3</span>Liquidity Drain</h4>
+        <p>
+          Velodrome's stablecoin pools face massive one-sided selling. AMM pricing curves can't 
+          absorb this pressure, causing significant slippage and impermanent loss. Smart LPs withdraw 
+          liquidity entirely, further reducing pool depth.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">4</span>Collateral Cascade</h4>
+        <p>
+          As Velodrome liquidity drains, tokens used as Sonne collateral become harder to liquidate. 
+          Liquidation bots struggle to find buyers, bad debt accumulates. Reduced trading volume 
+          crashes VELO price, affecting those who used VELO as collateral.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">5</span>Mento Stress Test</h4>
+        <p>
+          Chaos in USDC/DAI markets stresses Mento reserves. If USDC depegs during this period, 
+          Mento's collateralization ratio effectively drops. Arbitrageurs test trading restrictions, 
+          minting at maximum allowed rates and immediately selling, slowly draining reserve.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h4><span class="phase-number">6</span>Ecosystem Collapse</h4>
+        <p>
+          With Velodrome liquidity gone, Sonne exploited, and Mento reserves depleted, entire 
+          Optimism DeFi ecosystem loses core infrastructure. Protocols built on these foundational 
+          layers find themselves unable to operate. Superchain vision of interconnected L2s becomes 
+          liability as contagion spreads.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lessons -->
+    <section id="lessons" class="section">
+      <h2>Critical Lessons & Implications</h2>
+
+      <div class="lesson-box">
+        <h3>1. Efficiency and Resilience Exist in Tension</h3>
+        <p>
+          Tight integration creates capital efficiency and better UX, but also correlation in failure 
+          modes. A more fragmented, less efficient system might actually be more robust.
+        </p>
+      </div>
+
+      <div class="lesson-box">
+        <h3>2. Stablecoin Diversification Is Illusory</h3>
+        <p>
+          Having both USDC and DAI doesn't meaningfully reduce risk when DAI holds USDC as significant 
+          portion of reserves. True diversification requires fundamentally different stability mechanisms 
+          and backing assets.
+        </p>
+      </div>
+
+      <div class="lesson-box">
+        <h3>3. Infrastructure Protocols Require Different Security Models</h3>
+        <p>
+          When a protocol becomes systemically important (like Velodrome), security requirements should 
+          escalate. Critical infrastructure needs insurance funds, conservative parameters, or circuit 
+          breakers at ecosystem level.
+        </p>
+      </div>
+
+      <div class="lesson-box">
+        <h3>4. Oracle Dependency Creates Single Points of Failure</h3>
+        <p>
+          DeFi community needs oracle redundancy, manipulation-resistant aggregation, and fallback 
+          systems that maintain operations when price feeds become unreliable.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top: 2rem; background: var(--pink);">
+        <h3>For the Ecosystem</h3>
+        <p>
+          Perhaps not every protocol should integrate with every other protocol. Perhaps critical 
+          infrastructure needs different governance than experimental DeFi protocols. Perhaps the 
+          most efficient system isn't always the most desirable system.
+        </p>
+        <p style="margin-top: .75rem;">
+          The web of dependencies mapped here isn't just theoretical—it's a blueprint for the next 
+          major DeFi crisis, unless we address these vulnerabilities now.
+        </p>
+      </div>
+    </section>
+
+    <!-- Full Document Link -->
+    <section class="section">
+      <div class="card">
+        <h3>📄 Complete Analysis</h3>
+        <p>
+          This page presents highlights from the full research document. For comprehensive analysis 
+          including detailed protocol mechanics, historical context, attack surface taxonomy, and 
+          technical appendices:
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="https://docs.google.com/document/d/1myaRInSbNKX-tLSSlIaW8Pe8gDvlSwHeFsWfuMve7E4/edit" 
+             class="chip pink" target="_blank">View Full Document →</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
