@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stablecoin Design Experiments — MarceloReFi</title>
-  <meta name="description" content="Building sustainable stablecoin architectures for opposite realities: from perfect collateral to volatile assets, and real-world applications." />
+  <meta name="description" content="Building sustainable stablecoin architectures: CONCORDIA for commodity trade and $DUX for creator economies." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -308,8 +308,8 @@
     <div class="hero">
       <h1>Stablecoin Design Experiments</h1>
       <p>
-        Building sustainable architectures for opposite realities: from perfect collateral to volatile assets, 
-        with real-world implementations for commodity trade and creator economies.
+        Two experimental stablecoin architectures addressing opposite realities: CONCORDIA for stable backing 
+        with abundant liquidity, and $DUX for flexible backing with volatile liquidity.
       </p>
     </div>
 
@@ -321,10 +321,9 @@
     <!-- Sticky navigation chips -->
     <nav class="nav-chips">
       <a href="#overview" class="chip yellow">Overview</a>
-      <a href="#scenarios" class="chip pink">Idealized Scenarios</a>
-      <a href="#concordia" class="chip green">CONCORDIA</a>
-      <a href="#dux" class="chip yellow">$DUX</a>
-      <a href="#insights" class="chip pink">Key Insights</a>
+      <a href="#concordia" class="chip pink">CONCORDIA</a>
+      <a href="#dux" class="chip green">$DUX</a>
+      <a href="#insights" class="chip yellow">Key Insights</a>
     </nav>
 
     <!-- Overview section -->
@@ -336,14 +335,13 @@
           failure mode we've already seen?
         </p>
         <p>
-          This section runs that thought experiment in two directions. First: imagine collateral that basically 
-          can't lose value. Second: assume the opposite — collateral is wildly volatile, liquidations are normal, 
-          and risk never goes away.
+          This section presents two design experiments that tackle opposite collateral realities. CONCORDIA 
+          assumes stable backing with abundant liquidity (commodity reserves). $DUX assumes flexible backing 
+          with volatile liquidity (receivables and mixed assets).
         </p>
         <p>
-          From those extremes, we sketch four design experiments: two idealized architectures for boundary 
-          conditions, and two grounded proposals meant for specific economic and regional realities. All four 
-          are shaped by the comparative work, the attack models, and the DeFi security research.
+          Both are shaped by the comparative work, the attack models, and the DeFi security research. Both are 
+          grounded in specific economic and regional realities rather than abstract ideals.
         </p>
         <p>
           <strong>Core idea:</strong> sustainable stablecoins, with the current tech we have, aren't about 
@@ -389,82 +387,67 @@
       </div>
     </section>
 
-    <!-- Idealized Scenarios -->
-    <section id="scenarios" class="section">
-      <h2>The Two Idealized Scenarios</h2>
+    <!-- The Two Experiments Comparison -->
+    <section class="section">
+      <h2>The Two Experiments</h2>
       
       <div class="grid-2">
-        <!-- Scenario 1: Perfect Collateral -->
+        <!-- CONCORDIA Overview Card -->
         <div class="big-card">
-          <h3>Scenario 1: Perfect Collateral</h3>
+          <h3>CONCORDIA Protocol</h3>
           <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
-            Near-zero liquidation risk
+            Stable backing, abundant liquidity
           </p>
           
-          <h4>Premise</h4>
-          <p>Collateral never meaningfully loses value.</p>
-          <p>Think of backing like:</p>
-          <ul>
-            <li>Fiat reserves at high-trust institutions</li>
-            <li>Government bonds with sovereign guarantees</li>
-            <li>Verifiable physical commodities</li>
-            <li>Anything where liquidation risk is close to zero</li>
-          </ul>
+          <h4>Reality</h4>
+          <p>Commodity reserves (copper, niobium) as collateral. Physical assets with verifiable value and deep global markets.</p>
+
+          <h4>Use Case</h4>
+          <p>Multi-sovereign trade settlement for Latin American strategic minerals. Neutral infrastructure for geopolitical coordination.</p>
 
           <div class="highlight-box">
-            <h4>Design Choices</h4>
+            <h4>Key Parameters</h4>
             <ul>
-              <li><strong>Near-parity collateralization:</strong> roughly 100–120%</li>
-              <li><strong>Efficiency-first:</strong> capital efficiency becomes a primary win</li>
-              <li><strong>Focus shifts to:</strong> censorship resistance, transparency, governance fairness</li>
+              <li><strong>Collateralization:</strong> 120–150% (adjustable)</li>
+              <li><strong>Governance:</strong> 4-nation multi-sig (3-of-4)</li>
+              <li><strong>Innovation:</strong> TradeLimit pilot-sandbox</li>
             </ul>
           </div>
 
-          <h4>Governance Innovation</h4>
-          <p>A three-tier system:</p>
-          <ul>
-            <li><strong>Operational:</strong> fast, small multi-sig</li>
-            <li><strong>Critical:</strong> larger multi-sig for reserve moves/upgrades</li>
-            <li><strong>Constitutional:</strong> token holders decide protocol fundamentals</li>
-          </ul>
+          <h4>What It Optimizes For</h4>
+          <p>Capital efficiency, geopolitical neutrality, transparent settlement.</p>
 
-          <p style="margin-top: 1rem; font-style: italic;">
-            In this world, "stability" is easy. The hard part is trust and control.
-          </p>
+          <h4>What It Accepts</h4>
+          <p>Commodity price volatility, multi-sovereign coordination friction, slower governance.</p>
         </div>
 
-        <!-- Scenario 2: Volatile Collateral -->
+        <!-- $DUX Overview Card -->
         <div class="big-card">
-          <h3>Scenario 2: Volatile Collateral</h3>
+          <h3>$DUX Protocol</h3>
           <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
-            Maximum liquidation risk
+            Flexible backing, volatile liquidity
           </p>
           
-          <h4>Premise</h4>
-          <p>Collateral is highly volatile and liquidations are routine.</p>
-          <p>Backing examples:</p>
-          <ul>
-            <li>Altcoins and high-beta assets</li>
-            <li>Experimental DeFi collateral</li>
-            <li>Correlated crypto baskets</li>
-            <li>Anything where liquidation risk is structurally high</li>
-          </ul>
+          <h4>Reality</h4>
+          <p>Mixed collateral: stable reserves + receivables + growth treasury. Assets with variable liquidity and credit risk.</p>
+
+          <h4>Use Case</h4>
+          <p>Liquidity for Brazilian creators with verified brand contracts. 30–90 day payment acceleration.</p>
 
           <div class="highlight-box">
-            <h4>Design Choices</h4>
+            <h4>Key Parameters</h4>
             <ul>
-              <li><strong>Adaptive hyper-collateralization:</strong> ~200–500% depending on real-time risk</li>
-              <li><strong>Risk-weighted collateral buckets:</strong> concentration limits, volatility caps</li>
-              <li><strong>Four-stage liquidation engine:</strong> early warnings → soft liquidation → hard liquidation → emergency unwind</li>
-              <li><strong>Insurance reserve:</strong> 15–20% of penalties routed to backstop fund</li>
+              <li><strong>Collateralization:</strong> 150% minimum (130% emergency)</li>
+              <li><strong>Governance:</strong> Centralized operator with circuit breakers</li>
+              <li><strong>Innovation:</strong> Three-layer hybrid backing</li>
             </ul>
           </div>
 
-          <h4>Core Innovation</h4>
-          <p>
-            <strong>Real-time risk scoring</strong> adjusts required CR based on volatility, liquidity depth, 
-            correlation, and smart-contract risk.
-          </p>
+          <h4>What It Optimizes For</h4>
+          <p>Cash flow efficiency, yield generation, real-world utility.</p>
+
+          <h4>What It Accepts</h4>
+          <p>Operator risk, underwriting quality dependence, limited decentralization.</p>
         </div>
       </div>
     </section>
@@ -655,22 +638,25 @@
 
     <!-- How They Map Together -->
     <section class="section">
-      <h2>How the Four Experiments Map Together</h2>
+      <h2>How the Two Experiments Compare</h2>
       <div class="card">
-        <ul style="margin-left: 1.25rem;">
-          <li><strong>Scenario 1:</strong> Efficiency-first stablecoin for near-perfect collateral</li>
-          <li><strong>Scenario 2:</strong> Resilience-first stablecoin for highly volatile collateral</li>
-          <li><strong>CONCORDIA:</strong> Commodity trade + neutral multi-sovereign settlement</li>
-          <li><strong>$DUX:</strong> Receivables liquidity for creators in Brazil</li>
-        </ul>
+        <p><strong>CONCORDIA:</strong> Stable backing (commodities) + abundant liquidity → optimizes for efficiency and neutrality</p>
+        <p><strong>$DUX:</strong> Flexible backing (mixed assets) + volatile liquidity → optimizes for utility and yield</p>
         
-        <p style="margin-top: 1.5rem;"><strong>Patterns that show up:</strong></p>
+        <p style="margin-top: 1.5rem;"><strong>Shared patterns:</strong></p>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
-          <li><strong>Efficiency champions:</strong> Scenario 1, CONCORDIA</li>
-          <li><strong>Resilience champion:</strong> Scenario 2</li>
-          <li><strong>Geopolitical innovation:</strong> CONCORDIA</li>
-          <li><strong>Economic-sector innovation:</strong> $DUX</li>
-          <li><strong>Governance innovation:</strong> Scenario 1 and CONCORDIA (tiered / multi-sovereign)</li>
+          <li>Both address real-world problems, not abstract ideals</li>
+          <li>Both make explicit trade-offs rather than claiming to solve everything</li>
+          <li>Both use defense-in-depth security architecture</li>
+          <li>Both prioritize bounded experimentation (TradeLimit, circuit breakers)</li>
+        </ul>
+
+        <p style="margin-top: 1.5rem;"><strong>Key differences:</strong></p>
+        <ul style="margin-left: 1.25rem; margin-top: .5rem;">
+          <li><strong>Collateral stability:</strong> CONCORDIA (high) vs $DUX (medium-low)</li>
+          <li><strong>Governance:</strong> Multi-sovereign consensus vs centralized operator</li>
+          <li><strong>Primary innovation:</strong> Geopolitical coordination vs cash flow efficiency</li>
+          <li><strong>Risk acceptance:</strong> Coordination friction vs operator dependence</li>
         </ul>
       </div>
     </section>
@@ -693,7 +679,7 @@
         <li>Multi-collateral risk weighting</li>
         <li>Governance security modules and delays</li>
       </ul>
-      <p>Applied most directly to Scenario 2 and CONCORDIA's flexible CR model.</p>
+      <p>Applied most directly to CONCORDIA's flexible CR model and $DUX's layered backing.</p>
 
       <h3>From Attack Modeling:</h3>
       <ul>
@@ -724,10 +710,10 @@
       </div>
 
       <div class="card" style="margin-bottom: 1rem;">
-        <h3>2. Hybrid / Tiered Governance</h3>
+        <h3>2. Explicit Trade-off Acknowledgment</h3>
         <p>
-          Speed for daily ops, consensus for reserves/upgrades, legitimacy for constitutional changes. 
-          Governance should match the stakes.
+          CONCORDIA accepts coordination friction for neutrality. $DUX accepts operator risk for cash flow 
+          efficiency. Honesty about limitations builds trust.
         </p>
       </div>
 
@@ -782,15 +768,15 @@
       <div class="insight-card">
         <h3>5. Governance must fit collateral reality</h3>
         <p>
-          Mismatch creates fragility (DAI is the clearest example).
+          Commodity-backed systems need different governance than receivables-backed systems. Mismatch creates fragility.
         </p>
       </div>
 
       <div class="insight-card">
-        <h3>6. Geopolitical context is part of the design space</h3>
+        <h3>6. Context is part of the design space</h3>
         <p>
           CONCORDIA's contribution is showing stablecoins can be coordination infrastructure, not just 
-          financial instruments.
+          financial instruments. $DUX shows they can be cash flow tools, not just stores of value.
         </p>
       </div>
     </section>
