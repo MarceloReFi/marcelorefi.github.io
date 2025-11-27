@@ -187,6 +187,33 @@
       font-size: .95rem;
     }
 
+    /* Machinations iframe container */
+    .machinations-container {
+      width: 100%;
+      height: 500px;
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0 var(--black);
+      margin: 1rem 0 1.5rem;
+      background: #f9f9f9;
+    }
+
+    .machinations-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .machinations-label {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--gray);
+      margin-bottom: .5rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
     @media (max-width: 720px) {
       .hero h1 {
         font-size: 1.5rem;
@@ -199,6 +226,10 @@
       .nav-chips {
         position: relative;
         top: 0;
+      }
+
+      .machinations-container {
+        height: 400px;
       }
     }
   </style>
@@ -270,6 +301,16 @@
           <li><strong>$BREAD:</strong> a cooperative currency aligned with post-capitalist or solidarity economics</li>
         </ul>
 
+        <!-- USDC Machinations Embed -->
+        <div style="margin-top: 2rem;">
+          <p class="machinations-label">USDC Mint Process:</p>
+          <div class="machinations-container">
+            <iframe frameborder="0" width="100%" height="100%" src="https://my.machinations.io/d/copy-of-web-30---economy/0bd6ef7ecb6911f0838a0abc5ce0dcc9"
+                    style="background-color: transparent; border-style: none; border-width: 0; overflow: hidden;"
+                    allowfullscreen="true"></iframe>
+          </div>
+        </div>
+
         <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">2) Infrastructure — how is the peg maintained?</h3>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
           <li><strong>USDC:</strong> off-chain fiat reserves (cash and U.S. Treasuries)</li>
@@ -277,12 +318,32 @@
           <li><strong>$BREAD:</strong> crowd-staked DAI with cooperative yield routing</li>
         </ul>
 
+        <!-- DAI Machinations Embed -->
+        <div style="margin-top: 2rem;">
+          <p class="machinations-label">DAI Mint Process:</p>
+          <div class="machinations-container">
+            <iframe frameborder="0" width="100%" height="100%" src="https://my.machinations.io/d/copy-of-web-30---economy/0bd6ef7ecb6911f0838a0abc5ce0dcc9"
+                    style="background-color: transparent; border-style: none; border-width: 0; overflow: hidden;"
+                    allowfullscreen="true"></iframe>
+          </div>
+        </div>
+
         <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">3) Governance — who has control when things go wrong?</h3>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
           <li><strong>USDC:</strong> Circle (a single corporate issuer)</li>
           <li><strong>DAI:</strong> MKR holders (token-based governance)</li>
           <li><strong>$BREAD:</strong> one-member-one-vote cooperative governance</li>
         </ul>
+
+        <!-- BREAD Machinations Embed -->
+        <div style="margin-top: 2rem;">
+          <p class="machinations-label">$BREAD Mint Process:</p>
+          <div class="machinations-container">
+            <iframe frameborder="0" width="100%" height="100%" src="https://my.machinations.io/d/copy-of-web-30---economy/0bd6ef7ecb6911f0838a0abc5ce0dcc9"
+                    style="background-color: transparent; border-style: none; border-width: 0; overflow: hidden;"
+                    allowfullscreen="true"></iframe>
+          </div>
+        </div>
 
         <p style="margin-top: 1rem;">
           These dimensions capture most of what matters in practice: incentives, resilience, and failure modes.
