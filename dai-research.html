@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DAI Research — MarceloReFi</title>
+  <meta name="description" content="Comprehensive research on DAI stablecoin: decentralized governance, collateral mechanisms, stability systems, and the impossible triangle trade-offs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .research-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .research-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid var(--black);
+      padding-bottom: .5rem;
+    }
+
+    .research-content h2 {
+      font-size: 1.6rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--green);
+      padding-left: 1rem;
+    }
+
+    .research-content h3 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+    }
+
+    .research-content h4 {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .research-content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .research-content ul, .research-content ol {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      line-height: 1.7;
+    }
+
+    .research-content li {
+      margin-bottom: .5rem;
+    }
+
+    .research-content strong {
+      font-weight: 700;
+    }
+
+    .highlight-box {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .info-box {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .warning-box {
+      background: var(--pink);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--green);
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '●';
+      position: absolute;
+      left: -9px;
+      font-size: 1.2rem;
+      color: var(--green);
+      background: var(--white);
+    }
+
+    .nav-breadcrumb {
+      margin-bottom: 1.5rem;
+      font-size: .9rem;
+      color: var(--gray);
+    }
+
+    .nav-breadcrumb a {
+      color: var(--black);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .research-content h1 {
+        font-size: 1.7rem;
+      }
+
+      .research-content h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap research-content">
+
+    <!-- Home button -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+
+    <!-- Breadcrumb navigation -->
+    <div class="nav-breadcrumb">
+      <a href="defi-research.html">DeFi Research</a> / DAI Research
+    </div>
+
+    <h1>DAI Research</h1>
+
+    <div class="highlight-box">
+      <p><strong>Summary:</strong> DAI is the world's first major decentralized stablecoin, designed to maintain a stable 1:1 value with the US dollar through an algorithmic, over-collateralized system. This research examines DAI's governance model, collateral mechanisms, stability systems, and the fundamental trade-offs between decentralization, capital efficiency, and peg stability.</p>
+    </div>
+
+    <h2>What is DAI?</h2>
+    
+    <p>DAI is the world's first major decentralized stablecoin, designed to maintain a stable 1:1 value with the US dollar through an algorithmic, over-collateralized system rather than centralized reserves. Created and managed by MakerDAO, a decentralized autonomous organization, DAI represents a fundamentally different approach to stablecoins compared to centralized alternatives like USDC or USDT.</p>
+
+    <p>Unlike traditional fiat-backed stablecoins that rely on bank accounts holding equivalent dollar reserves, DAI is generated through collateralized debt positions (CDPs, now called Vaults) where users lock up cryptocurrency or other approved assets worth more than the DAI they mint. This over-collateralization model ensures that DAI remains backed by tangible value while maintaining decentralization.</p>
+
+    <h3>Key Characteristics</h3>
+
+    <div class="info-box">
+      <p><strong>Decentralized Governance:</strong> DAI is governed by MKR token holders who vote on critical parameters including collateral types, stability fees, debt ceilings, and system upgrades. No single entity controls the protocol.</p>
+
+      <p><strong>Over-Collateralized Backing:</strong> Every DAI in circulation is backed by excess collateral locked in Maker Vaults. Users must deposit assets worth significantly more than the DAI they generate (e.g., 150% collateralization ratio for ETH).</p>
+
+      <p><strong>Multi-Collateral System:</strong> Initially launched in 2017 as Single-Collateral DAI (accepting only ETH), the system upgraded to Multi-Collateral DAI (MCD) in November 2019, now accepting various assets including ETH, WBTC, stablecoins, and tokenized real-world assets.</p>
+
+      <p><strong>Algorithmic Stability:</strong> DAI maintains its peg through automatic mechanisms including liquidations, the DAI Savings Rate (DSR), and the Peg Stability Module (PSM), adjusted by governance rather than human intervention.</p>
+
+      <p><strong>Ethereum-Native:</strong> Built entirely on Ethereum smart contracts with complete transparency—all transactions, collateral positions, and system parameters are publicly auditable on the blockchain.</p>
+    </div>
+
+    <h3>How DAI Works</h3>
+
+    <p>Users generate DAI by opening a Maker Vault and depositing approved collateral (such as ETH or WBTC). The system allows them to generate DAI up to a certain percentage of their collateral value, determined by the collateralization ratio for that asset type. For example, with a 150% collateralization ratio, depositing $1,500 worth of ETH allows generating up to $1,000 DAI.</p>
+
+    <p>The generated DAI is essentially a loan against the collateral, with users paying a Stability Fee (interest rate) determined by MKR governance. To reclaim their collateral, users must repay the DAI they generated plus accumulated stability fees. If collateral value falls below the required ratio, the position gets liquidated automatically, with the collateral sold to cover the debt plus a liquidation penalty.</p>
+
+    <h3>Primary Use Cases</h3>
+
+    <p>DAI serves multiple critical functions in the decentralized finance ecosystem:</p>
+    <ul>
+      <li><strong>DeFi Foundation:</strong> As the largest decentralized stablecoin, DAI underpins most major DeFi protocols including Aave, Compound, Uniswap, and Curve</li>
+      <li><strong>Collateral Asset:</strong> Widely accepted as collateral across DeFi for borrowing, trading, and providing liquidity</li>
+      <li><strong>Yield Generation:</strong> Through the DAI Savings Rate (DSR), holders can earn passive yields by locking DAI in the protocol</li>
+      <li><strong>Decentralized Payments:</strong> Enabling censorship-resistant transactions without reliance on centralized issuers</li>
+      <li><strong>Hedging & Treasury:</strong> Crypto users utilize DAI to hedge volatility while maintaining self-custody</li>
+      <li><strong>DeFi Building Block:</strong> Serves as the stable pair in countless liquidity pools and trading pairs</li>
+    </ul>
+
+    <h2>A Brief History of DAI</h2>
+
+    <h3>Early Ideation & Founding (2014–2017)</h3>
+
+    <div class="timeline-item">
+      <p><strong>2014:</strong> MakerDAO's origins trace to when Rune Christensen, a Danish entrepreneur, began developing the concept of a decentralized stablecoin backed by cryptocurrency collateral.</p>
+    </div>
+
+    <div class="timeline-item">
+      <p><strong>2015:</strong> Following Ethereum's launch, the team began building the first iteration of the protocol on Ethereum's smart contract platform. The first whitepaper drafts circulated.</p>
+    </div>
+
+    <div class="timeline-item">
+      <p><strong>2018:</strong> The Maker Foundation was formally established to steward the protocol's development, with Rune Christensen serving as CEO.</p>
+    </div>
+
+    <h3>Single-Collateral DAI Era (December 2017 – November 2019)</h3>
+
+    <div class="timeline-item">
+      <p><strong>December 18, 2017:</strong> MakerDAO launched Single-Collateral DAI (SCD), originally called "Sai," accepting only ETH as collateral. Users could lock ETH into CDPs and generate DAI against it.</p>
+    </div>
+
+    <p>The launch whitepaper introduced core mechanisms: CDPs as the primary method for generating DAI, Target Price as the peg reference point, the liquidation system for maintaining over-collateralization, and Global Settlement (later Emergency Shutdown) as the ultimate safety mechanism.</p>
+
+    <div class="timeline-item">
+      <p><strong>November 2018:</strong> The protocol had locked over 1,000,000 ETH in CDPs, demonstrating strong product-market fit.</p>
+    </div>
+
+    <h3>Multi-Collateral DAI Launch (November 2019)</h3>
+
+    <div class="timeline-item">
+      <p><strong>November 18, 2019:</strong> MakerDAO executed its most significant upgrade: the transition from Single-Collateral DAI to Multi-Collateral DAI (MCD).</p>
+    </div>
+
+    <p>MCD launched with ETH and Basic Attention Token (BAT) as initial collateral options. The upgrade introduced several critical innovations:</p>
+
+    <ul>
+      <li><strong>DAI Savings Rate (DSR):</strong> A monetary policy tool allowing DAI holders to lock their DAI and earn variable interest</li>
+      <li><strong>Improved Liquidation System:</strong> More sophisticated auction mechanisms</li>
+      <li><strong>Enhanced Governance:</strong> More robust voting and executive processes for MKR holders</li>
+      <li><strong>Modular Architecture:</strong> Smart contract system designed to easily integrate new collateral types</li>
+    </ul>
+
+    <h3>Black Thursday: The Ultimate Stress Test (March 12, 2020)</h3>
+
+    <div class="warning-box">
+      <p><strong>March 12, 2020 — "Black Thursday":</strong> The global COVID-19 pandemic declaration triggered massive market panic, causing ETH to plummet approximately 43% in a single day, from around $200 to $110.</p>
+
+      <p><strong>The Perfect Storm:</strong></p>
+      <ul>
+        <li><strong>Network Congestion:</strong> Ethereum gas prices spiked to 200+ Gwei, overwhelming network capacity</li>
+        <li><strong>Oracle Delays:</strong> Price feeds couldn't update fast enough due to prohibitive gas costs</li>
+        <li><strong>Mass Liquidations:</strong> Thousands of Vaults became instantly undercollateralized</li>
+        <li><strong>Keeper Failures:</strong> Most liquidation bots couldn't adjust to extreme gas prices</li>
+        <li><strong>Zero-Bid Exploits:</strong> One sophisticated keeper won 1,462 auctions with 0 DAI bids, acquiring $8.32 million worth of ETH</li>
+        <li><strong>System Debt:</strong> Approximately $4.5-6.65 million of DAI became unbacked</li>
+      </ul>
+    </div>
+
+    <p>The community response was swift: emergency meetings, debt auctions minting new MKR tokens to recapitalize the system, and critical protocol improvements including extended auction durations, improved oracle robustness, and the Peg Stability Module.</p>
+
+    <h3>PSM Era & USDC Dependency (2020–2022)</h3>
+
+    <div class="timeline-item">
+      <p><strong>2020:</strong> MakerDAO introduced the Peg Stability Module (PSM) in response to Black Thursday and persistent DAI trading above $1.</p>
+    </div>
+
+    <p>The PSM allows users to swap stablecoins (primarily USDC, but also USDP and GUSD) for DAI at a fixed 1:1 rate with minimal fees. While highly effective at maintaining the peg, the PSM created philosophical tension within the community.</p>
+
+    <div class="warning-box">
+      <p><strong>Critical Dependency:</strong> At its peak, USDC backing through the PSM represented over 60% of DAI's collateral, effectively making DAI partially backed by Circle's centralized stablecoin.</p>
+
+      <p><strong>Existential Questions:</strong> If most DAI is backed by USDC, is DAI truly decentralized? What happens if Circle blacklists Maker's addresses?</p>
+    </div>
+
+    <h3>Real-World Assets Expansion (2021–2023)</h3>
+
+    <div class="timeline-item">
+      <p><strong>April 2021:</strong> MakerDAO pioneered integrating tokenized real-world assets (RWAs) as collateral, with New Silver's tokenized real estate loans becoming the first milestone.</p>
+    </div>
+
+    <p>Through partnerships with Centrifuge and direct arrangements, Maker began accepting:</p>
+    <ul>
+      <li><strong>Real Estate Loans:</strong> Fix-and-flip property loans via New Silver</li>
+      <li><strong>U.S. Treasury Bills:</strong> Working with Monetalis, BlockTower, and other asset managers</li>
+      <li><strong>Corporate Bonds & Structured Credit:</strong> Various commercial lending arrangements</li>
+      <li><strong>Trade Finance & Invoices:</strong> Tokenized receivables and supply chain finance</li>
+    </ul>
+
+    <div class="timeline-item">
+      <p><strong>2023-2024:</strong> RWAs grew to represent 40-50% of DAI's backing, with billions in U.S. Treasuries providing stable, low-risk yield to the protocol.</p>
+    </div>
+
+    <h3>The Endgame Plan (2022–Present)</h3>
+
+    <div class="timeline-item">
+      <p><strong>August 2022:</strong> Following Tornado Cash sanctions and intensifying regulatory pressures, Rune Christensen published his ambitious "Endgame Plan"—a comprehensive roadmap to restructure MakerDAO entirely.</p>
+    </div>
+
+    <p>The Endgame Plan's core elements included:</p>
+    <ul>
+      <li><strong>SubDAOs/MetaDAOs:</strong> Breaking MakerDAO into smaller, specialized sub-organizations with their own governance tokens</li>
+      <li><strong>RWA Strategy Tiers:</strong> Defining three collateral strategies (Pigeon, Eagle, Phoenix Stance) balancing RWA exposure against decentralization</li>
+      <li><strong>New Tokenomics:</strong> Restructuring MKR emissions and burns</li>
+      <li><strong>Constitutional Framework:</strong> The Maker Atlas establishing immutable core principles</li>
+      <li><strong>Free-Floating DAI Option:</strong> Contemplating letting DAI break its dollar peg if authoritarian threats materialize</li>
+    </ul>
+
+    <h3>MakerDAO Rebrand to Sky (2024–2025)</h3>
+
+    <div class="timeline-item">
+      <p><strong>August 2024:</strong> MakerDAO executed a fundamental transition, rebranding to "Sky" and introducing new tokens USDS (an upgraded DAI) and SKY (replacing MKR at a 1:24,000 ratio).</p>
+    </div>
+
+    <p>Key developments:</p>
+    <ul>
+      <li><strong>SKY Token:</strong> New governance token with improved tokenomics</li>
+      <li><strong>Sky Savings Rate (SSR):</strong> Enhanced version of DSR offering higher yields</li>
+      <li><strong>Maintained Compatibility:</strong> DAI continues existing unchanged, convertible 1:1 with USDS</li>
+    </ul>
+
+    <div class="timeline-item">
+      <p><strong>October 2025:</strong> The ecosystem operates with dual branding—legacy DAI/MKR continue functioning while USDS/SKY attract new users. DAI supply stands at approximately $5 billion, making it the largest decentralized stablecoin.</p>
+    </div>
+
+    <h2>DAI's Backing Mechanism</h2>
+
+    <h3>Collateral Types & Composition</h3>
+
+    <p><strong>Cryptocurrency Collateral:</strong></p>
+    <ul>
+      <li><strong>Ethereum (ETH):</strong> Original and primary collateral, typically 150-170% collateralization ratio, represents ~15-25% of total DAI backing</li>
+      <li><strong>Wrapped Bitcoin (WBTC):</strong> Second-largest crypto collateral, similar requirements to ETH, faces criticism for custodial nature</li>
+      <li><strong>Liquid Staking Derivatives:</strong> stETH, rETH, wstETH allow collateral to earn staking yields</li>
+      <li><strong>Other ERC-20 Tokens:</strong> UNI, LINK, MATIC with 175%+ collateralization ratios</li>
+    </ul>
+
+    <p><strong>Stablecoin Collateral (PSM):</strong></p>
+    <ul>
+      <li><strong>USDC (Circle):</strong> Largest PSM collateral, ~30-40% of total DAI backing, zero or near-zero fees for swaps</li>
+      <li><strong>USDP (Paxos), GUSD (Gemini):</strong> Alternative stablecoin options with much smaller volumes</li>
+    </ul>
+
+    <p><strong>Real-World Assets (RWAs):</strong></p>
+    <ul>
+      <li><strong>U.S. Treasury Bills:</strong> Largest RWA category, managed by institutional partners, provides 4-5%+ yield, ~40-50% of DAI backing</li>
+      <li><strong>Private Credit & Corporate Loans:</strong> Structured credit facilities, commercial real estate lending</li>
+      <li><strong>Tokenized Real Estate:</strong> Partnership with Centrifuge for residential/commercial loans</li>
+    </ul>
+
+    <h3>Current Collateral Composition (Approximate – Q4 2024)</h3>
+
+    <div class="info-box">
+      <p>DAI's ~$5 billion supply is backed roughly by:</p>
+      <ul>
+        <li><strong>Real-World Assets:</strong> 40-50% (~$2-2.5B) — U.S. Treasuries majority, private credit minority</li>
+        <li><strong>USDC (PSM):</strong> 30-40% (~$1.5-2B)</li>
+        <li><strong>Cryptocurrency:</strong> 15-25% (~$750M-1.25B) — ETH/stETH/LSDs majority, WBTC significant portion</li>
+      </ul>
+      
+      <p><strong>Critical Shift:</strong> This represents a dramatic change from early years when 100% of backing was cryptocurrency.</p>
+    </div>
+
+    <h2>Stability Mechanisms</h2>
+
+    <h3>DAI Savings Rate (DSR)</h3>
+
+    <p>The DAI Savings Rate is a variable interest rate that DAI holders can earn by locking their DAI into a DSR smart contract. It serves as a critical monetary policy tool for maintaining DAI's peg through demand-side management.</p>
+
+    <p><strong>Core Mechanics:</strong></p>
+    <ul>
+      <li>Users deposit DAI into DSR contract with no lockup period</li>
+      <li>Interest accrues continuously (compounds per block)</li>
+      <li>Withdrawal anytime with no penalties or fees</li>
+      <li>Rate set by MKR governance, typically adjusted monthly</li>
+      <li>Funded by protocol revenue (stability fees, liquidation penalties, RWA yields)</li>
+    </ul>
+
+    <p><strong>DSR as Monetary Policy:</strong></p>
+    <ul>
+      <li><strong>When DAI trades below $1:</strong> Governance raises DSR to increase holding demand, reducing circulation</li>
+      <li><strong>When DAI trades above $1:</strong> Governance lowers DSR to reduce holding incentive, potentially increasing supply</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Historical DSR Rates:</strong></p>
+      <ul>
+        <li>2019 Launch: 0-2% initially</li>
+        <li>2020-2022: Generally 0-0.5% during bear market</li>
+        <li>2023: Raised to 3.3% (May), then 8% (August) to compete with rising yields</li>
+        <li>2024-2025: Varies with market conditions, typically 3-6%</li>
+      </ul>
+    </div>
+
+    <h3>Peg Stability Module (PSM)</h3>
+
+    <p>The PSM allows instant 1:1 swaps between DAI and approved stablecoins (primarily USDC) with minimal or zero fees. It serves as a hard ceiling for DAI's price—if DAI trades above $1, arbitrageurs can mint DAI for exactly $1 worth of USDC.</p>
+
+    <p><strong>PSM Benefits:</strong></p>
+    <ul>
+      <li><strong>Immediate Arbitrage:</strong> Instant price correction when DAI deviates from $1</li>
+      <li><strong>Deep Liquidity:</strong> Billions in stablecoin backing ensures liquidity</li>
+      <li><strong>Peg Insurance:</strong> Provides confidence DAI won't sustainably trade above $1</li>
+      <li><strong>24/7 Operation:</strong> Works continuously without human intervention</li>
+    </ul>
+
+    <div class="warning-box">
+      <p><strong>PSM Criticisms:</strong></p>
+      <ul>
+        <li><strong>Centralization:</strong> Large USDC holdings make DAI dependent on Circle</li>
+        <li><strong>Regulatory Risk:</strong> Circle can freeze addresses, potentially targeting Maker</li>
+        <li><strong>Revenue Loss:</strong> Zero-fee swaps generate no income despite large capital allocation</li>
+        <li><strong>Philosophical Tension:</strong> Contradicts "decentralized" stablecoin narrative</li>
+      </ul>
+    </div>
+
+    <h3>Stability Fees (Interest Rates)</h3>
+
+    <p>Stability Fees are the interest rates charged to Vault owners for generating DAI against their collateral. These fees serve multiple purposes and represent a primary revenue source for the protocol.</p>
+
+    <p><strong>How Stability Fees Work:</strong></p>
+    <ul>
+      <li>Continuous accrual every Ethereum block (~12-15 seconds)</li>
+      <li>Expressed as APR (e.g., 3.5% per year)</li>
+      <li>Paid in DAI when closing vaults or withdrawing collateral</li>
+      <li>Governance-set for each collateral type individually</li>
+      <li>Revenue goes to Maker protocol surplus buffer</li>
+    </ul>
+
+    <p><strong>Adjustment Logic:</strong></p>
+    <ul>
+      <li><strong>When DAI trades below $1:</strong> Governance raises stability fees to reduce supply by discouraging vault creation</li>
+      <li><strong>When DAI trades above $1:</strong> Governance lowers stability fees to increase supply by encouraging vault creation</li>
+    </ul>
+
+    <h2>Governance Model</h2>
+
+    <h3>MKR Token & Voting Power</h3>
+
+    <ul>
+      <li><strong>Governance Token:</strong> MKR represents voting power in MakerDAO</li>
+      <li><strong>One Token = One Vote:</strong> Linear voting power (unlike quadratic voting)</li>
+      <li><strong>Total Supply:</strong> Initially ~1 million MKR, fluctuates with burns and mints</li>
+      <li><strong>Distribution:</strong> Widely distributed among early contributors, investors, and community</li>
+    </ul>
+
+    <h3>What MKR Holders Control</h3>
+
+    <p>MKR governance has authority over virtually all protocol parameters:</p>
+    <ul>
+      <li>Collateral onboarding (approving new collateral types)</li>
+      <li>Risk parameters (liquidation ratios, debt ceilings, stability fees)</li>
+      <li>DSR rate adjustments</li>
+      <li>PSM parameters (stablecoin swap fees and debt ceilings)</li>
+      <li>Oracle selection (choosing price feed providers)</li>
+      <li>Smart contract upgrades</li>
+      <li>Treasury management (allocating surplus funds)</li>
+      <li>Emergency Shutdown (ultimate safety mechanism)</li>
+    </ul>
+
+    <h3>Voting Mechanisms</h3>
+
+    <p><strong>Governance Polls:</strong></p>
+    <ul>
+      <li>Signal community sentiment on proposed changes</li>
+      <li>Non-binding but influential</li>
+      <li>Typically run for 1 week</li>
+      <li>Simple majority wins</li>
+    </ul>
+
+    <p><strong>Executive Votes:</strong></p>
+    <ul>
+      <li>Binding on-chain governance actions</li>
+      <li>Implement approved changes to protocol parameters</li>
+      <li>Continuous approval voting (CAV) system</li>
+      <li>Requires majority of MKR to move from current executive to new one</li>
+    </ul>
+
+    <h2>The Impossible Triangle & Decentralization Analysis</h2>
+
+    <div class="warning-box">
+      <h3>The Decentralization Trilemma</h3>
+      <p>MakerDAO faces impossible trade-offs:</p>
+      <ol>
+        <li><strong>Capital Efficiency:</strong> Scale DAI supply without excessive collateral</li>
+        <li><strong>Decentralization:</strong> Avoid dependencies on centralized entities</li>
+        <li><strong>Stability:</strong> Maintain reliable $1 peg</li>
+      </ol>
+      <p><strong>Critical Insight:</strong> Cannot optimize all three simultaneously. Every project picks two and compromises on the third.</p>
+    </div>
+
+    <h3>Decentralized Aspects</h3>
+
+    <ul>
+      <li><strong>Governance:</strong> No single entity controls the protocol, MKR token distribution relatively broad, open participation</li>
+      <li><strong>Smart Contracts:</strong> Open-source auditable code, permissionless vault creation, no KYC for basic DAI usage</li>
+      <li><strong>Community:</strong> Global contributor base, public forum discussions, multiple independent risk teams</li>
+    </ul>
+
+    <h3>Centralized Aspects</h3>
+
+    <ul>
+      <li><strong>Collateral Composition:</strong> 30-40% USDC (fully centralized), 40-50% RWAs (requires trusted intermediaries), only 15-25% truly decentralized crypto</li>
+      <li><strong>Governance Reality:</strong> Large holders dominate votes, Rune Christensen's outsized influence, delegate concentration</li>
+      <li><strong>Operational Dependencies:</strong> Oracle providers, RWA asset managers, legal structures for RWA holdings, banking relationships</li>
+    </ul>
+
+    <h3>The "Wrapped USDC" Debate</h3>
+
+    <div class="highlight-box">
+      <p><strong>Critical Question:</strong> When 40%+ of DAI is backed by USDC through PSM, is DAI effectively "wrapped USDC" rather than a truly independent stablecoin?</p>
+
+      <p><strong>Defenders argue:</strong> PSM provides necessary stability during crises, other collateral types maintain meaningful decentralization, PSM can be wound down if needed</p>
+
+      <p><strong>Critics argue:</strong> Current composition betrays decentralization ethos, should reduce USDC exposure significantly</p>
+    </div>
+
+    <h2>Attack Surfaces & Risk Factors</h2>
+
+    <h3>Smart Contract Risks</h3>
+
+    <ul>
+      <li><strong>Complexity Risk:</strong> Dozens of interconnected smart contracts create potential vulnerability points</li>
+      <li><strong>Oracle Manipulation:</strong> System relies on Chainlink and proprietary oracles; Black Thursday demonstrated vulnerabilities</li>
+      <li><strong>Liquidation System Failures:</strong> Network congestion can prevent keeper participation; zero-bid exploits if keeper ecosystem breaks down</li>
+    </ul>
+
+    <h3>Governance Risks</h3>
+
+    <ul>
+      <li><strong>Centralization Concerns:</strong> Large MKR holders (Rune Christensen, a16z) can dominate votes</li>
+      <li><strong>Voter Apathy:</strong> Low participation rates concentrate power among few delegates</li>
+      <li><strong>Hostile Takeover:</strong> Attacker acquiring 51%+ of MKR could control governance (MKR market cap ~$1-2B makes theoretically feasible)</li>
+    </ul>
+
+    <h3>Collateral-Specific Risks</h3>
+
+    <p><strong>Cryptocurrency Collateral:</strong></p>
+    <ul>
+      <li>Rapid price drops trigger mass liquidations (Black Thursday scenario)</li>
+      <li>WBTC depends on BitGo custodian (centralization)</li>
+      <li>Liquid staking derivatives have additional smart contract layers</li>
+    </ul>
+
+    <p><strong>Stablecoin Collateral (PSM):</strong></p>
+    <ul>
+      <li>Circle can freeze USDC in PSM addresses, rendering significant DAI unbacked</li>
+      <li>USDC depeg in March 2023 caused DAI depeg</li>
+      <li>Creates single point of failure</li>
+    </ul>
+
+    <p><strong>Real-World Assets:</strong></p>
+    <ul>
+      <li><strong>Counterparty Risk:</strong> RWA borrowers may default</li>
+      <li><strong>Custody & Legal Risk:</strong> RWAs held by regulated entities subject to seizure</li>
+      <li><strong>Transparency Issues:</strong> RWA valuations opaque compared to on-chain assets</li>
+      <li><strong>Liquidity Risk:</strong> RWAs cannot be liquidated instantly like crypto</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+
+    <p>DAI represents one of the most ambitious and complex experiments in decentralized finance. As the largest decentralized stablecoin, it has successfully navigated multiple existential crises, evolved through revolutionary governance changes, and pioneered the integration of real-world assets into DeFi.</p>
+
+    <p>However, DAI's journey illustrates the fundamental tensions between decentralization ideals and practical requirements. The protocol's reliance on USDC through the PSM and growing RWA exposure have sparked intense debates about whether DAI remains truly decentralized or has become a hybrid bridging traditional and decentralized finance.</p>
+
+    <div class="info-box">
+      <p><strong>The Endgame Plan</strong> represents MakerDAO's attempt to address these tensions systematically, potentially culminating in a free-floating DAI if regulatory pressures intensify. Whether this ambitious restructuring succeeds in preserving DAI's core principles while ensuring long-term sustainability remains one of the most important questions in DeFi.</p>
+    </div>
+
+    <p>For researchers, builders, and users, DAI offers critical lessons about the challenges of creating stable, decentralized money at scale—lessons that will inform the next generation of stablecoin designs and decentralized financial systems.</p>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
