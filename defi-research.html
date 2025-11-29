@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DeFi & Stablecoins Research — MarceloReFi</title>
-  <meta name="description" content="Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments." />
+  <meta name="description" content="What I learned about stablecoin sustainability, security vulnerabilities, and innovative design experiments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -141,8 +141,7 @@
     <div class="hero">
       <h1>DeFi & Stablecoins Research</h1>
       <p>
-        Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design 
-        experiments for real-world applications in emerging markets.
+        What I learned trying to answer a deceptively simple question: can stablecoins actually work for the people who need them most?
       </p>
       <p class="meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
     </div>
@@ -157,41 +156,33 @@
 
     <!-- Overview section -->
     <section id="overview" class="section">
-      <h2>Research Overview</h2>
+      <h2>What This Is About</h2>
       <div class="card">
         <p>
-          In this research I examine stablecoin's sustainability through three complementary lenses: <strong>comparative 
-          analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and 
-          <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins 
-          resilient, identify systemic vulnerabilities, and design more robust protocols for real-world applications.
+          I came into this trying to understand whether stablecoins could work outside the narrow use cases they're mostly deployed for today. That meant looking at what already exists (USDC, DAI, experimental projects like $BREAD), imagining what could exist (CONCORDIA for commodity trade, $DUX for creator economies), and stress-testing the whole structure through security modeling.
         </p>
         <p>
-          The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical 
-          implementations (CONCORDIA for commodity trade, $DUX for creator economy), while incorporating lessons 
-          from real-world incidents like the Silicon Valley Bank crisis and the potential for Criminal Factions to leverage their on-ramp off-ramp capacity to perform protocol-specific attacks.
+          The further I went, the clearer a pattern became—what I started calling the "Impossible Triangle." No stablecoin design seems able to simultaneously maximize capital efficiency, decentralization, and stability. Every project picks two and compromises on the third. USDC gets efficiency and stability through centralization. DAI chases decentralization but ends up dependent on USDC anyway. Experimental models try new trade-offs but hit real-world walls around liquidity, custody, or coordination.
         </p>
         <p>
-          <strong>Summarizing the research into a single question:</strong> How can we design stablecoins that maintain stability, capital 
-          efficiency, and decentralization, while addressing real-world market needs—particularly in emerging 
-          economies like Latin America?
+          The work also forced me to reckon with things I didn't expect to matter as much as they did: how SVB's collapse rippled through "decentralized" protocols, why Brazilian crime factions might actually be ideal adversaries for certain attack vectors, and what happens when circuit breakers monitor the wrong signals.
         </p>
+        <p>
+          <strong>If I had to frame it as a question:</strong> Can we design stablecoins that hold their peg, use capital efficiently, and stay meaningfully decentralized—especially in places like Latin America where traditional finance already fails people? I'm not sure the answer is yes. But the attempt to answer it taught me what the real constraints are.</p>
       </div>
     </section>
 
     <!-- Research Components -->
     <section id="components" class="findings-section">
-      <h2>Research Components</h2>
+      <h2>Three Ways In</h2>
       
       <div class="finding-card">
         <h3>Comparative Analysis</h3>
         <p>
-          In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
-          Infrastructure and Governance.
+          I started by examining three stablecoins that represent fundamentally different bets: USDC (centralized, fiat-backed, completely dependent on US regulatory goodwill), DAI (supposedly decentralized but increasingly reliant on USDC as collateral), and $BREAD (a cooperative experiment that's more about values than market dominance).
         </p>
         <p>
-          <strong>Stablecoins Analyzed:</strong> USDC (100% dependency on the US Dollar and US politics - Fiat-backed, centralized), 
-          DAI (Crypto-collateralized, marginal dependency on US Dollar through USDC), and 
-          $BREAD (Mission-oriented, decentralized, marginal dependency on US Dollar through $DAI).
+          The framework I used—Purpose, Infrastructure, Governance—came from trying to understand not just how these things work technically, but what they're actually for and who gets to decide when things go wrong.
         </p>
         <p style="margin-top: .75rem;">
           <a href="https://marcelorefi.github.io/comparative-analysis.html" 
@@ -202,12 +193,10 @@
       <div class="finding-card">
         <h3>Design Experiments</h3>
         <p>
-          Two experimental stablecoin architectures addressing specific market needs, from theoretical 
-          frameworks to real-world implementation proposals.
+          After studying what exists, I wanted to see what could exist if you started from actual use cases rather than crypto-native assumptions. CONCORDIA emerged from thinking about commodity-backed settlement between Brazil, Chile, and their trading partners—countries with real strategic minerals but stuck in someone else's financial infrastructure. $DUX came from looking at Brazil's creator economy, where people with verifiable brand contracts still wait 30-90 days to get paid.
         </p>
         <p>
-          <strong>Experiments:</strong> CONCORDIA (Commodity-backed for trade between 🇧🇷🇨🇱🇺🇸🇨🇳) and 
-          $DUX (Creator economy receivables-backed in Brazil).
+          Neither is "better" than existing stablecoins. They're attempts to map different trade-offs: CONCORDIA accepts slower governance for geopolitical neutrality, $DUX accepts centralized underwriting for actual cash flow utility.
         </p>
         <p style="margin-top: .75rem;">
           <a href="https://marcelorefi.github.io/design-experiments.html" 
@@ -218,12 +207,10 @@
       <div class="finding-card">
         <h3>Attack Modelling</h3>
         <p>
-          Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus 
-          on oracle manipulation and circuit breaker vulnerabilities.
+          The security work started with a basic question: what does it actually cost to break a small stablecoin? Not theoretically—economically. I modeled attacks on Mento's cREAL (a $372K market cap Brazilian Real stablecoin), looking at oracle manipulation, circuit breaker bypass, and cascade scenarios.
         </p>
         <p>
-          <strong>Protocols Analyzed:</strong> Mento Protocol (Circuit breaker bypass), 
-          Sonne Finance (Oracle manipulation), and Velodrome (Multi-step exploits).
+          What I found wasn't that the attacks were easy—they're not. It's that the defenses were watching the wrong things. Circuit breakers that monitor oracle feeds but ignore external DEX prices create blind spots. A patient, distributed attack staying under velocity thresholds could be profitable with as little as $100K capital. The interesting part wasn't the attack itself but what it revealed about where security assumptions break down.
         </p>
         <p style="margin-top: .75rem;">
           <a href="https://marcelorefi.github.io/attack-modeling.html" 
@@ -234,12 +221,10 @@
 
     <!-- Methodology -->
     <section id="methodology" class="section">
-      <h2>Research Methodology</h2>
+      <h2>How I Approached This</h2>
       <div class="card">
         <p>
-          I used a multi-dimensional analytical framework examining stablecoins across technical, 
-          economic, and governance dimensions. I tried to find a balance between academic rigor and practical implementation 
-          insights.
+          The methodology evolved as I went, but a few patterns held. I kept asking what each protocol was actually for, how the technical choices enabled or constrained that purpose, and who got to decide when things went wrong. The framework that emerged—Purpose, Infrastructure, Governance—wasn't planned from the start. It came from realizing you can't evaluate a stablecoin without understanding these three dimensions.
         </p>
       </div>
 
@@ -363,7 +348,7 @@
     <section class="section">
       <h2>Research Documents</h2>
       <p style="margin-bottom: 1rem;">
-        The complete research is documented across 25 comprehensive Google Docs, organized by research phase:
+        The complete research is documented across 25 Google Docs, organized by research phase:
       </p>
 
       <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem;">📊 Phase 1: Comparative Analysis</h3>
@@ -457,7 +442,7 @@
              class="chip yellow" target="_blank" style="margin-top: .5rem;">View Document →</a>
         </li>
         <li>
-          <strong>Mento Protocol: Comprehensive Security Research & Analysis</strong>
+          <strong>Mento Protocol: Security Research & Analysis</strong>
           <br>
           <a href="https://marcelorefi.github.io/mento-security.html" 
              class="chip green" target="_blank" style="margin-top: .5rem;">View Document →</a>
