@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Summary of my Journey — MarceloReFi</title>
+  <meta name="description" content="Marcelo Silva's research journey: Token Economics, Governance Design, and Regenerative Finance specialist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .section h2 { margin-top: 2rem; }
+
+    .hero-banner {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .hero-banner h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-banner p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .competency-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .competency-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--black);
+    }
+
+    .competency-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .competency-card li {
+      padding: 0.25rem 0;
+      padding-left: 1rem;
+      position: relative;
+      font-size: 0.9rem;
+    }
+
+    .competency-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+    }
+
+    .timeline {
+      border-left: 3px solid var(--pink);
+      padding-left: 1.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: var(--pink);
+      border: 2px solid var(--black);
+      border-radius: 50%;
+      position: absolute;
+      left: -1.85rem;
+      top: 0.25rem;
+    }
+
+    .timeline-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-item .meta {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-category {
+      background: var(--green);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .pub-category h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .pub-category.pink-bg { background: var(--pink); }
+    .pub-category.yellow-bg { background: var(--yellow); }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pub-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--black);
+      font-size: 0.9rem;
+    }
+
+    .pub-list li:last-child {
+      border-bottom: none;
+    }
+
+    .pub-list a {
+      text-decoration: underline;
+    }
+
+    .pub-date {
+      font-weight: bold;
+      color: var(--black);
+    }
+
+    .lang-chips {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .lang-chip {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .lang-chip.native { background: var(--green); }
+    .lang-chip.professional { background: var(--yellow); }
+    .lang-chip.intermediate { background: var(--pink); }
+
+    .philosophy-box {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--yellow) 100%);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 3px 3px 0 var(--black);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .credential-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .credential-item:last-child {
+      border-bottom: none;
+    }
+
+    .credential-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .credential-item span {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Home button -->
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+
+    <header class="top">
+      <img src="avatar.jpg" alt="Marcelo Silva avatar" class="avatar" />
+      <div class="info">
+        <h1>Summary of my Journey</h1>
+        <p class="lead">Token Economics & Governance Research Specialist</p>
+      </div>
+    </header>
+
+    <!-- Contact chips -->
+    <div class="social">
+      <span class="chip">São Paulo, Brazil</span>
+      <span class="chip green">marcelosilva.eth</span>
+      <a class="chip" href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <!-- Research Profile -->
+    <section class="section">
+      <div class="hero-banner">
+        <h2>Research Profile</h2>
+        <p>PhD researcher and community builder with 5+ years in regenerative finance, working on token economics, governance design, and public goods funding. I focus on making Web3 tools work in real-world contexts, particularly bridging innovations from the Global North with community needs in the Global South.</p>
+      </div>
+    </section>
+
+    <!-- Research Evolution -->
+    <section class="section">
+      <h2>Research Evolution</h2>
+      <div class="card">
+        <h3>From Curiosity-Driven Exploration to Regulatory Product Validation (2021-2024)</h3>
+        <p style="margin-top: 1rem; line-height: 1.7;">
+          My research started with writing the <a href="https://marcelosilva.substack.com/p/what-is-refi" target="_blank" rel="noopener">first Portuguese-language ReFi articles</a>, exploring tokenization economics and DeFi mechanisms. At Impact Plus, I researched Web3 applications for social impact and supply chain decarbonization. As Community Lead for <a href="https://blog.refidao.com/author/marcelo/" target="_blank" rel="noopener">ReFi DAO's first cohort of Local Nodes</a>, I coordinated research across 29 countries and co-authored <a href="https://blog.refidao.com/the-brazilian-ecosystem-of-regenerative-finance-pt-ii/" target="_blank" rel="noopener">ecosystem mappings for Brazil</a> and Suriname, figuring out how to adapt Web3 coordination across different cultural contexts.
+        </p>
+        <p style="margin-top: 1rem; line-height: 1.7;">
+          Alongside ecosystem work, I analyzed <a href="https://cataloniaglobal.cat/en/elections-in-brazil-the-origins-of-polarization/" target="_blank" rel="noopener">Brazilian political polarization</a> and its institutional drivers. At CeLatam, I managed three research teams investigating stablecoins, RWAs, and ReFi across Latin America, presenting findings at DevCon Thailand that fed into blended finance product design. This led to product validation work: integrating ISSB sustainability metrics into <a href="https://medium.com/@ekonavi/bioeconomy-and-blockchain-in-brazil-c832e1ba6bba" target="_blank" rel="noopener">Brazilian sovereign bonds through National Treasury hackathon</a>, and testing financial innovations in the Central Bank of Brazil's LIFT Lab regulatory sandbox.
+        </p>
+        <p style="margin-top: 1rem;">
+          <strong>Research Trajectory:</strong> Theory → Professional analysis → International coordination → Political research → Multi-team coordination → Regulatory validation
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Research Competencies -->
+    <section class="section">
+      <h2>Core Research Competencies</h2>
+      <div class="competency-grid">
+        <div class="competency-card">
+          <h3>Token Economics & Governance Design</h3>
+          <ul>
+            <li>Quadratic funding mechanisms and public goods allocation</li>
+            <li>Token distribution models and incentive design</li>
+            <li>DAO governance structures and decision-making frameworks</li>
+            <li>Voting systems and consensus mechanisms</li>
+          </ul>
+        </div>
+        <div class="competency-card">
+          <h3>Research Methodologies</h3>
+          <ul>
+            <li>Comparative institutional analysis</li>
+            <li>Ecosystem mapping and stakeholder coordination</li>
+            <li>Product validation through prototyping</li>
+            <li>Qualitative and quantitative analysis</li>
+          </ul>
+        </div>
+        <div class="competency-card">
+          <h3>Cross-Cultural Research</h3>
+          <ul>
+            <li>Global North/South coordination dynamics</li>
+            <li>Localized Web3 adaptation frameworks</li>
+            <li>International community building methodologies</li>
+            <li>Multi-stakeholder coordination</li>
+          </ul>
+        </div>
+        <div class="competency-card">
+          <h3>Technical Research Areas</h3>
+          <ul>
+            <li>Decentralized funding platforms (Gitcoin, Giveth)</li>
+            <li>Blockchain-based transparency systems</li>
+            <li>Tokenization economics & RWA frameworks</li>
+            <li>Stablecoin mechanisms & regulatory compliance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Credentials -->
+    <section class="section">
+      <h2>Academic Credentials</h2>
+      <div class="card">
+        <div class="credential-item">
+          <strong>PhD in Institutional Analysis</strong>
+          <span>Federal University of Rio de Janeiro (UFRJ), Brazil</span>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Dissertation focus: Institutional coordination mechanisms and governance structures. One of Brazil's oldest and most traditional universities.</p>
+        </div>
+        <div class="credential-item">
+          <strong>Master's Degree in Justice Theory</strong>
+          <span>Federal University of Espírito Santo (UFES), Brazil</span>
+        </div>
+        <div class="credential-item">
+          <strong>Post-Graduate Specialist in Business Law</strong>
+          <span>Institute of Legal Studies</span>
+        </div>
+        <div class="credential-item">
+          <strong>Post-Graduate Specialist in Blockchain Applications on Social Issues</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Publications & Outputs -->
+    <section class="section">
+      <h2>Research Publications & Outputs</h2>
+
+      <div class="pub-category yellow-bg">
+        <h3>Opinion (2021-2022)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">Nov 2021</span> — <a href="https://prensali.substack.com/p/descentralizacao-como-passo-definitivo-para-o-microcredito" target="_blank">Descentralização como passo definitivo para o microcrédito</a> (Prensa.li)</li>
+          <li><span class="pub-date">Jan 2022</span> — <a href="https://prensali.substack.com/p/o-que-e-populismo-financeiro" target="_blank">O que é populismo financeiro?</a> (Prensa.li)</li>
+          <li><span class="pub-date">Mar 2022</span> — <a href="https://prensali.substack.com/p/tokenizacao-faz-sentido-para-pequenos-negocios" target="_blank">Tokenização faz sentido para pequenos negócios?</a> - Parts I, II, III (Prensa.li)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category">
+        <h3>Regenerative Finance - History (2022)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">Jan 2022</span> — <a href="https://prensali.substack.com/p/o-que-sao-financas-regenerativas-refi-parte-i" target="_blank">O que são as Finanças Regenerativas (ReFi)?</a> - Parts I & II (Prensa.li)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category pink-bg">
+        <h3>Political Research (2022)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">Oct 2022</span> — <a href="https://cataloniaglobal.cat/en/elections-in-brazil-the-origins-of-polarization/" target="_blank">Elections in Brazil: The Origins of Polarization</a> (Catalonia Global)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category">
+        <h3>ReFi Ecosystem Mapping (2022-2023)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">Dec 2022</span> — <a href="https://blog.refidao.com/the-brazilian-ecosystem-of-regenerative-finance-pt-i/" target="_blank">The Brazilian Ecosystem of Regenerative Finance</a> - Parts I & II (ReFi DAO Blog)</li>
+          <li><span class="pub-date">2023</span> — <a href="https://blog.refidao.com/the-refi-ecosystem-in-suriname/" target="_blank">The ReFi Ecosystem in Suriname</a> (ReFi DAO Blog)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category yellow-bg">
+        <h3>Capital Allocation (2024)</h3>
+        <ul class="pub-list">
+          <li><a href="https://medium.com/@celatamorg/the-challenge-of-impact-capital-allocation-part-1-9cf1404f60ad" target="_blank">The Challenge of Impact Capital Allocation</a> - Parts 1 & 2 (CeLatam)</li>
+          <li><a href="https://medium.com/@celatamorg/from-chapada-to-reconcavo-when-clean-energy-hurts-4cbbd67889f3" target="_blank">From Chapada to Recôncavo: When Clean Energy Hurts</a> (CeLatam)</li>
+          <li><a href="https://medium.com/@celatamorg/blended-finance-impact-capital-allocation-in-chapada-diamantinas-renewable-energy-projects-b7bff755b24d" target="_blank">Blended Finance: Impact Capital Allocation in Chapada Diamantina</a> (CeLatam)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category pink-bg">
+        <h3>Regenerative Finance - Products (2023-2025)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">Dec 2023</span> — <a href="https://docs.google.com/document/d/1-cgcbw5Hpl_N-9nS3EFWGKyQr71FtIFP2qrcfEk_Qy4/edit" target="_blank">Sistema de Classificação de Impacto para os Títulos Soberanos Sustentáveis</a> (National Treasury Hackathon)</li>
+          <li><span class="pub-date">Nov 2025</span> — <a href="https://drive.google.com/file/d/1Mm5Gi4YU69Wp0Cw9q2OmAvYhns8w5ros/view" target="_blank">Modelling of Financial Assets for Sustainable Development</a></li>
+        </ul>
+      </div>
+
+      <div class="pub-category">
+        <h3>Additional Publications (2022-2024)</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">2024</span> — "Web3 Latin American Landscape Report" (CeLatam) - Survey analysis across 11 countries</li>
+          <li><span class="pub-date">2024</span> — <a href="https://medium.com/@ekonavi/bioeconomy-and-blockchain-in-brazil-c832e1ba6bba" target="_blank">Bioeconomy and Blockchain in Brazil</a> (Medium)</li>
+          <li><span class="pub-date">2024</span> — <a href="https://medium.com/@celatamorg/celos-transition-to-an-ethereum-layer-2-what-changes-7e91d32429f5" target="_blank">Celo's Transition to an Ethereum Layer 2: What Changes</a> (CeLatam)</li>
+          <li><span class="pub-date">2022</span> — "ReFi Spring 2022 Retrospective" - 27 events, ~2,500 attendees, 20+ countries (ReFi DAO Blog)</li>
+        </ul>
+      </div>
+
+      <div class="pub-category yellow-bg">
+        <h3>Research Presentations</h3>
+        <ul class="pub-list">
+          <li><span class="pub-date">2024</span> — DevCon Thailand: "Web3 Opportunities in Latin America"</li>
+          <li><span class="pub-date">2023</span> — LIFT Day (April): Central Bank of Brazil - MVP for Digital Real use cases</li>
+          <li><span class="pub-date">2022-2023</span> — Multiple ReFi Spring events across 20+ countries</li>
+          <li><span class="pub-date">2022</span> — Token Engineering workshops: CommonStack educational sessions</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Relevant Project Experience -->
+    <section class="section">
+      <h2>Relevant Project Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h4>General Magic — Grant Management Specialist</h4>
+          <p class="meta">Current</p>
+          <p>Managing Web3 grant processes for clients including Giveth and other ecosystem projects. Running Gitcoin rounds and implementing quadratic funding mechanisms. Working with Gitcoin Grants Stack and Giveth platforms.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>ReFi DAO — Community Lead, First Cohort of Local Nodes</h4>
+          <p class="meta">2022-2023</p>
+          <p>Set up research methodology for 29 local ReFi nodes across multiple countries. Launched and supported the first cohort of ReFi DAO Local Nodes internationally. Compared ReFi ecosystems across Brazil, Suriname, Cameroon. Published ecosystem mappings and wrote coordination guides.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>ReFi Spring — Co-Founder</h4>
+          <p class="meta">2022-2023</p>
+          <p>Co-founded international ReFi community that reached ~2,500 attendees across 20+ countries. Organized 27 events in first season across multiple continents. Built systems for decentralized event coordination and knowledge-sharing.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>CeLatam (Center for Latin America) — Research Coordinator</h4>
+          <p class="meta">2023-2024</p>
+          <p>Managed three research teams investigating Web3 opportunities across Latin America. Led research on Stablecoins, Real World Assets, and Regenerative Finance. Presented findings at DevCon Thailand. Research fed into blended finance product design for impact capital.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Impact Plus — Research Officer</h4>
+          <p class="meta">2022-2023</p>
+          <p>Researched Web3 applications for social development and traditional impact organizations. Analyzed supply chain decarbonization using blockchain transparency systems. Evaluated international development scenarios in low-trust environments.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>ReFaz — Co-Founder</h4>
+          <p class="meta">2023-Present</p>
+          <p>Founded consultancy supporting regenerative initiatives in Brazil. Connecting academic research with practical blockchain implementation for socio-environmental impact. Collaborated on National Treasury hackathon for sustainable sovereign bonds.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Blockchain na Escola — Founder</h4>
+          <p class="meta">2021-Present</p>
+          <p>Educational initiative bringing Web3 to Brazilian public schools. Delivered large volume of on-chain certifications. First Web3 education program in Brazilian public schools.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Central Bank of Brazil - LIFT Lab — Researcher</h4>
+          <p class="meta">2024</p>
+          <p>Tested financial innovation products in regulatory sandbox environment. Built prototypes under central bank evaluation and oversight. Integrated regulatory compliance from the start.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>UNESCO-SOST Transcriativa Board — Board Member</h4>
+          <p class="meta">Current</p>
+          <p>Using research background to connect UN Sustainable Development Goals with Brazilian entrepreneurship. Consulting for non-profit and for-profit Brazilian initiatives. Advisory work on sustainable development.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>CommonStack Token Engineering — Workshop Host</h4>
+          <p class="meta">2022</p>
+          <p>Hosted Brazilian Token Engineering educational groups. Taught governance models and incentive programs for blockchain organizations. Introduced Token Engineering concepts to Portuguese-speaking audiences.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="section">
+      <h2>Languages</h2>
+      <div class="lang-chips">
+        <span class="lang-chip native">Portuguese — Native</span>
+        <span class="lang-chip professional">English — Professional</span>
+        <span class="lang-chip intermediate">Spanish — Intermediate</span>
+      </div>
+    </section>
+
+    <!-- Research Philosophy -->
+    <section class="section">
+      <h2>Research Philosophy</h2>
+      <div class="philosophy-box">
+        <p>I'm interested in how decentralized technologies can solve real problems while respecting local contexts and autonomy. My work has moved from theory (writing about ReFi concepts) to practice (coordinating international communities) to validation (testing products with central banks). I combine research skills with hands-on coordination experience and can explain complex Web3 concepts to different audiences—which is what you need for building token and governance systems that actually scale.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
