@@ -332,7 +332,150 @@
       font-size: .95rem;
     }
 
+    .pcc-profile {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .pcc-profile h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .pcc-profile h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .pcc-profile p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .pcc-profile ul {
+      margin: .5rem 0 .75rem 1.25rem;
+      font-size: .95rem;
+    }
+
+    .pcc-profile li {
+      margin-bottom: .35rem;
+      line-height: 1.5;
+    }
+
+    .pcc-profile a {
+      text-decoration: underline;
+    }
+
+    .pcc-data-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: .75rem;
+    }
+
+    .pcc-data-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .pcc-data-card p {
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+
+    .pcc-data-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .vulnerability-section {
+      background: #ffdddd;
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 4px 0 var(--black);
+      margin: 2rem 0;
+    }
+
+    .vulnerability-section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .vulnerability-section h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .vulnerability-section p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .vulnerability-section ul {
+      margin: .5rem 0 .75rem 1.25rem;
+      font-size: .95rem;
+    }
+
+    .vulnerability-section li {
+      margin-bottom: .35rem;
+      line-height: 1.5;
+    }
+
+    .vulnerability-section a {
+      text-decoration: underline;
+    }
+
+    .attack-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .attack-comparison .comparison-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .attack-comparison .comparison-card h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .attack-comparison .comparison-card p {
+      font-size: .9rem;
+      margin-bottom: .35rem;
+    }
+
+    .critical-finding {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .critical-finding strong {
+      color: var(--yellow);
+    }
+
     @media (max-width: 720px) {
+      .attack-comparison {
+        grid-template-columns: 1fr;
+      }
       .hero h1 {
         font-size: 1.5rem;
       }
@@ -462,30 +605,20 @@
     <section id="adversaries" class="adversary-section">
       <h2>Adversary Profiles</h2>
       <p>
-        We modeled <strong>realistic adversaries</strong> with actual capabilities, not theoretical "all-powerful" 
+        We modeled <strong>realistic adversaries</strong> with actual capabilities, not theoretical "all-powerful"
         attackers. Each profile reflects real-world constraints and incentives.
       </p>
 
       <div class="adversary-card">
-        <h4>Organized Crime (PCC - Brazil)</h4>
-        <p>
-          <strong>Budget:</strong> ~$27Bi USD yearly | 
-          <strong>Capabilities:</strong> BRL liquidity, crypto offramps, local payment infrastructure | 
-          <strong>Motivation:</strong> Money laundering, capital flight
-        </p>
-      </div>
-
-      <div class="adversary-card">
         <h4>Nation-State (DPRK)</h4>
         <p>
-          <strong>Budget:</strong> $500K-5M | 
-          <strong>Capabilities:</strong> DeFi expertise, flash loans, MEV infrastructure, sophisticated tooling | 
+          <strong>Budget:</strong> $500K-5M |
+          <strong>Capabilities:</strong> DeFi expertise, flash loans, MEV infrastructure, sophisticated tooling |
           <strong>Motivation:</strong> Sanctions evasion, state funding
         </p>
       </div>
 
-
-      <h3>Critical Vulnerability Discovery</h3>
+      <h3>Circuit Breaker Vulnerability</h3>
       <p>Mento's circuit breakers have a <strong>blind spot:</strong></p>
       <ul>
         <li>✓ Monitor oracle prices (internal)</li>
@@ -496,6 +629,228 @@
       <p style="margin-top: .75rem;">
         This enabled three attack scenarios, ranging from immediately profitable to catastrophic.
       </p>
+    </section>
+
+    <!-- PCC Adversary Profile -->
+    <section class="pcc-profile">
+      <h2>Adversary Profile: PCC (Primeiro Comando da Capital)</h2>
+
+      <p>
+        The Party represents something DeFi protocols have never modeled: a
+        <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$27B annual revenue organization</a>
+        with zero extraction pressure and complete offramp infrastructure already embedded in legitimate Brazilian capitalism.
+        This is not a hacker group. Not a cartel in the traditional sense. PCC operates as a
+        <a href="https://insightcrime.org/brazil-organized-crime-news/first-capital-command-pcc-profile/">parallel state</a>
+        with corporate governance, diversified revenue, and financial infrastructure that rivals mid-size banks.
+      </p>
+
+      <p>
+        Every DeFi threat model assumes adversaries need to <em>exit</em>. PCC doesn't. They already control the exit.
+      </p>
+
+      <h3>Revenue &amp; Operations</h3>
+
+      <p>
+        <strong>Annual Revenue:</strong> ~$27B USD —
+        <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">Federal Revenue estimate via Small Wars Journal</a>
+      </p>
+
+      <p>
+        <strong>Structure:</strong>
+        <a href="https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital">40,000 lifetime members + 60,000 contractors</a>.
+        Not a gang. A workforce. Independent squads run day-to-day operations. The Party provides governance, dispute resolution, and financial infrastructure.
+      </p>
+
+      <div class="pcc-data-card">
+        <h4>Revenue Breakdown</h4>
+        <p><strong>Drug trafficking:</strong> <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$2.8B/year</a></p>
+        <p><strong>Fuel sector:</strong> <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$11.3B/year through 1,000+ gas stations</a></p>
+        <p><strong>Tax evasion:</strong> <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$1.4–1.6B/year (2020–2024)</a></p>
+        <p><strong>Controlled assets:</strong> <a href="https://www.riotimesonline.com/assassinations-money-laundering-urban-strongholds-brazils-pccs-unstoppable-rise/">$5.7B portfolio</a></p>
+      </div>
+
+      <h3>Infrastructure Advantage</h3>
+
+      <p>
+        PCC's financial layer is the threat. Between 2020 and 2024,
+        <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$10B moved through fuel distribution</a>
+        alone. Not criminal infrastructure—registered businesses generating legal revenue.
+      </p>
+
+      <div class="pcc-data-card">
+        <h4>Financial Infrastructure</h4>
+        <p><strong>Investment funds:</strong> <a href="https://interlira-reports.com/featured/how-organized-crime-infiltrated-brazils-businesses-and-the-financial-sector/07/11/2025/">40+ funds managing $5.7B</a></p>
+        <p><strong>BK Bank:</strong> <a href="https://x.com/allanldsantos/status/1961113977196273924">$9B moved (2020–2024)</a></p>
+        <p><strong>4TBank:</strong> <a href="https://www.latintimes.com/brazils-largest-cartel-laundering-drug-money-through-fintech-company-public-transport-contracts-567687">allegedly $1.5B laundered through fintech</a></p>
+      </div>
+
+      <p>
+        Business penetration runs deep.
+        <a href="https://interlira-reports.com/featured/how-organized-crime-infiltrated-brazils-businesses-and-the-financial-sector/07/11/2025/">Organized crime has infiltrated Brazil's financial sector</a>
+        through legitimate investment vehicles, registered companies, and compliant banking relationships.
+        The line between PCC capital and Faria Lima capital is deliberately blurred.
+      </p>
+
+      <h3>Geographic Reach</h3>
+
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital">Present in all 26 Brazilian states and 16+ countries</a>.
+        PCC controls an estimated
+        <a href="https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital">50%+ of cocaine flowing from Brazil to Europe</a>,
+        with <a href="https://en.wikipedia.org/wiki/Primeiro_Comando_da_Capital">1,000+ associates operating in Lisbon</a> alone.
+      </p>
+
+      <p>
+        The European network runs through a
+        <a href="https://www.eurojust.europa.eu/news/ndrangheta-mafia-members-arrested-investigation-belgium-italy-and-germany">partnership with 'Ndrangheta</a>,
+        giving PCC access to Southern European financial systems.
+        <a href="https://insightcrime.org/news/portugal-becoming-key-hub-cocaine-europe/">Portugal has become a key hub</a>
+        for cocaine entering Europe—and for capital flowing back.
+      </p>
+
+      <p>
+        This is a transnational financial network with
+        <a href="https://setadvisory.com/pcc-brazilrisk/">documented risk profiles</a>
+        that most DeFi compliance frameworks have never encountered.
+      </p>
+    </section>
+
+    <!-- Critical Vulnerability: Liquidity Control Attack -->
+    <section class="vulnerability-section">
+      <h2>Critical Vulnerability Discovery: Liquidity Control Attack</h2>
+
+      <h3>Why Traditional Models Fail</h3>
+
+      <p>
+        DeFi security models threat actors as external agents who exploit, extract, convert, and offramp.
+        Compliance teams watch for offramp activity. Chain analysis flags extraction patterns.
+        Circuit breakers trigger on rapid withdrawals.
+      </p>
+
+      <p>
+        PCC breaks every assumption in that model. They don't need to extract. They don't need to convert.
+        They already own the offramp.
+      </p>
+
+      <div class="attack-comparison">
+        <div class="comparison-card">
+          <h4>Traditional Threat Actor</h4>
+          <p><strong>Step 1:</strong> Exploit protocol vulnerability</p>
+          <p><strong>Step 2:</strong> Extract funds to controlled wallet</p>
+          <p><strong>Step 3:</strong> Convert through mixers/bridges</p>
+          <p><strong>Step 4:</strong> Offramp to fiat</p>
+          <p style="margin-top: .5rem;"><strong>Gets caught at steps 3–4.</strong></p>
+        </div>
+        <div class="comparison-card">
+          <h4>PCC Threat Model</h4>
+          <p><strong>Step 1:</strong> Accumulate liquidity position</p>
+          <p><strong>Step 2:</strong> Control pool dynamics</p>
+          <p><strong>Step 3:</strong> Transact through owned infrastructure</p>
+          <p style="margin-top: .5rem;"><strong>No extraction. No offramp bottleneck. No flag.</strong></p>
+        </div>
+      </div>
+
+      <h3>Strategic Distinction: Squads vs. The Party</h3>
+
+      <p>
+        Independent PCC squads run street-level operations—drug sales, extortion, local territory.
+        These operators look like conventional organized crime and behave like it.
+        Chain analysis can flag them. Compliance tools can catch them.
+      </p>
+
+      <p>
+        <strong>The Party is different.</strong> The Party manages
+        <a href="https://interlira-reports.com/featured/how-organized-crime-infiltrated-brazils-businesses-and-the-financial-sector/07/11/2025/">40+ investment funds</a>,
+        runs <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">1,000+ gas stations</a>,
+        and moves capital through
+        <a href="https://x.com/allanldsantos/status/1961113977196273924">banking infrastructure</a>
+        that processes billions annually. The Party doesn't need to hack anything. It needs liquidity pools to exist.
+      </p>
+
+      <h3>The Liquidity Domination Model</h3>
+
+      <p>
+        <strong>Objective:</strong> Control enough liquidity in a pool to dictate pricing, slippage, and exit conditions for every other participant.
+      </p>
+
+      <p>
+        <strong>Method:</strong> Deposit capital from legitimate business revenue into DeFi liquidity pools.
+        No exploit required. No suspicious transactions. Revenue from
+        <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">fuel distribution ($11.3B/year)</a>
+        enters the financial system through registered businesses, then flows into DeFi as "institutional liquidity."
+      </p>
+
+      <p>
+        <strong>Economics:</strong> For a protocol with &lt;$50M TVL, controlling 30–40% of liquidity requires $15–20M.
+        PCC's <a href="https://www.riotimesonline.com/assassinations-money-laundering-urban-strongholds-brazils-pccs-unstoppable-rise/">$5.7B asset portfolio</a>
+        makes this a rounding error. The cost of dominating a small protocol's liquidity is less than what
+        <a href="https://x.com/allanldsantos/status/1961113977196273924">BK Bank moves in a single week</a>.
+      </p>
+
+      <h3>The Security Boundary Illusion</h3>
+
+      <p>
+        DeFi protocols draw a security boundary around their smart contracts. Audits check code.
+        Monitoring watches transactions. Governance guards parameters.
+      </p>
+
+      <p>
+        PCC's Faria Lima infrastructure sits <em>outside</em> that boundary but controls what happens <em>inside</em> it.
+        When
+        <a href="https://interlira-reports.com/featured/how-organized-crime-infiltrated-brazils-businesses-and-the-financial-sector/07/11/2025/">organized crime has infiltrated the financial sector</a>,
+        the offramp isn't a suspicious exchange withdrawal—it's a quarterly dividend from a registered investment fund.
+      </p>
+
+      <p>
+        Protocol compliance tools scan for sanctioned addresses and flagged wallets.
+        They don't scan for capital originating from a gas station network that
+        <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">evaded $1.4–1.6B in taxes over four years</a>
+        while operating as a legal business.
+      </p>
+
+      <h3>Protocol Binding</h3>
+
+      <p>
+        Once PCC controls dominant liquidity in a pool, every other participant is bound to PCC's position.
+        Traders pay PCC fees. LPs compete against PCC capital. Protocols depend on PCC liquidity for their TVL metrics.
+        Governance tokens accumulated through LP rewards shift voting power.
+      </p>
+
+      <p>
+        The protocol doesn't get hacked. It gets <em>captured</em>. And the capture looks identical to organic growth.
+      </p>
+
+      <h3>Economic Analysis: Protocols Under $50M</h3>
+
+      <div class="pcc-data-card" style="background: #fff3cd;">
+        <h4>Attack Economics</h4>
+        <p><strong>Capital required to control 40% liquidity in a $30M TVL protocol:</strong> ~$12M</p>
+        <p><strong>PCC annual legitimate revenue available for deployment:</strong> <a href="https://smallwarsjournal.com/2025/08/30/from-drug-trafficking-to-faria-lima-the-pccs-metamorphosis-into-a-corporate-conglomerate-and-the-threat-to-the-economy/">$27B</a></p>
+        <p><strong>Ratio:</strong> 0.04% of annual revenue</p>
+        <p><strong>Detection probability:</strong> Near zero (capital enters as legitimate business deposits)</p>
+        <p><strong>Extraction required:</strong> None (revenue earned through LP fees, governance capture, and business-layer transactions)</p>
+      </div>
+
+      <h3>Defense Implications</h3>
+
+      <p>
+        Protocols cannot defend against this with smart contract audits, transaction monitoring, or circuit breakers.
+        The attack vector is economic, not technical. Defense requires:
+      </p>
+
+      <ul>
+        <li><strong>Liquidity concentration limits</strong> — cap single-entity share of pool liquidity</li>
+        <li><strong>Source-of-funds verification</strong> — KYC/KYB for liquidity providers above threshold</li>
+        <li><strong>Governance power distribution</strong> — prevent LP-derived voting concentration</li>
+        <li><strong>Cross-protocol liquidity monitoring</strong> — track correlated positions across DeFi</li>
+        <li><strong>Off-chain intelligence integration</strong> — connect on-chain activity to corporate ownership structures</li>
+      </ul>
+
+      <div class="critical-finding">
+        <strong>The attack surface isn't the protocol. It's the assumption that controlling liquidity requires extraction.</strong>
+        PCC accumulates until everyone else does business with them. The greatest money laundering vulnerability in DeFi
+        isn't technical—it's that protocols assume adversaries need to exit.
+      </div>
     </section>
 
     <!-- Scenario 1 -->
