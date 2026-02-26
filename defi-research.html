@@ -57,18 +57,10 @@
       <p>Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments for real-world applications in emerging markets.</p>
       <p class="meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
       
-      <div class="audio-embed">
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2273760287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-        <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-          <a href="https://soundcloud.com/marcelo-silva-548700728" title="Marcelo Silva" target="_blank" style="color: #cccccc; text-decoration: none;">Marcelo Silva</a> · 
-          <a href="https://soundcloud.com/marcelo-silva-548700728/swift-pilot-with-blockchain" title="Swift Pilot with Blockchain Risks and Assumpions" target="_blank" style="color: #cccccc; text-decoration: none;">Swift Pilot with Blockchain Risks and Assumpions</a>
-        </div>
-      </div>
     </div>
 
     <nav class="nav-chips">
       <a href="#overview" class="chip yellow">Overview</a>
-      <a href="#articles" class="chip pink">Articles</a>
       <a href="#comparative" class="chip pink">Comparative</a>
       <a href="#security" class="chip pink">Security</a>
       <a href="#methodology" class="chip yellow">Methodology</a>
@@ -82,41 +74,6 @@
         <p>The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical security modeling, while incorporating lessons from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.</p>
         <p><strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital efficiency, and decentralization while addressing real-world market needs—particularly in emerging economies like Latin America?</p>
       </div>
-    </section>
-
-    <section id="articles" class="section">
-      <h2>Featured Articles</h2>
-      
-      <article class="article-card">
-        <h3>SWIFT Chose Linea and Chainlink: Here Are the Security Questions Nobody Is Asking</h3>
-        <span class="meta">September 2025 • Infrastructure Security Analysis</span>
-        
-        <p>In September 2025, SWIFT quietly made one of the most consequential infrastructure bets in banking history. The messaging backbone connecting over 11,000 financial institutions selected Linea, an Ethereum Layer 2 built by Consensys, to pilot blockchain-based interbank settlement, with BNP Paribas and BNY Mellon among the first participants.</p>
-        
-        <p><strong>The announcement got coverage. What it didn't get was scrutiny.</strong></p>
-        
-        <p>Linea carries unresolved security risks that any institution routing real settlement flows through it should understand before going anywhere near production. These aren't theoretical concerns from crypto skeptics—they come from L2Beat, the independent research organization that has been systematically auditing Ethereum Layer 2 security since 2021.</p>
-        
-        <h4 style="margin-top: 1.5rem; margin-bottom: .75rem;">Key Security Concerns</h4>
-        
-        <ul>
-          <li><strong>The Upgrade Key Problem:</strong> Linea is currently rated Stage 0, meaning Consensys retains the ability to upgrade smart contracts governing the network without any mandatory waiting period. If Consensys pushes a contract update tomorrow, institutions with funds in transit have no guaranteed protection window.</li>
-          
-          <li><strong>Single Sequencer Risk:</strong> Linea runs a centralized sequencer—one entity responsible for ordering and processing transactions before they reach Ethereum. If it goes down, transactions in progress have no guaranteed path to finality. SWIFT processes roughly $150 trillion annually, and the sequencer underpinning any portion of that flow is a single point of failure.</li>
-          
-          <li><strong>ZK Proof Verification Gap:</strong> Are those proofs being verified on Ethereum L1 before settlement is considered final, or just generated? Generation and verification are different things. A proof that exists but isn't enforced on-chain is a receipt with no legal backing.</li>
-          
-          <li><strong>Data Availability Dependencies:</strong> Can you reconstruct the transaction history without Consensys? Rollups that post all transaction data directly to Ethereum mainnet make this possible for anyone. Those that depend on external data layers create a dependency that regulators will eventually notice.</li>
-          
-          <li><strong>Chainlink's Additional Layer:</strong> SWIFT doesn't connect to Linea directly. Chainlink's CCIP sits between them, receiving ISO 20022 messages and translating them into on-chain actions. This is elegant infrastructure, but it means the attack surface is Linea's risks plus Chainlink's.</li>
-        </ul>
-        
-        <p style="margin-top: 1.5rem;"><strong>The Bottom Line:</strong> None of this is an argument that SWIFT is making a mistake. The direction is right. Blockchain-based settlement can reduce reconciliation overhead, enable programmable compliance, and connect financial systems that currently can't talk to each other. But SWIFT moves $150 trillion a year. The institutions participating in this pilot should be asking these questions now, while the architecture is still being designed, not after it's in production.</p>
-        
-        <p style="margin-top: 1rem;">
-          <a href="https://docs.google.com/document/d/1xZ0eTs6jICOVR-ZEMHcV4nrjAUAfYn9dKQmfpk_FA-U/edit" target="_blank" rel="noopener" class="chip pink">Read Full Analysis →</a>
-        </p>
-      </article>
     </section>
 
     <section class="section">
@@ -149,6 +106,20 @@
             </ul>
           </div>
           <p style="margin-top: auto;"><a href="attack-modeling.html" class="chip pink">View Security Analysis →</a></p>
+        </div>
+
+        <div class="big-card">
+          <h3>Infrastructure Analysis</h3>
+          <p>Critical examination of enterprise blockchain infrastructure security, focusing on L2 rollups, interoperability layers, and institutional adoption risks.</p>
+          <div class="highlight-box">
+            <h4>Topics Covered</h4>
+            <ul>
+              <li><strong>SWIFT/Linea:</strong> Stage 0 risks</li>
+              <li><strong>Chainlink CCIP:</strong> Interop layer</li>
+              <li><strong>L2Beat Framework:</strong> Security audits</li>
+            </ul>
+          </div>
+          <p style="margin-top: auto;"><a href="swift-linea-article.html" class="chip pink">View Analysis →</a></p>
         </div>
 
       </div>

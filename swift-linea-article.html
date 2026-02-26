@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWIFT Chose Linea and Chainlink: Security Questions Nobody Is Asking — MarceloReFi</title>
+  <meta name="description" content="Critical examination of SWIFT's blockchain infrastructure bet: Linea Stage 0 risks, single sequencer failure, ZK proof gaps, and Chainlink trust assumptions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .breadcrumb span { color: var(--gray); font-size: .9rem; }
+    .audio-embed { margin: 1.25rem 0; padding: 1rem; background: var(--white); border: 2px solid var(--black); border-radius: 8px; box-shadow: 2px 2px 0 var(--black); }
+    .hero { padding: 2rem 1.5rem; border: 2px solid var(--black); border-radius: 12px; background: var(--pink); box-shadow: 4px 4px 0 var(--black); margin-bottom: 2rem; }
+    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.25; }
+    .hero p { font-size: 1rem; margin-bottom: .5rem; line-height: 1.6; }
+    .hero p:last-of-type { margin-bottom: 0; }
+    .nav-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; position: sticky; top: .5rem; background: var(--white); padding: .75rem 0; z-index: 10; border-bottom: 2px dashed var(--black); }
+    .concern-card { background: var(--white); border: 2px solid var(--black); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 3px 3px 0 var(--black); }
+    .concern-card:last-child { margin-bottom: 0; }
+    .concern-card h3 { font-size: 1.15rem; margin-bottom: .75rem; }
+    .concern-card p { font-size: .95rem; line-height: 1.6; margin-bottom: .75rem; }
+    .concern-card p:last-child { margin-bottom: 0; }
+    .concern-number { display: inline-block; background: var(--black); color: var(--white); font-size: .8rem; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; margin-bottom: .5rem; }
+    .conclusion-section { background: var(--yellow); border: 2px solid var(--black); border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 4px 4px 0 var(--black); margin: 2rem 0; }
+    .conclusion-section h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .conclusion-section p { font-size: .95rem; line-height: 1.6; margin-bottom: .75rem; }
+    .conclusion-section p:last-child { margin-bottom: 0; }
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 1.5rem; }
+      .nav-chips { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <a href="index.html" class="chip home-btn">🏠 Home</a>
+
+    <div class="breadcrumb">
+      <a href="defi-research.html" class="chip pink">← DeFi Research</a>
+      <span>›</span>
+      <span>SWIFT Analysis</span>
+    </div>
+
+    <div class="audio-embed">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2273760287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+        <a href="https://soundcloud.com/marcelo-silva-548700728" title="Marcelo Silva" target="_blank" style="color: #cccccc; text-decoration: none;">Marcelo Silva</a> ·
+        <a href="https://soundcloud.com/marcelo-silva-548700728/swift-pilot-with-blockchain" title="Swift Pilot with Blockchain Risks and Assumpions" target="_blank" style="color: #cccccc; text-decoration: none;">Swift Pilot with Blockchain Risks and Assumpions</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>SWIFT Chose Linea and Chainlink: Here Are the Security Questions Nobody Is Asking</h1>
+      <p>September 2025 · Infrastructure Security Analysis</p>
+    </div>
+
+    <nav class="nav-chips">
+      <a href="#intro" class="chip yellow">Introduction</a>
+      <a href="#security" class="chip pink">Security Concerns</a>
+      <a href="#conclusion" class="chip green">Conclusion</a>
+    </nav>
+
+    <section id="intro" class="section">
+      <h2>Introduction</h2>
+      <div class="card">
+        <p>In September 2025, SWIFT quietly made one of the most consequential infrastructure bets in banking history. The messaging backbone connecting over 11,000 financial institutions selected Linea, an Ethereum Layer 2 built by Consensys, to pilot blockchain-based interbank settlement, with BNP Paribas and BNY Mellon among the first participants. CryptoSlate broke the story. Chainlink handles the interoperability layer, translating SWIFT's existing ISO 20022 messaging into on-chain instructions, a partnership years in the making.</p>
+        <p><strong>The announcement got coverage. What it didn't get was scrutiny.</strong></p>
+        <p>Linea carries unresolved security risks that any institution routing real settlement flows through it should understand before going anywhere near production. These aren't theoretical concerns from crypto skeptics. They come from L2Beat, the independent research organization that has been systematically auditing Ethereum Layer 2 security since 2021, and whose framework is the closest thing this industry has to a neutral rating agency.</p>
+      </div>
+    </section>
+
+    <section id="security" class="section">
+      <h2>Security Concerns</h2>
+
+      <div class="concern-card">
+        <span class="concern-number">01</span>
+        <h3>The Upgrade Key Problem</h3>
+        <p>Linea is currently rated Stage 0. That rating means Consensys retains the ability to upgrade the smart contracts governing the network without any mandatory waiting period—no delay that would give participating banks time to exit before changes take effect.</p>
+        <p>This isn't a hypothetical edge case. It's the default operating condition. If Consensys pushes a contract update tomorrow, for any reason—whether a bug fix, a regulatory demand from a particular jurisdiction, or an internal governance decision—institutions with funds in transit have no guaranteed protection window. The L2Beat stages framework, originally proposed by Vitalik Buterin and refined by the L2Beat research team, requires a minimum 30-day delay on contract upgrades before a network can advance beyond Stage 0. Linea doesn't meet that bar yet.</p>
+        <p>The compliance question writes itself: what contractual or technical guarantee exists that a Consensys unilateral action cannot affect in-flight settlement transactions?</p>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-number">02</span>
+        <h3>A Single Sequencer Ordering Transactions for 11,000 Banks</h3>
+        <p>Linea currently runs a centralized sequencer—one entity responsible for ordering and processing transactions before they reach Ethereum. If it goes down, transactions in progress have no guaranteed path to finality. L2Beat flags this explicitly under its Sequencer Failure risk dimension, and notes that without a permissionless escape hatch—a mechanism allowing users to submit transactions directly to Ethereum bypassing the sequencer entirely—institutions are exposed to operator liveness risk with no technical recourse.</p>
+        <p>SWIFT processes roughly $150 trillion annually. The sequencer underpinning any portion of that flow is a single point of failure. SLA agreements don't change the technical reality.</p>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-number">03</span>
+        <h3>ZK Proofs Are Only Useful If They're Enforced</h3>
+        <p>Linea's use of zero-knowledge proofs has become a centerpiece of its enterprise pitch, and understandably so. ZK technology is genuinely impressive. But there's a question buried under the marketing language that almost never gets asked: are those proofs being verified on Ethereum L1 before settlement is considered final, or just generated?</p>
+        <p>Generation and verification are different things. A proof that exists but isn't enforced on-chain is a receipt with no legal backing. Before any institution treats a Linea transaction as final, it needs a clear answer about exactly when ZK verification happens in the settlement workflow, and who carries liability if funds are released before that verification completes.</p>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-number">04</span>
+        <h3>Can You Reconstruct the Transaction History Without Consensys?</h3>
+        <p>Data Availability is one of L2Beat's five core risk dimensions, and it gets less attention than it deserves in enterprise conversations. The question is simple: if you needed to independently verify or reconstruct the full transaction history of your settlement activity on Linea without asking Consensys for anything, could you?</p>
+        <p>Rollups that post all transaction data directly to Ethereum mainnet make this possible for anyone. Those that depend on external data layers, or on the operator keeping data accessible, create a dependency that regulators will eventually notice. L2Beat's framework treats on-chain data availability as a hard requirement for the highest security ratings precisely because audit trails that depend on a third party's goodwill aren't really audit trails.</p>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-number">05</span>
+        <h3>Chainlink Adds Capacity—and Another Layer of Trust Assumptions</h3>
+        <p>SWIFT doesn't connect to Linea directly. Chainlink's CCIP sits between them, receiving ISO 20022 messages from SWIFT and translating them into on-chain actions. When a bank sends a standardized message through SWIFT, it arrives at Chainlink's Runtime Environment, which triggers the actual on-chain transaction.</p>
+        <p>This is elegant infrastructure. It's also a layered security model, meaning the attack surface is Linea's risks plus Chainlink's. Chainlink's node operators are a permissioned set—a deliberate design choice with real trade-offs: it's more controlled, but it means a concentrated group of entities decides what data reaches the chain. If that network is manipulated, or a node operator is compromised, the question of who bears accountability for affected settlement flows doesn't yet have a clean answer anywhere in the public record.</p>
+      </div>
+    </section>
+
+    <section id="conclusion" class="conclusion-section">
+      <h2>What This Is Actually About</h2>
+      <p>None of this is an argument that SWIFT is making a mistake. The direction is right. Blockchain-based settlement can reduce reconciliation overhead, enable programmable compliance, and connect financial systems that currently can't talk to each other. Chainlink's work on bridging ISO 20022 to on-chain execution is legitimately important.</p>
+      <p>But SWIFT moves $150 trillion a year. The institutions participating in this pilot will eventually face regulators asking exactly the questions raised above, and "Consensys is a reputable company" won't be a sufficient answer in a risk committee. L2Beat's framework exists precisely to give those conversations a technical vocabulary. Stage 0 doesn't mean the network is broken. It means trust assumptions are still concentrated and users have limited unilateral protection if something goes wrong.</p>
+      <p><strong>The institutions in this pilot should be asking these questions now, while the architecture is still being designed, not after it's in production.</strong></p>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
