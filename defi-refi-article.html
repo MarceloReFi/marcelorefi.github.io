@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DeFi Infrastructure for Regenerative Finance — MarceloReFi</title>
-  <meta name="description" content="What the Carbon Credit Market Can Learn from CoW Protocol - exploring how DeFi infrastructure can transform regenerative finance." />
+  <title>DeFi Designs for Real World Challenges — MarceloReFi</title>
+  <meta name="description" content="Exploring how DeFi infrastructure can address real-world challenges — from carbon credit markets to stablecoin design for Latin American economies." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -222,6 +222,41 @@
       margin-bottom: 0;
     }
 
+    .hub-articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .hub-article-card {
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 3px 3px 0 var(--black);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hub-article-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
+
+    .hub-article-card p {
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: .75rem;
+      flex-grow: 1;
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 3px dashed var(--black);
+      margin: 2.5rem 0;
+    }
+
     @media (max-width: 720px) {
       .hero h1 {
         font-size: 1.5rem;
@@ -239,12 +274,35 @@
     <!-- Home button -->
     <a href="index.html" class="chip home-btn">Home</a>
 
-    <!-- Hero section -->
+    <!-- Hub Hero -->
     <div class="hero">
-      <h1>DeFi Infrastructures for the Regeneration Market: Part 1</h1>
-      <p class="subtitle">What the Carbon Credit Market Can Learn from CoW Protocol</p>
-      <p>First in a series exploring how DeFi infrastructure can transform regenerative finance</p>
+      <h1>DeFi Designs for Real World Challenges</h1>
+      <p>
+        How DeFi infrastructure can address real-world problems — from carbon credit market inefficiencies
+        to stablecoin design for Latin American trade and creator economies.
+      </p>
       <p class="meta">Article Series | Regenerative Finance Research | 2024-2025</p>
+    </div>
+
+    <!-- Hub Article Cards -->
+    <div class="hub-articles">
+      <div class="hub-article-card">
+        <h3>DeFi Infrastructures for the Regeneration Market: Part 1</h3>
+        <p>What the Carbon Credit Market Can Learn from CoW Protocol — how batch auctions and solver competition can eliminate middleman rent extraction in regenerative markets.</p>
+        <a href="#cow-article" class="chip yellow">Read Article ↓</a>
+      </div>
+      <div class="hub-article-card">
+        <h3>Stablecoins for Real Economies: CONCORDIA &amp; $DUX</h3>
+        <p>Two stablecoin design experiments tackling opposite collateral realities — commodity-backed trade settlement and receivables-backed creator financing for Latin America.</p>
+        <a href="design-experiments.html" class="chip green">Read Article →</a>
+      </div>
+    </div>
+
+    <hr class="article-divider" />
+
+    <!-- Article 1: CoW Protocol -->
+    <div id="cow-article" style="margin-bottom: 1rem;">
+      <a href="#" class="chip pink">← Back to DeFi Designs for Real World Challenges</a>
     </div>
 
     <div class="article-content">
@@ -424,13 +482,10 @@
       <p>This series will explore how DeFi primitives can transform regenerative markets:</p>
 
       <div class="series-nav">
-        <h3>Series: DeFi Infrastructure for Regenerative Finance</h3>
+        <h3>DeFi Designs for Real World Challenges</h3>
         <ul>
-          <li><strong>Part 1:</strong> What the Carbon Credit Market Can Learn from CoW Protocol (You are here)</li>
-          <li><strong>Part 2:</strong> Automated Market Makers for Biodiversity Credits</li>
-          <li><strong>Part 3:</strong> Lending Protocols for Regenerative Agriculture</li>
-          <li><strong>Part 4:</strong> Prediction Markets for Climate Outcomes</li>
-          <li><strong>Part 5:</strong> Stablecoins Backed by Natural Capital</li>
+          <li><strong>Article 1:</strong> What the Carbon Credit Market Can Learn from CoW Protocol (You are here)</li>
+          <li><strong>Article 2:</strong> <a href="design-experiments.html">Stablecoins for Real Economies: CONCORDIA &amp; $DUX</a></li>
         </ul>
       </div>
 
