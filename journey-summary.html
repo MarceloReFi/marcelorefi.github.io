@@ -196,19 +196,36 @@
       color: var(--gray);
       font-size: 0.9rem;
     }
+
+    .lang-toggle {
+      cursor: pointer;
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 12px;
+      padding: 0.4rem 1rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 2px 2px 0 var(--black);
+      transition: background 0.15s;
+    }
+    .lang-toggle:hover { background: var(--green); }
   </style>
 </head>
 <body>
   <div class="wrap">
 
     <!-- Home button -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <a href="index.html" class="chip home-btn">🏠 Home</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🇧🇷 PT</button>
+    </div>
 
     <header class="top">
       <img src="avatar.jpg" alt="Marcelo Silva avatar" class="avatar" />
       <div class="info">
-        <h1>Summary of my Journey</h1>
-        <p class="lead">Token Economics & Governance Research Specialist</p>
+        <h1 data-i18n="page-title">Summary of my Journey</h1>
+        <p class="lead" data-i18n="page-lead">Token Economics & Governance Research Specialist</p>
       </div>
     </header>
 
@@ -222,35 +239,35 @@
     <!-- Research Profile -->
     <section class="section">
       <div class="hero-banner">
-        <h2>Research Profile</h2>
-        <p>Growth-focused DeFi security researcher who went from studying stablecoin mechanisms to modeling sophisticated attacks on live protocols. Specialized in translating Web3 security concepts for institutional audiences and building practical blockchain solutions for emerging markets.</p>
-        <p style="margin-top: 1rem;"><strong>Core Expertise:</strong> Attack modeling, stablecoin security analysis, regenerative finance design, institutional communication</p>
+        <h2 data-i18n="profile-h2">Research Profile</h2>
+        <p data-i18n="profile-p1">Growth-focused DeFi security researcher who went from studying stablecoin mechanisms to modeling sophisticated attacks on live protocols. Specialized in translating Web3 security concepts for institutional audiences and building practical blockchain solutions for emerging markets.</p>
+        <p style="margin-top: 1rem;" data-i18n="profile-p2"><strong>Core Expertise:</strong> Attack modeling, stablecoin security analysis, regenerative finance design, institutional communication</p>
       </div>
     </section>
 
     <!-- Research Evolution -->
     <section class="section">
-      <h2>From ReFi Coordination to DeFi Security Engineering (2021-2025)</h2>
+      <h2 data-i18n="evolution-h2">From ReFi Coordination to DeFi Security Engineering (2021-2025)</h2>
       <div class="card">
-        <h3>Phase 1: Building Foundation (2021-2022)</h3>
-        <p style="margin-top: 1rem; line-height: 1.7;">
+        <h3 data-i18n="evolution-phase1-h3">Phase 1: Building Foundation (2021-2022)</h3>
+        <p style="margin-top: 1rem; line-height: 1.7;" data-i18n="evolution-phase1-p">
           Started coordinating ReFi communities internationally—organized 27 events across 20+ countries, published first Portuguese ReFi content. Learned: how to explain Web3 concepts to non-technical audiences, coordinate distributed teams, identify what works in different cultural contexts.
         </p>
 
-        <h3 style="margin-top: 1.5rem;">Phase 2: Institutional Validation (2022-2024)</h3>
-        <p style="margin-top: 1rem; line-height: 1.7;">
+        <h3 style="margin-top: 1.5rem;" data-i18n="evolution-phase2-h3">Phase 2: Institutional Validation (2022-2024)</h3>
+        <p style="margin-top: 1rem; line-height: 1.7;" data-i18n="evolution-phase2-p">
           Shifted from community building to working directly with regulators. Judged Brazil's <a href="https://patrimoniodauniaonaweb3.hackerearth.com/pt-br/challenges/hackathon/hacathon-web3-tokenizing-the-state-of-the-union/judges/#judges" target="_blank" rel="noopener">Ministry of Economy hackathon</a> on real estate tokenization, contributed to winning team in <a href="https://www.gov.br/tesouronacional/pt-br/noticias/hackathon-web3-tokenizacao-do-tesouro-nacional-anuncia-os-vencedores" target="_blank" rel="noopener">National Treasury debt tokenization challenge</a>, led tokenomics for <a href="https://ekonavi.substack.com/p/bioeconomia-e-blockchain-no-brasil" target="_blank" rel="noopener">Ekonavi</a> through Central Bank's LIFT Labs program (where PIX was created).
         </p>
-        <p style="margin-top: 1rem;"><strong>Capability gained:</strong> Translate technical blockchain concepts for institutional decision-makers, navigate regulatory requirements, validate Web3 products in traditional finance environments.</p>
+        <p style="margin-top: 1rem;" data-i18n="evolution-phase2-cap"><strong>Capability gained:</strong> Translate technical blockchain concepts for institutional decision-makers, navigate regulatory requirements, validate Web3 products in traditional finance environments.</p>
 
-        <h3 style="margin-top: 1.5rem;">Phase 3: Deep Technical Research (2024-2025)</h3>
-        <p style="margin-top: 1rem; line-height: 1.7;">
+        <h3 style="margin-top: 1.5rem;" data-i18n="evolution-phase3-h3">Phase 3: Deep Technical Research (2024-2025)</h3>
+        <p style="margin-top: 1rem; line-height: 1.7;" data-i18n="evolution-phase3-p">
           Moved from high-level token design to security-focused protocol analysis. Conducted comparative analysis of USDC, DAI, and $BREAD examining the "Impossible Triangle" (decentralization vs stability vs capital efficiency). Designed attack models against Mento's cReal stablecoin, exploring oracle-circuit breaker vulnerabilities and distributed "slow bleed" attacks.
         </p>
-        <p style="margin-top: 1rem;"><strong>Capability gained:</strong> Model economic attack vectors, analyze protocol security mechanisms, simulate adversarial scenarios, identify exploit patterns across DeFi ecosystems.</p>
+        <p style="margin-top: 1rem;" data-i18n="evolution-phase3-cap"><strong>Capability gained:</strong> Model economic attack vectors, analyze protocol security mechanisms, simulate adversarial scenarios, identify exploit patterns across DeFi ecosystems.</p>
 
-        <h3 style="margin-top: 1.5rem;">What This Progression Demonstrates:</h3>
-        <p style="margin-top: 1rem; line-height: 1.7;">
+        <h3 style="margin-top: 1.5rem;" data-i18n="evolution-prog-h3">What This Progression Demonstrates:</h3>
+        <p style="margin-top: 1rem; line-height: 1.7;" data-i18n="evolution-prog-p">
           Technical depth: From coordinating events → analyzing protocol architecture → modeling sophisticated attacks<br>
           Scope expansion: From single community → international coordination → ecosystem-wide security research<br>
           Real-world application: From theory → regulatory validation → practical vulnerability assessment<br>
@@ -261,88 +278,88 @@
 
     <!-- Core Research Competencies -->
     <section class="section">
-      <h2>Core Research Competencies</h2>
+      <h2 data-i18n="competencies-h2">Core Research Competencies</h2>
 
       <div class="card" style="margin-bottom: 1rem;">
-        <h3>Security Analysis &amp; Attack Modeling</h3>
-        <p style="margin-top: 0.75rem;"><strong>What I can do now:</strong></p>
+        <h3 data-i18n="comp-sec-h3">Security Analysis &amp; Attack Modeling</h3>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-sec-what"><strong>What I can do now:</strong></p>
         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.7;">
-          <li>Model economic attacks on DeFi protocols (oracle manipulation, circuit breaker exploitation, distributed redemption attacks)</li>
-          <li>Analyze stablecoin mechanisms across centralized, algorithmic, and hybrid designs</li>
-          <li>Identify systemic vulnerabilities in cross-protocol dependencies</li>
-          <li>Simulate adversarial scenarios using Machinations and economic modeling</li>
+          <li data-i18n="comp-sec-li1">Model economic attacks on DeFi protocols (oracle manipulation, circuit breaker exploitation, distributed redemption attacks)</li>
+          <li data-i18n="comp-sec-li2">Analyze stablecoin mechanisms across centralized, algorithmic, and hybrid designs</li>
+          <li data-i18n="comp-sec-li3">Identify systemic vulnerabilities in cross-protocol dependencies</li>
+          <li data-i18n="comp-sec-li4">Simulate adversarial scenarios using Machinations and economic modeling</li>
         </ul>
-        <p style="margin-top: 0.75rem;"><strong>How I got here:</strong> Started with basic token economics → studied governance mechanisms → analyzed stablecoin trade-offs → developed attack modeling frameworks</p>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-sec-how"><strong>How I got here:</strong> Started with basic token economics → studied governance mechanisms → analyzed stablecoin trade-offs → developed attack modeling frameworks</p>
       </div>
 
       <div class="card" style="margin-bottom: 1rem;">
-        <h3>Institutional Communication &amp; Regulatory Navigation</h3>
-        <p style="margin-top: 0.75rem;"><strong>What I can do now:</strong></p>
+        <h3 data-i18n="comp-inst-h3">Institutional Communication &amp; Regulatory Navigation</h3>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-inst-what"><strong>What I can do now:</strong></p>
         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.7;">
-          <li>Translate complex DeFi concepts for non-technical institutional audiences</li>
-          <li>Navigate regulatory requirements for blockchain products in emerging markets</li>
-          <li>Validate Web3 solutions with central banks and government bodies</li>
-          <li>Bridge technical security research with policy implications</li>
+          <li data-i18n="comp-inst-li1">Translate complex DeFi concepts for non-technical institutional audiences</li>
+          <li data-i18n="comp-inst-li2">Navigate regulatory requirements for blockchain products in emerging markets</li>
+          <li data-i18n="comp-inst-li3">Validate Web3 solutions with central banks and government bodies</li>
+          <li data-i18n="comp-inst-li4">Bridge technical security research with policy implications</li>
         </ul>
-        <p style="margin-top: 0.75rem;"><strong>How I got here:</strong> Community coordination → Central Bank validation program → Government hackathon judging → Regulatory product testing</p>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-inst-how"><strong>How I got here:</strong> Community coordination → Central Bank validation program → Government hackathon judging → Regulatory product testing</p>
       </div>
 
       <div class="card" style="margin-bottom: 1rem;">
-        <h3>Emerging Markets &amp; Regenerative Finance</h3>
-        <p style="margin-top: 0.75rem;"><strong>What I can do now:</strong></p>
+        <h3 data-i18n="comp-em-h3">Emerging Markets &amp; Regenerative Finance</h3>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-em-what"><strong>What I can do now:</strong></p>
         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.7;">
-          <li>Design blockchain solutions for Latin American contexts (payment systems, carbon markets, impact capital)</li>
-          <li>Identify information cost inefficiencies in regenerative markets</li>
-          <li>Build DeFi infrastructure for sustainability challenges</li>
-          <li>Adapt Web3 tools for low-trust, high-impact environments</li>
+          <li data-i18n="comp-em-li1">Design blockchain solutions for Latin American contexts (payment systems, carbon markets, impact capital)</li>
+          <li data-i18n="comp-em-li2">Identify information cost inefficiencies in regenerative markets</li>
+          <li data-i18n="comp-em-li3">Build DeFi infrastructure for sustainability challenges</li>
+          <li data-i18n="comp-em-li4">Adapt Web3 tools for low-trust, high-impact environments</li>
         </ul>
-        <p style="margin-top: 0.75rem;"><strong>How I got here:</strong> International ReFi coordination → Bioeconomy research → Carbon market analysis → Regenerative finance product design</p>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-em-how"><strong>How I got here:</strong> International ReFi coordination → Bioeconomy research → Carbon market analysis → Regenerative finance product design</p>
       </div>
 
       <div class="card" style="margin-bottom: 1rem;">
-        <h3>Research Methodology &amp; Documentation</h3>
-        <p style="margin-top: 0.75rem;"><strong>What I can do now:</strong></p>
+        <h3 data-i18n="comp-res-h3">Research Methodology &amp; Documentation</h3>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-res-what"><strong>What I can do now:</strong></p>
         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.7;">
-          <li>Conduct rigorous comparative protocol analysis with comprehensive citations</li>
-          <li>Create interactive visualizations (Machinations flowcharts, economic simulations)</li>
-          <li>Structure complex research into accessible formats for different audiences</li>
-          <li>Maintain detailed documentation across multi-phase research projects</li>
+          <li data-i18n="comp-res-li1">Conduct rigorous comparative protocol analysis with comprehensive citations</li>
+          <li data-i18n="comp-res-li2">Create interactive visualizations (Machinations flowcharts, economic simulations)</li>
+          <li data-i18n="comp-res-li3">Structure complex research into accessible formats for different audiences</li>
+          <li data-i18n="comp-res-li4">Maintain detailed documentation across multi-phase research projects</li>
         </ul>
-        <p style="margin-top: 0.75rem;"><strong>How I got here:</strong> Academic training (PhD, Master's) → International development research → DeFi security analysis → Interactive simulation design</p>
+        <p style="margin-top: 0.75rem;" data-i18n="comp-res-how"><strong>How I got here:</strong> Academic training (PhD, Master's) → International development research → DeFi security analysis → Interactive simulation design</p>
       </div>
 
     </section>
 
     <!-- Academic Credentials -->
     <section class="section">
-      <h2>Foundation: Academic Training &amp; Certifications</h2>
+      <h2 data-i18n="academic-h2">Foundation: Academic Training &amp; Certifications</h2>
       <div class="card">
         <div class="credential-item">
-          <strong> 2021 - PhD in Institutional Analysis</strong>
-          <span>Federal University of Rio de Janeiro (UFRJ), Brazil</span>
-          <p style="font-size: 0.9rem; margin-top: 0.25rem;"> Focus: Institutional mechanisms and governance structures. That was done in UFRJ, one of Brazil's oldest and most traditional universities.</p>
+          <strong data-i18n="cred1-strong"> 2021 - PhD in Institutional Analysis</strong>
+          <span data-i18n="cred1-span">Federal University of Rio de Janeiro (UFRJ), Brazil</span>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;" data-i18n="cred1-p"> Focus: Institutional mechanisms and governance structures.</p>
         </div>
         <div class="credential-item">
-          <strong> 2017 - Master's Degree in Justice Theory</strong>
-          <span>Federal University of Espírito Santo (UFES), Brazil</span>
+          <strong data-i18n="cred2-strong"> 2017 - Master's Degree in Justice Theory</strong>
+          <span data-i18n="cred2-span">Federal University of Espírito Santo (UFES), Brazil</span>
         </div>
         <div class="credential-item">
-          <strong> 2021 - Post-Graduate Specialist in Business Law</strong>
-          <span>Institute of Legal Studies</span>
+          <strong data-i18n="cred3-strong"> 2021 - Post-Graduate Specialist in Business Law</strong>
+          <span data-i18n="cred3-span">Institute of Legal Studies</span>
         </div>
         <div class="credential-item">
-          <strong>Blockchain Certifications</strong>
+          <strong data-i18n="cred4-strong">Blockchain Certifications</strong>
         </div>
       </div>
     </section>
 
     <!-- Research Publications & Outputs -->
     <section class="section">
-      <h2>Research Output: From Analysis to Attack Modeling</h2>
+      <h2 data-i18n="pubs-h2">Research Output: From Analysis to Attack Modeling</h2>
 
 
        <div class="pub-category pink-bg">
-        <h3> USDC, DAI and $BREAD Analysis (2025)</h3>
+        <h3 data-i18n="pub-stablecoins-h3"> USDC, DAI and $BREAD Analysis (2025)</h3>
         <ul class="pub-list">
           <li><span class="pub-date">2025</span> — <a href="https://marcelorefi.github.io/comparative-analysis.html" target="_blank">Comparative Analysis of Stablecoins
 </a> ReFaz0x</li>
@@ -353,14 +370,14 @@
       </div>
 
         <div class="pub-category yellow-bg">
-        <h3>Stablecoin Design Experiments</h3>
+        <h3 data-i18n="pub-design-h3">Stablecoin Design Experiments</h3>
         <ul class="pub-list">
           <li><span class="pub-date">2025</span> — <a href="https://marcelorefi.github.io/design-experiments.html" target="_blank"> Concordia & $DUX - Geopolitics and Creator Economy</a> ReFaz0x</li>
              </ul>
       </div>
 
         <div class="pub-category green-bg">
-        <h3>DeFi Attack Modelling & Simulations </h3>
+        <h3 data-i18n="pub-attack-h3">DeFi Attack Modelling &amp; Simulations </h3>
         <ul class="pub-list">
           <li><span class="pub-date">2025</span> — <a href="https://marcelorefi.github.io/attack-modeling.html" target="_blank">Attack Modeling & Simulations
 </a> ReFaz0x</li>
@@ -368,7 +385,7 @@
       </div>
 
       <div class="pub-category pink-bg">
-        <h3>Opinion (2021-2022)</h3>
+        <h3 data-i18n="pub-opinion-h3">Opinion (2021-2022)</h3>
         <ul class="pub-list">
           <li><span class="pub-date">Nov 2021</span> — <a href="https://prensali.substack.com/p/descentralizacao-como-passo-definitivo-para-o-microcredito" target="_blank">Descentralização como passo definitivo para o microcrédito</a> (Prensa.li)</li>
           <li><span class="pub-date">Jan 2022</span> — <a href="https://prensali.substack.com/p/o-que-e-populismo-financeiro" target="_blank">O que é populismo financeiro?</a> (Prensa.li)</li>
@@ -379,7 +396,7 @@
       </div>
 
       <div class="pub-category">
-        <h3>Regenerative Finance - History & Ecosystem Mapping (2022)</h3>
+        <h3 data-i18n="pub-refi-h3">Regenerative Finance - History &amp; Ecosystem Mapping (2022)</h3>
         <ul class="pub-list">
           <li><span class="pub-date">Jan 2022</span> — <a href="https://prensali.substack.com/p/o-que-sao-financas-regenerativas-refi-parte-i" target="_blank">O que são as Finanças Regenerativas (ReFi)?</a> - Parts I & II (Prensa.li)</li>
          <ul class="pub-list">
@@ -394,7 +411,7 @@
       </div>
 
       <div class="pub-category pink-bg">
-        <h3>Political Research (2022)</h3>
+        <h3 data-i18n="pub-political-h3">Political Research (2022)</h3>
         <ul class="pub-list">
           <li><span class="pub-date">Oct 2022</span> — <a href="https://cataloniaglobal.cat/en/elections-in-brazil-the-origins-of-polarization/" target="_blank">Elections in Brazil: The Origins of Polarization</a> (Catalonia Global)</li>
   
@@ -404,7 +421,7 @@
     
 
       <div class="pub-category yellow-bg">
-        <h3>Capital Allocation (2024)</h3>
+        <h3 data-i18n="pub-capital-h3">Capital Allocation (2024)</h3>
         <ul class="pub-list">
           <li><a href="https://medium.com/@celatamorg/the-challenge-of-impact-capital-allocation-part-1-9cf1404f60ad" target="_blank">The Challenge of Impact Capital Allocation</a> - Parts 1 & 2 (CeLatam)</li>
           <li><a href="https://medium.com/@celatamorg/from-chapada-to-reconcavo-when-clean-energy-hurts-4cbbd67889f3" target="_blank">From Chapada to Recôncavo: When Clean Energy Hurts</a> (CeLatam)</li>
@@ -413,7 +430,7 @@
       </div>
 
       <div class="pub-category pink-bg">
-        <h3>Regenerative Finance - Products (2023-2025)</h3>
+        <h3 data-i18n="pub-regen-h3">Regenerative Finance - Products (2023-2025)</h3>
         <ul class="pub-list">
           <li><span class="pub-date">Dec 2023</span> — Sistema de Classificação de Impacto para os Títulos Soberanos Sustentáveis (National Treasury Hackathon)</li>
           <li><span class="pub-date">Nov 2025</span> — Modelling of Financial Assets for Sustainable Development</li>
@@ -425,73 +442,73 @@
 
     <!-- Relevant Project Experience -->
     <section class="section">
-      <h2>Experience: Building Capability Across Contexts</h2>
+      <h2 data-i18n="experience-h2">Experience: Building Capability Across Contexts</h2>
       <div class="timeline">
 
         <div class="timeline-item">
-          <h4>CeLatam — Researcher & DAO Member</h4>
-          <p class="meta">February 2024 - Present</p>
-          <p>Started as Researcher (February 2024), invited to become DAO Member (April 2025). As research lead, produced insights and reports, managed website, translated Startup Pathway to Portuguese, connected CeLatam to academia. Recent contributions include articles on impact capital allocation and creation of usebalaio.com.</p>
+          <h4 data-i18n="exp1-h4">CeLatam — Researcher & DAO Member</h4>
+          <p class="meta" data-i18n="exp1-meta">February 2024 - Present</p>
+          <p data-i18n="exp1-p">Started as Researcher (February 2024), invited to become DAO Member (April 2025). As research lead, produced insights and reports, managed website, translated Startup Pathway to Portuguese, connected CeLatam to academia. Recent contributions include articles on impact capital allocation and creation of usebalaio.com.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>UNESCO-SOST Transcriativa — Board Member (Membro do conselho consultivo)</h4>
-          <p class="meta">June 2023 - Present</p>
-          <p>Using research background to connect UN Sustainable Development Goals with Brazilian entrepreneurship. Advisory work on sustainable development and impact measurement for non-profit and for-profit Brazilian initiatives.</p>
+          <h4 data-i18n="exp2-h4">UNESCO-SOST Transcriativa — Board Member (Membro do conselho consultivo)</h4>
+          <p class="meta" data-i18n="exp2-meta">June 2023 - Present</p>
+          <p data-i18n="exp2-p">Using research background to connect UN Sustainable Development Goals with Brazilian entrepreneurship. Advisory work on sustainable development and impact measurement for non-profit and for-profit Brazilian initiatives.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>General Magic — Grant Manager</h4>
-          <p class="meta">January 2024 - November 2024</p>
-          <p>Managed Web3 grant processes for clients including Giveth and ecosystem projects. Fundraising for 7 clients building public goods, contributing to team that raised $3.5M USD in one year.</p>
+          <h4 data-i18n="exp3-h4">General Magic — Grant Manager</h4>
+          <p class="meta" data-i18n="exp3-meta">January 2024 - November 2024</p>
+          <p data-i18n="exp3-p">Grant management for Web3 public goods projects. Helped 7 clients raise funding, contributed to team's $3.5M in one year.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>ReFaz — Co-Founder</h4>
-          <p class="meta">January 2023 - November 2025</p>
-          <p>Founded consultancy supporting regenerative initiatives in Brazil. Connected academic research with practical blockchain implementation. Provided strategic guidance on tokenomics, governance design, and Web3 implementation. Blockchain na Escola was one of our products.</p>
+          <h4 data-i18n="exp4-h4">ReFaz — Co-Founder</h4>
+          <p class="meta" data-i18n="exp4-meta">January 2023 - November 2025</p>
+          <p data-i18n="exp4-p">Co-founded consultancy for regenerative blockchain projects in Brazil. Bridged academic research with actual implementation. Built Blockchain na Escola and advised on tokenomics and governance.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>Ekonavi — Research Lead</h4>
-          <p class="meta">March 2023 - November 2025</p>
-          <p>Designed tokenomic models and documentation, led research during LIFT LAB program by Brazilian Central Bank (finalist selection). Product also won G20 Hackathon organized by Brazilian Central Bank with Bank of International Settlements. Worked directly with regulatory bodies to validate tokenized financial products.</p>
+          <h4 data-i18n="exp5-h4">Ekonavi — Research Lead</h4>
+          <p class="meta" data-i18n="exp5-meta">March 2023 - November 2025</p>
+          <p data-i18n="exp5-p">Designed tokenomic models and documentation, led research during LIFT LAB program by Brazilian Central Bank (finalist selection). Product also won G20 Hackathon organized by Brazilian Central Bank with Bank of International Settlements. Worked directly with regulatory bodies to validate tokenized financial products.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>Blockchain na Escola — Founder</h4>
-          <p class="meta">December 2021 - December 2025</p>
-          <p>Educational initiative bringing Web3 to Brazilian public schools. Delivered large volume of on-chain certifications. First Web3 education program in Brazilian public schools. Winner of Blocknews Prize as best Web3 educational project in Brazil 2025.</p>
+          <h4 data-i18n="exp6-h4">Blockchain na Escola — Founder</h4>
+          <p class="meta" data-i18n="exp6-meta">December 2021 - December 2025</p>
+          <p data-i18n="exp6-p">Educational initiative bringing Web3 to Brazilian public schools. Delivered large volume of on-chain certifications. First Web3 education program in Brazilian public schools. Winner of Blocknews Prize as best Web3 educational project in Brazil 2025.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>ReFi DAO — Core Team Contributor, Community Lead - First Cohort of Local Nodes</h4>
-          <p class="meta">January 2023 - May 2023</p>
-          <p>Set up research methodology for 29 local ReFi nodes across multiple countries. Launched and supported first cohort internationally. Published ecosystem mappings for Brazil, Suriname, Cameroon, and several articles. Successfully completed mission, establishing framework for decentralized community coordination.</p>
+          <h4 data-i18n="exp7-h4">ReFi DAO — Core Team Contributor, Community Lead - First Cohort of Local Nodes</h4>
+          <p class="meta" data-i18n="exp7-meta">January 2023 - May 2023</p>
+          <p data-i18n="exp7-p">Set up research methodology for 29 local ReFi nodes across multiple countries. Launched first cohort, published ecosystem mappings for Brazil, Suriname, and Cameroon. Built the coordination framework, then handed it off.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>ReFi Events / ReFi Spring — Co-Founder, Community Builder and Grant Manager</h4>
-          <p class="meta">May 2022 - March 2023</p>
-          <p>Co-founded international ReFi community reaching attendees across 20+ countries. Organized 27 events across multiple continents. Built systems for decentralized event coordination. Mission-based initiative exceeded target of 50+ events, merged with ReFi DAO.</p>
+          <h4 data-i18n="exp8-h4">ReFi Events / ReFi Spring — Co-Founder, Community Builder and Grant Manager</h4>
+          <p class="meta" data-i18n="exp8-meta">May 2022 - March 2023</p>
+          <p data-i18n="exp8-p">Co-founded international ReFi community reaching attendees across 20+ countries. Organized 27 events across multiple continents. Built systems for decentralized event coordination. Mission-based initiative exceeded target of 50+ events, merged with ReFi DAO.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>ImpactPlus.io — Research Officer</h4>
-          <p class="meta">July 2022 - February 2023</p>
-          <p>Researched Web3 applications for social development and multilateral organizations. Analyzed supply chain decarbonization using blockchain transparency systems. Evaluated international development scenarios in low-trust environments.</p>
+          <h4 data-i18n="exp9-h4">ImpactPlus.io — Research Officer</h4>
+          <p class="meta" data-i18n="exp9-meta">July 2022 - February 2023</p>
+          <p data-i18n="exp9-p">Researched Web3 applications for social development and multilateral organizations. Analyzed supply chain decarbonization using blockchain transparency systems. Evaluated international development scenarios in low-trust environments.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>Token Engineering Academy — Host of the Token Engineering Academy Course</h4>
-          <p class="meta">July 2022 - August 2022</p>
-          <p>Hosted Brazilian Token Engineering educational groups. Taught governance models and incentive programs for blockchain organizations. Introduced Token Engineering concepts to Portuguese-speaking audiences.</p>
+          <h4 data-i18n="exp10-h4">Token Engineering Academy — Host of the Token Engineering Academy Course</h4>
+          <p class="meta" data-i18n="exp10-meta">July 2022 - August 2022</p>
+          <p data-i18n="exp10-p">Hosted Brazilian Token Engineering educational groups. Taught governance models and incentive programs for blockchain organizations. Introduced Token Engineering concepts to Portuguese-speaking audiences.</p>
         </div>
 
         <div class="timeline-item">
-          <h4>Prensa.li — Content Creator</h4>
-          <p class="meta">August 2021 - July 2022</p>
-          <p>Created content on tokenization economics, DeFi mechanisms, and regenerative finance. Published first ReFi articles in Portuguese, exploring how Web3 tools could serve Latin American communities.</p>
+          <h4 data-i18n="exp11-h4">Prensa.li — Content Creator</h4>
+          <p class="meta" data-i18n="exp11-meta">August 2021 - July 2022</p>
+          <p data-i18n="exp11-p">Created content on tokenization economics, DeFi mechanisms, and regenerative finance. Published first ReFi articles in Portuguese, exploring how Web3 tools could serve Latin American communities.</p>
         </div>
 
       </div>
@@ -499,23 +516,23 @@
 
     <!-- Languages -->
     <section class="section">
-      <h2>Languages</h2>
+      <h2 data-i18n="languages-h2">Languages</h2>
       <div class="lang-chips">
-        <span class="lang-chip native">Portuguese — Native</span>
-        <span class="lang-chip professional">English — Professional</span>
-        <span class="lang-chip intermediate">Spanish — Intermediate</span>
+        <span class="lang-chip native" data-i18n="lang-pt-chip">Portuguese — Native</span>
+        <span class="lang-chip professional" data-i18n="lang-en-chip">English — Professional</span>
+        <span class="lang-chip intermediate" data-i18n="lang-es-chip">Spanish — Intermediate</span>
       </div>
     </section>
 
     <!-- Research Philosophy -->
     <section class="section">
-      <h2>Research Philosophy</h2>
+      <h2 data-i18n="philosophy-h2">Research Philosophy</h2>
       <div class="philosophy-box">
-        <p>I solve problems by understanding systems deeply, then finding where they break.</p>
-        <p style="margin-top: 1rem;">My research evolved from "how does this work?" to "how could someone exploit this?" The stablecoin analysis taught me that the most interesting insights come from examining trade-offs—you can't have perfect decentralization AND perfect stability AND perfect capital efficiency. The attack modeling taught me that security vulnerabilities often hide in the gaps between systems—like oracle-circuit breaker interactions that look safe individually but create exploitable patterns when combined.</p>
-        <p style="margin-top: 1rem;"><strong>What makes my approach different:</strong> I can model sophisticated attacks, then explain them to central bank officials. I can design regenerative finance products, then stress-test them with adversarial scenarios. I move between technical depth and institutional communication without losing rigor in either direction.</p>
-        <p style="margin-top: 1rem;"><strong>What I bring to security research:</strong> Academic methodology + real-world validation experience + emerging markets context. I don't just find vulnerabilities—I translate them into actionable insights for different stakeholders.</p>
-        <p style="margin-top: 1rem;"><strong>Current focus:</strong> Building the "DeFi Infrastructures for Regeneration Market" series, exploring how AMMs, lending protocols, and stablecoins can support carbon credits, biodiversity markets, and regenerative agriculture while maintaining security against economic attacks.</p>
+        <p data-i18n="philosophy-p1">I got into this trying to understand how Web3 could work for communities that traditional finance ignores. Turns out the answer involves a lot of "first understand how it breaks."</p>
+        <p style="margin-top: 1rem;" data-i18n="philosophy-p2">The stablecoin research made it clear: you can't have perfect decentralization AND perfect stability AND perfect capital efficiency at the same time. Pick two. The attack modeling showed me that most vulnerabilities live between systems—oracle-circuit breaker interactions that look fine individually but create exploits when combined.</p>
+        <p style="margin-top: 1rem;" data-i18n="philosophy-p3">I can model sophisticated economic attacks and then explain them to central bank officials in the same week. I can design regenerative finance products and stress-test them with adversarial scenarios. Most people do one or the other.</p>
+        <p style="margin-top: 1rem;" data-i18n="philosophy-p4">What I bring: PhD-level methodology, experience validating products with Brazilian regulators, and enough time in emerging markets to know which Web3 ideas are bullshit and which might actually work.</p>
+        <p style="margin-top: 1rem;" data-i18n="philosophy-p5">Currently building the "DeFi Infrastructures for Regeneration Market" series—figuring out how AMMs, lending protocols, and stablecoins can support carbon credits and biodiversity markets without getting exploited.</p>
       </div>
     </section>
 
@@ -526,6 +543,248 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    const i18n = {
+      en: {
+        'page-title': 'Summary of my Journey',
+        'page-lead': 'Token Economics &amp; Governance Research Specialist',
+        'profile-h2': 'Research Profile',
+        'profile-p1': 'Growth-focused DeFi security researcher who went from studying stablecoin mechanisms to modeling sophisticated attacks on live protocols. Specialized in translating Web3 security concepts for institutional audiences and building practical blockchain solutions for emerging markets.',
+        'profile-p2': '<strong>Core Expertise:</strong> Attack modeling, stablecoin security analysis, regenerative finance design, institutional communication',
+        'evolution-h2': 'From ReFi Coordination to DeFi Security Engineering (2021-2025)',
+        'evolution-phase1-h3': 'Phase 1: Building Foundation (2021-2022)',
+        'evolution-phase1-p': 'Started coordinating ReFi communities internationally—organized 27 events across 20+ countries, published first Portuguese ReFi content. Learned: how to explain Web3 concepts to non-technical audiences, coordinate distributed teams, identify what works in different cultural contexts.',
+        'evolution-phase2-h3': 'Phase 2: Institutional Validation (2022-2024)',
+        'evolution-phase2-p': 'Shifted from community building to working directly with regulators. Judged Brazil\'s <a href="https://patrimoniodauniaonaweb3.hackerearth.com/pt-br/challenges/hackathon/hacathon-web3-tokenizing-the-state-of-the-union/judges/#judges" target="_blank" rel="noopener">Ministry of Economy hackathon</a> on real estate tokenization, contributed to winning team in <a href="https://www.gov.br/tesouronacional/pt-br/noticias/hackathon-web3-tokenizacao-do-tesouro-nacional-anuncia-os-vencedores" target="_blank" rel="noopener">National Treasury debt tokenization challenge</a>, led tokenomics for <a href="https://ekonavi.substack.com/p/bioeconomia-e-blockchain-no-brasil" target="_blank" rel="noopener">Ekonavi</a> through Central Bank\'s LIFT Labs program (where PIX was created).',
+        'evolution-phase2-cap': '<strong>Capability gained:</strong> Translate technical blockchain concepts for institutional decision-makers, navigate regulatory requirements, validate Web3 products in traditional finance environments.',
+        'evolution-phase3-h3': 'Phase 3: Deep Technical Research (2024-2025)',
+        'evolution-phase3-p': 'Moved from high-level token design to security-focused protocol analysis. Conducted comparative analysis of USDC, DAI, and $BREAD examining the "Impossible Triangle" (decentralization vs stability vs capital efficiency). Designed attack models against Mento\'s cReal stablecoin, exploring oracle-circuit breaker vulnerabilities and distributed "slow bleed" attacks.',
+        'evolution-phase3-cap': '<strong>Capability gained:</strong> Model economic attack vectors, analyze protocol security mechanisms, simulate adversarial scenarios, identify exploit patterns across DeFi ecosystems.',
+        'evolution-prog-h3': 'What This Progression Demonstrates:',
+        'evolution-prog-p': 'Technical depth: From coordinating events → analyzing protocol architecture → modeling sophisticated attacks<br>Scope expansion: From single community → international coordination → ecosystem-wide security research<br>Real-world application: From theory → regulatory validation → practical vulnerability assessment<br>Audience translation: Can explain the same concept to community organizers, central bank officials, and security engineers',
+        'competencies-h2': 'Core Research Competencies',
+        'comp-sec-h3': 'Security Analysis &amp; Attack Modeling',
+        'comp-sec-what': '<strong>What I can do now:</strong>',
+        'comp-sec-li1': 'Model economic attacks on DeFi protocols (oracle manipulation, circuit breaker exploitation, distributed redemption attacks)',
+        'comp-sec-li2': 'Analyze stablecoin mechanisms across centralized, algorithmic, and hybrid designs',
+        'comp-sec-li3': 'Identify systemic vulnerabilities in cross-protocol dependencies',
+        'comp-sec-li4': 'Simulate adversarial scenarios using Machinations and economic modeling',
+        'comp-sec-how': '<strong>How I got here:</strong> Started with basic token economics → studied governance mechanisms → analyzed stablecoin trade-offs → developed attack modeling frameworks',
+        'comp-inst-h3': 'Institutional Communication &amp; Regulatory Navigation',
+        'comp-inst-what': '<strong>What I can do now:</strong>',
+        'comp-inst-li1': 'Translate complex DeFi concepts for non-technical institutional audiences',
+        'comp-inst-li2': 'Navigate regulatory requirements for blockchain products in emerging markets',
+        'comp-inst-li3': 'Validate Web3 solutions with central banks and government bodies',
+        'comp-inst-li4': 'Bridge technical security research with policy implications',
+        'comp-inst-how': '<strong>How I got here:</strong> Community coordination → Central Bank validation program → Government hackathon judging → Regulatory product testing',
+        'comp-em-h3': 'Emerging Markets &amp; Regenerative Finance',
+        'comp-em-what': '<strong>What I can do now:</strong>',
+        'comp-em-li1': 'Design blockchain solutions for Latin American contexts (payment systems, carbon markets, impact capital)',
+        'comp-em-li2': 'Identify information cost inefficiencies in regenerative markets',
+        'comp-em-li3': 'Build DeFi infrastructure for sustainability challenges',
+        'comp-em-li4': 'Adapt Web3 tools for low-trust, high-impact environments',
+        'comp-em-how': '<strong>How I got here:</strong> International ReFi coordination → Bioeconomy research → Carbon market analysis → Regenerative finance product design',
+        'comp-res-h3': 'Research Methodology &amp; Documentation',
+        'comp-res-what': '<strong>What I can do now:</strong>',
+        'comp-res-li1': 'Conduct rigorous comparative protocol analysis with comprehensive citations',
+        'comp-res-li2': 'Create interactive visualizations (Machinations flowcharts, economic simulations)',
+        'comp-res-li3': 'Structure complex research into accessible formats for different audiences',
+        'comp-res-li4': 'Maintain detailed documentation across multi-phase research projects',
+        'comp-res-how': '<strong>How I got here:</strong> Academic training (PhD, Master\'s) → International development research → DeFi security analysis → Interactive simulation design',
+        'academic-h2': 'Foundation: Academic Training &amp; Certifications',
+        'cred1-strong': ' 2021 - PhD in Institutional Analysis',
+        'cred1-span': 'Federal University of Rio de Janeiro (UFRJ), Brazil',
+        'cred1-p': ' Focus: Institutional mechanisms and governance structures.',
+        'cred2-strong': ' 2017 - Master\'s Degree in Justice Theory',
+        'cred2-span': 'Federal University of Espírito Santo (UFES), Brazil',
+        'cred3-strong': ' 2021 - Post-Graduate Specialist in Business Law',
+        'cred3-span': 'Institute of Legal Studies',
+        'cred4-strong': 'Blockchain Certifications',
+        'pubs-h2': 'Research Output: From Analysis to Attack Modeling',
+        'pub-stablecoins-h3': ' USDC, DAI and $BREAD Analysis (2025)',
+        'pub-design-h3': 'Stablecoin Design Experiments',
+        'pub-attack-h3': 'DeFi Attack Modelling &amp; Simulations',
+        'pub-opinion-h3': 'Opinion (2021-2022)',
+        'pub-refi-h3': 'Regenerative Finance - History &amp; Ecosystem Mapping (2022)',
+        'pub-political-h3': 'Political Research (2022)',
+        'pub-capital-h3': 'Capital Allocation (2024)',
+        'pub-regen-h3': 'Regenerative Finance - Products (2023-2025)',
+        'experience-h2': 'Experience: Building Capability Across Contexts',
+        'exp1-h4': 'CeLatam — Researcher &amp; DAO Member',
+        'exp1-meta': 'February 2024 - Present',
+        'exp1-p': 'Started as Researcher (February 2024), invited to become DAO Member (April 2025). As research lead, produced insights and reports, managed website, translated Startup Pathway to Portuguese, connected CeLatam to academia. Recent contributions include articles on impact capital allocation and creation of usebalaio.com.',
+        'exp2-h4': 'UNESCO-SOST Transcriativa — Board Member (Membro do conselho consultivo)',
+        'exp2-meta': 'June 2023 - Present',
+        'exp2-p': 'Using research background to connect UN Sustainable Development Goals with Brazilian entrepreneurship. Advisory work on sustainable development and impact measurement for non-profit and for-profit Brazilian initiatives.',
+        'exp3-h4': 'General Magic — Grant Manager',
+        'exp3-meta': 'January 2024 - November 2024',
+        'exp3-p': 'Grant management for Web3 public goods projects. Helped 7 clients raise funding, contributed to team\'s $3.5M in one year.',
+        'exp4-h4': 'ReFaz — Co-Founder',
+        'exp4-meta': 'January 2023 - November 2025',
+        'exp4-p': 'Co-founded consultancy for regenerative blockchain projects in Brazil. Bridged academic research with actual implementation. Built Blockchain na Escola and advised on tokenomics and governance.',
+        'exp5-h4': 'Ekonavi — Research Lead',
+        'exp5-meta': 'March 2023 - November 2025',
+        'exp5-p': 'Designed tokenomic models and documentation, led research during LIFT LAB program by Brazilian Central Bank (finalist selection). Product also won G20 Hackathon organized by Brazilian Central Bank with Bank of International Settlements. Worked directly with regulatory bodies to validate tokenized financial products.',
+        'exp6-h4': 'Blockchain na Escola — Founder',
+        'exp6-meta': 'December 2021 - December 2025',
+        'exp6-p': 'Educational initiative bringing Web3 to Brazilian public schools. Delivered large volume of on-chain certifications. First Web3 education program in Brazilian public schools. Winner of Blocknews Prize as best Web3 educational project in Brazil 2025.',
+        'exp7-h4': 'ReFi DAO — Core Team Contributor, Community Lead - First Cohort of Local Nodes',
+        'exp7-meta': 'January 2023 - May 2023',
+        'exp7-p': 'Set up research methodology for 29 local ReFi nodes across multiple countries. Launched first cohort, published ecosystem mappings for Brazil, Suriname, and Cameroon. Built the coordination framework, then handed it off.',
+        'exp8-h4': 'ReFi Events / ReFi Spring — Co-Founder, Community Builder and Grant Manager',
+        'exp8-meta': 'May 2022 - March 2023',
+        'exp8-p': 'Co-founded international ReFi community reaching attendees across 20+ countries. Organized 27 events across multiple continents. Built systems for decentralized event coordination. Mission-based initiative exceeded target of 50+ events, merged with ReFi DAO.',
+        'exp9-h4': 'ImpactPlus.io — Research Officer',
+        'exp9-meta': 'July 2022 - February 2023',
+        'exp9-p': 'Researched Web3 applications for social development and multilateral organizations. Analyzed supply chain decarbonization using blockchain transparency systems. Evaluated international development scenarios in low-trust environments.',
+        'exp10-h4': 'Token Engineering Academy — Host of the Token Engineering Academy Course',
+        'exp10-meta': 'July 2022 - August 2022',
+        'exp10-p': 'Hosted Brazilian Token Engineering educational groups. Taught governance models and incentive programs for blockchain organizations. Introduced Token Engineering concepts to Portuguese-speaking audiences.',
+        'exp11-h4': 'Prensa.li — Content Creator',
+        'exp11-meta': 'August 2021 - July 2022',
+        'exp11-p': 'Created content on tokenization economics, DeFi mechanisms, and regenerative finance. Published first ReFi articles in Portuguese, exploring how Web3 tools could serve Latin American communities.',
+        'languages-h2': 'Languages',
+        'lang-pt-chip': 'Portuguese — Native',
+        'lang-en-chip': 'English — Professional',
+        'lang-es-chip': 'Spanish — Intermediate',
+        'philosophy-h2': 'Research Philosophy',
+        'philosophy-p1': 'I got into this trying to understand how Web3 could work for communities that traditional finance ignores. Turns out the answer involves a lot of "first understand how it breaks."',
+        'philosophy-p2': 'The stablecoin research made it clear: you can\'t have perfect decentralization AND perfect stability AND perfect capital efficiency at the same time. Pick two. The attack modeling showed me that most vulnerabilities live between systems—oracle-circuit breaker interactions that look fine individually but create exploits when combined.',
+        'philosophy-p3': 'I can model sophisticated economic attacks and then explain them to central bank officials in the same week. I can design regenerative finance products and stress-test them with adversarial scenarios. Most people do one or the other.',
+        'philosophy-p4': 'What I bring: PhD-level methodology, experience validating products with Brazilian regulators, and enough time in emerging markets to know which Web3 ideas are bullshit and which might actually work.',
+        'philosophy-p5': 'Currently building the "DeFi Infrastructures for Regeneration Market" series—figuring out how AMMs, lending protocols, and stablecoins can support carbon credits and biodiversity markets without getting exploited.',
+      },
+      pt: {
+        'page-title': 'Resumo da Minha Trajetória',
+        'page-lead': 'Especialista em Economia de Tokens e Design de Governança',
+        'profile-h2': 'Perfil de Pesquisa',
+        'profile-p1': 'Pesquisador de segurança DeFi focado em crescimento, que foi do estudo de mecanismos de stablecoin à modelagem de ataques sofisticados em protocolos ao vivo. Especializado em traduzir conceitos de segurança Web3 para audiências institucionais e construir soluções blockchain práticas para mercados emergentes.',
+        'profile-p2': '<strong>Especialidades Principais:</strong> Modelagem de ataques, análise de segurança de stablecoins, design de finanças regenerativas, comunicação institucional',
+        'evolution-h2': 'Da Coordenação ReFi à Engenharia de Segurança DeFi (2021-2025)',
+        'evolution-phase1-h3': 'Fase 1: Construindo Fundações (2021-2022)',
+        'evolution-phase1-p': 'Comecei coordenando comunidades ReFi internacionalmente—organizei 27 eventos em mais de 20 países, publiquei o primeiro conteúdo ReFi em português. Aprendi: como explicar conceitos Web3 para audiências não-técnicas, coordenar equipes distribuídas, identificar o que funciona em diferentes contextos culturais.',
+        'evolution-phase2-h3': 'Fase 2: Validação Institucional (2022-2024)',
+        'evolution-phase2-p': 'Passei de construção de comunidade para trabalhar diretamente com reguladores. Fui jurado no <a href="https://patrimoniodauniaonaweb3.hackerearth.com/pt-br/challenges/hackathon/hacathon-web3-tokenizing-the-state-of-the-union/judges/#judges" target="_blank" rel="noopener">hackathon do Ministério da Economia</a> sobre tokenização de imóveis federais, contribuí para a equipe vencedora no <a href="https://www.gov.br/tesouronacional/pt-br/noticias/hackathon-web3-tokenizacao-do-tesouro-nacional-anuncia-os-vencedores" target="_blank" rel="noopener">desafio de tokenização da dívida do Tesouro Nacional</a>, liderei a tokenômica da <a href="https://ekonavi.substack.com/p/bioeconomia-e-blockchain-no-brasil" target="_blank" rel="noopener">Ekonavi</a> pelo programa LIFT Labs do Banco Central (onde o PIX foi criado).',
+        'evolution-phase2-cap': '<strong>Capacidade adquirida:</strong> Traduzir conceitos blockchain técnicos para tomadores de decisão institucionais, navegar requisitos regulatórios, validar produtos Web3 em ambientes de finanças tradicionais.',
+        'evolution-phase3-h3': 'Fase 3: Pesquisa Técnica Aprofundada (2024-2025)',
+        'evolution-phase3-p': 'Passei do design de tokens de alto nível para análise de protocolo focada em segurança. Conduzi análise comparativa de USDC, DAI e $BREAD examinando o "Triângulo Impossível" (descentralização vs estabilidade vs eficiência de capital). Projetei modelos de ataque contra a stablecoin cReal da Mento, explorando vulnerabilidades oracle-circuit breaker e ataques distribuídos de "sangramento lento".',
+        'evolution-phase3-cap': '<strong>Capacidade adquirida:</strong> Modelar vetores de ataque econômico, analisar mecanismos de segurança de protocolos, simular cenários adversariais, identificar padrões de exploração em ecossistemas DeFi.',
+        'evolution-prog-h3': 'O Que Esta Progressão Demonstra:',
+        'evolution-prog-p': 'Profundidade técnica: De coordenar eventos → analisar arquitetura de protocolo → modelar ataques sofisticados<br>Expansão de escopo: De uma única comunidade → coordenação internacional → pesquisa de segurança em todo o ecossistema<br>Aplicação no mundo real: Da teoria → validação regulatória → avaliação prática de vulnerabilidades<br>Tradução para audiências: Posso explicar o mesmo conceito para organizadores de comunidade, funcionários de bancos centrais e engenheiros de segurança',
+        'competencies-h2': 'Competências Principais de Pesquisa',
+        'comp-sec-h3': 'Análise de Segurança e Modelagem de Ataques',
+        'comp-sec-what': '<strong>O que posso fazer agora:</strong>',
+        'comp-sec-li1': 'Modelar ataques econômicos em protocolos DeFi (manipulação de oracle, exploração de circuit breaker, ataques de resgate distribuído)',
+        'comp-sec-li2': 'Analisar mecanismos de stablecoin em designs centralizados, algorítmicos e híbridos',
+        'comp-sec-li3': 'Identificar vulnerabilidades sistêmicas em dependências entre protocolos',
+        'comp-sec-li4': 'Simular cenários adversariais usando Machinations e modelagem econômica',
+        'comp-sec-how': '<strong>Como cheguei aqui:</strong> Comecei com economia básica de tokens → estudei mecanismos de governança → analisei trade-offs de stablecoins → desenvolvi frameworks de modelagem de ataques',
+        'comp-inst-h3': 'Comunicação Institucional e Navegação Regulatória',
+        'comp-inst-what': '<strong>O que posso fazer agora:</strong>',
+        'comp-inst-li1': 'Traduzir conceitos DeFi complexos para audiências institucionais não-técnicas',
+        'comp-inst-li2': 'Navegar requisitos regulatórios para produtos blockchain em mercados emergentes',
+        'comp-inst-li3': 'Validar soluções Web3 com bancos centrais e órgãos governamentais',
+        'comp-inst-li4': 'Conectar pesquisa técnica de segurança com implicações de política pública',
+        'comp-inst-how': '<strong>Como cheguei aqui:</strong> Coordenação de comunidade → Programa de validação do Banco Central → Julgamento de hackathon governamental → Teste de produto regulatório',
+        'comp-em-h3': 'Mercados Emergentes e Finanças Regenerativas',
+        'comp-em-what': '<strong>O que posso fazer agora:</strong>',
+        'comp-em-li1': 'Projetar soluções blockchain para contextos latino-americanos (sistemas de pagamento, mercados de carbono, capital de impacto)',
+        'comp-em-li2': 'Identificar ineficiências de custo de informação em mercados regenerativos',
+        'comp-em-li3': 'Construir infraestrutura DeFi para desafios de sustentabilidade',
+        'comp-em-li4': 'Adaptar ferramentas Web3 para ambientes de baixa confiança e alto impacto',
+        'comp-em-how': '<strong>Como cheguei aqui:</strong> Coordenação internacional ReFi → Pesquisa em bioeconomia → Análise de mercado de carbono → Design de produto de finanças regenerativas',
+        'comp-res-h3': 'Metodologia de Pesquisa e Documentação',
+        'comp-res-what': '<strong>O que posso fazer agora:</strong>',
+        'comp-res-li1': 'Conduzir análise comparativa rigorosa de protocolos com citações abrangentes',
+        'comp-res-li2': 'Criar visualizações interativas (fluxogramas Machinations, simulações econômicas)',
+        'comp-res-li3': 'Estruturar pesquisas complexas em formatos acessíveis para diferentes audiências',
+        'comp-res-li4': 'Manter documentação detalhada em projetos de pesquisa multifásicos',
+        'comp-res-how': '<strong>Como cheguei aqui:</strong> Formação acadêmica (Doutorado, Mestrado) → Pesquisa de desenvolvimento internacional → Análise de segurança DeFi → Design de simulação interativa',
+        'academic-h2': 'Base: Formação Acadêmica e Certificações',
+        'cred1-strong': ' 2021 - Doutorado em Análise Institucional',
+        'cred1-span': 'Universidade Federal do Rio de Janeiro (UFRJ), Brasil',
+        'cred1-p': ' Foco: Mecanismos institucionais e estruturas de governança.',
+        'cred2-strong': ' 2017 - Mestrado em Teoria da Justiça',
+        'cred2-span': 'Universidade Federal do Espírito Santo (UFES), Brasil',
+        'cred3-strong': ' 2021 - Pós-Graduação em Direito Empresarial',
+        'cred3-span': 'Instituto de Estudos Jurídicos',
+        'cred4-strong': 'Certificações em Blockchain',
+        'pubs-h2': 'Produção Científica: Da Análise à Modelagem de Ataques',
+        'pub-stablecoins-h3': ' Análise de USDC, DAI e $BREAD (2025)',
+        'pub-design-h3': 'Experimentos de Design de Stablecoin',
+        'pub-attack-h3': 'Modelagem de Ataques DeFi e Simulações',
+        'pub-opinion-h3': 'Opinião (2021-2022)',
+        'pub-refi-h3': 'Finanças Regenerativas - História e Mapeamento de Ecossistema (2022)',
+        'pub-political-h3': 'Pesquisa Política (2022)',
+        'pub-capital-h3': 'Alocação de Capital (2024)',
+        'pub-regen-h3': 'Finanças Regenerativas - Produtos (2023-2025)',
+        'experience-h2': 'Experiência: Construindo Capacidade em Diferentes Contextos',
+        'exp1-h4': 'CeLatam — Pesquisador e Membro DAO',
+        'exp1-meta': 'Fevereiro 2024 - Presente',
+        'exp1-p': 'Comecei como Pesquisador (fevereiro de 2024), fui convidado a me tornar Membro DAO (abril de 2025). Como líder de pesquisa, produzi insights e relatórios, gerenciei o site, traduzi o Startup Pathway para o português, conectei o CeLatam à academia. Contribuições recentes incluem artigos sobre alocação de capital de impacto e criação do usebalaio.com.',
+        'exp2-h4': 'UNESCO-SOST Transcriativa — Membro do Conselho Consultivo',
+        'exp2-meta': 'Junho 2023 - Presente',
+        'exp2-p': 'Usando background de pesquisa para conectar os Objetivos de Desenvolvimento Sustentável da ONU com o empreendedorismo brasileiro. Trabalho consultivo em desenvolvimento sustentável e mensuração de impacto para iniciativas brasileiras com e sem fins lucrativos.',
+        'exp3-h4': 'General Magic — Gerente de Grants',
+        'exp3-meta': 'Janeiro 2024 - Novembro 2024',
+        'exp3-p': 'Gestão de grants para projetos de bens públicos Web3. Ajudei 7 clientes a captar recursos, contribuí para o time arrecadar US$ 3,5M em um ano.',
+        'exp4-h4': 'ReFaz — Co-Fundador',
+        'exp4-meta': 'Janeiro 2023 - Novembro 2025',
+        'exp4-p': 'Co-fundei consultoria para projetos blockchain regenerativos no Brasil. Conectei pesquisa acadêmica com implementação real. Construí o Blockchain na Escola e assessorei em tokenômica e governança.',
+        'exp5-h4': 'Ekonavi — Líder de Pesquisa',
+        'exp5-meta': 'Março 2023 - Novembro 2025',
+        'exp5-p': 'Projetei modelos tokenômicos e documentação, liderei pesquisa durante o programa LIFT LAB do Banco Central do Brasil (seleção finalista). O produto também venceu o Hackathon do G20 organizado pelo Banco Central do Brasil com o Banco de Compensações Internacionais. Trabalhei diretamente com órgãos regulatórios para validar produtos financeiros tokenizados.',
+        'exp6-h4': 'Blockchain na Escola — Fundador',
+        'exp6-meta': 'Dezembro 2021 - Dezembro 2025',
+        'exp6-p': 'Iniciativa educacional levando Web3 às escolas públicas brasileiras. Emitimos grande volume de certificações on-chain. Primeiro programa de educação Web3 em escolas públicas brasileiras. Vencedor do Prêmio Blocknews como melhor projeto educacional Web3 do Brasil em 2025.',
+        'exp7-h4': 'ReFi DAO — Contribuidor do Time Principal, Líder de Comunidade - Primeira Coorte de Nós Locais',
+        'exp7-meta': 'Janeiro 2023 - Maio 2023',
+        'exp7-p': 'Estabeleci metodologia de pesquisa para 29 nós ReFi locais em múltiplos países. Lancei a primeira coorte, publiquei mapeamentos de ecossistema para Brasil, Suriname e Camarões. Construí o framework de coordenação e depois passei adiante.',
+        'exp8-h4': 'ReFi Events / ReFi Spring — Co-Fundador, Construtor de Comunidade e Gerente de Grants',
+        'exp8-meta': 'Maio 2022 - Março 2023',
+        'exp8-p': 'Co-fundei comunidade ReFi internacional alcançando participantes em mais de 20 países. Organizei 27 eventos em múltiplos continentes. Construí sistemas para coordenação descentralizada de eventos. Iniciativa baseada em missão superou a meta de 50+ eventos, fundida com a ReFi DAO.',
+        'exp9-h4': 'ImpactPlus.io — Oficial de Pesquisa',
+        'exp9-meta': 'Julho 2022 - Fevereiro 2023',
+        'exp9-p': 'Pesquisei aplicações Web3 para desenvolvimento social e organizações multilaterais. Analisei descarbonização de cadeias de suprimentos usando sistemas de transparência blockchain. Avaliei cenários de desenvolvimento internacional em ambientes de baixa confiança.',
+        'exp10-h4': 'Token Engineering Academy — Anfitrião do Curso da Token Engineering Academy',
+        'exp10-meta': 'Julho 2022 - Agosto 2022',
+        'exp10-p': 'Hospedei grupos educacionais brasileiros de Token Engineering. Ensinei modelos de governança e programas de incentivo para organizações blockchain. Introduzi conceitos de Token Engineering para audiências de língua portuguesa.',
+        'exp11-h4': 'Prensa.li — Criador de Conteúdo',
+        'exp11-meta': 'Agosto 2021 - Julho 2022',
+        'exp11-p': 'Criei conteúdo sobre economia de tokenização, mecanismos DeFi e finanças regenerativas. Publiquei os primeiros artigos ReFi em português, explorando como ferramentas Web3 poderiam servir comunidades latino-americanas.',
+        'languages-h2': 'Idiomas',
+        'lang-pt-chip': 'Português — Nativo',
+        'lang-en-chip': 'Inglês — Profissional',
+        'lang-es-chip': 'Espanhol — Intermediário',
+        'philosophy-h2': 'Filosofia de Pesquisa',
+        'philosophy-p1': 'Comecei tentando entender como o Web3 poderia funcionar para comunidades que as finanças tradicionais ignoram. Acontece que a resposta envolve muito "primeiro entenda como isso quebra".',
+        'philosophy-p2': 'A pesquisa com stablecoins deixou claro: você não pode ter descentralização perfeita E estabilidade perfeita E eficiência de capital perfeita ao mesmo tempo. Escolha dois. A modelagem de ataques me mostrou que a maioria das vulnerabilidades vive entre sistemas—interações oracle-circuit breaker que parecem ok individualmente, mas criam exploits quando combinadas.',
+        'philosophy-p3': 'Consigo modelar ataques econômicos sofisticados e depois explicá-los para funcionários de bancos centrais na mesma semana. Consigo projetar produtos de finanças regenerativas e testá-los com cenários adversariais. A maioria das pessoas faz um ou outro.',
+        'philosophy-p4': 'O que trago: metodologia de doutorado, experiência validando produtos com reguladores brasileiros, e tempo suficiente em mercados emergentes para saber quais ideias de Web3 são besteira e quais podem realmente funcionar.',
+        'philosophy-p5': 'Atualmente construindo a série "Infraestruturas DeFi para o Mercado de Regeneração"—descobrindo como AMMs, protocolos de empréstimo e stablecoins podem apoiar créditos de carbono e mercados de biodiversidade sem serem explorados.',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'pt' : 'en';
+      applyLang(currentLang);
+    }
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key] !== undefined) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+      const btn = document.getElementById('langToggle');
+      btn.textContent = lang === 'en' ? '🇧🇷 PT' : '🇺🇸 EN';
+    }
   </script>
 </body>
 </html>
