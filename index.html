@@ -3,112 +3,333 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MarceloReFi â€” Home</title>
-  <meta name="description" content="Marcelo Silva (aka MarceloReFi) â€” Web3 researcher and founder in Latin America." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <title>MarceloReFi — Home</title>
+  <meta name="description" content="Marcelo Silva — PhD Researcher, Community Development, Impact M&E." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .folder-tab { clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%); }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
+  </style>
 </head>
-<body>
-  <!-- Back / Forward buttons (hidden on mobile via media query in style.css) -->
-  <div class="nav-fabs">
-    <button title="Back" onclick="history.back()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 6l-6 6 6 6"/></svg>
-    </button>
-    <button title="Forward" onclick="history.forward()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg>
-    </button>
-  </div>
+<body class="bg-paper-cream text-deep-ink">
 
-  <main class="wrap">
-    <!-- Avatar + title (as before) -->
-    <header class="top">
-      <img class="avatar" src="avatar.jpg" alt="Marcelo Silva avatar" />
-      <div class="info">
-        <h1>Marcelo Silva (aka MarceloReFi)</h1>
-        <p class="lead">
-          Web3 researcher and founder exploring blockchain, regenerative finance, and local-first innovation in Latin America. Based in Brazil.
-        </p>
-        <p>
-          I'm an enthusiast of the intersection of Web3, Climate, and International Development from a civilian point of view.
-        </p>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center">
+        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <button id="lang-toggle" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all">PT | EN</button>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
-    </header>
-
-    <!-- Social media chips (icon size controlled by style.css) -->
-    <div class="social">
-      <a class="chip" href="https://www.instagram.com/marcelorefi/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-          <circle cx="12" cy="12" r="4"></circle>
-          <circle cx="17.3" cy="6.7" r="1"></circle>
-        </svg>
-        Instagram
-      </a>
-      <a class="chip" href="https://x.com/MarceloReFi" target="_blank" rel="noopener" aria-label="X">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.244 3H21l-6.54 7.47L22.5 21h-6.18l-4.83-6.02L5.82 21H3l7.02-8.02L2 3h6.3l4.37 5.59L18.244 3zM7.14 4.65H5.16l11.77 14.7h1.98L7.14 4.65z"/>
-        </svg>
-        X
-      </a>
-      <a class="chip" href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5 2.5 2.5 0 0 1 4.98 3.5zM.5 8h4v12h-4zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.77 2.65 4.77 6.1V20h-4v-7.1c0-1.7-.03-3.9-2.37-3.9-2.38 0-2.75 1.85-2.75 3.77V20h-4z"/>
-        </svg>
-        LinkedIn
-      </a>
-      <a class="chip" href="https://farcaster.xyz/marcelorefi.eth" target="_blank" rel="noopener" aria-label="Farcaster">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6 3h12v4H10v3h7v4h-7v7H6z"/>
-        </svg>
-        Farcaster
-      </a>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
     </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <button id="lang-toggle-mobile" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest self-start hover:bg-warm-amber transition-all">PT | EN</button>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
 
-    <!-- Highlights (restored to the previously approved version) -->
-    <div class="section">
-      <div class="list">
-        <article class="card">
-          <h3>Articles & Publications</h3>
-          <p class="meta">Writing on ReFi, RWAs, stablecoins, and local-first innovation.</p>
-          <p><a class="chip pink" href="articles.html">Browse Articles â†’</a></p>
-        </article>
-        <article class="card">
-          <h3>Projects</h3>
-          <p class="meta">Active, seasonal, and past contributions across LatAm.</p>
-          <p><a class="chip green" href="projects.html">See Projects â†’</a></p>
-        </article>
-        <article class="card">
-          <h3>Personal Blog</h3>
-          <p class="meta">Short notes, travel logs, and work-in-progress ideas.</p>
-          <p><a class="chip yellow" href="blog.html">Read the Blog â†’</a></p>
-        </article>
-        <article class="card">
-          <h3>DeFi & Stablecoin Review</h3>
-          <p class="meta">Comprehensive research on stablecoin sustainability, security, and design experiments.</p>
-          <p><a class="chip pink" href="defi-research.html">View Research →</a></p>
-        </article>
-        <article class="card">
-          <h3>Summary of my Journey</h3>
-          <p class="meta">Token Economics & Governance Research — 5+ years in regenerative finance, from theory to regulatory validation.</p>
-          <p><a class="chip green" href="journey-summary.html">View Journey →</a></p>
-        </article>
-        <article class="card">
-          <h3>DeFi Infrastructure to Regenerative Finance</h3>
-          <p class="meta">What the Carbon Credit Market Can Learn from CoW Protocol — exploring how DeFi can transform regenerative markets.</p>
-          <p><a class="chip yellow" href="defi-refi-article.html">Read Article →</a></p>
-        </article>
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
+    <!-- Hero Section -->
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center mb-24">
+      <div class="md:col-span-7 flex flex-col gap-6">
+        <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 self-start font-bold uppercase tracking-widest text-caption">
+          Dossier: Silva, Marcelo
+        </div>
+        <h1 class="text-headline-xl font-bold leading-tight tracking-tight" data-i18n="hero-headline">
+          "I study institutions and build the ones I want to see in the world."
+        </h1>
+        <p class="text-headline-md text-on-surface-variant" data-i18n="hero-subline">
+          PhD Researcher · Community Development · Impact Monitoring &amp; Evaluation
+        </p>
+        <div class="flex flex-wrap gap-4 mt-4">
+          <div class="rounded-full border-stroke-weight border-deep-ink bg-warm-amber px-6 py-2 font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">verified</span>
+            <span data-i18n="metric-certificates">30k certificates issued</span>
+          </div>
+          <div class="rounded-full border-stroke-weight border-deep-ink bg-terracotta text-paper-cream px-6 py-2 font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">public</span>
+            <span data-i18n="metric-countries">29+ countries</span>
+          </div>
+          <div class="rounded-full border-stroke-weight border-deep-ink bg-olive-drab text-paper-cream px-6 py-2 font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">payments</span>
+            <span data-i18n="metric-capital">$3.5M mobilized</span>
+          </div>
+        </div>
+        <!-- Social Links -->
+        <div class="flex gap-3 flex-wrap mt-2">
+          <a href="https://www.instagram.com/marcelorefi/" target="_blank" rel="noopener" class="border-stroke-weight border-deep-ink px-4 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+            Instagram
+          </a>
+          <a href="https://x.com/MarceloReFi" target="_blank" rel="noopener" class="border-stroke-weight border-deep-ink px-4 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 3H21l-6.54 7.47L22.5 21h-6.18l-4.83-6.02L5.82 21H3l7.02-8.02L2 3h6.3l4.37 5.59L18.244 3zM7.14 4.65H5.16l11.77 14.7h1.98L7.14 4.65z"/></svg>
+            X
+          </a>
+          <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank" rel="noopener" class="border-stroke-weight border-deep-ink px-4 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5 2.5 2.5 0 0 1 4.98 3.5zM.5 8h4v12h-4zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.77 2.65 4.77 6.1V20h-4v-7.1c0-1.7-.03-3.9-2.37-3.9-2.38 0-2.75 1.85-2.75 3.77V20h-4z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://farcaster.xyz/marcelorefi.eth" target="_blank" rel="noopener" class="border-stroke-weight border-deep-ink px-4 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12v4H10v3h7v4h-7v7H6z"/></svg>
+            Farcaster
+          </a>
+        </div>
       </div>
-    </div>
+      <div class="md:col-span-5 relative mt-8 md:mt-0">
+        <div class="border-stroke-weight border-deep-ink bg-white shadow-[12px_12px_0px_0px_#1A1A1A] p-4 rotate-2">
+          <img src="avatar.jpg" alt="Marcelo Silva" class="w-full grayscale"/>
+          <div class="mt-4 font-bold text-caption uppercase text-center border-t-2 border-deep-ink pt-2" data-i18n="avatar-caption">
+            [ PhD Researcher · São Paulo, Brasil ]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+
+      <!-- Featured Article -->
+      <article class="md:col-span-8 border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all">
+        <div class="bg-tertiary-container border-b-stroke-weight border-deep-ink px-6 py-3 flex items-center gap-3">
+          <span class="font-bold uppercase tracking-widest text-caption">Featured Article</span>
+          <span class="material-symbols-outlined text-deep-ink">star</span>
+        </div>
+        <div class="p-6 flex flex-col gap-4 flex-grow">
+          <h3 class="text-headline-lg font-bold">DeFi Infrastructure to Regenerative Finance</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">What the Carbon Credit Market Can Learn from CoW Protocol — exploring how DeFi can transform regenerative markets.</p>
+          <div>
+            <a href="defi-refi-article.html" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-6 py-2 font-bold uppercase tracking-widest text-caption hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Article →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- About Card -->
+      <article class="md:col-span-4 border-stroke-weight border-deep-ink bg-surface-container neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-primary">person</span>
+          <h3 class="text-headline-md font-bold" data-i18n="card-about">About &amp; Research Journey</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Token Economics &amp; Governance Research — 5+ years in regenerative finance, from theory to regulatory validation.</p>
+          <div>
+            <a href="about.html" class="inline-block bg-deep-ink text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:bg-primary transition-all">View →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Archive Card -->
+      <article class="md:col-span-4 border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-terracotta">article</span>
+          <h3 class="text-headline-md font-bold" data-i18n="card-archive">Archive &amp; Field Notes</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Writing on ReFi, RWAs, stablecoins, and local-first innovation.</p>
+          <div>
+            <a href="articles.html" class="inline-block bg-terracotta text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:opacity-90 transition-all">Browse →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projects Card -->
+      <article class="md:col-span-4 border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-olive-drab">folder</span>
+          <h3 class="text-headline-md font-bold">Projects</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Active, seasonal, and past contributions across LatAm.</p>
+          <div>
+            <a href="projects.html" class="inline-block bg-olive-drab text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:opacity-90 transition-all">See Projects →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Blog Card -->
+      <article class="md:col-span-4 border-stroke-weight border-deep-ink bg-surface-container-high neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-on-surface-variant">edit_note</span>
+          <h3 class="text-headline-md font-bold">Personal Blog</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Short notes, travel logs, and work-in-progress ideas.</p>
+          <div>
+            <a href="blog.html" class="inline-block bg-deep-ink text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:bg-primary transition-all">Read Blog →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Impact Card -->
+      <article class="md:col-span-6 border-stroke-weight border-deep-ink bg-warm-amber neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-deep-ink">analytics</span>
+          <h3 class="text-headline-md font-bold" data-i18n="card-impact">Impact M&amp;E</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Monitoring &amp; Evaluation — $3.5M mobilized, 30k certificates, 29+ countries.</p>
+          <div>
+            <a href="impact.html" class="inline-block bg-deep-ink text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:bg-primary transition-all">View Impact →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- DeFi Review Card -->
+      <article class="md:col-span-6 border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all">
+        <div class="p-6 flex flex-col gap-4 h-full">
+          <span class="material-symbols-outlined text-4xl text-primary">security</span>
+          <h3 class="text-headline-md font-bold">DeFi &amp; Stablecoin Review</h3>
+          <p class="text-body-md text-on-surface-variant flex-grow">Comprehensive research on stablecoin sustainability, security, and design experiments.</p>
+          <div>
+            <a href="defi-research.html" class="inline-block bg-primary text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:opacity-90 transition-all">View Research →</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
   </main>
 
-  <footer>
-    <div class="footer-inner">Â© <span id="y"></span> Marcelo Silva.</div>
+  <!-- Footer -->
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = {
+      en: {
+        'hero-headline': '"I study institutions and build the ones I want to see in the world."',
+        'hero-subline': 'PhD Researcher · Community Development · Impact Monitoring &amp; Evaluation',
+        'metric-certificates': '30k certificates issued',
+        'metric-countries': '29+ countries',
+        'metric-capital': '$3.5M mobilized',
+        'avatar-caption': '[ PhD Researcher · São Paulo, Brasil ]',
+        'card-about': 'About &amp; Research Journey',
+        'card-archive': 'Archive &amp; Field Notes',
+        'card-impact': 'Impact M&amp;E',
+      },
+      pt: {
+        'hero-headline': '"Estudo instituições e construo as que quero ver no mundo."',
+        'hero-subline': 'Pesquisador PhD · Desenvolvimento Comunitário · Monitoramento &amp; Avaliação de Impacto',
+        'metric-certificates': '30 mil certificados emitidos',
+        'metric-countries': '29+ países',
+        'metric-capital': 'US$ 3,5M mobilizados',
+        'avatar-caption': '[ Pesquisador PhD · São Paulo, Brasil ]',
+        'card-about': 'Sobre &amp; Trajetória',
+        'card-archive': 'Arquivo &amp; Notas de Campo',
+        'card-impact': 'Monitoramento de Impacto',
+      }
+    };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: {
+        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
+        'footer-contact': 'Contact'
+      },
+      pt: {
+        'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
+        'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
+        'footer-contact': 'Contato'
+      }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt }
+    };
+    let lang = localStorage.getItem('lang') || 'en';
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l][key]) el.innerHTML = translations[l][key];
+      });
+    }
+    document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(lang === 'en' ? 'pt' : 'en'));
+    });
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    applyLang(lang);
   </script>
 </body>
 </html>

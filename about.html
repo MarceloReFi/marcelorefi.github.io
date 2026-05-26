@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Marcelo Silva</title>
+  <meta name="description" content="PhD Researcher in Institutional Theory. Post-Doctoral Researcher at CECID/UNIFACS. Community development and impact M&E." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .folder-tab { clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%); }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
+  </style>
+</head>
+<body class="bg-paper-cream text-deep-ink">
+
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center">
+        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-about">About</a>
+        <button id="lang-toggle" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all">PT | EN</button>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-about">About</a>
+      <button id="lang-toggle-mobile" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest self-start hover:bg-warm-amber transition-all">PT | EN</button>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
+    <!-- Dossier Header -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-16">
+      <div class="md:col-span-8">
+        <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4">
+          DOSSIER: SILVA, MARCELO
+        </div>
+        <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow p-8">
+          <table class="w-full text-body-md border-collapse">
+            <tr class="border-b border-outline-variant">
+              <td class="py-3 pr-6 font-bold uppercase text-caption text-on-surface-variant w-40">Name</td>
+              <td class="py-3 font-bold">Marcelo Silva</td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3 pr-6 font-bold uppercase text-caption text-on-surface-variant">Quote</td>
+              <td class="py-3 italic text-on-surface-variant" data-i18n="about-quote">"I study institutions and build the ones I want to see in the world."</td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3 pr-6 font-bold uppercase text-caption text-on-surface-variant">Status</td>
+              <td class="py-3"><span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-olive-drab inline-block"></span> <span data-i18n="about-status">Active — Post-Doctoral Researcher</span></span></td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3 pr-6 font-bold uppercase text-caption text-on-surface-variant">Role</td>
+              <td class="py-3" data-i18n="about-role">PhD Researcher · Community Development · Impact M&amp;E</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6 font-bold uppercase text-caption text-on-surface-variant">Location</td>
+              <td class="py-3">Pinheiros, São Paulo, Brasil</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="md:col-span-4">
+        <div class="border-stroke-weight border-deep-ink bg-white shadow-[8px_8px_0px_0px_#1A1A1A] p-4 -rotate-1">
+          <img src="avatar.jpg" alt="Marcelo Silva" class="w-full grayscale"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biography -->
+    <section class="mb-16">
+      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+        Biography
+      </div>
+      <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow p-8">
+        <p class="text-body-lg leading-relaxed" data-i18n="about-bio">PhD in Institutional Theory (UFRJ) and Post-Doctoral Researcher at CECID/UNIFACS, working on risk analysis frameworks for impact capital allocation. Over ten years building governance infrastructure across Latin America — from coordinating 29 nodes across 29 countries to launching Brazil's first blockchain education program in public schools. Currently directing advocacy and partnerships at Liga Colaborativa dos Povos, applying AI, blockchain, and georeferencing to support traditional communities in territorial conflicts. Managed $3.5M in grant mobilization for 50+ public goods projects. Winner of the G20 Hackathon (BIS) and National Treasury Tokenization Challenge (two tracks). Taught Philosophy, Justice Theory, and Project Management at IFES and UFES.</p>
+      </div>
+    </section>
+
+    <!-- Academic Background -->
+    <section class="mb-16">
+      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+        Academic Background
+      </div>
+      <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow">
+        <div class="border-b-stroke-weight border-deep-ink p-6 flex gap-4 items-start">
+          <span class="material-symbols-outlined text-warm-amber mt-1">school</span>
+          <div>
+            <p class="font-bold text-body-md" data-i18n="about-cred-1">Post-Doctoral Research, Risk Analysis for Impact Capital Allocation — CECID/UNIFACS (current)</p>
+          </div>
+        </div>
+        <div class="border-b-stroke-weight border-deep-ink p-6 flex gap-4 items-start">
+          <span class="material-symbols-outlined text-warm-amber mt-1">school</span>
+          <div>
+            <p class="font-bold text-body-md" data-i18n="about-cred-2">PhD, Institutional Theory — UFRJ, 2021</p>
+          </div>
+        </div>
+        <div class="border-b-stroke-weight border-deep-ink p-6 flex gap-4 items-start">
+          <span class="material-symbols-outlined text-warm-amber mt-1">school</span>
+          <div>
+            <p class="font-bold text-body-md" data-i18n="about-cred-3">Master's, Justice Theory — UFES, 2016</p>
+          </div>
+        </div>
+        <div class="border-b-stroke-weight border-deep-ink p-6 flex gap-4 items-start">
+          <span class="material-symbols-outlined text-warm-amber mt-1">school</span>
+          <div>
+            <p class="font-bold text-body-md" data-i18n="about-cred-4">Post-Graduate, Business Law — LEGALE, 2021</p>
+          </div>
+        </div>
+        <div class="p-6 flex gap-4 items-start">
+          <span class="material-symbols-outlined text-warm-amber mt-1">school</span>
+          <div>
+            <p class="font-bold text-body-md" data-i18n="about-cred-5">Bachelor's, Philosophy — UFES, 2014</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Network & Affiliates -->
+    <section class="mb-16">
+      <div class="inline-block bg-surface-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+        Network &amp; Affiliates
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <span class="border-stroke-weight border-deep-ink bg-white px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">Liga Colaborativa dos Povos</span>
+        <span class="border-stroke-weight border-deep-ink bg-tertiary-container px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">UNESCO-SOST</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">CeLatam</span>
+        <span class="border-stroke-weight border-deep-ink bg-warm-amber px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">CECID/UNIFACS</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">General Magic</span>
+        <span class="border-stroke-weight border-deep-ink bg-surface-container px-5 py-2 font-bold text-body-md shadow-[4px_4px_0px_0px_#1A1A1A]">Ekonavi</span>
+      </div>
+    </section>
+
+    <!-- Core Expertise -->
+    <section class="mb-16">
+      <div class="inline-block bg-terracotta text-paper-cream border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+        Core Expertise
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-1">Institutional Analysis</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-2">Impact Monitoring &amp; Evaluation</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-3">Community Development</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-4">Grant Management</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-5">Regenerative Finance</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-6">Governance Design</span>
+        <span class="border-stroke-weight border-deep-ink bg-white px-4 py-2 font-bold text-body-md" data-i18n="about-exp-7">Public Goods Funding</span>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="mb-16">
+      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+        Contact
+      </div>
+      <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow p-8">
+        <form action="mailto:marcelo@refaz.xyz" method="GET" enctype="text/plain" class="flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <label class="font-bold uppercase tracking-widest text-caption" data-i18n="form-name">Name</label>
+            <input type="text" name="name" class="border-stroke-weight border-deep-ink bg-paper-cream px-4 py-3 text-body-md font-body-md focus:outline-none focus:bg-tertiary-container"/>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-bold uppercase tracking-widest text-caption" data-i18n="form-email">Email</label>
+            <input type="email" name="email" class="border-stroke-weight border-deep-ink bg-paper-cream px-4 py-3 text-body-md focus:outline-none focus:bg-tertiary-container"/>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-bold uppercase tracking-widest text-caption" data-i18n="form-message">Message</label>
+            <textarea name="body" rows="5" class="border-stroke-weight border-deep-ink bg-paper-cream px-4 py-3 text-body-md focus:outline-none focus:bg-tertiary-container resize-none"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-8 py-3 font-bold uppercase tracking-widest text-caption hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all" data-i18n="form-submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-stroke-weight border-deep-ink bg-deep-ink text-paper-cream neobrutalist-shadow p-10 text-center">
+      <h2 class="text-headline-lg font-bold mb-4" data-i18n="cta-heading">Let's build institutions that work.</h2>
+      <p class="text-body-lg text-outline-variant mb-8" data-i18n="cta-desc">Open to collaborations on impact capital, community governance, and public goods infrastructure.</p>
+      <a href="mailto:marcelo@refaz.xyz" class="inline-block bg-warm-amber text-deep-ink border-stroke-weight border-warm-amber px-8 py-3 font-bold uppercase tracking-widest text-caption hover:bg-tertiary-container transition-all" data-i18n="cta-btn">Get in Touch</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PAGE_TRANSLATIONS = {
+      en: {
+        'about-quote': '"I study institutions and build the ones I want to see in the world."',
+        'about-status': 'Active — Post-Doctoral Researcher',
+        'about-role': 'PhD Researcher · Community Development · Impact M&amp;E',
+        'about-bio': 'PhD in Institutional Theory (UFRJ) and Post-Doctoral Researcher at CECID/UNIFACS, working on risk analysis frameworks for impact capital allocation. Over ten years building governance infrastructure across Latin America — from coordinating 29 nodes across 29 countries to launching Brazil\'s first blockchain education program in public schools. Currently directing advocacy and partnerships at Liga Colaborativa dos Povos, applying AI, blockchain, and georeferencing to support traditional communities in territorial conflicts. Managed $3.5M in grant mobilization for 50+ public goods projects. Winner of the G20 Hackathon (BIS) and National Treasury Tokenization Challenge (two tracks). Taught Philosophy, Justice Theory, and Project Management at IFES and UFES.',
+        'about-cred-1': 'Post-Doctoral Research, Risk Analysis for Impact Capital Allocation — CECID/UNIFACS (current)',
+        'about-cred-2': 'PhD, Institutional Theory — UFRJ, 2021',
+        'about-cred-3': 'Master\'s, Justice Theory — UFES, 2016',
+        'about-cred-4': 'Post-Graduate, Business Law — LEGALE, 2021',
+        'about-cred-5': 'Bachelor\'s, Philosophy — UFES, 2014',
+        'about-exp-1': 'Institutional Analysis',
+        'about-exp-2': 'Impact Monitoring &amp; Evaluation',
+        'about-exp-3': 'Community Development',
+        'about-exp-4': 'Grant Management',
+        'about-exp-5': 'Regenerative Finance',
+        'about-exp-6': 'Governance Design',
+        'about-exp-7': 'Public Goods Funding',
+        'form-name': 'Name',
+        'form-email': 'Email',
+        'form-message': 'Message',
+        'form-submit': 'Send Message',
+        'cta-heading': 'Let\'s build institutions that work.',
+        'cta-desc': 'Open to collaborations on impact capital, community governance, and public goods infrastructure.',
+        'cta-btn': 'Get in Touch',
+      },
+      pt: {
+        'about-quote': '"Estudo instituições e construo as que quero ver no mundo."',
+        'about-status': 'Ativo — Pesquisador de Pós-Doutorado',
+        'about-role': 'Pesquisador PhD · Desenvolvimento Comunitário · Monitoramento &amp; Avaliação de Impacto',
+        'about-bio': 'Doutor em Teoria Institucional (UFRJ) e Pesquisador de Pós-Doutorado no CECID/UNIFACS, desenvolvendo frameworks de análise de risco para alocação de capital de impacto. Mais de dez anos construindo infraestrutura de governança na América Latina — da coordenação de 29 nós em 29 países ao lançamento do primeiro programa de educação blockchain em escolas públicas do Brasil. Atualmente diretor de advocacy e parcerias na Liga Colaborativa dos Povos, aplicando IA, blockchain e georreferenciamento para apoiar comunidades tradicionais em conflitos territoriais. Gerenciou US$ 3,5M em mobilização de grants para 50+ projetos de bens públicos. Vencedor do Hackathon do G20 (BIS) e do Desafio de Tokenização do Tesouro Nacional (duas trilhas). Professor de Filosofia, Teoria da Justiça e Gestão de Projetos no IFES e UFES.',
+        'about-cred-1': 'Pesquisa Pós-Doutoral, Análise de Risco para Alocação de Capital de Impacto — CECID/UNIFACS (atual)',
+        'about-cred-2': 'Doutorado, Teoria Institucional — UFRJ, 2021',
+        'about-cred-3': 'Mestrado, Teoria da Justiça — UFES, 2016',
+        'about-cred-4': 'Pós-Graduação, Direito Empresarial — LEGALE, 2021',
+        'about-cred-5': 'Bacharelado, Filosofia — UFES, 2014',
+        'about-exp-1': 'Análise Institucional',
+        'about-exp-2': 'Monitoramento &amp; Avaliação de Impacto',
+        'about-exp-3': 'Desenvolvimento Comunitário',
+        'about-exp-4': 'Gestão de Grants',
+        'about-exp-5': 'Finanças Regenerativas',
+        'about-exp-6': 'Design de Governança',
+        'about-exp-7': 'Financiamento de Bens Públicos',
+        'form-name': 'Nome',
+        'form-email': 'E-mail',
+        'form-message': 'Mensagem',
+        'form-submit': 'Enviar Mensagem',
+        'cta-heading': 'Vamos construir instituições que funcionem.',
+        'cta-desc': 'Aberto a colaborações em capital de impacto, governança comunitária e infraestrutura de bens públicos.',
+        'cta-btn': 'Entrar em Contato',
+      }
+    };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: {
+        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
+        'footer-contact': 'Contact'
+      },
+      pt: {
+        'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
+        'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
+        'footer-contact': 'Contato'
+      }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt }
+    };
+    let lang = localStorage.getItem('lang') || 'en';
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l][key]) el.innerHTML = translations[l][key];
+      });
+    }
+    document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(lang === 'en' ? 'pt' : 'en'));
+    });
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    applyLang(lang);
+  </script>
+</body>
+</html>

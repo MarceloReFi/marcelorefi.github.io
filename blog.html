@@ -3,60 +3,214 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Personal Blog — MarceloReFi</title>
-  <meta name="description" content="Personal notes and informal posts by MarceloReFi." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <title>Personal Blog — Marcelo Silva</title>
+  <meta name="description" content="Short notes, travel logs, and work-in-progress ideas by Marcelo Silva." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .folder-tab { clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%); }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
+  </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Home chip -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
-
-    <header class="top">
-      <img src="avatar.jpg" alt="Marcelo Silva avatar" class="avatar" />
-      <div class="info">
-        <h1>Personal Blog</h1>
-        <p class="lead">Short notes, travel logs, and work-in-progress ideas.</p>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center">
+        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <button id="lang-toggle" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all">PT | EN</button>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
-    </header>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <button id="lang-toggle-mobile" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest self-start hover:bg-warm-amber transition-all">PT | EN</button>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
 
-    <section class="section">
-      <h2>2025</h2>
-      <div class="list">
-        <article class="card">
-          <h3>Notes from the road — Bogotá → Rio</h3>
-          <p class="meta">Jan 2025</p>
-          <p>Sketches on community governance patterns I keep seeing across LatAm.</p>
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
+    <!-- Page Header -->
+    <div class="mb-12">
+      <div class="inline-block bg-surface-container-high border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4">
+        FIELD NOTES
+      </div>
+      <h1 class="text-headline-xl font-bold" data-i18n="blog-heading">Personal Blog</h1>
+      <p class="text-body-lg text-on-surface-variant mt-2" data-i18n="blog-subheading">Short notes, travel logs, and work-in-progress ideas.</p>
+    </div>
+
+    <!-- 2025 -->
+    <section class="mb-12">
+      <div class="folder-tab bg-deep-ink text-paper-cream inline-block px-6 py-2 font-bold uppercase tracking-widest text-caption mb-0">
+        2025
+      </div>
+      <div class="border-stroke-weight border-deep-ink bg-white">
+        <article class="border-b border-outline-variant p-6 hover:bg-surface-container-low transition-all">
+          <p class="text-caption font-bold uppercase tracking-widest text-on-surface-variant mb-2">Jan 2025</p>
+          <h3 class="font-bold text-headline-md mb-2">Notes from the road — Bogotá → Rio</h3>
+          <p class="text-body-md text-on-surface-variant">Sketches on community governance patterns I keep seeing across LatAm.</p>
         </article>
-        <article class="card">
-          <h3>Local-first tools I’m testing</h3>
-          <p class="meta">Jan 2025</p>
-          <p>Quick experiments with offline-friendly, sync-later workflows for small teams.</p>
+        <article class="p-6 hover:bg-surface-container-low transition-all">
+          <p class="text-caption font-bold uppercase tracking-widest text-on-surface-variant mb-2">Jan 2025</p>
+          <h3 class="font-bold text-headline-md mb-2">Local-first tools I'm testing</h3>
+          <p class="text-body-md text-on-surface-variant">Quick experiments with offline-friendly, sync-later workflows for small teams.</p>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <h2>2024</h2>
-      <div class="list">
-        <article class="card">
-          <h3>Why RWAs need better stories</h3>
-          <p class="meta">Dec 2024</p>
-          <p>It’s not just risk and yield—it's context, purpose, and local capacity.</p>
+    <!-- 2024 -->
+    <section class="mb-12">
+      <div class="folder-tab bg-deep-ink text-paper-cream inline-block px-6 py-2 font-bold uppercase tracking-widest text-caption mb-0">
+        2024
+      </div>
+      <div class="border-stroke-weight border-deep-ink bg-white">
+        <article class="p-6 hover:bg-surface-container-low transition-all">
+          <p class="text-caption font-bold uppercase tracking-widest text-on-surface-variant mb-2">Dec 2024</p>
+          <h3 class="font-bold text-headline-md mb-2">Why RWAs need better stories</h3>
+          <p class="text-body-md text-on-surface-variant">It's not just risk and yield — it's context, purpose, and local capacity.</p>
         </article>
       </div>
     </section>
 
-    <footer>
-      <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
-    </footer>
-  </div>
+  </main>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- Footer -->
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PAGE_TRANSLATIONS = {
+      en: {
+        'blog-heading': 'Personal Blog',
+        'blog-subheading': 'Short notes, travel logs, and work-in-progress ideas.',
+      },
+      pt: {
+        'blog-heading': 'Blog Pessoal',
+        'blog-subheading': 'Notas curtas, diários de viagem e ideias em desenvolvimento.',
+      }
+    };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: {
+        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
+        'footer-contact': 'Contact'
+      },
+      pt: {
+        'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
+        'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
+        'footer-contact': 'Contato'
+      }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt }
+    };
+    let lang = localStorage.getItem('lang') || 'en';
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l][key]) el.innerHTML = translations[l][key];
+      });
+    }
+    document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(lang === 'en' ? 'pt' : 'en'));
+    });
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    applyLang(lang);
+  </script>
 </body>
 </html>
-
