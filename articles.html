@@ -129,25 +129,49 @@
       <button class="filter-chip border-stroke-weight border-deep-ink px-5 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all" data-filter="impact" data-i18n="filter-impact">Impact</button>
     </div>
 
-    <!-- Two-column layout: archive + sidebar -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+    <!-- Article List -->
+    <div>
 
-      <!-- Article List -->
-      <div class="lg:col-span-8">
+        <!-- Featured Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-gutter">
 
-        <!-- Featured Article -->
-        <article class="article-item border-stroke-weight border-deep-ink bg-white neobrutalist-shadow mb-gutter transition-all" data-category="refi research">
-          <div class="bg-warm-amber border-b-stroke-weight border-deep-ink px-6 py-3 flex items-center gap-3">
-            <span class="font-bold uppercase tracking-widest text-caption">Featured</span>
-            <span class="material-symbols-outlined text-deep-ink">star</span>
-          </div>
-          <div class="p-6 flex flex-col gap-3">
-            <h3 class="text-headline-md font-bold">DeFi Infrastructure to Regenerative Finance</h3>
-            <p class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">Article Series · 2024–2025</p>
-            <p class="text-body-md text-on-surface-variant">What the Carbon Credit Market Can Learn from CoW Protocol — applying DeFi infrastructure to real-world regenerative challenges.</p>
-            <a href="defi-refi-article.html" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-6 py-2 font-bold uppercase tracking-widest text-caption self-start mt-2 hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Article →</a>
-          </div>
-        </article>
+          <article class="article-item border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all" data-category="impact research">
+            <div class="bg-warm-amber border-b-stroke-weight border-deep-ink px-4 py-3 flex items-center gap-2">
+              <span class="font-bold uppercase tracking-widest text-caption">Featured</span>
+              <span class="material-symbols-outlined text-deep-ink text-base">star</span>
+            </div>
+            <div class="p-5 flex flex-col gap-3 flex-grow">
+              <h3 class="font-bold text-body-md">The Challenge of Impact Capital Allocation</h3>
+              <p class="text-caption text-on-surface-variant flex-grow">2-part series on the structural blind spots in impact investing — CeLatam + Pedro Parrachia · 2025</p>
+              <a href="https://medium.com/@celatamorg/the-challenge-of-impact-capital-allocation-part-1-9cf1404f60ad" target="_blank" rel="noopener" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-4 py-2 font-bold uppercase tracking-widest text-caption self-start hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Series →</a>
+            </div>
+          </article>
+
+          <article class="article-item border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all" data-category="community">
+            <div class="bg-warm-amber border-b-stroke-weight border-deep-ink px-4 py-3 flex items-center gap-2">
+              <span class="font-bold uppercase tracking-widest text-caption">Featured</span>
+              <span class="material-symbols-outlined text-deep-ink text-base">star</span>
+            </div>
+            <div class="p-5 flex flex-col gap-3 flex-grow">
+              <h3 class="font-bold text-body-md">How to Build Web3 Communities in Latin America</h3>
+              <p class="text-caption text-on-surface-variant flex-grow">Handbook · CeLatam · 2025</p>
+              <a href="https://www.canva.com/design/DAGrGKUrXWE/1OeElUOz6_H71W-dYoQIrA/view" target="_blank" rel="noopener" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-4 py-2 font-bold uppercase tracking-widest text-caption self-start hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Handbook →</a>
+            </div>
+          </article>
+
+          <article class="article-item border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all" data-category="community">
+            <div class="bg-warm-amber border-b-stroke-weight border-deep-ink px-4 py-3 flex items-center gap-2">
+              <span class="font-bold uppercase tracking-widest text-caption">Featured</span>
+              <span class="material-symbols-outlined text-deep-ink text-base">star</span>
+            </div>
+            <div class="p-5 flex flex-col gap-3 flex-grow">
+              <h3 class="font-bold text-body-md">Meet The Builders</h3>
+              <p class="text-caption text-on-surface-variant flex-grow">6-part profile series on Latin America's Web3 builders — CeLatam · 2025</p>
+              <a href="https://medium.com/@celatamorg/meet-the-builders-part-1-romina-from-eth-kipu-a86cffda6227" target="_blank" rel="noopener" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-4 py-2 font-bold uppercase tracking-widest text-caption self-start hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Series →</a>
+            </div>
+          </article>
+
+        </div>
 
         <!-- 2025 Section -->
         <div class="mb-2 mt-8">
@@ -173,7 +197,7 @@
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="research refi">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/refi-rwa-and-stablecoins-in-latam-research-grants-know-our-grantees" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Latin America's Web3 Opportunities: Stablecoins, RWA, and ReFi Research</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/refi-rwa-and-stablecoins-in-latam-research-grants-know-our-grantees" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Latin America's Web3 Opportunities: Stablecoins, RWA, and ReFi Research</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam · 2024</p>
           </article>
 
@@ -258,37 +282,37 @@
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="refi research">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/modular-carnival" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Modular Carnival</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/modular-carnival" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Modular Carnival</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="community refi">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/pioneering-web3-in-chapada-diamantina" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Pioneering Web3 in Chapada Diamantina</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/pioneering-web3-in-chapada-diamantina" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Pioneering Web3 in Chapada Diamantina</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="research refi">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/refi-rwa-and-stablecoins-in-latam-research-grants-know-our-grantees" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">ReFi, RWA, and Stablecoins in Latam: Research Grants — Know our Grantees</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/refi-rwa-and-stablecoins-in-latam-research-grants-know-our-grantees" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">ReFi, RWA, and Stablecoins in Latam: Research Grants — Know our Grantees</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="community">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/embracing-evolution-from-knkt-dao-to-celatam" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Embracing Evolution: From Knkt DAO to CeLatam</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/embracing-evolution-from-knkt-dao-to-celatam" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Embracing Evolution: From Knkt DAO to CeLatam</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="refi community">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/celos-impact-in-latin-america-and-celatam-mission" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Celo's Impact in Latin America and CeLatam Mission</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/celos-impact-in-latin-america-and-celatam-mission" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Celo's Impact in Latin America and CeLatam Mission</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="refi research">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/hacking-growth-in-latin-america-regenerative-finance-real-world-assets-and-stablecoins" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Hacking Growth in Latin America: ReFi, RWAs, and Stablecoins</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/hacking-growth-in-latin-america-regenerative-finance-real-world-assets-and-stablecoins" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Hacking Growth in Latin America: ReFi, RWAs, and Stablecoins</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
           <article class="article-item p-5 hover:bg-surface-container-low transition-all" data-category="research">
-            <h3 class="font-bold text-body-md"><a href="https://www.celatam.org/insights/scaling-impact-and-innovation-in-latin-america-our-strategy-for-2025" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Scaling Impact &amp; Innovation in Latin America: our strategy for 2025</a></h3>
+            <h3 class="font-bold text-body-md"><a href="https://celo-latam.webflow.io/insights/scaling-impact-and-innovation-in-latin-america-our-strategy-for-2025" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Scaling Impact &amp; Innovation in Latin America: our strategy for 2025</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">CeLatam</p>
           </article>
 
@@ -438,50 +462,6 @@
 
         </div>
 
-      </div>
-
-      <!-- Metadata Sidebar -->
-      <aside class="lg:col-span-4">
-        <div class="lg:sticky lg:top-28">
-          <div class="border-stroke-weight border-deep-ink bg-deep-ink text-paper-cream neobrutalist-shadow mb-gutter">
-            <div class="border-b border-on-surface-variant px-6 py-4">
-              <p class="text-caption font-bold uppercase tracking-widest text-warm-amber">Archive Metadata</p>
-            </div>
-            <div class="px-6 py-4 flex flex-col gap-4">
-              <div class="border-b border-on-surface-variant pb-4">
-                <p class="text-caption uppercase tracking-widest text-outline mb-1" data-i18n="meta-studies-label">Active Studies</p>
-                <p class="text-headline-md font-bold">50+</p>
-              </div>
-              <div class="border-b border-on-surface-variant pb-4">
-                <p class="text-caption uppercase tracking-widest text-outline mb-1" data-i18n="meta-contributor-label">Contributor</p>
-                <p class="font-bold text-body-md">MARCELO_SILVA</p>
-              </div>
-              <div class="border-b border-on-surface-variant pb-4">
-                <p class="text-caption uppercase tracking-widest text-outline mb-1" data-i18n="meta-updated-label">Last Update</p>
-                <p class="font-bold text-body-md">2025</p>
-              </div>
-              <div>
-                <p class="text-caption uppercase tracking-widest text-outline mb-1" data-i18n="meta-security-label">Security</p>
-                <p class="font-bold text-body-md text-warm-amber">UNCLASSIFIED</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Also see -->
-          <div class="border-stroke-weight border-deep-ink bg-white p-6 flex flex-col gap-4">
-            <p class="font-bold uppercase tracking-widest text-caption text-on-surface-variant" data-i18n="also-see">Also See</p>
-            <a href="defi-research.html" class="border-b border-outline-variant pb-3 hover:text-terracotta transition-all">
-              <p class="font-bold text-body-md">DeFi &amp; Stablecoin Review</p>
-              <p class="text-caption text-on-surface-variant">Research project · 2024–2025</p>
-            </a>
-            <a href="blog.html" class="hover:text-terracotta transition-all">
-              <p class="font-bold text-body-md" data-i18n="also-blog">Personal Blog</p>
-              <p class="text-caption text-on-surface-variant" data-i18n="also-blog-desc">Field notes &amp; ideas</p>
-            </a>
-          </div>
-        </div>
-      </aside>
-
     </div>
   </main>
 
@@ -508,13 +488,6 @@
         'filter-refi': 'ReFi',
         'filter-impact': 'Impact',
         'section-academic': 'Academic &amp; Early Work',
-        'meta-studies-label': 'Active Studies',
-        'meta-contributor-label': 'Contributor',
-        'meta-updated-label': 'Last Update',
-        'meta-security-label': 'Security',
-        'also-see': 'Also See',
-        'also-blog': 'Personal Blog',
-        'also-blog-desc': 'Field notes &amp; ideas',
       },
       pt: {
         'archive-heading': 'Artigos &amp; Pesquisa',
@@ -525,13 +498,6 @@
         'filter-refi': 'ReFi',
         'filter-impact': 'Impacto',
         'section-academic': 'Trabalhos Acadêmicos',
-        'meta-studies-label': 'Estudos Ativos',
-        'meta-contributor-label': 'Contribuidor',
-        'meta-updated-label': 'Última Atualização',
-        'meta-security-label': 'Segurança',
-        'also-see': 'Veja Também',
-        'also-blog': 'Blog Pessoal',
-        'also-blog-desc': 'Notas de campo &amp; ideias',
       }
     };
   </script>
