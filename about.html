@@ -85,12 +85,12 @@
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
         <a href="about.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-about">About</a>
-        <div class="flex gap-1" id="lang-switcher">
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
           <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
           <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
           <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
@@ -123,7 +123,7 @@
 
     <!-- Biography -->
     <section class="mb-16">
-      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6" data-i18n="about-section-bio">
         Biography
       </div>
       <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow p-8">
@@ -133,7 +133,7 @@
 
     <!-- Academic Background -->
     <section class="mb-16">
-      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6" data-i18n="about-section-academic">
         Academic Background
       </div>
       <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow">
@@ -172,7 +172,7 @@
 
     <!-- Network & Affiliates -->
     <section class="mb-16">
-      <div class="inline-block bg-surface-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+      <div class="inline-block bg-surface-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6" data-i18n="about-section-network">
         Network &amp; Affiliates
       </div>
       <div class="flex flex-wrap gap-3">
@@ -187,7 +187,7 @@
 
     <!-- Core Expertise -->
     <section class="mb-16">
-      <div class="inline-block bg-terracotta text-paper-cream border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+      <div class="inline-block bg-terracotta text-paper-cream border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6" data-i18n="about-section-expertise">
         Core Expertise
       </div>
       <div class="flex flex-wrap gap-3">
@@ -203,7 +203,7 @@
 
     <!-- Contact Form -->
     <section id="contact" class="mb-16">
-      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6">
+      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-6" data-i18n="about-section-contact">
         Contact
       </div>
       <div class="border-stroke-weight border-deep-ink bg-white neobrutalist-shadow p-8">
@@ -271,6 +271,11 @@
         'cta-heading': 'Let\'s build institutions that work.',
         'cta-desc': 'Open to collaborations on impact capital, community governance, and public goods infrastructure.',
         'cta-btn': 'Get in Touch',
+        'about-section-bio': 'Biography',
+        'about-section-academic': 'Academic Background',
+        'about-section-network': 'Network &amp; Affiliates',
+        'about-section-expertise': 'Core Expertise',
+        'about-section-contact': 'Contact',
       },
       pt: {
         'about-bio': 'Praticante não-praticante de kickboxing (passei uns anos treinando). Jogador de Civilization 5 — não o 4, não o 6. Sonhando em reassistir Yu Yu Hakusho. Entusiasta de bicicleta, jardineiro amador. Raízes espirituais fortes na ancestralidade.',
@@ -293,18 +298,92 @@
         'cta-heading': 'Vamos construir instituições que funcionem.',
         'cta-desc': 'Aberto a colaborações em capital de impacto, governança comunitária e infraestrutura de bens públicos.',
         'cta-btn': 'Entrar em Contato',
+        'about-section-bio': 'Biografia',
+        'about-section-academic': 'Formação Acadêmica',
+        'about-section-network': 'Rede &amp; Afiliados',
+        'about-section-expertise': 'Expertise Principal',
+        'about-section-contact': 'Contato',
       },
       es: {
+        'about-section-bio': 'Biografía',
+        'about-section-academic': 'Formación Académica',
+        'about-section-network': 'Red &amp; Afiliados',
+        'about-section-expertise': 'Experiencia Principal',
+        'about-section-contact': 'Contacto',
         'about-bio': 'Practicante no practicante de kickboxing (entrené un par de años). Jugador de Civilization 5 — no el 4, no el 6. Soñando con volver a ver Yu Yu Hakusho. Entusiasta de la bicicleta, jardinero aficionado. Fuertes raíces espirituales en la ancestralidad.',
-        'about-role': 'Investigador PhD · Desarrollo Comunitario · Monitoreo y Evaluación de Impacto',
+        'about-cred-1': 'Investigación Postdoctoral, Análisis de Riesgo para Asignación de Capital de Impacto — CECID/UNIFACS (Voluntario, como dedicación voluntaria a Liga Colaborativa dos Povos)',
+        'about-cred-2': 'Doctorado, Teoría Institucional — UFRJ, 2021',
+        'about-cred-3': 'Maestría, Teoría de la Justicia — UFES, 2016',
+        'about-cred-4': 'Posgrado, Derecho Empresarial — LEGALE, 2021',
+        'about-cred-5': 'Licenciatura, Filosofía — UFES, 2014',
+        'about-exp-1': 'Análisis Institucional',
+        'about-exp-2': 'Monitoreo &amp; Evaluación de Impacto',
+        'about-exp-3': 'Desarrollo Comunitario',
+        'about-exp-4': 'Gestión de Subvenciones',
+        'about-exp-5': 'Finanzas Regenerativas',
+        'about-exp-6': 'Diseño de Gobernanza',
+        'about-exp-7': 'Financiamiento de Bienes Públicos',
+        'form-name': 'Nombre',
+        'form-email': 'Correo electrónico',
+        'form-message': 'Mensaje',
+        'form-submit': 'Enviar Mensaje',
+        'cta-heading': 'Construyamos instituciones que funcionen.',
+        'cta-desc': 'Abierto a colaboraciones en capital de impacto, gobernanza comunitaria e infraestructura de bienes públicos.',
+        'cta-btn': 'Contactar',
       },
       zh: {
+        'about-section-bio': '个人简介',
+        'about-section-academic': '学术背景',
+        'about-section-network': '网络与合作机构',
+        'about-section-expertise': '核心专长',
+        'about-section-contact': '联系我',
         'about-bio': '非在练的跆拳道练习者（训练了几年）。文明5玩家——不是4，不是6。梦想重看幽游白书。自行车爱好者，业余园丁。有深厚的祖先精神根基。',
-        'about-role': '博士研究员 · 社区发展 · 影响力监测与评估',
+        'about-cred-1': '博士后研究，影响力资本配置风险分析 — CECID/UNIFACS（志愿者，作为对 Liga Colaborativa dos Povos 志愿投入的范畴）',
+        'about-cred-2': '博士，制度理论 — UFRJ，2021',
+        'about-cred-3': '硕士，正义理论 — UFES，2016',
+        'about-cred-4': '研究生，商业法 — LEGALE，2021',
+        'about-cred-5': '学士，哲学 — UFES，2014',
+        'about-exp-1': '制度分析',
+        'about-exp-2': '影响力监测与评估',
+        'about-exp-3': '社区发展',
+        'about-exp-4': '资助管理',
+        'about-exp-5': '再生金融',
+        'about-exp-6': '治理设计',
+        'about-exp-7': '公共品资助',
+        'form-name': '姓名',
+        'form-email': '邮箱',
+        'form-message': '留言',
+        'form-submit': '发送消息',
+        'cta-heading': '让我们共建有效的制度。',
+        'cta-desc': '欢迎在影响力资本、社区治理和公共品基础设施方面展开合作。',
+        'cta-btn': '立即联系',
       },
       ja: {
+        'about-section-bio': 'プロフィール',
+        'about-section-academic': '学歴',
+        'about-section-network': 'ネットワーク＆提携',
+        'about-section-expertise': 'コア専門分野',
+        'about-section-contact': 'お問い合わせ',
         'about-bio': '練習していないキックボクサー（数年間トレーニングしていた）。シヴィライゼーション5プレイヤー——4でも6でもなく。幽遊白書をもう一度観ることを夢見ている。自転車愛好家、アマチュアガーデナー。先祖への強いスピリチュアルなルーツを持つ。',
-        'about-role': '博士研究員 · コミュニティ開発 · インパクト・モニタリング＆評価',
+        'about-cred-1': '博士研究員、インパクト資本配分のリスク分析 — CECID/UNIFACS（ボランティア、Liga Colaborativa dos Povosへの自発的貢献の一環）',
+        'about-cred-2': '博士、制度理論 — UFRJ、2021',
+        'about-cred-3': '修士、正義論 — UFES、2016',
+        'about-cred-4': '大学院、ビジネス法 — LEGALE、2021',
+        'about-cred-5': '学士、哲学 — UFES、2014',
+        'about-exp-1': '制度分析',
+        'about-exp-2': 'インパクト・モニタリング＆評価',
+        'about-exp-3': 'コミュニティ開発',
+        'about-exp-4': 'グラント管理',
+        'about-exp-5': 'リジェネラティブファイナンス',
+        'about-exp-6': 'ガバナンスデザイン',
+        'about-exp-7': '公共財支援',
+        'form-name': '名前',
+        'form-email': 'メールアドレス',
+        'form-message': 'メッセージ',
+        'form-submit': 'メッセージを送る',
+        'cta-heading': '機能する制度を共に構築しましょう。',
+        'cta-desc': 'インパクト資本、コミュニティガバナンス、公共財インフラにおける連携を歓迎しています。',
+        'cta-btn': 'お問い合わせ',
       }
     };
   </script>

@@ -85,12 +85,12 @@
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
         <a href="projects.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-projects">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
-        <div class="flex gap-1" id="lang-switcher">
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
           <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
           <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
           <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
@@ -123,7 +123,7 @@
 
     <!-- Page Header -->
     <div class="mb-12">
-      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4">
+      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4" data-i18n="projects-section-label">
         CLASSIFIED FILES
       </div>
       <h1 class="text-headline-xl font-bold" data-i18n="projects-heading">Projects</h1>
@@ -432,6 +432,7 @@
         'collab-heading': 'Open for Collaboration',
         'collab-desc': 'Working on impact infrastructure, community governance, or regenerative finance? Let\'s connect.',
         'collab-btn': 'Start a Conversation',
+        'projects-section-label': 'CLASSIFIED FILES',
       },
       pt: {
         'projects-heading': 'Projetos',
@@ -464,21 +465,94 @@
         'collab-heading': 'Aberto para Colaboração',
         'collab-desc': 'Trabalhando em infraestrutura de impacto, governança comunitária ou finanças regenerativas? Vamos nos conectar.',
         'collab-btn': 'Iniciar uma Conversa',
+        'projects-section-label': 'ARQUIVOS CLASSIFICADOS',
       },
       es: {
+        'projects-section-label': 'ARCHIVOS CLASIFICADOS',
+        'projects-heading': 'Proyectos',
+        'projects-subheading': 'Contribuciones activas, iniciativas actuales y trabajo de campo archivado en América Latina.',
         'section-active': 'Activo', 'section-seasonal': 'Estacional', 'section-past': 'Pasado',
-        'collab-cta-title': 'Proponer Colaboración',
-        'collab-cta-body': 'Siempre abierto a nuevas misiones en finanzas regenerativas e infraestructura blockchain.',
+        'label-voluntary': 'Voluntario', 'label-app': 'App', 'status-past': 'Pasado',
+        'p-liga-role': 'Director de Advocacy',
+        'p-liga-desc': 'Aplicando IA, blockchain y georeferenciación para apoyar a comunidades tradicionales en conflictos territoriales. Metodología de Inteligencia Hiper-Territorial.',
+        'p-balaio-role': 'Co-fundador',
+        'p-balaio-desc': 'App comunitaria que conecta productores locales, proyectos regenerativos y consumidores alineados al impacto en Brasil.',
+        'p-bne-desc': 'Primer programa de educación blockchain en escuelas públicas de Brasil. Más de 30.000 certificados on-chain en 5 estados.',
+        'p-cryptorastas-desc': 'Comunidad de música y cultura en la intersección de Web3 y las tradiciones afrobrasileñas.',
+        'p-refidao-desc': 'Contribuidor del DAO global de finanzas regenerativas. Anteriormente co-fundó ReFi Spring, que se fusionó con ReFiDAO en 2023.',
+        'p-girahub-desc': 'Espacio comunitario Web3 y hub de eventos para constructores y proyectos regenerativos en Brasil.',
+        'p-lcc-desc': 'Plataforma práctica de educación Web3 con cohortes en vivo, insignias on-chain como reputación portátil e incubación de proyectos. Socios incluyen CeLatam y Blockchain na Escola.',
+        'p-celatam-role': 'Investigador &amp; Miembro DAO',
+        'p-celatam-desc': 'Becario de investigación y miembro de gobernanza DAO. Artículos y coordinación de investigación sobre ReFi, RWAs y stablecoins en América Latina.',
+        'p-impact-plus-role': 'Investigador',
+        'p-impact-plus-desc': 'Investigación en medición de impacto y desarrollo de metodologías para proyectos regenerativos y sociales.',
+        'p-unesco-role': 'Investigador Afiliado',
+        'p-unesco-desc': 'Afiliado al hub de Ciencias de la Sostenibilidad de la UNESCO, contribuyendo a la investigación en gobernanza e institucionalidad.',
+        'p-ekonavi-role': 'Socio — Investigador &amp; Líder Web3',
+        'p-ekonavi-desc': 'Lideró la investigación para el programa LIFT Lab del Banco Central de Brasil. Ganador del Hackathon G20 BIS. Integración Web3 y desarrollo de tokenómica.',
+        'p-cca-role': 'Contribuidor',
+        'p-cca-desc': 'Investigación y escritura sobre finanzas colaborativas, protocolos basados en commons y gobernanza Web3.',
+        'collab-heading': 'Abierto a Colaboración',
+        'collab-desc': '¿Trabajas en infraestructura de impacto, gobernanza comunitaria o finanzas regenerativas? Conectemos.',
+        'collab-btn': 'Iniciar una Conversación',
       },
       zh: {
+        'projects-section-label': '机密档案',
+        'projects-heading': '项目',
+        'projects-subheading': '在拉丁美洲的积极贡献、当前行动和已归档的田野工作。',
         'section-active': '进行中', 'section-seasonal': '季节性', 'section-past': '过往',
-        'collab-cta-title': '提议合作',
-        'collab-cta-body': '始终欢迎再生金融与区块链基础设施领域的新合作。',
+        'label-voluntary': '志愿', 'label-app': 'App', 'status-past': '已归档',
+        'p-liga-role': '倡导总监',
+        'p-liga-desc': '将AI、区块链和地理参照应用于支持领土冲突中的传统社区。超地域智能方法论。',
+        'p-balaio-role': '联合创始人',
+        'p-balaio-desc': '连接巴西本地生产者、再生项目和影响力导向消费者的社区应用。',
+        'p-bne-desc': '巴西首个公立学校区块链教育项目。在5个州发放30,000+张链上证书。',
+        'p-cryptorastas-desc': 'Web3与非裔巴西传统交汇处的音乐与文化社区。',
+        'p-refidao-desc': '全球再生金融DAO的贡献者。此前共同创立ReFi Spring，于2023年并入ReFiDAO。',
+        'p-girahub-desc': '巴西构建者和再生项目的Web3社区空间与活动中心。',
+        'p-lcc-desc': '实用Web3教育平台，结合现场课程、链上声誉徽章和项目孵化。合作伙伴包括CeLatam和Blockchain na Escola。',
+        'p-celatam-role': '研究员 &amp; DAO成员',
+        'p-celatam-desc': '研究资助获得者和DAO治理成员。在拉丁美洲的ReFi、RWA和稳定币方面进行文章写作和研究协调。',
+        'p-impact-plus-role': '研究员',
+        'p-impact-plus-desc': '为再生和社会项目进行影响力测量研究和方法论开发。',
+        'p-unesco-role': '联属研究员',
+        'p-unesco-desc': '联属于UNESCO可持续发展科学中心，参与治理和制度研究。',
+        'p-ekonavi-role': '合伙人 — 研究员 &amp; Web3负责人',
+        'p-ekonavi-desc': '主导巴西中央银行LIFT Lab项目研究。G20 BIS黑客松获奖者。Web3整合与代币经济开发。',
+        'p-cca-role': '贡献者',
+        'p-cca-desc': '关于协作金融、基于公共资源的协议和Web3治理的研究与写作。',
+        'collab-heading': '欢迎合作',
+        'collab-desc': '正在研究影响力基础设施、社区治理或再生金融？让我们联系。',
+        'collab-btn': '开始对话',
       },
       ja: {
+        'projects-section-label': '機密ファイル',
+        'projects-heading': 'プロジェクト',
+        'projects-subheading': 'ラテンアメリカ全域での積極的な貢献、進行中の取り組み、アーカイブ済みのフィールドワーク。',
         'section-active': '進行中', 'section-seasonal': '季節的', 'section-past': '過去',
-        'collab-cta-title': 'コラボレーションを提案する',
-        'collab-cta-body': 'リジェネラティブファイナンスとブロックチェーンインフラの新しいミッションを常に歓迎しています。',
+        'label-voluntary': 'ボランティア', 'label-app': 'App', 'status-past': 'アーカイブ',
+        'p-liga-role': 'アドボカシーディレクター',
+        'p-liga-desc': '領土紛争における伝統的コミュニティを支援するためにAI、ブロックチェーン、地理参照を活用。超地域インテリジェンス方法論。',
+        'p-balaio-role': '共同創業者',
+        'p-balaio-desc': 'ブラジルの地域生産者、再生プロジェクト、インパクト志向消費者をつなぐコミュニティアプリ。',
+        'p-bne-desc': 'ブラジル初の公立学校でのブロックチェーン教育プログラム。5州で30,000件以上のオンチェーン証明書を発行。',
+        'p-cryptorastas-desc': 'Web3とアフロ・ブラジルの伝統の交差点にある音楽・文化コミュニティ。',
+        'p-refidao-desc': 'グローバルな再生金融DAOの貢献者。以前はReFi Springを共同設立し、2023年にReFiDAOと合併。',
+        'p-girahub-desc': 'ブラジルのビルダーと再生プロジェクトのためのWeb3コミュニティスペース＆イベントハブ。',
+        'p-lcc-desc': 'ライブコホート、オンチェーン評判バッジ、プロジェクトインキュベーションを組み合わせた実践的Web3教育プラットフォーム。パートナーはCeLatamとBlockchain na Escola。',
+        'p-celatam-role': '研究員 &amp; DAOメンバー',
+        'p-celatam-desc': '研究助成受領者およびDAOガバナンスメンバー。ラテンアメリカのReFi、RWA、ステーブルコインに関する記事・研究協調。',
+        'p-impact-plus-role': '研究員',
+        'p-impact-plus-desc': '再生・社会プロジェクトのためのインパクト測定研究と方法論開発。',
+        'p-unesco-role': '関連研究員',
+        'p-unesco-desc': 'UNESCOサステナビリティサイエンスハブに関連し、ガバナンスと制度研究に貢献。',
+        'p-ekonavi-role': 'パートナー — 研究員 &amp; Web3リード',
+        'p-ekonavi-desc': 'ブラジル中央銀行LIFT Labプログラムの研究をリード。G20 BISハッカソン受賞。Web3統合とトークノミクス開発。',
+        'p-cca-role': '貢献者',
+        'p-cca-desc': 'コラボラティブファイナンス、コモンズベースプロトコル、Web3ガバナンスに関する研究と執筆。',
+        'collab-heading': 'コラボレーション歓迎',
+        'collab-desc': 'インパクトインフラ、コミュニティガバナンス、リジェネラティブファイナンスに取り組んでいますか？つながりましょう。',
+        'collab-btn': '会話を始める',
       }
     };
   </script>

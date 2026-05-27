@@ -42,10 +42,30 @@
           "base": "8px",
           "margin-desktop": "64px",
           "margin-mobile": "20px",
-          "container-max": "1120px"
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
         },
         borderWidth: {
           "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
         }
       }
     }
@@ -106,172 +126,186 @@
 </head>
 <body class="bg-paper-cream text-deep-ink">
 
-  <!-- Nav (English only) -->
+  <!-- Nav -->
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">About</a>
-        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold transition-all">Connect</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
-      <a href="articles.html" class="text-headline-md font-bold text-deep-ink">Archive</a>
-      <a href="projects.html" class="text-headline-md font-bold text-deep-ink">Projects</a>
-      <a href="impact.html" class="text-headline-md font-bold text-deep-ink">Impact</a>
-      <a href="about.html" class="text-headline-md font-bold text-deep-ink">About</a>
-      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start">Connect</a>
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
     </div>
   </nav>
 
   <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <div class="hero">
-      <h1>DeFi Review: Interoperability, Inter-dependence, and Security</h1>
-      <p>Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments for real-world applications in emerging markets.</p>
-      <p class="meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
+      <h1 data-i18n="page-title">DeFi Review: Interoperability, Inter-dependence, and Security</h1>
+      <p data-i18n="page-subtitle">Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments for real-world applications in emerging markets.</p>
+      <p class="meta" data-i18n="page-meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
     </div>
 
     <nav class="nav-chips">
-      <a href="#overview" class="chip yellow">Overview</a>
-      <a href="#comparative" class="chip pink">Comparative</a>
-      <a href="#security" class="chip pink">Security</a>
-      <a href="#methodology" class="chip yellow">Methodology</a>
-      <a href="#findings" class="chip green">Findings</a>
+      <a href="#overview" class="chip yellow" data-i18n="nav-chip-overview">Overview</a>
+      <a href="#comparative" class="chip pink" data-i18n="nav-chip-comparative">Comparative</a>
+      <a href="#security" class="chip pink" data-i18n="nav-chip-security">Security</a>
+      <a href="#methodology" class="chip yellow" data-i18n="nav-chip-methodology">Methodology</a>
+      <a href="#findings" class="chip green" data-i18n="nav-chip-findings">Findings</a>
     </nav>
 
     <section id="overview" class="section">
-      <h2>Research Overview</h2>
+      <h2 data-i18n="section-overview-title">Research Overview</h2>
       <div class="card">
-        <p>This research examines stablecoin sustainability through three complementary lenses: <strong>comparative analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins resilient, identify systemic vulnerabilities, and design more robust protocols for real-world applications.</p>
-        <p>The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical security modeling, while incorporating lessons from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.</p>
-        <p><strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital efficiency, and decentralization while addressing real-world market needs—particularly in emerging economies like Latin America?</p>
+        <p data-i18n="overview-p1">This research examines stablecoin sustainability through three complementary lenses: <strong>comparative analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins resilient, identify systemic vulnerabilities, and design more robust protocols for real-world applications.</p>
+        <p data-i18n="overview-p2">The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical security modeling, while incorporating lessons from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.</p>
+        <p data-i18n="overview-p3"><strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital efficiency, and decentralization while addressing real-world market needs—particularly in emerging economies like Latin America?</p>
       </div>
     </section>
 
     <section class="section">
-      <h2>Research Components</h2>
+      <h2 data-i18n="section-components-title">Research Components</h2>
       <div class="grid-3">
 
         <div id="comparative" class="big-card">
-          <h3>Comparative Analysis</h3>
-          <p>In-depth examination of three distinct stablecoin approaches through the framework of Purpose, Infrastructure, and Governance.</p>
+          <h3 data-i18n="comp-title">Comparative Analysis</h3>
+          <p data-i18n="comp-desc">In-depth examination of three distinct stablecoin approaches through the framework of Purpose, Infrastructure, and Governance.</p>
           <div class="highlight-box">
-            <h4>Stablecoins Analyzed</h4>
+            <h4 data-i18n="comp-box-title">Stablecoins Analyzed</h4>
             <ul>
-              <li><strong>USDC:</strong> Fiat-backed, centralized</li>
-              <li><strong>DAI:</strong> Crypto-collateralized, decentralized</li>
-              <li><strong>$BREAD:</strong> Real-World Assets (RWAs)</li>
+              <li><strong>USDC:</strong> <span data-i18n="comp-usdc">Fiat-backed, centralized</span></li>
+              <li><strong>DAI:</strong> <span data-i18n="comp-dai">Crypto-collateralized, decentralized</span></li>
+              <li><strong>$BREAD:</strong> <span data-i18n="comp-bread">Real-World Assets (RWAs)</span></li>
             </ul>
           </div>
-          <p style="margin-top: auto;"><a href="comparative-analysis.html" class="chip yellow">View Full Analysis →</a></p>
+          <p style="margin-top: auto;"><a href="comparative-analysis.html" class="chip yellow" data-i18n="comp-link">View Full Analysis →</a></p>
         </div>
 
         <div id="security" class="big-card">
-          <h3>Security Analysis</h3>
-          <p>Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus on oracle manipulation and circuit breaker vulnerabilities.</p>
+          <h3 data-i18n="sec-title">Security Analysis</h3>
+          <p data-i18n="sec-desc">Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus on oracle manipulation and circuit breaker vulnerabilities.</p>
           <div class="highlight-box">
-            <h4>Protocols Analyzed</h4>
+            <h4 data-i18n="sec-box-title">Protocols Analyzed</h4>
             <ul>
-              <li><strong>Mento Protocol:</strong> Circuit breaker bypass</li>
-              <li><strong>Sonne Finance:</strong> Oracle manipulation</li>
-              <li><strong>Velodrome:</strong> Multi-step exploits</li>
+              <li><strong>Mento Protocol:</strong> <span data-i18n="sec-mento">Circuit breaker bypass</span></li>
+              <li><strong>Sonne Finance:</strong> <span data-i18n="sec-sonne">Oracle manipulation</span></li>
+              <li><strong>Velodrome:</strong> <span data-i18n="sec-velodrome">Multi-step exploits</span></li>
             </ul>
           </div>
-          <p style="margin-top: auto;"><a href="attack-modeling.html" class="chip pink">View Security Analysis →</a></p>
+          <p style="margin-top: auto;"><a href="attack-modeling.html" class="chip pink" data-i18n="sec-link">View Security Analysis →</a></p>
         </div>
 
         <div class="big-card">
-          <h3>Infrastructure Analysis</h3>
-          <p>Critical examination of enterprise blockchain infrastructure security, focusing on L2 rollups, interoperability layers, and institutional adoption risks.</p>
+          <h3 data-i18n="infra-title">Infrastructure Analysis</h3>
+          <p data-i18n="infra-desc">Critical examination of enterprise blockchain infrastructure security, focusing on L2 rollups, interoperability layers, and institutional adoption risks.</p>
           <div class="highlight-box">
-            <h4>Topics Covered</h4>
+            <h4 data-i18n="infra-box-title">Topics Covered</h4>
             <ul>
-              <li><strong>SWIFT/Linea:</strong> Stage 0 risks</li>
-              <li><strong>Chainlink CCIP:</strong> Interop layer</li>
-              <li><strong>L2Beat Framework:</strong> Security audits</li>
+              <li><strong>SWIFT/Linea:</strong> <span data-i18n="infra-swift">Stage 0 risks</span></li>
+              <li><strong>Chainlink CCIP:</strong> <span data-i18n="infra-ccip">Interop layer</span></li>
+              <li><strong>L2Beat Framework:</strong> <span data-i18n="infra-l2beat">Security audits</span></li>
             </ul>
           </div>
-          <p style="margin-top: auto;"><a href="swift-linea-article.html" class="chip pink">View Analysis →</a></p>
+          <p style="margin-top: auto;"><a href="swift-linea-article.html" class="chip pink" data-i18n="infra-link">View Analysis →</a></p>
         </div>
 
       </div>
     </section>
 
     <section id="methodology" class="section">
-      <h2>Research Methodology</h2>
+      <h2 data-i18n="section-methodology-title">Research Methodology</h2>
       <div class="card">
-        <p>This research employs a multi-dimensional analytical framework examining stablecoins across technical, economic, and governance dimensions. The methodology combines academic rigor with practical implementation insights.</p>
+        <p data-i18n="methodology-intro">This research employs a multi-dimensional analytical framework examining stablecoins across technical, economic, and governance dimensions. The methodology combines academic rigor with practical implementation insights.</p>
       </div>
       <div class="grid-3" style="margin-top: 1rem;">
         <div class="card">
-          <h3>Three-Dimensional Framework</h3>
-          <p class="meta">Analysis Approach</p>
-          <p>Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture), and Governance (decision-making).</p>
+          <h3 data-i18n="method-3d-title">Three-Dimensional Framework</h3>
+          <p class="meta" data-i18n="method-3d-meta">Analysis Approach</p>
+          <p data-i18n="method-3d-desc">Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture), and Governance (decision-making).</p>
         </div>
         <div class="card">
-          <h3>Attack Simulation</h3>
-          <p class="meta">Security Modeling</p>
-          <p>Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime, state-sponsored) and economic constraints.</p>
+          <h3 data-i18n="method-attack-title">Attack Simulation</h3>
+          <p class="meta" data-i18n="method-attack-meta">Security Modeling</p>
+          <p data-i18n="method-attack-desc">Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime, state-sponsored) and economic constraints.</p>
         </div>
         <div class="card">
-          <h3>Comparative Analysis</h3>
-          <p class="meta">Protocol Evaluation</p>
-          <p>Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization, and governance models.</p>
+          <h3 data-i18n="method-comp-title">Comparative Analysis</h3>
+          <p class="meta" data-i18n="method-comp-meta">Protocol Evaluation</p>
+          <p data-i18n="method-comp-desc">Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization, and governance models.</p>
         </div>
         <div class="card">
-          <h3>Design Experimentation</h3>
-          <p class="meta">Architecture Testing</p>
-          <p>Creating experimental architectures to test hypotheses about collateral types, market fit, and governance structures.</p>
+          <h3 data-i18n="method-design-title">Design Experimentation</h3>
+          <p class="meta" data-i18n="method-design-meta">Architecture Testing</p>
+          <p data-i18n="method-design-desc">Creating experimental architectures to test hypotheses about collateral types, market fit, and governance structures.</p>
         </div>
         <div class="card">
-          <h3>Case Study Integration</h3>
-          <p class="meta">Real-World Validation</p>
-          <p>Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate theoretical findings.</p>
+          <h3 data-i18n="method-case-title">Case Study Integration</h3>
+          <p class="meta" data-i18n="method-case-meta">Real-World Validation</p>
+          <p data-i18n="method-case-desc">Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate theoretical findings.</p>
         </div>
         <div class="card">
-          <h3>Geographic Focus</h3>
-          <p class="meta">Latin America</p>
-          <p>Special attention to LatAm markets, examining how stablecoins can address regional challenges (debt, trade, financial inclusion).</p>
+          <h3 data-i18n="method-geo-title">Geographic Focus</h3>
+          <p class="meta" data-i18n="method-geo-meta">Latin America</p>
+          <p data-i18n="method-geo-desc">Special attention to LatAm markets, examining how stablecoins can address regional challenges (debt, trade, financial inclusion).</p>
         </div>
       </div>
     </section>
 
     <section id="findings" class="findings-section">
-      <h2>Key Research Findings</h2>
+      <h2 data-i18n="section-findings-title">Key Research Findings</h2>
       <div class="finding-card">
-        <h3>The Impossible Triangle</h3>
-        <p>Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital efficiency for decentralization, and experimental designs explore new compromises.</p>
+        <h3 data-i18n="finding1-title">The Impossible Triangle</h3>
+        <p data-i18n="finding1-desc">Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital efficiency for decentralization, and experimental designs explore new compromises.</p>
       </div>
       <div class="finding-card">
-        <h3>Oracle-Circuit Breaker Gap</h3>
-        <p>Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and real market prices to extract value while appearing compliant with safety mechanisms.</p>
+        <h3 data-i18n="finding2-title">Oracle-Circuit Breaker Gap</h3>
+        <p data-i18n="finding2-desc">Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and real market prices to extract value while appearing compliant with safety mechanisms.</p>
       </div>
       <div class="finding-card">
-        <h3>Stability vs. Liquidity Distinction</h3>
-        <p>Protocols may maintain price pegs (stability) while experiencing severe liquidity disruptions. These are separate problems requiring different solutions. Mento's cREAL maintains its peg but suffers from insufficient arbitrage incentives.</p>
+        <h3 data-i18n="finding3-title">Stability vs. Liquidity Distinction</h3>
+        <p data-i18n="finding3-desc">Protocols may maintain price pegs (stability) while experiencing severe liquidity disruptions. These are separate problems requiring different solutions. Mento's cREAL maintains its peg but suffers from insufficient arbitrage incentives.</p>
       </div>
       <div class="finding-card">
-        <h3>RWA Integration Complexity</h3>
-        <p>Real-World Asset-backed stablecoins like $BREAD inherit both crypto and traditional finance dependencies. This creates novel failure modes where smart contract risk combines with legal custody risk and traditional banking exposure.</p>
+        <h3 data-i18n="finding4-title">RWA Integration Complexity</h3>
+        <p data-i18n="finding4-desc">Real-World Asset-backed stablecoins like $BREAD inherit both crypto and traditional finance dependencies. This creates novel failure modes where smart contract risk combines with legal custody risk and traditional banking exposure.</p>
       </div>
       <div class="finding-card">
-        <h3>Geographic Context Matters</h3>
-        <p>Stablecoin designs optimized for developed markets (high liquidity, stable banking) don't automatically work in emerging markets. Latin American applications require different trust assumptions and liquidity mechanisms.</p>
+        <h3 data-i18n="finding5-title">Geographic Context Matters</h3>
+        <p data-i18n="finding5-desc">Stablecoin designs optimized for developed markets (high liquidity, stable banking) don't automatically work in emerging markets. Latin American applications require different trust assumptions and liquidity mechanisms.</p>
       </div>
     </section>
 
     <section class="section">
-      <h2>Full Research Documentation</h2>
+      <h2 data-i18n="section-docs-title">Full Research Documentation</h2>
       <div class="card">
-        <p>This research comprises 25 Google Docs organized across five phases: comparative analysis of major stablecoins, DeFi ecosystem security research, attack modeling and simulations, experimental stablecoin designs, and project documentation.</p>
-        <p>For access to the complete research documentation, interactive Machinations simulations, and detailed technical specifications, reach out to <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> on X or connect on <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.</p>
+        <p data-i18n="docs-p1">This research comprises 25 Google Docs organized across five phases: comparative analysis of major stablecoins, DeFi ecosystem security research, attack modeling and simulations, experimental stablecoin designs, and project documentation.</p>
+        <p data-i18n="docs-p2">For access to the complete research documentation, interactive Machinations simulations, and detailed technical specifications, reach out to <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> on X or connect on <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.</p>
       </div>
     </section>
 
@@ -283,14 +317,419 @@
       <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
       <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
       <div class="flex gap-4">
-        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">Contact</a>
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
         <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
       </div>
     </div>
   </footer>
 
   <script>
+    const PAGE_TRANSLATIONS = {
+      en: {
+        'page-title': 'DeFi Review: Interoperability, Inter-dependence, and Security',
+        'page-subtitle': 'Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments for real-world applications in emerging markets.',
+        'page-meta': 'Research Project • Wonderland Research Challenge • 2024-2025',
+        'nav-chip-overview': 'Overview',
+        'nav-chip-comparative': 'Comparative',
+        'nav-chip-security': 'Security',
+        'nav-chip-methodology': 'Methodology',
+        'nav-chip-findings': 'Findings',
+        'section-overview-title': 'Research Overview',
+        'overview-p1': 'This research examines stablecoin sustainability through three complementary lenses: <strong>comparative analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins resilient, identify systemic vulnerabilities, and design more robust protocols for real-world applications.',
+        'overview-p2': 'The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical security modeling, while incorporating lessons from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.',
+        'overview-p3': '<strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital efficiency, and decentralization while addressing real-world market needs—particularly in emerging economies like Latin America?',
+        'section-components-title': 'Research Components',
+        'comp-title': 'Comparative Analysis',
+        'comp-desc': 'In-depth examination of three distinct stablecoin approaches through the framework of Purpose, Infrastructure, and Governance.',
+        'comp-box-title': 'Stablecoins Analyzed',
+        'comp-usdc': 'Fiat-backed, centralized',
+        'comp-dai': 'Crypto-collateralized, decentralized',
+        'comp-bread': 'Real-World Assets (RWAs)',
+        'comp-link': 'View Full Analysis →',
+        'sec-title': 'Security Analysis',
+        'sec-desc': 'Comprehensive security analysis examining economically viable attacks on DeFi protocols, with focus on oracle manipulation and circuit breaker vulnerabilities.',
+        'sec-box-title': 'Protocols Analyzed',
+        'sec-mento': 'Circuit breaker bypass',
+        'sec-sonne': 'Oracle manipulation',
+        'sec-velodrome': 'Multi-step exploits',
+        'sec-link': 'View Security Analysis →',
+        'infra-title': 'Infrastructure Analysis',
+        'infra-desc': 'Critical examination of enterprise blockchain infrastructure security, focusing on L2 rollups, interoperability layers, and institutional adoption risks.',
+        'infra-box-title': 'Topics Covered',
+        'infra-swift': 'Stage 0 risks',
+        'infra-ccip': 'Interop layer',
+        'infra-l2beat': 'Security audits',
+        'infra-link': 'View Analysis →',
+        'section-methodology-title': 'Research Methodology',
+        'methodology-intro': 'This research employs a multi-dimensional analytical framework examining stablecoins across technical, economic, and governance dimensions. The methodology combines academic rigor with practical implementation insights.',
+        'method-3d-title': 'Three-Dimensional Framework',
+        'method-3d-meta': 'Analysis Approach',
+        'method-3d-desc': 'Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture), and Governance (decision-making).',
+        'method-attack-title': 'Attack Simulation',
+        'method-attack-meta': 'Security Modeling',
+        'method-attack-desc': 'Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime, state-sponsored) and economic constraints.',
+        'method-comp-title': 'Comparative Analysis',
+        'method-comp-meta': 'Protocol Evaluation',
+        'method-comp-desc': 'Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization, and governance models.',
+        'method-design-title': 'Design Experimentation',
+        'method-design-meta': 'Architecture Testing',
+        'method-design-desc': 'Creating experimental architectures to test hypotheses about collateral types, market fit, and governance structures.',
+        'method-case-title': 'Case Study Integration',
+        'method-case-meta': 'Real-World Validation',
+        'method-case-desc': 'Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate theoretical findings.',
+        'method-geo-title': 'Geographic Focus',
+        'method-geo-meta': 'Latin America',
+        'method-geo-desc': 'Special attention to LatAm markets, examining how stablecoins can address regional challenges (debt, trade, financial inclusion).',
+        'section-findings-title': 'Key Research Findings',
+        'finding1-title': 'The Impossible Triangle',
+        'finding1-desc': 'Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital efficiency for decentralization, and experimental designs explore new compromises.',
+        'finding2-title': 'Oracle-Circuit Breaker Gap',
+        'finding2-desc': 'Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and real market prices to extract value while appearing compliant with safety mechanisms.',
+        'finding3-title': 'Stability vs. Liquidity Distinction',
+        'finding3-desc': "Protocols may maintain price pegs (stability) while experiencing severe liquidity disruptions. These are separate problems requiring different solutions. Mento's cREAL maintains its peg but suffers from insufficient arbitrage incentives.",
+        'finding4-title': 'RWA Integration Complexity',
+        'finding4-desc': 'Real-World Asset-backed stablecoins like $BREAD inherit both crypto and traditional finance dependencies. This creates novel failure modes where smart contract risk combines with legal custody risk and traditional banking exposure.',
+        'finding5-title': 'Geographic Context Matters',
+        'finding5-desc': "Stablecoin designs optimized for developed markets (high liquidity, stable banking) don't automatically work in emerging markets. Latin American applications require different trust assumptions and liquidity mechanisms.",
+        'section-docs-title': 'Full Research Documentation',
+        'docs-p1': 'This research comprises 25 Google Docs organized across five phases: comparative analysis of major stablecoins, DeFi ecosystem security research, attack modeling and simulations, experimental stablecoin designs, and project documentation.',
+        'docs-p2': 'For access to the complete research documentation, interactive Machinations simulations, and detailed technical specifications, reach out to <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> on X or connect on <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.'
+      },
+      pt: {
+        'page-title': 'Revisão DeFi: Interoperabilidade, Interdependência e Segurança',
+        'page-subtitle': 'Análise abrangente da sustentabilidade de stablecoins, vulnerabilidades de segurança e experimentos de design inovadores para aplicações no mundo real em mercados emergentes.',
+        'page-meta': 'Projeto de Pesquisa • Wonderland Research Challenge • 2024-2025',
+        'nav-chip-overview': 'Visão Geral',
+        'nav-chip-comparative': 'Comparativo',
+        'nav-chip-security': 'Segurança',
+        'nav-chip-methodology': 'Metodologia',
+        'nav-chip-findings': 'Descobertas',
+        'section-overview-title': 'Visão Geral da Pesquisa',
+        'overview-p1': 'Esta pesquisa examina a sustentabilidade de stablecoins por três perspectivas complementares: <strong>análise comparativa</strong> de protocolos existentes, <strong>design experimental</strong> de novas arquiteturas e <strong>modelagem de segurança</strong> de vetores de ataque. O objetivo é compreender o que torna as stablecoins resilientes, identificar vulnerabilidades sistêmicas e projetar protocolos mais robustos para aplicações no mundo real.',
+        'overview-p2': 'O trabalho abrange frameworks teóricos (o "Triângulo Impossível" do design de stablecoins) e modelagem prática de segurança, incorporando lições de incidentes reais como a crise do Silicon Valley Bank e ataques específicos a protocolos.',
+        'overview-p3': '<strong>Questão Central da Pesquisa:</strong> Como podemos projetar stablecoins que mantenham estabilidade, eficiência de capital e descentralização, atendendo às necessidades reais do mercado—especialmente em economias emergentes como a América Latina?',
+        'section-components-title': 'Componentes da Pesquisa',
+        'comp-title': 'Análise Comparativa',
+        'comp-desc': 'Exame aprofundado de três abordagens distintas de stablecoin pelo framework de Propósito, Infraestrutura e Governança.',
+        'comp-box-title': 'Stablecoins Analisadas',
+        'comp-usdc': 'Lastreada em fiat, centralizada',
+        'comp-dai': 'Colateralizada em cripto, descentralizada',
+        'comp-bread': 'Ativos do Mundo Real (RWAs)',
+        'comp-link': 'Ver Análise Completa →',
+        'sec-title': 'Análise de Segurança',
+        'sec-desc': 'Análise de segurança abrangente examinando ataques economicamente viáveis a protocolos DeFi, com foco em manipulação de oráculos e vulnerabilidades de circuit breaker.',
+        'sec-box-title': 'Protocolos Analisados',
+        'sec-mento': 'Bypass de circuit breaker',
+        'sec-sonne': 'Manipulação de oráculo',
+        'sec-velodrome': 'Exploits de múltiplas etapas',
+        'sec-link': 'Ver Análise de Segurança →',
+        'infra-title': 'Análise de Infraestrutura',
+        'infra-desc': 'Exame crítico da segurança de infraestrutura blockchain empresarial, com foco em rollups L2, camadas de interoperabilidade e riscos de adoção institucional.',
+        'infra-box-title': 'Tópicos Abordados',
+        'infra-swift': 'Riscos do Estágio 0',
+        'infra-ccip': 'Camada de interoperabilidade',
+        'infra-l2beat': 'Auditorias de segurança',
+        'infra-link': 'Ver Análise →',
+        'section-methodology-title': 'Metodologia de Pesquisa',
+        'methodology-intro': 'Esta pesquisa emprega um framework analítico multidimensional examinando stablecoins nas dimensões técnica, econômica e de governança. A metodologia combina rigor acadêmico com insights práticos de implementação.',
+        'method-3d-title': 'Framework Tridimensional',
+        'method-3d-meta': 'Abordagem Analítica',
+        'method-3d-desc': 'Todo protocolo analisado através de: Propósito (necessidade de mercado), Infraestrutura (arquitetura técnica) e Governança (tomada de decisão).',
+        'method-attack-title': 'Simulação de Ataques',
+        'method-attack-meta': 'Modelagem de Segurança',
+        'method-attack-desc': 'Modelagem de cenários adversariais com agentes de ameaça realistas (atacantes financeiros, crime organizado, patrocinados por estados) e restrições econômicas.',
+        'method-comp-title': 'Análise Comparativa',
+        'method-comp-meta': 'Avaliação de Protocolos',
+        'method-comp-desc': 'Avaliação lado a lado de protocolos em tipos de colateral, eficiência de capital, descentralização e modelos de governança.',
+        'method-design-title': 'Experimentação de Design',
+        'method-design-meta': 'Teste de Arquitetura',
+        'method-design-desc': 'Criação de arquiteturas experimentais para testar hipóteses sobre tipos de colateral, adequação ao mercado e estruturas de governança.',
+        'method-case-title': 'Integração de Estudos de Caso',
+        'method-case-meta': 'Validação no Mundo Real',
+        'method-case-desc': 'Incorporação de incidentes reais (crise do SVB, exploits específicos de protocolos, eventos de depeg) para validar descobertas teóricas.',
+        'method-geo-title': 'Foco Geográfico',
+        'method-geo-meta': 'América Latina',
+        'method-geo-desc': 'Atenção especial aos mercados da LatAm, examinando como stablecoins podem enfrentar desafios regionais (dívida, comércio, inclusão financeira).',
+        'section-findings-title': 'Principais Descobertas da Pesquisa',
+        'finding1-title': 'O Triângulo Impossível',
+        'finding1-desc': 'Projetos de stablecoin não conseguem otimizar simultaneamente eficiência de capital, descentralização e estabilidade. Todo design envolve trade-offs—USDC escolhe centralização para estabilidade, DAI sacrifica eficiência de capital pela descentralização, e designs experimentais exploram novos compromissos.',
+        'finding2-title': 'Lacuna Oráculo-Circuit Breaker',
+        'finding2-desc': 'Vulnerabilidade crítica: Circuit breakers que monitoram feeds de oráculos mas não preços de mercado externo permitem ataques de arbitragem durante eventos de depeg. Atacantes exploram a diferença entre preços reportados por oráculos e preços reais de mercado para extrair valor enquanto parecem cumprir os mecanismos de segurança.',
+        'finding3-title': 'Distinção entre Estabilidade e Liquidez',
+        'finding3-desc': 'Protocolos podem manter pegs de preço (estabilidade) enquanto sofrem disrupções severas de liquidez. São problemas separados que requerem soluções diferentes. O cREAL da Mento mantém seu peg, mas sofre com incentivos insuficientes de arbitragem.',
+        'finding4-title': 'Complexidade da Integração de RWAs',
+        'finding4-desc': 'Stablecoins lastreadas em Ativos do Mundo Real como $BREAD herdam dependências tanto de cripto quanto de finanças tradicionais. Isso cria novos modos de falha onde o risco de smart contract se combina com risco de custódia legal e exposição bancária tradicional.',
+        'finding5-title': 'O Contexto Geográfico Importa',
+        'finding5-desc': 'Designs de stablecoin otimizados para mercados desenvolvidos (alta liquidez, bancos estáveis) não funcionam automaticamente em mercados emergentes. Aplicações na América Latina requerem diferentes premissas de confiança e mecanismos de liquidez.',
+        'section-docs-title': 'Documentação Completa da Pesquisa',
+        'docs-p1': 'Esta pesquisa compreende 25 Google Docs organizados em cinco fases: análise comparativa das principais stablecoins, pesquisa de segurança do ecossistema DeFi, modelagem e simulações de ataques, designs experimentais de stablecoins e documentação do projeto.',
+        'docs-p2': 'Para acesso à documentação completa da pesquisa, simulações interativas no Machinations e especificações técnicas detalhadas, entre em contato com <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> no X ou conecte-se no <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.'
+      },
+      es: {
+        'page-title': 'Revisión DeFi: Interoperabilidad, Interdependencia y Seguridad',
+        'page-subtitle': 'Análisis exhaustivo de la sostenibilidad de las stablecoins, vulnerabilidades de seguridad y experimentos de diseño innovadores para aplicaciones del mundo real en mercados emergentes.',
+        'page-meta': 'Proyecto de Investigación • Wonderland Research Challenge • 2024-2025',
+        'nav-chip-overview': 'Visión General',
+        'nav-chip-comparative': 'Comparativo',
+        'nav-chip-security': 'Seguridad',
+        'nav-chip-methodology': 'Metodología',
+        'nav-chip-findings': 'Hallazgos',
+        'section-overview-title': 'Visión General de la Investigación',
+        'overview-p1': 'Esta investigación examina la sostenibilidad de las stablecoins desde tres perspectivas complementarias: <strong>análisis comparativo</strong> de protocolos existentes, <strong>diseño experimental</strong> de nuevas arquitecturas y <strong>modelado de seguridad</strong> de vectores de ataque. El objetivo es comprender qué hace resilientes a las stablecoins, identificar vulnerabilidades sistémicas y diseñar protocolos más robustos para aplicaciones del mundo real.',
+        'overview-p2': 'El trabajo abarca marcos teóricos (el "Triángulo Imposible" del diseño de stablecoins) y modelado práctico de seguridad, incorporando lecciones de incidentes reales como la crisis del Silicon Valley Bank y ataques específicos a protocolos.',
+        'overview-p3': '<strong>Pregunta Central de Investigación:</strong> ¿Cómo podemos diseñar stablecoins que mantengan estabilidad, eficiencia de capital y descentralización mientras responden a las necesidades reales del mercado—particularmente en economías emergentes como América Latina?',
+        'section-components-title': 'Componentes de la Investigación',
+        'comp-title': 'Análisis Comparativo',
+        'comp-desc': 'Examen detallado de tres enfoques distintos de stablecoin mediante el marco de Propósito, Infraestructura y Gobernanza.',
+        'comp-box-title': 'Stablecoins Analizadas',
+        'comp-usdc': 'Respaldada en fiat, centralizada',
+        'comp-dai': 'Colateralizada en cripto, descentralizada',
+        'comp-bread': 'Activos del Mundo Real (RWAs)',
+        'comp-link': 'Ver Análisis Completo →',
+        'sec-title': 'Análisis de Seguridad',
+        'sec-desc': 'Análisis de seguridad exhaustivo que examina ataques económicamente viables a protocolos DeFi, con foco en manipulación de oráculos y vulnerabilidades de circuit breaker.',
+        'sec-box-title': 'Protocolos Analizados',
+        'sec-mento': 'Bypass de circuit breaker',
+        'sec-sonne': 'Manipulación de oráculo',
+        'sec-velodrome': 'Exploits de múltiples pasos',
+        'sec-link': 'Ver Análisis de Seguridad →',
+        'infra-title': 'Análisis de Infraestructura',
+        'infra-desc': 'Examen crítico de la seguridad de infraestructura blockchain empresarial, con foco en rollups L2, capas de interoperabilidad y riesgos de adopción institucional.',
+        'infra-box-title': 'Temas Cubiertos',
+        'infra-swift': 'Riesgos de Etapa 0',
+        'infra-ccip': 'Capa de interoperabilidad',
+        'infra-l2beat': 'Auditorías de seguridad',
+        'infra-link': 'Ver Análisis →',
+        'section-methodology-title': 'Metodología de Investigación',
+        'methodology-intro': 'Esta investigación emplea un marco analítico multidimensional que examina las stablecoins en dimensiones técnicas, económicas y de gobernanza. La metodología combina rigor académico con perspectivas prácticas de implementación.',
+        'method-3d-title': 'Marco Tridimensional',
+        'method-3d-meta': 'Enfoque Analítico',
+        'method-3d-desc': 'Cada protocolo analizado mediante: Propósito (necesidad de mercado), Infraestructura (arquitectura técnica) y Gobernanza (toma de decisiones).',
+        'method-attack-title': 'Simulación de Ataques',
+        'method-attack-meta': 'Modelado de Seguridad',
+        'method-attack-desc': 'Modelado de escenarios adversariales con actores de amenaza realistas (atacantes financieros, crimen organizado, patrocinados por estados) y restricciones económicas.',
+        'method-comp-title': 'Análisis Comparativo',
+        'method-comp-meta': 'Evaluación de Protocolos',
+        'method-comp-desc': 'Evaluación lado a lado de protocolos en tipos de colateral, eficiencia de capital, descentralización y modelos de gobernanza.',
+        'method-design-title': 'Experimentación de Diseño',
+        'method-design-meta': 'Pruebas de Arquitectura',
+        'method-design-desc': 'Creación de arquitecturas experimentales para probar hipótesis sobre tipos de colateral, adecuación al mercado y estructuras de gobernanza.',
+        'method-case-title': 'Integración de Estudios de Caso',
+        'method-case-meta': 'Validación en el Mundo Real',
+        'method-case-desc': 'Incorporación de incidentes reales (crisis del SVB, exploits específicos de protocolos, eventos de depeg) para validar hallazgos teóricos.',
+        'method-geo-title': 'Enfoque Geográfico',
+        'method-geo-meta': 'América Latina',
+        'method-geo-desc': 'Atención especial a los mercados de LatAm, examinando cómo las stablecoins pueden abordar desafíos regionales (deuda, comercio, inclusión financiera).',
+        'section-findings-title': 'Principales Hallazgos de la Investigación',
+        'finding1-title': 'El Triángulo Imposible',
+        'finding1-desc': 'Los proyectos de stablecoin no pueden optimizar simultáneamente la eficiencia de capital, la descentralización y la estabilidad. Cada diseño implica compromisos—USDC elige la centralización para la estabilidad, DAI sacrifica la eficiencia de capital por la descentralización, y los diseños experimentales exploran nuevos compromisos.',
+        'finding2-title': 'Brecha Oráculo-Circuit Breaker',
+        'finding2-desc': 'Vulnerabilidad crítica: Los circuit breakers que monitorean feeds de oráculos pero no los precios de mercado externo permiten ataques de arbitraje durante eventos de depeg. Los atacantes explotan la brecha entre los precios reportados por oráculos y los precios reales de mercado para extraer valor mientras aparentan cumplir con los mecanismos de seguridad.',
+        'finding3-title': 'Distinción entre Estabilidad y Liquidez',
+        'finding3-desc': 'Los protocolos pueden mantener pegs de precio (estabilidad) mientras experimentan graves disrupciones de liquidez. Son problemas separados que requieren soluciones distintas. El cREAL de Mento mantiene su peg pero sufre de incentivos de arbitraje insuficientes.',
+        'finding4-title': 'Complejidad de la Integración de RWAs',
+        'finding4-desc': 'Las stablecoins respaldadas por Activos del Mundo Real como $BREAD heredan dependencias tanto de cripto como de finanzas tradicionales. Esto crea nuevos modos de fallo donde el riesgo de smart contract se combina con el riesgo de custodia legal y la exposición bancaria tradicional.',
+        'finding5-title': 'El Contexto Geográfico Importa',
+        'finding5-desc': 'Los diseños de stablecoin optimizados para mercados desarrollados (alta liquidez, banca estable) no funcionan automáticamente en mercados emergentes. Las aplicaciones en América Latina requieren diferentes suposiciones de confianza y mecanismos de liquidez.',
+        'section-docs-title': 'Documentación Completa de la Investigación',
+        'docs-p1': 'Esta investigación comprende 25 Google Docs organizados en cinco fases: análisis comparativo de las principales stablecoins, investigación de seguridad del ecosistema DeFi, modelado y simulaciones de ataques, diseños experimentales de stablecoins y documentación del proyecto.',
+        'docs-p2': 'Para acceder a la documentación completa de la investigación, simulaciones interactivas de Machinations y especificaciones técnicas detalladas, comuníquese con <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> en X o conéctese en <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.'
+      },
+      zh: {
+        'page-title': 'DeFi综述：互操作性、相互依存与安全性',
+        'page-subtitle': '对稳定币可持续性、安全漏洞以及面向新兴市场实际应用的创新设计实验的全面分析。',
+        'page-meta': '研究项目 • Wonderland研究挑战 • 2024-2025',
+        'nav-chip-overview': '概述',
+        'nav-chip-comparative': '比较分析',
+        'nav-chip-security': '安全性',
+        'nav-chip-methodology': '方法论',
+        'nav-chip-findings': '研究发现',
+        'section-overview-title': '研究概述',
+        'overview-p1': '本研究从三个互补视角审视稳定币的可持续性：对现有协议的<strong>比较分析</strong>、新型架构的<strong>实验设计</strong>以及攻击向量的<strong>安全建模</strong>。目标是理解稳定币何以具有韧性、识别系统性漏洞，并为实际应用设计更稳健的协议。',
+        'overview-p2': '研究涵盖理论框架（稳定币设计的"不可能三角"）和实践安全建模，同时融入硅谷银行危机和特定协议攻击等现实事件的经验教训。',
+        'overview-p3': '<strong>核心研究问题：</strong>我们如何设计既能保持稳定性、资本效率和去中心化，又能满足现实市场需求的稳定币——尤其是在拉丁美洲等新兴经济体中？',
+        'section-components-title': '研究组成部分',
+        'comp-title': '比较分析',
+        'comp-desc': '通过目的、基础设施和治理框架深入审查三种不同的稳定币方法。',
+        'comp-box-title': '已分析的稳定币',
+        'comp-usdc': '法币支持，中心化',
+        'comp-dai': '加密抵押，去中心化',
+        'comp-bread': '真实世界资产（RWAs）',
+        'comp-link': '查看完整分析 →',
+        'sec-title': '安全分析',
+        'sec-desc': '对DeFi协议经济可行攻击的全面安全分析，重点关注预言机操纵和断路器漏洞。',
+        'sec-box-title': '已分析的协议',
+        'sec-mento': '断路器绕过',
+        'sec-sonne': '预言机操纵',
+        'sec-velodrome': '多步骤漏洞利用',
+        'sec-link': '查看安全分析 →',
+        'infra-title': '基础设施分析',
+        'infra-desc': '对企业区块链基础设施安全的批判性审查，重点关注L2 rollup、互操作层和机构采用风险。',
+        'infra-box-title': '涵盖主题',
+        'infra-swift': '阶段0风险',
+        'infra-ccip': '互操作层',
+        'infra-l2beat': '安全审计',
+        'infra-link': '查看分析 →',
+        'section-methodology-title': '研究方法论',
+        'methodology-intro': '本研究采用多维分析框架，从技术、经济和治理维度审视稳定币。该方法论将学术严谨性与实际实施见解相结合。',
+        'method-3d-title': '三维框架',
+        'method-3d-meta': '分析方法',
+        'method-3d-desc': '每个协议均通过以下维度进行分析：目的（市场需求）、基础设施（技术架构）和治理（决策机制）。',
+        'method-attack-title': '攻击模拟',
+        'method-attack-meta': '安全建模',
+        'method-attack-desc': '对具有现实威胁行为者（金融攻击者、有组织犯罪、国家支持者）和经济约束的对抗场景进行建模。',
+        'method-comp-title': '比较分析',
+        'method-comp-meta': '协议评估',
+        'method-comp-desc': '在抵押品类型、资本效率、去中心化和治理模型方面对协议进行并排评估。',
+        'method-design-title': '设计实验',
+        'method-design-meta': '架构测试',
+        'method-design-desc': '创建实验性架构，以测试关于抵押品类型、市场适配度和治理结构的假设。',
+        'method-case-title': '案例研究整合',
+        'method-case-meta': '现实世界验证',
+        'method-case-desc': '纳入现实事件（SVB危机、特定协议漏洞利用、脱锚事件）以验证理论发现。',
+        'method-geo-title': '地理聚焦',
+        'method-geo-meta': '拉丁美洲',
+        'method-geo-desc': '特别关注拉美市场，研究稳定币如何应对区域挑战（债务、贸易、金融包容性）。',
+        'section-findings-title': '主要研究发现',
+        'finding1-title': '不可能三角',
+        'finding1-desc': '稳定币项目无法同时优化资本效率、去中心化和稳定性。每个设计都涉及权衡——USDC为了稳定性选择中心化，DAI为了去中心化牺牲资本效率，实验性设计则探索新的折中方案。',
+        'finding2-title': '预言机-断路器漏洞',
+        'finding2-desc': '关键漏洞：监控预言机价格但不监控外部市场价格的断路器，在脱锚事件期间会助长套利攻击。攻击者利用预言机报告价格与真实市场价格之间的差距来提取价值，同时表面上遵守安全机制。',
+        'finding3-title': '稳定性与流动性的区别',
+        'finding3-desc': '协议可能在保持价格锚定（稳定性）的同时经历严重的流动性中断。这是两个需要不同解决方案的独立问题。Mento的cREAL维持其锚定，但套利激励不足。',
+        'finding4-title': 'RWA整合的复杂性',
+        'finding4-desc': '像$BREAD这样以真实世界资产为支撑的稳定币，既继承了加密货币的风险，又继承了传统金融的依赖关系。这带来了新型失败模式，智能合约风险与法律托管风险及传统银行敞口相互交织。',
+        'finding5-title': '地理背景至关重要',
+        'finding5-desc': '针对发达市场（高流动性、稳定银行体系）优化的稳定币设计不能自动适用于新兴市场。拉丁美洲的应用需要不同的信任假设和流动性机制。',
+        'section-docs-title': '完整研究文档',
+        'docs-p1': '本研究包含25份Google文档，分五个阶段组织：主要稳定币的比较分析、DeFi生态系统安全研究、攻击建模与模拟、实验性稳定币设计以及项目文档。',
+        'docs-p2': '如需获取完整研究文档、交互式Machinations模拟和详细技术规范，请在X上联系<a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a>，或在<a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>上联系。'
+      },
+      ja: {
+        'page-title': 'DeFiレビュー：相互運用性、相互依存性、セキュリティ',
+        'page-subtitle': 'ステーブルコインの持続可能性、セキュリティの脆弱性、および新興市場における実世界アプリケーションのための革新的な設計実験の包括的分析。',
+        'page-meta': '研究プロジェクト • Wonderland Research Challenge • 2024-2025',
+        'nav-chip-overview': '概要',
+        'nav-chip-comparative': '比較分析',
+        'nav-chip-security': 'セキュリティ',
+        'nav-chip-methodology': '方法論',
+        'nav-chip-findings': '調査結果',
+        'section-overview-title': '研究概要',
+        'overview-p1': 'この研究は、ステーブルコインの持続可能性を三つの補完的な視点から検証します：既存プロトコルの<strong>比較分析</strong>、新規アーキテクチャの<strong>実験的設計</strong>、攻撃ベクトルの<strong>セキュリティモデリング</strong>。目標は、ステーブルコインの回復力を理解し、システム上の脆弱性を特定し、実世界アプリケーション向けにより堅牢なプロトコルを設計することです。',
+        'overview-p2': 'この研究は、理論的枠組み（ステーブルコイン設計の「不可能な三角形」）と実践的なセキュリティモデリングにわたり、シリコンバレー銀行危機やプロトコル固有の攻撃などの実世界の事件からの教訓を組み込んでいます。',
+        'overview-p3': '<strong>中核的研究課題：</strong>安定性、資本効率、分散化を維持しながら、実世界の市場ニーズ—特にラテンアメリカのような新興経済圏のニーズ—に対応するステーブルコインをどのように設計できるでしょうか？',
+        'section-components-title': '研究コンポーネント',
+        'comp-title': '比較分析',
+        'comp-desc': '目的、インフラストラクチャ、ガバナンスの枠組みを通じて、三つの異なるステーブルコインアプローチを詳細に検討します。',
+        'comp-box-title': '分析済みステーブルコイン',
+        'comp-usdc': '法定通貨担保、中央集権型',
+        'comp-dai': '暗号資産担保、分散型',
+        'comp-bread': '現実世界の資産（RWA）',
+        'comp-link': '完全な分析を見る →',
+        'sec-title': 'セキュリティ分析',
+        'sec-desc': 'オラクル操作やサーキットブレーカーの脆弱性に焦点を当て、DeFiプロトコルへの経済的に実行可能な攻撃を検証する包括的セキュリティ分析。',
+        'sec-box-title': '分析済みプロトコル',
+        'sec-mento': 'サーキットブレーカー回避',
+        'sec-sonne': 'オラクル操作',
+        'sec-velodrome': '多段階エクスプロイト',
+        'sec-link': 'セキュリティ分析を見る →',
+        'infra-title': 'インフラストラクチャ分析',
+        'infra-desc': 'L2ロールアップ、相互運用性レイヤー、および機関採用リスクに焦点を当てた、エンタープライズブロックチェーンインフラストラクチャセキュリティの批判的検討。',
+        'infra-box-title': '対象トピック',
+        'infra-swift': 'ステージ0のリスク',
+        'infra-ccip': '相互運用性レイヤー',
+        'infra-l2beat': 'セキュリティ監査',
+        'infra-link': '分析を見る →',
+        'section-methodology-title': '研究方法論',
+        'methodology-intro': 'この研究は、技術、経済、ガバナンスの次元からステーブルコインを検討する多次元分析フレームワークを採用しています。方法論は学術的厳密性と実践的実装の洞察を組み合わせています。',
+        'method-3d-title': '三次元フレームワーク',
+        'method-3d-meta': '分析アプローチ',
+        'method-3d-desc': '全プロトコルを以下の観点から分析：目的（市場ニーズ）、インフラストラクチャ（技術アーキテクチャ）、ガバナンス（意思決定）。',
+        'method-attack-title': '攻撃シミュレーション',
+        'method-attack-meta': 'セキュリティモデリング',
+        'method-attack-desc': '現実的な脅威アクター（金融攻撃者、組織犯罪、国家後援）と経済的制約を持つ敵対的シナリオのモデリング。',
+        'method-comp-title': '比較分析',
+        'method-comp-meta': 'プロトコル評価',
+        'method-comp-desc': '担保タイプ、資本効率、分散化、ガバナンスモデルにわたるプロトコルの並行評価。',
+        'method-design-title': 'デザイン実験',
+        'method-design-meta': 'アーキテクチャテスト',
+        'method-design-desc': '担保タイプ、市場適合性、ガバナンス構造に関する仮説を検証するための実験的アーキテクチャの作成。',
+        'method-case-title': 'ケーススタディ統合',
+        'method-case-meta': '実世界検証',
+        'method-case-desc': '理論的発見を検証するために、実世界の事件（SVB危機、特定のプロトコルエクスプロイト、デペッグイベント）を組み込む。',
+        'method-geo-title': '地理的焦点',
+        'method-geo-meta': 'ラテンアメリカ',
+        'method-geo-desc': 'ステーブルコインが地域の課題（債務、貿易、金融包摂）にどう対処できるかを検討する、ラテンアメリカ市場への特別な注目。',
+        'section-findings-title': '主な研究発見',
+        'finding1-title': '不可能な三角形',
+        'finding1-desc': 'ステーブルコインプロジェクトは、資本効率、分散化、安定性を同時に最適化することができません。すべての設計にはトレードオフが伴います—USDCは安定性のために中央集権化を選択し、DAIは分散化のために資本効率を犠牲にし、実験的設計は新たな妥協点を探求します。',
+        'finding2-title': 'オラクル・サーキットブレーカーギャップ',
+        'finding2-desc': '重大な脆弱性：オラクルフィードを監視するが外部市場価格は監視しないサーキットブレーカーは、デペッグイベント中に裁定取引攻撃を可能にします。攻撃者はオラクル報告価格と実際の市場価格のギャップを利用して、安全機構に準拠しているように見えながら価値を抽出します。',
+        'finding3-title': '安定性と流動性の区別',
+        'finding3-desc': 'プロトコルは価格ペッグ（安定性）を維持しながら、深刻な流動性の混乱を経験することがあります。これらは異なる解決策を必要とする別々の問題です。MentoのcREALはペッグを維持していますが、十分な裁定インセンティブが不足しています。',
+        'finding4-title': 'RWA統合の複雑性',
+        'finding4-desc': '$BREADのような現実世界の資産に裏付けられたステーブルコインは、暗号資産と伝統的金融の両方の依存性を引き継ぎます。これにより、スマートコントラクトリスクが法的カストディリスクや伝統的銀行エクスポージャーと組み合わさる新たな障害モードが生まれます。',
+        'finding5-title': '地理的文脈の重要性',
+        'finding5-desc': '発達した市場（高流動性、安定した銀行）向けに最適化されたステーブルコイン設計は、新興市場では自動的に機能しません。ラテンアメリカでの応用には、異なる信頼の前提と流動性メカニズムが必要です。',
+        'section-docs-title': '完全な研究ドキュメント',
+        'docs-p1': 'この研究は、主要なステーブルコインの比較分析、DeFiエコシステムのセキュリティ研究、攻撃モデリングとシミュレーション、実験的ステーブルコイン設計、プロジェクトドキュメントの5つのフェーズに渡る25本のGoogle Docsで構成されています。',
+        'docs-p2': '完全な研究ドキュメント、インタラクティブなMachinationsシミュレーション、詳細な技術仕様へのアクセスについては、Xの<a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a>または<a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>でご連絡ください。'
+      }
+    };
+  </script>
+
+  <script>
     document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: {
+        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
+        'footer-contact': 'Contact'
+      },
+      pt: {
+        'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
+        'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
+        'footer-contact': 'Contato'
+      },
+      es: {
+        'nav-archive': 'Archivo', 'nav-projects': 'Proyectos',
+        'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto',
+        'footer-contact': 'Contacto'
+      },
+      zh: {
+        'nav-archive': '文章', 'nav-projects': '项目',
+        'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系',
+        'footer-contact': '联系'
+      },
+      ja: {
+        'nav-archive': '記事', 'nav-projects': 'プロジェクト',
+        'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡',
+        'footer-contact': '連絡'
+      }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });

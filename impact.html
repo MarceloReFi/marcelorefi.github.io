@@ -85,12 +85,12 @@
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
         <a href="impact.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-impact">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
-        <div class="flex gap-1" id="lang-switcher">
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
           <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
           <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
           <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
@@ -123,7 +123,7 @@
 
     <!-- Page Header -->
     <div class="mb-12">
-      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4">
+      <div class="inline-block bg-warm-amber border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4" data-i18n="impact-section-label">
         MONITORING &amp; EVALUATION
       </div>
       <h1 class="text-headline-xl font-bold" data-i18n="impact-heading">Impact</h1>
@@ -164,7 +164,7 @@
 
     <!-- Methodology Section -->
     <section class="mb-16">
-      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-8">
+      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-8" data-i18n="impact-section-method">
         Methodology
       </div>
 
@@ -208,7 +208,7 @@
 
     <!-- Validation Badges -->
     <section class="mb-16">
-      <div class="inline-block bg-surface-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-8">
+      <div class="inline-block bg-surface-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-8" data-i18n="impact-section-valid">
         Institutional Validations
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -279,6 +279,9 @@
         'impact-cta-heading': 'Want to discuss impact frameworks?',
         'impact-cta-desc': 'Open to collaborations on impact monitoring, community data infrastructure, and capital allocation.',
         'impact-cta-btn': 'Get in Touch',
+        'impact-section-label': 'MONITORING &amp; EVALUATION',
+        'impact-section-method': 'Methodology',
+        'impact-section-valid': 'Institutional Validations',
       },
       pt: {
         'impact-heading': 'Impacto',
@@ -306,36 +309,99 @@
         'impact-cta-heading': 'Quer discutir frameworks de impacto?',
         'impact-cta-desc': 'Aberto a colaborações em monitoramento de impacto, infraestrutura de dados comunitários e alocação de capital.',
         'impact-cta-btn': 'Entrar em Contato',
+        'impact-section-label': 'MONITORAMENTO &amp; AVALIAÇÃO',
+        'impact-section-method': 'Metodologia',
+        'impact-section-valid': 'Validações Institucionais',
       },
       es: {
-        'impact-subtitle': 'Más de una década de contribuciones a bienes públicos, regeneración, formación de capacidades e investigación.',
-        'metric-certificates': 'Más de 30.000 certificados emitidos on-chain',
-        'metric-countries': '29+ países',
-        'metric-events': '100+ eventos organizados',
-        'metric-capital': 'Contribuyó a equipos que recaudaron más de US$ 5M para bienes públicos y regeneración activa en todo el mundo',
+        'impact-section-label': 'MONITOREO &amp; EVALUACIÓN',
+        'impact-section-method': 'Metodología',
+        'impact-section-valid': 'Validaciones Institucionales',
+        'impact-heading': 'Impacto',
+        'impact-subheading': 'Más de una década de contribuciones a bienes públicos, regeneración, formación de capacidades e investigación.',
+        'metric-capital-label': '$5M+',
+        'metric-capital-source': 'Contribuyó a equipos que recaudaron más de US$ 5M para bienes públicos y regeneración activa en todo el mundo',
+        'metric-certs-label': 'Certificados Emitidos',
+        'metric-certs-source': 'Blockchain na Escola · on-chain',
+        'metric-countries-label': 'Países Alcanzados',
+        'metric-countries-source': 'ReFi Spring / ReFi DAO',
+        'metric-organized-label': 'Eventos Organizados',
+        'metric-organized-source': 'Contribuyó en 100+ eventos de innovación y coordinación en todo el mundo. (Europa, África, Asia, América Latina y América del Norte).',
         'method-01-title': 'Clasificación de Activos de Impacto',
+        'method-01-desc': 'Clasificación de activos de impacto según el marco ISSB — desarrollada a través de participación en hackathons y el programa LIFT Lab del Banco Central.',
         'method-02-title': 'Inteligencia Hiper-Territorial',
+        'method-02-desc': 'Metodología de Liga que combina IA, blockchain y georeferenciación con marcos de escucha activa para generar datos territoriales verificables para comunidades tradicionales en zonas de conflicto.',
         'method-03-title': 'Análisis de Seguridad de Protocolos Financieros',
+        'method-03-desc': 'Análisis de seguridad de protocolos DeFi con el crimen organizado como perfil de adversario principal — aplicado a la infraestructura de finanzas regenerativas en América Latina.',
+        'badge-g20': 'Ganador del Hackathon del G20',
+        'badge-g20-org': 'Banco de Pagos Internacionales (BIS)',
+        'badge-treasury': 'Ganador del Desafío del Tesoro Nacional',
+        'badge-treasury-org': 'Secretaría del Tesoro Nacional · 2 pistas',
+        'badge-lift': 'Finalista LIFT Lab',
+        'badge-lift-org': 'Banco Central de Brasil',
+        'impact-cta-heading': '¿Quieres discutir marcos de impacto?',
+        'impact-cta-desc': 'Abierto a colaboraciones en monitoreo de impacto, infraestructura de datos comunitarios y asignación de capital.',
+        'impact-cta-btn': 'Contactar',
       },
       zh: {
-        'impact-subtitle': '十余年来对公共品、再生、能力建设与研究的持续贡献。',
-        'metric-certificates': '超过30,000份链上证书已发放',
-        'metric-countries': '29个以上国家',
-        'metric-events': '100个以上活动已组织',
-        'metric-capital': '参与团队共筹集超过500万美元，用于支持全球公共品与积极再生',
+        'impact-section-label': '监测与评估',
+        'impact-section-method': '方法论',
+        'impact-section-valid': '机构认可',
+        'impact-heading': '影响力',
+        'impact-subheading': '十余年来对公共品、再生、能力建设与研究的持续贡献。',
+        'metric-capital-label': '$5M+',
+        'metric-capital-source': '参与团队共筹集超过500万美元，用于支持全球公共品与积极再生',
+        'metric-certs-label': '已发放证书',
+        'metric-certs-source': 'Blockchain na Escola · 链上',
+        'metric-countries-label': '覆盖国家',
+        'metric-countries-source': 'ReFi Spring / ReFi DAO',
+        'metric-organized-label': '已组织活动',
+        'metric-organized-source': '参与组织了全球100+场创新与协调活动（欧洲、非洲、亚洲、拉丁美洲和北美洲）。',
         'method-01-title': '影响力资产排名',
+        'method-01-desc': '根据ISSB框架对影响力资产进行排名——通过参与黑客松和巴西中央银行LIFT Lab项目开发。',
         'method-02-title': '超地域智能',
+        'method-02-desc': 'Liga将AI、区块链和地理定位与积极倾听框架相结合，为冲突地区传统社区生成可验证的领土数据。',
         'method-03-title': '金融协议安全分析',
+        'method-03-desc': '以有组织犯罪为主要对手模型的DeFi协议安全分析——应用于拉丁美洲的再生金融基础设施。',
+        'badge-g20': 'G20黑客松获奖者',
+        'badge-g20-org': '国际清算银行（BIS）',
+        'badge-treasury': '国家财政部挑战赛获奖者',
+        'badge-treasury-org': '国家财政部 · 2个赛道',
+        'badge-lift': 'LIFT Lab决赛入围者',
+        'badge-lift-org': '巴西中央银行',
+        'impact-cta-heading': '想讨论影响力框架？',
+        'impact-cta-desc': '欢迎在影响力监测、社区数据基础设施和资本配置方面展开合作。',
+        'impact-cta-btn': '立即联系',
       },
       ja: {
-        'impact-subtitle': '公共財、再生、能力構築、研究への10年以上にわたる貢献。',
-        'metric-certificates': '30,000件以上のオンチェーン証明書を発行',
-        'metric-countries': '29カ国以上',
-        'metric-events': '100件以上のイベントを主催',
-        'metric-capital': '世界中の公共財と積極的な再生を支援するため、500万ドル以上を調達したチームに貢献',
+        'impact-section-label': 'モニタリング＆評価',
+        'impact-section-method': '方法論',
+        'impact-section-valid': '機関認定',
+        'impact-heading': 'インパクト',
+        'impact-subheading': '公共財、再生、能力構築、研究への10年以上にわたる貢献。',
+        'metric-capital-label': '$5M+',
+        'metric-capital-source': '世界中の公共財と積極的な再生を支援するため、500万ドル以上を調達したチームに貢献',
+        'metric-certs-label': '発行済み証明書',
+        'metric-certs-source': 'Blockchain na Escola · オンチェーン',
+        'metric-countries-label': '到達国数',
+        'metric-countries-source': 'ReFi Spring / ReFi DAO',
+        'metric-organized-label': '開催イベント数',
+        'metric-organized-source': '世界100件以上のイノベーション・コーディネーションイベントに貢献（欧州、アフリカ、アジア、ラテンアメリカ、北米）。',
         'method-01-title': 'インパクト資産ランキング',
+        'method-01-desc': 'ISSBフレームワークに基づくインパクト資産ランキング——ハッカソン参加と中央銀行LIFT Labプログラムを通じて開発。',
         'method-02-title': '超地域インテリジェンス',
+        'method-02-desc': 'LigaのAI、ブロックチェーン、地理参照と積極的傾聴フレームワークを組み合わせた方法論。紛争地帯の伝統的コミュニティのための検証可能な地域データを生成。',
         'method-03-title': '金融プロトコルのセキュリティ分析',
+        'method-03-desc': '組織犯罪を主要な敵対プロファイルとしたDeFiプロトコルセキュリティ分析——ラテンアメリカのリジェネラティブファイナンスインフラに適用。',
+        'badge-g20': 'G20ハッカソン受賞',
+        'badge-g20-org': '国際決済銀行（BIS）',
+        'badge-treasury': '国家財務省チャレンジ受賞',
+        'badge-treasury-org': '国家財務省 · 2トラック',
+        'badge-lift': 'LIFT Labファイナリスト',
+        'badge-lift-org': 'ブラジル中央銀行',
+        'impact-cta-heading': 'インパクトフレームワークについて議論しませんか？',
+        'impact-cta-desc': 'インパクトモニタリング、コミュニティデータインフラ、資本配分における連携を歓迎しています。',
+        'impact-cta-btn': 'お問い合わせ',
       }
     };
   </script>

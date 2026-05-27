@@ -87,12 +87,12 @@
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
         <a href="articles.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-archive">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
-        <div class="flex gap-1" id="lang-switcher">
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
           <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
           <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
           <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
@@ -125,7 +125,7 @@
 
     <!-- Page Header -->
     <div class="mb-8">
-      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4">
+      <div class="inline-block bg-tertiary-container border-stroke-weight border-deep-ink px-4 py-1 font-bold uppercase tracking-widest text-caption mb-4" data-i18n="archive-section-label">
         FIELD ARCHIVE
       </div>
       <h1 class="text-headline-xl font-bold" data-i18n="archive-heading">Articles &amp; Research</h1>
@@ -500,6 +500,7 @@
         'filter-refi': 'ReFi',
         'filter-impact': 'Impact',
         'section-academic': 'Academic &amp; Early Work',
+        'archive-section-label': 'FIELD ARCHIVE',
       },
       pt: {
         'archive-heading': 'Artigos &amp; Pesquisa',
@@ -510,18 +511,31 @@
         'filter-refi': 'ReFi',
         'filter-impact': 'Impacto',
         'section-academic': 'Trabalhos Acadêmicos',
+        'archive-section-label': 'ARQUIVO DE CAMPO',
       },
       es: {
+        'archive-section-label': 'ARCHIVO DE CAMPO',
+        'archive-heading': 'Artículos &amp; Investigación',
+        'archive-subheading': 'Una selección de escritos y publicaciones, más recientes primero.',
         'filter-all': 'Todos', 'filter-research': 'Investigación',
         'filter-community': 'Comunidad', 'filter-refi': 'ReFi', 'filter-impact': 'Impacto',
+        'section-academic': 'Trabajos Académicos',
       },
       zh: {
+        'archive-section-label': '实地档案',
+        'archive-heading': '文章与研究',
+        'archive-subheading': '精选文章与出版物，最新在前。',
         'filter-all': '全部', 'filter-research': '研究',
         'filter-community': '社区', 'filter-refi': 'ReFi', 'filter-impact': '影响力',
+        'section-academic': '学术与早期作品',
       },
       ja: {
+        'archive-section-label': 'フィールドアーカイブ',
+        'archive-heading': '記事＆研究',
+        'archive-subheading': '執筆と出版物のセレクション（新しい順）。',
         'filter-all': 'すべて', 'filter-research': '研究',
         'filter-community': 'コミュニティ', 'filter-refi': 'ReFi', 'filter-impact': 'インパクト',
+        'section-academic': '学術・初期作品',
       }
     };
   </script>
