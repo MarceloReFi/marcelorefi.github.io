@@ -90,7 +90,13 @@
         <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
         <a href="impact.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-impact">Impact</a>
         <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
-        <button id="lang-toggle" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all">PT | EN</button>
+        <div class="flex gap-1" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
         <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
@@ -102,7 +108,13 @@
       <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
       <a href="impact.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-impact">Impact</a>
       <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
-      <button id="lang-toggle-mobile" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest self-start hover:bg-warm-amber transition-all">PT | EN</button>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
       <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
     </div>
   </nav>
@@ -294,6 +306,36 @@
         'impact-cta-heading': 'Quer discutir frameworks de impacto?',
         'impact-cta-desc': 'Aberto a colaborações em monitoramento de impacto, infraestrutura de dados comunitários e alocação de capital.',
         'impact-cta-btn': 'Entrar em Contato',
+      },
+      es: {
+        'impact-subtitle': 'Más de una década de contribuciones a bienes públicos, regeneración, formación de capacidades e investigación.',
+        'metric-certificates': 'Más de 30.000 certificados emitidos on-chain',
+        'metric-countries': '29+ países',
+        'metric-events': '100+ eventos organizados',
+        'metric-capital': 'Contribuyó a equipos que recaudaron más de US$ 5M para bienes públicos y regeneración activa en todo el mundo',
+        'method-01-title': 'Clasificación de Activos de Impacto',
+        'method-02-title': 'Inteligencia Hiper-Territorial',
+        'method-03-title': 'Análisis de Seguridad de Protocolos Financieros',
+      },
+      zh: {
+        'impact-subtitle': '十余年来对公共品、再生、能力建设与研究的持续贡献。',
+        'metric-certificates': '超过30,000份链上证书已发放',
+        'metric-countries': '29个以上国家',
+        'metric-events': '100个以上活动已组织',
+        'metric-capital': '参与团队共筹集超过500万美元，用于支持全球公共品与积极再生',
+        'method-01-title': '影响力资产排名',
+        'method-02-title': '超地域智能',
+        'method-03-title': '金融协议安全分析',
+      },
+      ja: {
+        'impact-subtitle': '公共財、再生、能力構築、研究への10年以上にわたる貢献。',
+        'metric-certificates': '30,000件以上のオンチェーン証明書を発行',
+        'metric-countries': '29カ国以上',
+        'metric-events': '100件以上のイベントを主催',
+        'metric-capital': '世界中の公共財と積極的な再生を支援するため、500万ドル以上を調達したチームに貢献',
+        'method-01-title': 'インパクト資産ランキング',
+        'method-02-title': '超地域インテリジェンス',
+        'method-03-title': '金融プロトコルのセキュリティ分析',
       }
     };
   </script>
@@ -309,28 +351,51 @@
         'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
         'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
         'footer-contact': 'Contato'
+      },
+      es: {
+        'nav-archive': 'Archivo', 'nav-projects': 'Proyectos',
+        'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto',
+        'footer-contact': 'Contacto'
+      },
+      zh: {
+        'nav-archive': '文章', 'nav-projects': '项目',
+        'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系',
+        'footer-contact': '联系'
+      },
+      ja: {
+        'nav-archive': '記事', 'nav-projects': 'プロジェクト',
+        'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡',
+        'footer-contact': '連絡'
       }
     };
     const translations = {
       en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
-      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt }
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
     };
-    let lang = localStorage.getItem('lang') || 'en';
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+
     function applyLang(l) {
       lang = l;
       localStorage.setItem('lang', l);
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[l][key]) el.innerHTML = translations[l][key];
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
       });
+      updateLangButtons(l);
     }
-    document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
-      btn.addEventListener('click', () => applyLang(lang === 'en' ? 'pt' : 'en'));
-    });
+
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
-    applyLang(lang);
   </script>
 </body>
 </html>
