@@ -42,10 +42,30 @@
           "base": "8px",
           "margin-desktop": "64px",
           "margin-mobile": "20px",
-          "container-max": "1120px"
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
         },
         borderWidth: {
           "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
         }
       }
     }
@@ -176,27 +196,40 @@
 </head>
 <body class="bg-paper-cream text-deep-ink">
 
-  <!-- Nav -->
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">About</a>
-        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all">Connect</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
-      <a href="articles.html" class="text-headline-md font-bold text-deep-ink">Archive</a>
-      <a href="projects.html" class="text-headline-md font-bold text-deep-ink">Projects</a>
-      <a href="impact.html" class="text-headline-md font-bold text-deep-ink">Impact</a>
-      <a href="about.html" class="text-headline-md font-bold text-deep-ink">About</a>
-      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start">Connect</a>
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
     </div>
   </nav>
 
@@ -205,253 +238,253 @@
 
       <!-- Breadcrumb navigation -->
       <div class="nav-breadcrumb">
-        <a href="defi-research.html">DeFi Research</a> / $BREAD Research
+        <a href="defi-research.html" data-i18n="breadcrumb-defi">DeFi Research</a> / <span data-i18n="breadcrumb-bread">$BREAD Research</span>
       </div>
 
-      <h1>$BREAD Research</h1>
+      <h1 data-i18n="page-title">$BREAD Research</h1>
 
       <div class="highlight-box">
-        <p><strong>Summary:</strong> $BREAD is a post-capitalist cooperative stablecoin using decentralized finance (DeFi) to fund community-owned infrastructure. Unlike traditional stablecoins focused on capital efficiency or regulatory compliance, $BREAD prioritizes cooperative economics, solidarity finance, and democratized governance through a crowdstaking mechanism.</p>
+        <p><strong data-i18n="summary-label">Summary:</strong> <span data-i18n="summary-text">$BREAD is a post-capitalist cooperative stablecoin using decentralized finance (DeFi) to fund community-owned infrastructure. Unlike traditional stablecoins focused on capital efficiency or regulatory compliance, $BREAD prioritizes cooperative economics, solidarity finance, and democratized governance through a crowdstaking mechanism.</span></p>
       </div>
 
-      <h2>What is $BREAD?</h2>
+      <h2 data-i18n="h2-what-is">What is $BREAD?</h2>
 
       <ul>
-        <li><strong>Breadchain</strong> is a post-capitalist cooperative using decentralized finance (DeFi) to fund community-owned infrastructure</li>
-        <li><strong>$BREAD</strong> is the native token of Breadchain, distributed through a crowdstaking mechanism</li>
-        <li>The system aims to replace traditional speculative finance with a sustainable, commons-based monetary infrastructure</li>
-        <li><strong>Purpose:</strong> Provide a stable medium of exchange for the Breadchain ecosystem and bootstrap funding for projects aligned with cooperative economics</li>
+        <li><strong>Breadchain</strong> <span data-i18n="what-li1">is a post-capitalist cooperative using decentralized finance (DeFi) to fund community-owned infrastructure</span></li>
+        <li><strong>$BREAD</strong> <span data-i18n="what-li2">is the native token of Breadchain, distributed through a crowdstaking mechanism</span></li>
+        <li data-i18n="what-li3">The system aims to replace traditional speculative finance with a sustainable, commons-based monetary infrastructure</li>
+        <li><strong data-i18n="what-li4-label">Purpose:</strong> <span data-i18n="what-li4">Provide a stable medium of exchange for the Breadchain ecosystem and bootstrap funding for projects aligned with cooperative economics</span></li>
       </ul>
 
-      <h3>Core Philosophy</h3>
+      <h3 data-i18n="h3-core-philosophy">Core Philosophy</h3>
 
       <div class="info-box">
-        <p><strong>Post-Capitalist Alignment:</strong> Rejection of extractive finance models with emphasis on solidarity economics, democratic ownership and control, and mutual aid principles in Web3.</p>
+        <p><strong data-i18n="philosophy-p1-label">Post-Capitalist Alignment:</strong> <span data-i18n="philosophy-p1">Rejection of extractive finance models with emphasis on solidarity economics, democratic ownership and control, and mutual aid principles in Web3.</span></p>
 
-        <p><strong>Political-Economic Goals:</strong> Democratization of finance, anti-extractive structures, building parallel cooperative institutions ("dual-power" strategy), and regenerative finance (ReFi) principles.</p>
+        <p><strong data-i18n="philosophy-p2-label">Political-Economic Goals:</strong> <span data-i18n="philosophy-p2">Democratization of finance, anti-extractive structures, building parallel cooperative institutions ("dual-power" strategy), and regenerative finance (ReFi) principles.</span></p>
       </div>
 
-      <h2>History & Development</h2>
+      <h2 data-i18n="h2-history">History &amp; Development</h2>
 
-      <h3>Timeline of Key Milestones</h3>
-
-      <div class="timeline-item">
-        <p><strong>September 8-9, 2021:</strong> Earliest public development update via Open Collective - "Crowdstaking Protocol Development Update"</p>
-      </div>
+      <h3 data-i18n="h3-timeline">Timeline of Key Milestones</h3>
 
       <div class="timeline-item">
-        <p><strong>January 17, 2022:</strong> Foundational essay published: "Collaboration at Scale: Blockchain and Mutual Aid" establishing mutual-aid & network vision</p>
+        <p><strong>September 8-9, 2021:</strong> <span data-i18n="tl-2021">Earliest public development update via Open Collective - "Crowdstaking Protocol Development Update"</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>July 25, 2022:</strong> "Solidarity Primitives: Crowdstaking and BREAD" technical paper; BREAD deployed on Gnosis Chain; code open-sourced</p>
+        <p><strong>January 17, 2022:</strong> <span data-i18n="tl-2022-jan">Foundational essay published: "Collaboration at Scale: Blockchain and Mutual Aid" establishing mutual-aid &amp; network vision</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>March 24, 2023:</strong> Migration to Gnosis Chain finalized; xDAI→sDAI crowdstaking path documented</p>
+        <p><strong>July 25, 2022:</strong> <span data-i18n="tl-2022-jul">"Solidarity Primitives: Crowdstaking and BREAD" technical paper; BREAD deployed on Gnosis Chain; code open-sourced</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>December 14, 2023:</strong> PowerPool governance approves Breadchain integrations grant for automation</p>
+        <p><strong>March 24, 2023:</strong> <span data-i18n="tl-2023-mar">Migration to Gnosis Chain finalized; xDAI→sDAI crowdstaking path documented</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>February 19, 2024:</strong> PowerPool x Breadchain grant interview published detailing automation features</p>
+        <p><strong>December 14, 2023:</strong> <span data-i18n="tl-2023-dec">PowerPool governance approves Breadchain integrations grant for automation</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>June 28 - July 1, 2024:</strong> First BREAD voting & distribution contracts deployed; inaugural vote executed</p>
+        <p><strong>February 19, 2024:</strong> <span data-i18n="tl-2024-feb">PowerPool x Breadchain grant interview published detailing automation features</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>January 7, 2025:</strong> Dune analytics dashboard for Breadchain economics launched</p>
+        <p><strong>June 28 - July 1, 2024:</strong> <span data-i18n="tl-2024-jun">First BREAD voting &amp; distribution contracts deployed; inaugural vote executed</span></p>
       </div>
 
       <div class="timeline-item">
-        <p><strong>~September 23, 2025:</strong> Potential rebrand signal: "Breadchain will be known as Bread Cooperative"</p>
+        <p><strong>January 7, 2025:</strong> <span data-i18n="tl-2025-jan">Dune analytics dashboard for Breadchain economics launched</span></p>
       </div>
 
-      <h3>Key People & Organizations</h3>
+      <div class="timeline-item">
+        <p><strong>~September 23, 2025:</strong> <span data-i18n="tl-2025-sep">Potential rebrand signal: "Breadchain will be known as Bread Cooperative"</span></p>
+      </div>
 
-      <p><strong>Founders & Core Team:</strong></p>
+      <h3 data-i18n="h3-key-people">Key People &amp; Organizations</h3>
+
+      <p><strong data-i18n="founders-label">Founders &amp; Core Team:</strong></p>
       <ul>
-        <li><strong>Joshua Dávila (aka "The Blockchain Socialist")</strong> - Co-founder and primary initiator</li>
-        <li><strong>Crypto-Leftists community</strong> - Early ideation and development grew from this online community</li>
+        <li><strong>Joshua Dávila (aka "The Blockchain Socialist")</strong> - <span data-i18n="founder-davila">Co-founder and primary initiator</span></li>
+        <li><strong>Crypto-Leftists community</strong> - <span data-i18n="founder-community">Early ideation and development grew from this online community</span></li>
       </ul>
 
-      <p><strong>Member & Aligned Organizations:</strong></p>
+      <p><strong data-i18n="member-orgs-label">Member &amp; Aligned Organizations:</strong></p>
       <ul>
-        <li><strong>LaborDAO</strong> - Worker cooperative coordination</li>
-        <li><strong>Crypto Commons Association (CCA)</strong> - Commons-based protocols</li>
-        <li><strong>Symbiota</strong> - Regenerative finance initiatives</li>
-        <li><strong>Citizen Wallet</strong> - Community currency infrastructure</li>
-        <li><strong>ReFi DAO</strong> - Regenerative finance network</li>
+        <li><strong>LaborDAO</strong> - <span data-i18n="org-labordao">Worker cooperative coordination</span></li>
+        <li><strong>Crypto Commons Association (CCA)</strong> - <span data-i18n="org-cca">Commons-based protocols</span></li>
+        <li><strong>Symbiota</strong> - <span data-i18n="org-symbiota">Regenerative finance initiatives</span></li>
+        <li><strong>Citizen Wallet</strong> - <span data-i18n="org-citizenwallet">Community currency infrastructure</span></li>
+        <li><strong>ReFi DAO</strong> - <span data-i18n="org-refidao">Regenerative finance network</span></li>
       </ul>
 
-      <p><strong>Technical Partners:</strong></p>
+      <p><strong data-i18n="tech-partners-label">Technical Partners:</strong></p>
       <ul>
-        <li><strong>PowerPool (PowerAgent)</strong> - Automation infrastructure for fund management</li>
+        <li><strong>PowerPool (PowerAgent)</strong> - <span data-i18n="partner-powerpool">Automation infrastructure for fund management</span></li>
       </ul>
 
-      <h2>Technical Mechanism & Architecture</h2>
+      <h2 data-i18n="h2-technical">Technical Mechanism &amp; Architecture</h2>
 
-      <h3>How $BREAD Works</h3>
+      <h3 data-i18n="h3-how-works">How $BREAD Works</h3>
 
-      <p><strong>Crowdstaking Mechanism:</strong></p>
+      <p><strong data-i18n="crowdstaking-label">Crowdstaking Mechanism:</strong></p>
 
       <ol>
-        <li><strong>Minting Process:</strong>
+        <li><strong data-i18n="minting-label">Minting Process:</strong>
           <ul>
-            <li>Users deposit DAI into Breadchain smart contracts</li>
-            <li>DAI is automatically staked into Cooperative Savings Strategies (CSS)</li>
-            <li>Users receive $BREAD tokens representing their stake</li>
-            <li>$BREAD designed to track DAI value 1:1</li>
+            <li data-i18n="minting-li1">Users deposit DAI into Breadchain smart contracts</li>
+            <li data-i18n="minting-li2">DAI is automatically staked into Cooperative Savings Strategies (CSS)</li>
+            <li data-i18n="minting-li3">Users receive $BREAD tokens representing their stake</li>
+            <li data-i18n="minting-li4">$BREAD designed to track DAI value 1:1</li>
           </ul>
         </li>
-        <li><strong>Yield Generation:</strong>
+        <li><strong data-i18n="yield-label">Yield Generation:</strong>
           <ul>
-            <li>Deposited DAI generates yield through community-approved CSS protocols</li>
-            <li>Yield funds Breadchain operations and affiliated cooperative projects</li>
-            <li>Principal DAI remains redeemable</li>
+            <li data-i18n="yield-li1">Deposited DAI generates yield through community-approved CSS protocols</li>
+            <li data-i18n="yield-li2">Yield funds Breadchain operations and affiliated cooperative projects</li>
+            <li data-i18n="yield-li3">Principal DAI remains redeemable</li>
           </ul>
         </li>
-        <li><strong>Redemption Process:</strong>
+        <li><strong data-i18n="redemption-label">Redemption Process:</strong>
           <ul>
-            <li>Users can burn $BREAD to redeem underlying DAI</li>
-            <li>Exit liquidity depends on CSS strategy performance and available reserves</li>
-            <li>Creates natural bank-run risk if too many simultaneous redemptions</li>
+            <li data-i18n="redemption-li1">Users can burn $BREAD to redeem underlying DAI</li>
+            <li data-i18n="redemption-li2">Exit liquidity depends on CSS strategy performance and available reserves</li>
+            <li data-i18n="redemption-li3">Creates natural bank-run risk if too many simultaneous redemptions</li>
           </ul>
         </li>
       </ol>
 
-      <h3>Cooperative Savings Strategies (CSS)</h3>
+      <h3 data-i18n="h3-css">Cooperative Savings Strategies (CSS)</h3>
 
       <div class="info-box">
-        <p><strong>Definition:</strong> Community-vetted DeFi protocols that generate sustainable yield while adhering to cooperative principles.</p>
+        <p><strong data-i18n="css-def-label">Definition:</strong> <span data-i18n="css-def">Community-vetted DeFi protocols that generate sustainable yield while adhering to cooperative principles.</span></p>
 
-        <p><strong>CSS Approval Process:</strong></p>
+        <p><strong data-i18n="css-approval-label">CSS Approval Process:</strong></p>
         <ul>
-          <li>Proposals submitted to Breadchain Collective</li>
-          <li>Evaluated for alignment with post-capitalist values</li>
-          <li>Risk assessment for smart contract security</li>
-          <li>Democratic approval by cooperative members</li>
+          <li data-i18n="css-li1">Proposals submitted to Breadchain Collective</li>
+          <li data-i18n="css-li2">Evaluated for alignment with post-capitalist values</li>
+          <li data-i18n="css-li3">Risk assessment for smart contract security</li>
+          <li data-i18n="css-li4">Democratic approval by cooperative members</li>
         </ul>
       </div>
 
-      <p><strong>Example Flow (Gnosis Chain):</strong></p>
+      <p><strong data-i18n="example-flow-label">Example Flow (Gnosis Chain):</strong></p>
       <ul>
-        <li>xDAI → sDAI conversion (Spark Protocol)</li>
-        <li>Yield accrues to cooperative treasury</li>
-        <li>Principal remains liquid for redemptions</li>
+        <li data-i18n="flow-li1">xDAI → sDAI conversion (Spark Protocol)</li>
+        <li data-i18n="flow-li2">Yield accrues to cooperative treasury</li>
+        <li data-i18n="flow-li3">Principal remains liquid for redemptions</li>
       </ul>
 
-      <h3>Smart Contract Infrastructure</h3>
+      <h3 data-i18n="h3-smart-contracts">Smart Contract Infrastructure</h3>
 
       <ul>
-        <li><strong>GitHub Organization:</strong> BreadchainCoop</li>
-        <li><strong>Main Repository:</strong> <code>breadchain</code> (governance/contracts)</li>
-        <li><strong>Active Development:</strong> Issues and commits through 2024-2025</li>
-        <li><strong>Historical Repos:</strong> <code>breadchain-crowdstaking</code> (legacy)</li>
+        <li><strong data-i18n="github-org-label">GitHub Organization:</strong> BreadchainCoop</li>
+        <li><strong data-i18n="main-repo-label">Main Repository:</strong> <code>breadchain</code> (<span data-i18n="main-repo-desc">governance/contracts</span>)</li>
+        <li><strong data-i18n="active-dev-label">Active Development:</strong> <span data-i18n="active-dev">Issues and commits through 2024-2025</span></li>
+        <li><strong data-i18n="historical-repos-label">Historical Repos:</strong> <code>breadchain-crowdstaking</code> (<span data-i18n="historical-repos-desc">legacy</span>)</li>
       </ul>
 
-      <p><strong>Key Contracts (Mid-2024):</strong></p>
+      <p><strong data-i18n="key-contracts-label">Key Contracts (Mid-2024):</strong></p>
       <ul>
-        <li>Voting contracts for governance decisions</li>
-        <li>Distribution contracts for yield allocation</li>
-        <li>Crowdstaking contracts for minting/burning</li>
+        <li data-i18n="contract-li1">Voting contracts for governance decisions</li>
+        <li data-i18n="contract-li2">Distribution contracts for yield allocation</li>
+        <li data-i18n="contract-li3">Crowdstaking contracts for minting/burning</li>
       </ul>
 
-      <h2>Stability Mechanism & Peg Maintenance</h2>
+      <h2 data-i18n="h2-stability">Stability Mechanism &amp; Peg Maintenance</h2>
 
-      <h3>Peg Design</h3>
+      <h3 data-i18n="h3-peg-design">Peg Design</h3>
 
       <div class="warning-box">
-        <p><strong>Indirect DAI Peg:</strong></p>
+        <p><strong data-i18n="peg-label">Indirect DAI Peg:</strong></p>
         <ul>
-          <li>$BREAD is not algorithmically pegged to DAI</li>
-          <li>Stability derives from:
+          <li data-i18n="peg-li1">$BREAD is not algorithmically pegged to DAI</li>
+          <li><span data-i18n="peg-li2-intro">Stability derives from:</span>
             <ul>
-              <li>Minting against DAI deposits (1:1 initial exchange)</li>
-              <li>Redemption mechanism (burn $BREAD for DAI)</li>
-              <li>Market arbitrage between mint/redeem prices</li>
+              <li data-i18n="peg-li2a">Minting against DAI deposits (1:1 initial exchange)</li>
+              <li data-i18n="peg-li2b">Redemption mechanism (burn $BREAD for DAI)</li>
+              <li data-i18n="peg-li2c">Market arbitrage between mint/redeem prices</li>
             </ul>
           </li>
-          <li>No active peg defense mechanisms (unlike algorithmic stablecoins)</li>
-          <li>Relies on user confidence in underlying DAI reserves</li>
+          <li data-i18n="peg-li3">No active peg defense mechanisms (unlike algorithmic stablecoins)</li>
+          <li data-i18n="peg-li4">Relies on user confidence in underlying DAI reserves</li>
         </ul>
       </div>
 
-      <h3>Reserve Structure</h3>
+      <h3 data-i18n="h3-reserves">Reserve Structure</h3>
 
-      <p><strong>Backing Model:</strong></p>
+      <p><strong data-i18n="backing-label">Backing Model:</strong></p>
       <ul>
-        <li>Not fiat-backed (unlike USDC)</li>
-        <li>Not crypto-collateralized like MakerDAO (no liquidation mechanisms)</li>
-        <li>Cooperative wrapper model: DAI held in yield strategies</li>
+        <li data-i18n="backing-li1">Not fiat-backed (unlike USDC)</li>
+        <li data-i18n="backing-li2">Not crypto-collateralized like MakerDAO (no liquidation mechanisms)</li>
+        <li data-i18n="backing-li3">Cooperative wrapper model: DAI held in yield strategies</li>
       </ul>
 
-      <p><strong>Reserve Transparency:</strong></p>
+      <p><strong data-i18n="transparency-label">Reserve Transparency:</strong></p>
       <ul>
-        <li>Dune Analytics dashboard (launched Jan 7, 2025) provides economic metrics</li>
-        <li>On-chain verification of CSS deployments</li>
-        <li>Community oversight through cooperative governance</li>
+        <li data-i18n="transparency-li1">Dune Analytics dashboard (launched Jan 7, 2025) provides economic metrics</li>
+        <li data-i18n="transparency-li2">On-chain verification of CSS deployments</li>
+        <li data-i18n="transparency-li3">Community oversight through cooperative governance</li>
       </ul>
 
-      <h3>Dependency on DAI Stability</h3>
+      <h3 data-i18n="h3-dai-dep">Dependency on DAI Stability</h3>
 
       <div class="warning-box">
-        <p><strong>Critical Relationship:</strong></p>
+        <p><strong data-i18n="critical-rel-label">Critical Relationship:</strong></p>
         <ul>
-          <li>$BREAD stability fundamentally depends on DAI maintaining its peg</li>
-          <li>If DAI depegs, $BREAD would likely follow</li>
-          <li>Inherits all systemic risks from MakerDAO ecosystem</li>
+          <li data-i18n="dai-dep-li1">$BREAD stability fundamentally depends on DAI maintaining its peg</li>
+          <li data-i18n="dai-dep-li2">If DAI depegs, $BREAD would likely follow</li>
+          <li data-i18n="dai-dep-li3">Inherits all systemic risks from MakerDAO ecosystem</li>
         </ul>
 
-        <p><strong>DAI Risk Factors Affecting $BREAD:</strong></p>
+        <p><strong data-i18n="dai-risk-label">DAI Risk Factors Affecting $BREAD:</strong></p>
         <ul>
-          <li>MakerDAO's exposure to USDC as collateral</li>
-          <li>Governance decisions changing DAI backing</li>
-          <li>Smart contract vulnerabilities in Maker Protocol</li>
-          <li>Regulatory risks to DAI's fiat on-ramps</li>
+          <li data-i18n="dai-risk-li1">MakerDAO's exposure to USDC as collateral</li>
+          <li data-i18n="dai-risk-li2">Governance decisions changing DAI backing</li>
+          <li data-i18n="dai-risk-li3">Smart contract vulnerabilities in Maker Protocol</li>
+          <li data-i18n="dai-risk-li4">Regulatory risks to DAI's fiat on-ramps</li>
         </ul>
       </div>
 
-      <h2>Governance & Community Model</h2>
+      <h2 data-i18n="h2-governance">Governance &amp; Community Model</h2>
 
-      <h3>Cooperative Governance Structure</h3>
+      <h3 data-i18n="h3-gov-structure">Cooperative Governance Structure</h3>
 
       <div class="highlight-box">
-        <p><strong>Democratic Principles:</strong></p>
+        <p><strong data-i18n="democratic-label">Democratic Principles:</strong></p>
         <ul>
-          <li><strong>One-member-one-vote</strong> system (not token-weighted)</li>
-          <li>Contrasts sharply with plutocratic DeFi governance</li>
-          <li>Membership-based rather than token-based decision making</li>
+          <li><strong data-i18n="omov-label">One-member-one-vote</strong> <span data-i18n="omov-desc">system (not token-weighted)</span></li>
+          <li data-i18n="gov-li2">Contrasts sharply with plutocratic DeFi governance</li>
+          <li data-i18n="gov-li3">Membership-based rather than token-based decision making</li>
         </ul>
       </div>
 
-      <p><strong>Governance Scope:</strong></p>
+      <p><strong data-i18n="gov-scope-label">Governance Scope:</strong></p>
       <ul>
-        <li>Approval of Cooperative Savings Strategies (CSS)</li>
-        <li>Allocation of generated yield to projects</li>
-        <li>Protocol upgrades and parameter changes</li>
-        <li>Maintenance of post-capitalist alignment</li>
+        <li data-i18n="gov-scope-li1">Approval of Cooperative Savings Strategies (CSS)</li>
+        <li data-i18n="gov-scope-li2">Allocation of generated yield to projects</li>
+        <li data-i18n="gov-scope-li3">Protocol upgrades and parameter changes</li>
+        <li data-i18n="gov-scope-li4">Maintenance of post-capitalist alignment</li>
       </ul>
 
-      <h3>Decision-Making Process</h3>
+      <h3 data-i18n="h3-decision">Decision-Making Process</h3>
 
-      <p><strong>Proposal Types:</strong></p>
+      <p><strong data-i18n="proposal-types-label">Proposal Types:</strong></p>
       <ol>
-        <li><strong>CSS Additions</strong> - New yield strategies for treasury</li>
-        <li><strong>Fund Distributions</strong> - Allocation of yield to cooperative projects</li>
-        <li><strong>Protocol Changes</strong> - Technical upgrades and modifications</li>
-        <li><strong>Strategic Decisions</strong> - Ecosystem partnerships and direction</li>
+        <li><strong data-i18n="proposal-li1-label">CSS Additions</strong> - <span data-i18n="proposal-li1">New yield strategies for treasury</span></li>
+        <li><strong data-i18n="proposal-li2-label">Fund Distributions</strong> - <span data-i18n="proposal-li2">Allocation of yield to cooperative projects</span></li>
+        <li><strong data-i18n="proposal-li3-label">Protocol Changes</strong> - <span data-i18n="proposal-li3">Technical upgrades and modifications</span></li>
+        <li><strong data-i18n="proposal-li4-label">Strategic Decisions</strong> - <span data-i18n="proposal-li4">Ecosystem partnerships and direction</span></li>
       </ol>
 
-      <p><strong>Voting Mechanisms:</strong></p>
+      <p><strong data-i18n="voting-mech-label">Voting Mechanisms:</strong></p>
       <ul>
-        <li>First voting contracts deployed June-July 2024</li>
-        <li>Executable on-chain decisions</li>
-        <li>Transparent tallying and execution</li>
+        <li data-i18n="voting-li1">First voting contracts deployed June-July 2024</li>
+        <li data-i18n="voting-li2">Executable on-chain decisions</li>
+        <li data-i18n="voting-li3">Transparent tallying and execution</li>
       </ul>
 
       <h2>Risk Analysis</h2>

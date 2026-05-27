@@ -42,10 +42,30 @@
           "base": "8px",
           "margin-desktop": "64px",
           "margin-mobile": "20px",
-          "container-max": "1120px"
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
         },
         borderWidth: {
           "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
         }
       }
     }
@@ -136,75 +156,88 @@
 </head>
 <body class="bg-paper-cream text-deep-ink">
 
-  <!-- Nav -->
   <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
-      <div class="hidden md:flex gap-gutter items-center">
-        <a href="articles.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Archive</a>
-        <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Projects</a>
-        <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">Impact</a>
-        <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">About</a>
-        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all">Connect</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
         <span class="material-symbols-outlined text-4xl">menu</span>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
-      <a href="articles.html" class="text-headline-md font-bold text-deep-ink">Archive</a>
-      <a href="projects.html" class="text-headline-md font-bold text-deep-ink">Projects</a>
-      <a href="impact.html" class="text-headline-md font-bold text-deep-ink">Impact</a>
-      <a href="about.html" class="text-headline-md font-bold text-deep-ink">About</a>
-      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start">Connect</a>
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
     </div>
   </nav>
 
   <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <div class="hero">
-      <h1>DeFi Designs for Real World Challenges</h1>
-      <p>Applying DeFi infrastructure and protocol design to real-world problems — from carbon market inefficiencies to stablecoin architecture for emerging economies.</p>
-      <p class="meta">Article Series | Regenerative Finance Research | 2024-2025</p>
+      <h1 data-i18n="hero-title">DeFi Designs for Real World Challenges</h1>
+      <p data-i18n="hero-desc">Applying DeFi infrastructure and protocol design to real-world problems — from carbon market inefficiencies to stablecoin architecture for emerging economies.</p>
+      <p class="meta" data-i18n="hero-meta">Article Series | Regenerative Finance Research | 2024-2025</p>
     </div>
 
     <section class="section">
-      <h2>Articles</h2>
+      <h2 data-i18n="section-articles">Articles</h2>
       <div class="article-grid">
 
         <!-- Article 1 -->
         <div class="article-card">
           <div class="article-card-header green">
-            <p class="label">Article 1 · DeFi Infrastructures for the Regeneration Market</p>
-            <h2>What the Carbon Credit Market Can Learn from CoW Protocol</h2>
-            <p class="subtitle">How batch auctions and solver competition can eliminate rent-seeking in carbon markets</p>
+            <p class="label" data-i18n="card1-label">Article 1 · DeFi Infrastructures for the Regeneration Market</p>
+            <h2 data-i18n="card1-title">What the Carbon Credit Market Can Learn from CoW Protocol</h2>
+            <p class="subtitle" data-i18n="card1-subtitle">How batch auctions and solver competition can eliminate rent-seeking in carbon markets</p>
           </div>
           <div class="article-card-body">
             <div class="tag-row">
-              <span class="tag green">Carbon Markets</span>
+              <span class="tag green" data-i18n="tag-carbon">Carbon Markets</span>
               <span class="tag yellow">CoW Protocol</span>
-              <span class="tag pink">Regenerative Finance</span>
+              <span class="tag pink" data-i18n="tag-refi">Regenerative Finance</span>
             </div>
-            <p>The carbon credit market loses 30–50% of value to intermediaries who profit from information asymmetry. CoW Protocol's batch auction model — designed to eliminate unnecessary intermediation in DeFi — offers a direct template for restructuring how carbon credits are discovered, matched, and settled.</p>
-            <a href="cow-protocol-article.html" class="chip green">Read Article →</a>
+            <p data-i18n="card1-body">The carbon credit market loses 30–50% of value to intermediaries who profit from information asymmetry. CoW Protocol's batch auction model — designed to eliminate unnecessary intermediation in DeFi — offers a direct template for restructuring how carbon credits are discovered, matched, and settled.</p>
+            <a href="cow-protocol-article.html" class="chip green" data-i18n="read-article-1">Read Article →</a>
           </div>
         </div>
 
         <!-- Article 2 -->
         <div class="article-card">
           <div class="article-card-header yellow">
-            <p class="label">Article 2 · Stablecoin Design</p>
-            <h2>Stablecoins for Real Economies: CONCORDIA & $DUX</h2>
-            <p class="subtitle">Two protocol designs built from opposite collateral realities in Latin America</p>
+            <p class="label" data-i18n="card2-label">Article 2 · Stablecoin Design</p>
+            <h2 data-i18n="card2-title">Stablecoins for Real Economies: CONCORDIA &amp; $DUX</h2>
+            <p class="subtitle" data-i18n="card2-subtitle">Two protocol designs built from opposite collateral realities in Latin America</p>
           </div>
           <div class="article-card-body">
             <div class="tag-row">
-              <span class="tag yellow">Protocol Design</span>
-              <span class="tag pink">Latin America</span>
-              <span class="tag green">Stablecoins</span>
+              <span class="tag yellow" data-i18n="tag-protocol">Protocol Design</span>
+              <span class="tag pink" data-i18n="tag-latam">Latin America</span>
+              <span class="tag green" data-i18n="tag-stablecoins">Stablecoins</span>
             </div>
-            <p>Instead of designing stablecoins in the abstract, what happens when you start from specific real-world constraints? CONCORDIA tackles multi-sovereign commodity trade settlement using Chile and Brazil's mineral reserves. $DUX addresses payment delays for Brazilian creators with verified brand contracts. Two opposite collateral realities, two explicit trade-off frameworks.</p>
-            <a href="design-experiments.html" class="chip yellow">Read Article →</a>
+            <p data-i18n="card2-body">Instead of designing stablecoins in the abstract, what happens when you start from specific real-world constraints? CONCORDIA tackles multi-sovereign commodity trade settlement using Chile and Brazil's mineral reserves. $DUX addresses payment delays for Brazilian creators with verified brand contracts. Two opposite collateral realities, two explicit trade-off frameworks.</p>
+            <a href="design-experiments.html" class="chip yellow" data-i18n="read-article-2">Read Article →</a>
           </div>
         </div>
 
@@ -213,20 +246,159 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
     <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
       <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
       <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
       <div class="flex gap-4">
-        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">Contact</a>
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
         <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
       </div>
     </div>
   </footer>
 
   <script>
+    const PAGE_TRANSLATIONS = {
+      en: {
+        'hero-title': 'DeFi Designs for Real World Challenges',
+        'hero-desc': 'Applying DeFi infrastructure and protocol design to real-world problems — from carbon market inefficiencies to stablecoin architecture for emerging economies.',
+        'hero-meta': 'Article Series | Regenerative Finance Research | 2024-2025',
+        'section-articles': 'Articles',
+        'card1-label': 'Article 1 · DeFi Infrastructures for the Regeneration Market',
+        'card1-title': 'What the Carbon Credit Market Can Learn from CoW Protocol',
+        'card1-subtitle': 'How batch auctions and solver competition can eliminate rent-seeking in carbon markets',
+        'tag-carbon': 'Carbon Markets',
+        'tag-refi': 'Regenerative Finance',
+        'card1-body': 'The carbon credit market loses 30–50% of value to intermediaries who profit from information asymmetry. CoW Protocol\'s batch auction model — designed to eliminate unnecessary intermediation in DeFi — offers a direct template for restructuring how carbon credits are discovered, matched, and settled.',
+        'read-article-1': 'Read Article →',
+        'card2-label': 'Article 2 · Stablecoin Design',
+        'card2-title': 'Stablecoins for Real Economies: CONCORDIA &amp; $DUX',
+        'card2-subtitle': 'Two protocol designs built from opposite collateral realities in Latin America',
+        'tag-protocol': 'Protocol Design',
+        'tag-latam': 'Latin America',
+        'tag-stablecoins': 'Stablecoins',
+        'card2-body': 'Instead of designing stablecoins in the abstract, what happens when you start from specific real-world constraints? CONCORDIA tackles multi-sovereign commodity trade settlement using Chile and Brazil\'s mineral reserves. $DUX addresses payment delays for Brazilian creators with verified brand contracts. Two opposite collateral realities, two explicit trade-off frameworks.',
+        'read-article-2': 'Read Article →'
+      },
+      pt: {
+        'hero-title': 'Designs DeFi para Desafios do Mundo Real',
+        'hero-desc': 'Aplicando infraestrutura DeFi e design de protocolos a problemas reais — das ineficiências do mercado de carbono à arquitetura de stablecoins para economias emergentes.',
+        'hero-meta': 'Série de Artigos | Pesquisa em Finanças Regenerativas | 2024-2025',
+        'section-articles': 'Artigos',
+        'card1-label': 'Artigo 1 · Infraestruturas DeFi para o Mercado de Regeneração',
+        'card1-title': 'O Que o Mercado de Créditos de Carbono Pode Aprender com o CoW Protocol',
+        'card1-subtitle': 'Como leilões em lote e competição de solvers podem eliminar a extração de renda nos mercados de carbono',
+        'tag-carbon': 'Mercados de Carbono',
+        'tag-refi': 'Finanças Regenerativas',
+        'card1-body': 'O mercado de créditos de carbono perde 30–50% do valor para intermediários que lucram com assimetria de informação. O modelo de leilão em lote do CoW Protocol — projetado para eliminar intermediação desnecessária em DeFi — oferece um modelo direto para reestruturar como créditos de carbono são descobertos, combinados e liquidados.',
+        'read-article-1': 'Ler Artigo →',
+        'card2-label': 'Artigo 2 · Design de Stablecoins',
+        'card2-title': 'Stablecoins para Economias Reais: CONCORDIA &amp; $DUX',
+        'card2-subtitle': 'Dois designs de protocolo construídos a partir de realidades de colateral opostas na América Latina',
+        'tag-protocol': 'Design de Protocolo',
+        'tag-latam': 'América Latina',
+        'tag-stablecoins': 'Stablecoins',
+        'card2-body': 'Em vez de projetar stablecoins de forma abstrata, o que acontece quando se parte de restrições reais específicas? CONCORDIA trata da liquidação de comércio de commodities multi-soberano usando as reservas minerais do Chile e do Brasil. $DUX aborda atrasos de pagamento para criadores brasileiros com contratos de marca verificados. Duas realidades de colateral opostas, dois frameworks explícitos de trade-off.',
+        'read-article-2': 'Ler Artigo →'
+      },
+      es: {
+        'hero-title': 'Diseños DeFi para Desafíos del Mundo Real',
+        'hero-desc': 'Aplicando infraestructura DeFi y diseño de protocolos a problemas del mundo real — desde las ineficiencias del mercado de carbono hasta la arquitectura de stablecoins para economías emergentes.',
+        'hero-meta': 'Serie de Artículos | Investigación en Finanzas Regenerativas | 2024-2025',
+        'section-articles': 'Artículos',
+        'card1-label': 'Artículo 1 · Infraestructuras DeFi para el Mercado de Regeneración',
+        'card1-title': 'Lo Que el Mercado de Créditos de Carbono Puede Aprender del CoW Protocol',
+        'card1-subtitle': 'Cómo las subastas por lotes y la competencia de solvers pueden eliminar la extracción de rentas en los mercados de carbono',
+        'tag-carbon': 'Mercados de Carbono',
+        'tag-refi': 'Finanzas Regenerativas',
+        'card1-body': 'El mercado de créditos de carbono pierde entre 30 y 50% de su valor ante intermediarios que se benefician de la asimetría de información. El modelo de subasta por lotes de CoW Protocol — diseñado para eliminar la intermediación innecesaria en DeFi — ofrece una plantilla directa para reestructurar cómo se descubren, emparejan y liquidan los créditos de carbono.',
+        'read-article-1': 'Leer Artículo →',
+        'card2-label': 'Artículo 2 · Diseño de Stablecoins',
+        'card2-title': 'Stablecoins para Economías Reales: CONCORDIA &amp; $DUX',
+        'card2-subtitle': 'Dos diseños de protocolo construidos a partir de realidades de colateral opuestas en América Latina',
+        'tag-protocol': 'Diseño de Protocolo',
+        'tag-latam': 'América Latina',
+        'tag-stablecoins': 'Stablecoins',
+        'card2-body': 'En lugar de diseñar stablecoins de forma abstracta, ¿qué ocurre cuando se parte de restricciones reales específicas? CONCORDIA aborda la liquidación de comercio de materias primas multi-soberano usando las reservas minerales de Chile y Brasil. $DUX responde a los retrasos de pago de creadores brasileños con contratos de marca verificados. Dos realidades de colateral opuestas, dos marcos explícitos de compensaciones.',
+        'read-article-2': 'Leer Artículo →'
+      },
+      zh: {
+        'hero-title': 'DeFi 设计应对现实世界挑战',
+        'hero-desc': '将 DeFi 基础设施和协议设计应用于现实问题——从碳市场低效到新兴经济体的稳定币架构。',
+        'hero-meta': '系列文章 | 再生金融研究 | 2024-2025',
+        'section-articles': '文章',
+        'card1-label': '文章 1 · 再生市场的 DeFi 基础设施',
+        'card1-title': '碳信用市场可以从 CoW Protocol 学到什么',
+        'card1-subtitle': '批量拍卖和求解器竞争如何消除碳市场中的寻租行为',
+        'tag-carbon': '碳市场',
+        'tag-refi': '再生金融',
+        'card1-body': '碳信用市场有 30–50% 的价值被从信息不对称中获利的中间商攫取。CoW Protocol 的批量拍卖模型——旨在消除 DeFi 中不必要的中介——为重构碳信用的发现、匹配和结算方式提供了直接模板。',
+        'read-article-1': '阅读文章 →',
+        'card2-label': '文章 2 · 稳定币设计',
+        'card2-title': '面向真实经济的稳定币：CONCORDIA 与 $DUX',
+        'card2-subtitle': '两种协议设计，源自拉丁美洲截然相反的抵押品现实',
+        'tag-protocol': '协议设计',
+        'tag-latam': '拉丁美洲',
+        'tag-stablecoins': '稳定币',
+        'card2-body': '不从抽象角度设计稳定币，而是从具体的现实约束出发会发生什么？CONCORDIA 利用智利和巴西的矿产储备解决多主权大宗商品贸易结算问题。$DUX 针对拥有经过验证的品牌合同的巴西创作者的付款延迟问题。两种截然相反的抵押品现实，两种明确的权衡框架。',
+        'read-article-2': '阅读文章 →'
+      },
+      ja: {
+        'hero-title': 'DeFi デザインで現実世界の課題に挑む',
+        'hero-desc': 'DeFi インフラストラクチャとプロトコル設計を現実の問題に適用する——カーボン市場の非効率から新興経済圏のステーブルコイン・アーキテクチャまで。',
+        'hero-meta': '連載記事 | リジェネラティブ・ファイナンス研究 | 2024-2025',
+        'section-articles': '記事',
+        'card1-label': '記事 1 · リジェネレーション市場のための DeFi インフラ',
+        'card1-title': 'カーボンクレジット市場が CoW Protocol から学べること',
+        'card1-subtitle': 'バッチオークションとソルバー競争がカーボン市場のレントシーキングを排除する方法',
+        'tag-carbon': 'カーボン市場',
+        'tag-refi': 'リジェネラティブ・ファイナンス',
+        'card1-body': 'カーボンクレジット市場は情報の非対称性から利益を得る仲介業者によって価値の 30〜50% を失っている。DeFi における不要な仲介をなくすために設計された CoW Protocol のバッチオークションモデルは、カーボンクレジットの発見・マッチング・決済の仕組みを再構築するための直接的なテンプレートを提供する。',
+        'read-article-1': '記事を読む →',
+        'card2-label': '記事 2 · ステーブルコイン設計',
+        'card2-title': '実体経済のためのステーブルコイン：CONCORDIA と $DUX',
+        'card2-subtitle': 'ラテンアメリカの対照的な担保の現実から生まれた二つのプロトコル設計',
+        'tag-protocol': 'プロトコル設計',
+        'tag-latam': 'ラテンアメリカ',
+        'tag-stablecoins': 'ステーブルコイン',
+        'card2-body': '抽象的にステーブルコインを設計するのではなく、具体的な現実の制約から出発するとどうなるか？CONCORDIA はチリとブラジルの鉱物資源を活用した多主権コモディティ貿易決済に取り組む。$DUX はブランド契約が検証されたブラジルのクリエイターへの支払い遅延に対処する。対照的な二つの担保の現実、二つの明示的なトレードオフ・フレームワーク。',
+        'read-article-2': '記事を読む →'
+      }
+    };
+  </script>
+
+  <script>
     document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
