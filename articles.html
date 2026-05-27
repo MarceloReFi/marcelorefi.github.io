@@ -92,7 +92,13 @@
         <a href="projects.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
         <a href="impact.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
         <a href="about.html" class="text-headline-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
-        <button id="lang-toggle" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all">PT | EN</button>
+        <div class="flex gap-1" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
         <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
@@ -104,7 +110,13 @@
       <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
       <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
       <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
-      <button id="lang-toggle-mobile" class="border-stroke-weight border-deep-ink px-3 py-1 font-bold text-caption uppercase tracking-widest self-start hover:bg-warm-amber transition-all">PT | EN</button>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
       <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
     </div>
   </nav>
@@ -498,6 +510,18 @@
         'filter-refi': 'ReFi',
         'filter-impact': 'Impacto',
         'section-academic': 'Trabalhos Acadêmicos',
+      },
+      es: {
+        'filter-all': 'Todos', 'filter-research': 'Investigación',
+        'filter-community': 'Comunidad', 'filter-refi': 'ReFi', 'filter-impact': 'Impacto',
+      },
+      zh: {
+        'filter-all': '全部', 'filter-research': '研究',
+        'filter-community': '社区', 'filter-refi': 'ReFi', 'filter-impact': '影响力',
+      },
+      ja: {
+        'filter-all': 'すべて', 'filter-research': '研究',
+        'filter-community': 'コミュニティ', 'filter-refi': 'ReFi', 'filter-impact': 'インパクト',
       }
     };
   </script>
@@ -513,28 +537,51 @@
         'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
         'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
         'footer-contact': 'Contato'
+      },
+      es: {
+        'nav-archive': 'Archivo', 'nav-projects': 'Proyectos',
+        'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto',
+        'footer-contact': 'Contacto'
+      },
+      zh: {
+        'nav-archive': '文章', 'nav-projects': '项目',
+        'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系',
+        'footer-contact': '联系'
+      },
+      ja: {
+        'nav-archive': '記事', 'nav-projects': 'プロジェクト',
+        'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡',
+        'footer-contact': '連絡'
       }
     };
     const translations = {
       en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
-      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt }
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
     };
-    let lang = localStorage.getItem('lang') || 'en';
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+
     function applyLang(l) {
       lang = l;
       localStorage.setItem('lang', l);
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[l][key]) el.innerHTML = translations[l][key];
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
       });
+      updateLangButtons(l);
     }
-    document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
-      btn.addEventListener('click', () => applyLang(lang === 'en' ? 'pt' : 'en'));
-    });
+
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
-    applyLang(lang);
 
     // Filter logic
     document.querySelectorAll('.filter-chip').forEach(chip => {
