@@ -5,216 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mento Protocol: Security Research — MarceloReFi</title>
   <meta name="description" content="security analysis of Mento Protocol's architecture, governance, defensive mechanisms, and potential vulnerabilities." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--yellow);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero .meta {
-      font-size: .9rem;
-      color: var(--gray);
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--black);
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 3px 3px 0 var(--black);
-    }
-
-    .stat-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .75rem;
-    }
-
-    .stat-card .big-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--black);
-      margin: .5rem 0;
-    }
-
-    .tech-section {
-      background: var(--pink);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .security-section {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .mechanism-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .mechanism-card h4 {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      font-weight: 700;
-    }
-
-    .pro-con-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .pro-con-box h5 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-    }
-
-    .attack-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .attack-card .difficulty {
-      display: inline-block;
-      padding: .25rem .75rem;
-      border-radius: 6px;
-      font-size: .85rem;
-      font-weight: 700;
-      margin-top: .5rem;
-    }
-
-    .diff-high {
-      background: #ffcccc;
-      border: 2px solid #cc0000;
-    }
-
-    .diff-medium {
-      background: #fff3cd;
-      border: 2px solid #ff9900;
-    }
-
-    .diff-low {
-      background: #d4edda;
-      border: 2px solid #28a745;
-    }
-
-    .comparison-table {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 3px 3px 0 var(--black);
-      overflow-x: auto;
-    }
-
-    .comparison-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: .75rem;
-      text-align: left;
-      border-bottom: 1px solid var(--black);
-    }
-
-    .comparison-table th {
-      font-weight: 700;
-      background: #f5f5f5;
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Navigation -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
     <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
 
     <!-- Hero -->
     <div class="hero">
       <h1>Mento Protocol: Security Research</h1>
       <p>
-        I spent time understanding how Mento's multi-currency system actually works: technical architecture, 
-        security mechanisms, governance structure, and potential attack vectors. From circuit breakers 
-        to oracle systems, this research examines how Mento's defense-in-depth protects 15+ stablecoins 
+        I spent time understanding how Mento's multi-currency system actually works: technical architecture,
+        security mechanisms, governance structure, and potential attack vectors. From circuit breakers
+        to oracle systems, this research examines how Mento's defense-in-depth protects 15+ stablecoins
         backed by $65M in reserves.
       </p>
       <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
@@ -233,7 +147,7 @@
     <!-- Overview -->
     <section id="overview" class="section">
       <h2>Executive Summary</h2>
-      
+
       <div class="grid-2">
         <div class="stat-card">
           <h3>Reserve Statistics</h3>
@@ -258,8 +172,8 @@
       <div class="card" style="margin-top: 1rem;">
         <h3>Core Innovation</h3>
         <p>
-          Unlike most stablecoins focused on USD parity, Mento provides stable assets for local 
-          currencies: Brazilian Real (cREAL), Kenyan Shilling (cKES), Philippine Peso (PUSO), 
+          Unlike most stablecoins focused on USD parity, Mento provides stable assets for local
+          currencies: Brazilian Real (cREAL), Kenyan Shilling (cKES), Philippine Peso (PUSO),
           and 12+ others. This enables financial access without forex conversion costs.
         </p>
       </div>
@@ -267,9 +181,9 @@
       <div class="card">
         <h3>Key Findings</h3>
         <p>
-          <strong>✓ Strengths:</strong> Multi-layer defense (circuit breakers, trading limits, 
+          <strong>✓ Strengths:</strong> Multi-layer defense (circuit breakers, trading limits,
           oracle aggregation), 2.96x over-collateralization, 110% minimum in USDC/DAI<br>
-          <strong>⚠️ Concerns:</strong> Oracle dependency, reserve concentration in USDC/DAI, 
+          <strong>⚠️ Concerns:</strong> Oracle dependency, reserve concentration in USDC/DAI,
           governance centralization (30% team/investors), complexity increases attack surface
         </p>
       </div>
@@ -278,7 +192,7 @@
     <!-- Architecture -->
     <section id="architecture" class="tech-section">
       <h2>Technical Architecture</h2>
-      
+
       <div class="mechanism-card">
         <h4>Hybrid Stability Model</h4>
         <p>
@@ -301,7 +215,7 @@
           • <strong>Small experimental allocation</strong> in nature-backed assets
         </p>
         <p class="meta" style="margin-top: .75rem;">
-          <strong>Key Insight:</strong> The 110% stable asset minimum ensures protocol could wind 
+          <strong>Key Insight:</strong> The 110% stable asset minimum ensures protocol could wind
           down all stablecoins safely even if volatile assets (BTC, ETH, CELO) went to zero.
         </p>
       </div>
@@ -320,12 +234,12 @@
 
       <div class="mechanism-card">
         <h4>Virtual AMM Distinction</h4>
-        <p><strong>Traditional AMM:</strong> User-provided liquidity, real assets locked, price 
+        <p><strong>Traditional AMM:</strong> User-provided liquidity, real assets locked, price
         from reserve ratios, LPs earn fees</p>
-        <p><strong>Mento vAMM:</strong> Protocol-managed virtual buckets, no real assets in pools, 
+        <p><strong>Mento vAMM:</strong> Protocol-managed virtual buckets, no real assets in pools,
         mathematical price discovery, enables minting/burning against reserve</p>
         <p class="meta" style="margin-top: .75rem;">
-          Uses Constant Product (x × y = k) for volatile pairs and Constant Sum (x + y = k) for 
+          Uses Constant Product (x × y = k) for volatile pairs and Constant Sum (x + y = k) for
           stable pairs to minimize slippage.
         </p>
       </div>
@@ -334,11 +248,11 @@
     <!-- Security Mechanisms -->
     <section id="security" class="security-section">
       <h2>Defense-in-Depth Security</h2>
-      
+
       <div class="mechanism-card">
         <h4>1. Circuit Breakers (Primary Defense)</h4>
         <p>
-          On-chain circuit breakers automatically halt trading when abnormal conditions detected. 
+          On-chain circuit breakers automatically halt trading when abnormal conditions detected.
           Every oracle report triggers checks against pre-defined thresholds.
         </p>
         <p><strong>Breaker Types:</strong></p>
@@ -347,15 +261,15 @@
           • <strong>Rate of Change:</strong> Monitors velocity of price movements<br>
           • <strong>Liquidity Breakers:</strong> Ensures oracle data from liquid markets
         </p>
-        
+
         <div class="pro-con-box">
           <h5>✓ Strengths</h5>
           <p>Automated (no lag), modular design, granular per-asset-pair, multiple independent triggers</p>
         </div>
-        
+
         <div class="pro-con-box">
           <h5>⚠️ Limitations</h5>
-          <p>Increased gas costs, breaker manipulation risk, manual override vulnerability, no 
+          <p>Increased gas costs, breaker manipulation risk, manual override vulnerability, no
           protection against gradual manipulation under thresholds</p>
         </div>
       </div>
@@ -364,14 +278,14 @@
         <h4>2. Trading Limits (Rate Limiting)</h4>
         <p>Three-tier limit system prevents rapid reserve drainage:</p>
         <p>
-          <strong>L0 Limit (5 minutes):</strong> Caps net flow between oracle updates. Example: 
+          <strong>L0 Limit (5 minutes):</strong> Caps net flow between oracle updates. Example:
           Max 100K cUSD per 5 minutes in CELO/cUSD pair<br>
-          <strong>L1 Limit (24 hours):</strong> Daily trading cap per asset/exchange. Example: 
+          <strong>L1 Limit (24 hours):</strong> Daily trading cap per asset/exchange. Example:
           Max 1M cUSD per day<br>
           <strong>LG Limit (Global):</strong> Absolute cap, reset only via governance
         </p>
         <p class="meta" style="margin-top: .75rem;">
-          <strong>Asset-Pair Specific:</strong> Low-risk pairs (cUSD/USDC) have higher limits; 
+          <strong>Asset-Pair Specific:</strong> Low-risk pairs (cUSD/USDC) have higher limits;
           high-risk pairs (cUSD/CELO) have lower limits.
         </p>
       </div>
@@ -386,7 +300,7 @@
           • <strong>Dual Providers:</strong> Chainlink + RedStone for redundancy
         </p>
         <p class="meta" style="margin-top: .75rem;">
-          <strong>Protection Level:</strong> Attacker must compromise majority of oracles AND 
+          <strong>Protection Level:</strong> Attacker must compromise majority of oracles AND
           stay under circuit breaker thresholds to manipulate prices.
         </p>
       </div>
@@ -399,8 +313,8 @@
       <div class="card">
         <h3>MENTO Token Transition</h3>
         <p>
-          Until June 2024, Mento was governed by CELO token holders. The spin-off (CGP#180) 
-          transitioned to independent MENTO token governance, enabling faster iteration without 
+          Until June 2024, Mento was governed by CELO token holders. The spin-off (CGP#180)
+          transitioned to independent MENTO token governance, enabling faster iteration without
           Celo-wide approval.
         </p>
       </div>
@@ -427,16 +341,16 @@
 
       <div class="mechanism-card" style="margin-top: 1rem;">
         <h4>Governance Security</h4>
-        
+
         <div class="pro-con-box">
           <h5>✓ Strengths</h5>
-          <p>Timelock prevents instant changes, Watchdog multisig can veto attacks, transparent 
+          <p>Timelock prevents instant changes, Watchdog multisig can veto attacks, transparent
           on-chain voting, veMENTO aligns long-term interests</p>
         </div>
-        
+
         <div class="pro-con-box">
           <h5>⚠️ Weaknesses</h5>
-          <p>10,000 veMENTO threshold may be too low (vote buying risk), Watchdog is centralization 
+          <p>10,000 veMENTO threshold may be too low (vote buying risk), Watchdog is centralization
           point, 30% team/investor distribution, non-transferable tokens limit market discovery</p>
         </div>
       </div>
@@ -449,7 +363,7 @@
       <div class="attack-card">
         <h3>1. Oracle Manipulation</h3>
         <p>
-          <strong>Scenario:</strong> Attacker gains control of majority of oracle clients and 
+          <strong>Scenario:</strong> Attacker gains control of majority of oracle clients and
           reports false exchange rates (e.g., cUSD worth $0.80 instead of $1.00).
         </p>
         <p><strong>Attack Path:</strong></p>
@@ -460,7 +374,7 @@
           4. Sell on external markets for arbitrage<br>
           5. Repeat to drain reserve over time
         </p>
-        <p><strong>Mitigations:</strong> Median aggregation (requires majority control), circuit 
+        <p><strong>Mitigations:</strong> Median aggregation (requires majority control), circuit
         breakers (catch large deviations), trading limits (cap extraction), governance intervention</p>
         <span class="difficulty diff-high">DIFFICULTY: HIGH</span>
       </div>
@@ -468,7 +382,7 @@
       <div class="attack-card">
         <h3>2. Trading Limit Exploitation</h3>
         <p>
-          <strong>Scenario:</strong> Attacker exploits predictable limit reset windows to maximize 
+          <strong>Scenario:</strong> Attacker exploits predictable limit reset windows to maximize
           extraction efficiency.
         </p>
         <p><strong>Attack Path:</strong></p>
@@ -478,7 +392,7 @@
           3. Execute at exact reset moment<br>
           4. Repeat every reset period
         </p>
-        <p><strong>Mitigations:</strong> L1 daily limit prevents full exploitation, requires oracle 
+        <p><strong>Mitigations:</strong> L1 daily limit prevents full exploitation, requires oracle
         manipulation for profitable rates, reserve over-collateralization provides buffer</p>
         <span class="difficulty diff-medium">DIFFICULTY: MEDIUM (requires oracle attack first)</span>
       </div>
@@ -486,7 +400,7 @@
       <div class="attack-card">
         <h3>3. Reserve Asset Correlation Cascade</h3>
         <p>
-          <strong>Scenario:</strong> Broader crypto market crash affecting multiple reserve assets 
+          <strong>Scenario:</strong> Broader crypto market crash affecting multiple reserve assets
           simultaneously (not malicious, but systemic risk).
         </p>
         <p><strong>Attack Path (Natural Disaster):</strong></p>
@@ -497,10 +411,10 @@
           4. Reserve must sell remaining volatile assets into crashed market<br>
           5. Death spiral: selling → lower prices → lower collateralization
         </p>
-        <p><strong>Mitigations:</strong> 110% minimum in USDC/DAI (safe haven), 2.96x total 
+        <p><strong>Mitigations:</strong> 110% minimum in USDC/DAI (safe haven), 2.96x total
         collateralization (large buffer), trading limits slow redemption</p>
         <span class="difficulty diff-low">DIFFICULTY: LOW (market-driven)</span>
-        <p class="meta" style="margin-top: .5rem;"><strong>Probability:</strong> MEDIUM (crypto 
+        <p class="meta" style="margin-top: .5rem;"><strong>Probability:</strong> MEDIUM (crypto
         crashes happen periodically)</p>
       </div>
 
@@ -517,7 +431,7 @@
           4. Vote with acquired veMENTO + convince/bribe others<br>
           5. If proposal passes, execute malicious changes
         </p>
-        <p><strong>Mitigations:</strong> Watchdog multisig can veto, timelock provides warning, 
+        <p><strong>Mitigations:</strong> Watchdog multisig can veto, timelock provides warning,
         veMENTO rewards long-term holders</p>
         <span class="difficulty diff-high">DIFFICULTY: HIGH (expensive, high coordination)</span>
       </div>
@@ -525,8 +439,8 @@
       <div class="card" style="margin-top: 2rem; background: #ffe6e6;">
         <h3>⚠️ Defense-in-Depth Requirement</h3>
         <p>
-          For catastrophic failure, attacker must: compromise majority of oracles AND stay under 
-          circuit breaker thresholds AND drain faster than trading limits reset AND overcome reserve 
+          For catastrophic failure, attacker must: compromise majority of oracles AND stay under
+          circuit breaker thresholds AND drain faster than trading limits reset AND overcome reserve
           over-collateralization AND avoid governance detection.
         </p>
         <p style="margin-top: .75rem;">
@@ -629,8 +543,8 @@
       <div class="card" style="margin-top: 1rem;">
         <h3>Key Differentiation</h3>
         <p>
-          Mento's unique value: enabling local currency stablecoins without forex conversion. 
-          Kenyan farmer gets paid in cKES directly (no USD→KES conversion), Brazilian merchant 
+          Mento's unique value: enabling local currency stablecoins without forex conversion.
+          Kenyan farmer gets paid in cKES directly (no USD→KES conversion), Brazilian merchant
           avoids USD/BRL exchange rate risk, Philippine OFW remitting home loses no conversion costs.
         </p>
       </div>
@@ -641,21 +555,64 @@
       <div class="card">
         <h3>📄 Complete Technical Analysis</h3>
         <p>
-          This page presents highlights from the research document. For full technical 
+          This page presents highlights from the research document. For full technical
           specifications, smart contract addresses, governance details, audit status, and complete
           attack vector modeling, reach out to <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> on X or connect on <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.
         </p>
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
