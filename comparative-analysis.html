@@ -5,246 +5,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Comparative Analysis of Stablecoins — MarceloReFi</title>
   <meta name="description" content="Understanding stablecoin stability through three different lenses: USDC, DAI, and $BREAD." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    /* Page-specific styles */
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--yellow);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .big-card {
-      padding: 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .big-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: .75rem;
-    }
-
-    .big-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 1rem 0 .5rem;
-    }
-
-    .big-card p {
-      margin-bottom: .75rem;
-      font-size: .95rem;
-    }
-
-    .big-card ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .big-card li {
-      margin-bottom: .35rem;
-    }
-
-    .highlight-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .highlight-box h4 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .highlight-box p {
-      font-size: .9rem;
-      margin-bottom: .5rem;
-    }
-
-    .highlight-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .findings-section {
-      background: var(--pink);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .findings-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .finding-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .finding-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .finding-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .finding-card p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .5rem;
-    }
-
-    .finding-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .triangle-card {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 3px 3px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .triangle-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .triangle-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .triangle-card ul {
-      margin: 1rem 0 1rem 1.25rem;
-    }
-
-    .triangle-card li {
-      margin-bottom: .5rem;
-      font-size: .95rem;
-    }
-
-    /* Machinations iframe container */
-    .machinations-container {
-      width: 100%;
-      height: 500px;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 3px 3px 0 var(--black);
-      margin: 1rem 0 1.5rem;
-      background: #f9f9f9;
-    }
-
-    .machinations-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .machinations-label {
-      font-size: .85rem;
-      font-weight: 700;
-      color: var(--gray);
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-
-      .machinations-container {
-        height: 400px;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Home button -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <!-- Hero section -->
     <div class="hero">
       <h1>Comparative Analysis of Stablecoins</h1>
       <p>
-        I wanted to understand how different stablecoins think about stability: USDC (centralized & fiat-backed), 
+        I wanted to understand how different stablecoins think about stability: USDC (centralized & fiat-backed),
         DAI (decentralized & crypto-collateralized), and $BREAD (cooperative & values-led).
       </p>
     </div>
@@ -267,17 +147,17 @@
       <h2>Overview</h2>
       <div class="card">
         <p>
-          Stablecoins might be crypto's most practically useful invention: assets designed to stay close to a target 
-          price (usually $1) while moving as easily as any other token. But "stablecoin" covers very different 
+          Stablecoins might be crypto's most practically useful invention: assets designed to stay close to a target
+          price (usually $1) while moving as easily as any other token. But "stablecoin" covers very different
           design choices.
         </p>
         <p>
-          I looked at three approaches to keeping a peg: <strong>USDC</strong> (centralized and 
-          fiat-backed), <strong>DAI</strong> (decentralized, crypto-collateralized, and governance-driven), 
+          I looked at three approaches to keeping a peg: <strong>USDC</strong> (centralized and
+          fiat-backed), <strong>DAI</strong> (decentralized, crypto-collateralized, and governance-driven),
           and <strong>$BREAD</strong> (cooperative, values-led, and still experimental).
         </p>
         <p>
-          Together, they draw a pretty clear spectrum: from regulatory compliance and corporate guarantees 
+          Together, they draw a pretty clear spectrum: from regulatory compliance and corporate guarantees
           on one end, to political-economic experimentation on the other.
         </p>
         <p>
@@ -293,7 +173,7 @@
         <p>
           We chose them to represent different answers to the same problem, across three dimensions:
         </p>
-        
+
         <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">1) Purpose — what is this stablecoin trying to be?</h3>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
           <li><strong>USDC:</strong> a compliant "digital dollar" built for institutions and scale</li>
@@ -354,12 +234,12 @@
     <!-- Three Stablecoins -->
     <section id="three-coins" class="section">
       <h2>Research Findings at a Glance</h2>
-      
+
       <div class="grid-3">
         <!-- USDC -->
         <div class="big-card">
           <h3>USDC: The Regulatory Standard</h3>
-          
+
           <div class="highlight-box">
             <h4>Key Facts</h4>
             <p><strong>Positioning:</strong> Largest mainstream fiat-backed stablecoin</p>
@@ -368,13 +248,13 @@
           </div>
 
           <p>
-            <strong>Key point:</strong> USDC leans into centralization to earn regulatory and institutional 
-            trust. Users get predictable stability and clean reserve reporting, but accept that Circle can 
+            <strong>Key point:</strong> USDC leans into centralization to earn regulatory and institutional
+            trust. Users get predictable stability and clean reserve reporting, but accept that Circle can
             freeze or blacklist funds.
           </p>
 
           <p>
-            <strong>Main vulnerability:</strong> Exposure to the traditional financial system. The SVB episode 
+            <strong>Main vulnerability:</strong> Exposure to the traditional financial system. The SVB episode
             showed that even a "safe" reserve setup can still create short-term peg risk.
           </p>
         </div>
@@ -382,7 +262,7 @@
         <!-- DAI -->
         <div class="big-card">
           <h3>DAI: The Decentralization Paradox</h3>
-          
+
           <div class="highlight-box">
             <h4>Key Facts</h4>
             <p><strong>Positioning:</strong> Oldest major decentralized stablecoin</p>
@@ -391,14 +271,14 @@
           </div>
 
           <p>
-            <strong>Key point:</strong> MakerDAO decentralized governance successfully, but collateral has 
-            drifted toward centralized sources. In practice, a large share of DAI's backing depends on RWAs 
+            <strong>Key point:</strong> MakerDAO decentralized governance successfully, but collateral has
+            drifted toward centralized sources. In practice, a large share of DAI's backing depends on RWAs
             and USDC.
           </p>
 
           <p>
-            <strong>Main vulnerability:</strong> Dependency risk. When DAI relies heavily on USDC (directly 
-            or indirectly), it inherits USDC's failure modes while adding its own smart-contract and 
+            <strong>Main vulnerability:</strong> Dependency risk. When DAI relies heavily on USDC (directly
+            or indirectly), it inherits USDC's failure modes while adding its own smart-contract and
             governance complexity.
           </p>
         </div>
@@ -406,7 +286,7 @@
         <!-- BREAD -->
         <div class="big-card">
           <h3>$BREAD: The Cooperative Experiment</h3>
-          
+
           <div class="highlight-box">
             <h4>Key Facts</h4>
             <p><strong>Positioning:</strong> Small-scale, values-first stablecoin</p>
@@ -415,13 +295,13 @@
           </div>
 
           <p>
-            <strong>Key point:</strong> $BREAD is less about winning stablecoin market share and more about 
-            testing a different economic logic. Its stability and adoption hinge on people buying into that 
+            <strong>Key point:</strong> $BREAD is less about winning stablecoin market share and more about
+            testing a different economic logic. Its stability and adoption hinge on people buying into that
             mission.
           </p>
 
           <p>
-            <strong>Main vulnerability:</strong> Total dependence on DAI/MakerDAO, plus limited liquidity 
+            <strong>Main vulnerability:</strong> Total dependence on DAI/MakerDAO, plus limited liquidity
             at small scale.
           </p>
         </div>
@@ -455,7 +335,7 @@
     <!-- Deep Dives -->
     <section class="section">
       <h2>Deep Dives: What We Actually Looked At</h2>
-      
+
       <div class="card" style="margin-bottom: 1rem;">
         <h3>USDC (Circle)</h3>
         <p>We reviewed:</p>
@@ -467,7 +347,7 @@
           <li>Compliance stack and licensing footprint</li>
         </ul>
         <p style="margin-top: 1rem;">
-          <strong>What struck me:</strong> USDC runs on decentralized rails but has a centralized control 
+          <strong>What struck me:</strong> USDC runs on decentralized rails but has a centralized control
           layer. Circle's unilateral authority is not a side detail — it's core to how USDC stays stable.
         </p>
       </div>
@@ -483,8 +363,8 @@
           <li>Real attack surfaces and centralization pressure points</li>
         </ul>
         <p style="margin-top: 1rem;">
-          <strong>What struck me:</strong> DAI is pulled between two stable states: a growth-oriented posture 
-          that accepts centralized collateral, and a future path toward harder decentralization with different 
+          <strong>What struck me:</strong> DAI is pulled between two stable states: a growth-oriented posture
+          that accepts centralized collateral, and a future path toward harder decentralization with different
           stability costs. Maker's real tension is not ideological — it's structural.
         </p>
       </div>
@@ -500,7 +380,7 @@
           <li>Practical use cases vs. non-use cases</li>
         </ul>
         <p style="margin-top: 1rem;">
-          <strong>What struck me:</strong> $BREAD is a political-economic prototype. It trades mainstream 
+          <strong>What struck me:</strong> $BREAD is a political-economic prototype. It trades mainstream
           adoption for coherence with its values, which is the whole point — but also the main limit.
         </p>
       </div>
@@ -533,7 +413,7 @@
       <div class="finding-card">
         <h3>1. Some centralization is unavoidable</h3>
         <p>
-          If you want high capital efficiency and a hard peg, centralization appears somewhere — issuer, 
+          If you want high capital efficiency and a hard peg, centralization appears somewhere — issuer,
           collateral, or dependency stack.
         </p>
       </div>
@@ -548,7 +428,7 @@
       <div class="finding-card">
         <h3>3. Composability is powerful, and fragile</h3>
         <p>
-          Once stablecoins depend on each other (DAI ← USDC; $BREAD ← DAI), contagion risk becomes the 
+          Once stablecoins depend on each other (DAI ← USDC; $BREAD ← DAI), contagion risk becomes the
           default, not the exception.
         </p>
       </div>
@@ -579,14 +459,57 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
