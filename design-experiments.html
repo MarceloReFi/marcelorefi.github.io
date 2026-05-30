@@ -5,310 +5,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stablecoin Design Experiments — MarceloReFi</title>
   <meta name="description" content="Building sustainable stablecoin architectures: CONCORDIA for commodity trade and $DUX for creator economies." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    /* Page-specific styles */
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--green);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .big-card {
-      padding: 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .big-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: .75rem;
-    }
-
-    .big-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 1rem 0 .5rem;
-    }
-
-    .big-card p {
-      margin-bottom: .75rem;
-      font-size: .95rem;
-      line-height: 1.6;
-    }
-
-    .big-card ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .big-card li {
-      margin-bottom: .35rem;
-    }
-
-    .highlight-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .highlight-box h4 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .highlight-box p {
-      font-size: .9rem;
-      margin-bottom: .5rem;
-    }
-
-    .highlight-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight-box ul {
-      margin: .5rem 0 0 1rem;
-      font-size: .9rem;
-    }
-
-    .highlight-box li {
-      margin-bottom: .25rem;
-    }
-
-    .experiment-section {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .experiment-section h2 {
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    .experiment-section h3 {
-      font-size: 1.3rem;
-      margin: 1.5rem 0 .75rem;
-    }
-
-    .experiment-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .concordia-section {
-      background: var(--pink);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .concordia-section h2 {
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    .concordia-section h3 {
-      font-size: 1.3rem;
-      margin: 1.5rem 0 .75rem;
-    }
-
-    .concordia-section h4 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 1rem 0 .5rem;
-    }
-
-    .concordia-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .concordia-section ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .concordia-section li {
-      margin-bottom: .35rem;
-    }
-
-    .findings-section {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .findings-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .findings-section h3 {
-      font-size: 1.2rem;
-      margin: 1.25rem 0 .75rem;
-    }
-
-    .findings-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .findings-section ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .findings-section li {
-      margin-bottom: .35rem;
-    }
-
-    .insight-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .insight-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .insight-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .insight-card p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .5rem;
-    }
-
-    .insight-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .triangle-card {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 3px 3px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .triangle-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .triangle-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .triangle-card ul {
-      margin: 1rem 0 1rem 1.25rem;
-    }
-
-    .triangle-card li {
-      margin-bottom: .5rem;
-      font-size: .95rem;
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Home button -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <!-- Hero section -->
     <div class="hero">
       <h1>Stablecoin Design Experiments</h1>
       <p>
-        I designed two stablecoins that start from opposite collateral realities: CONCORDIA for stable backing 
+        I designed two stablecoins that start from opposite collateral realities: CONCORDIA for stable backing
         with abundant liquidity, and $DUX for flexible backing with volatile liquidity.
       </p>
     </div>
@@ -331,21 +147,21 @@
       <h2>Overview</h2>
       <div class="card">
         <p>
-          What would you build if you could start over, knowing what breaks, with a clear view of every 
+          What would you build if you could start over, knowing what breaks, with a clear view of every
           failure mode we've already seen?
         </p>
         <p>
-          This section presents two design experiments that tackle opposite collateral realities. CONCORDIA 
-          assumes stable backing with abundant liquidity (commodity reserves). $DUX assumes flexible backing 
+          This section presents two design experiments that tackle opposite collateral realities. CONCORDIA
+          assumes stable backing with abundant liquidity (commodity reserves). $DUX assumes flexible backing
           with volatile liquidity (receivables and mixed assets).
         </p>
         <p>
-          Both are shaped by the comparative work, the attack models, and the DeFi security research. Both are 
+          Both are shaped by the comparative work, the attack models, and the DeFi security research. Both are
           grounded in specific economic and regional realities rather than abstract ideals.
         </p>
         <p>
-          <strong>Core idea:</strong> sustainable stablecoins, with the current tech we have, aren't about 
-          finding a perfect design. They're about choosing what to optimize for, then being honest (and prepared) 
+          <strong>Core idea:</strong> sustainable stablecoins, with the current tech we have, aren't about
+          finding a perfect design. They're about choosing what to optimize for, then being honest (and prepared)
           about what you're giving up.
         </p>
       </div>
@@ -363,8 +179,8 @@
         <li><strong>Stability</strong> (a reliable peg under stress)</li>
       </ul>
       <p>
-        So instead of designing as if this constraint doesn't exist, each experiment here makes explicit 
-        trade-offs based on its intended use case, and builds serious mitigation around the dimensions it 
+        So instead of designing as if this constraint doesn't exist, each experiment here makes explicit
+        trade-offs based on its intended use case, and builds serious mitigation around the dimensions it
         deprioritizes.
       </p>
     </section>
@@ -390,15 +206,15 @@
     <!-- The Two Experiments Comparison -->
     <section class="section">
       <h2>The Two Experiments</h2>
-      
+
       <div class="grid-2">
         <!-- CONCORDIA Overview Card -->
         <div class="big-card">
           <h3>CONCORDIA Protocol</h3>
-          <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
+          <p style="font-size: .9rem; color: #504535; margin-bottom: 1rem;">
             Stable backing, abundant liquidity
           </p>
-          
+
           <h4>Reality</h4>
           <p>Commodity reserves (copper, niobium) as collateral. Physical assets with verifiable value and deep global markets.</p>
 
@@ -424,10 +240,10 @@
         <!-- $DUX Overview Card -->
         <div class="big-card">
           <h3>$DUX Protocol</h3>
-          <p style="font-size: .9rem; color: var(--gray); margin-bottom: 1rem;">
+          <p style="font-size: .9rem; color: #504535; margin-bottom: 1rem;">
             Flexible backing, volatile liquidity
           </p>
-          
+
           <h4>Reality</h4>
           <p>Mixed collateral: stable reserves + receivables + growth treasury. Assets with variable liquidity and credit risk.</p>
 
@@ -455,8 +271,8 @@
     <!-- CONCORDIA Protocol -->
     <section id="concordia" class="concordia-section">
       <h2>CONCORDIA Protocol — Commodity-Backed Stablecoin</h2>
-      
-      <div class="highlight-box" style="background: var(--white);">
+
+      <div class="highlight-box" style="background: #ffffff;">
         <h4>Quick Facts</h4>
         <p><strong>Partners (pilot):</strong> Brazil, Chile, USA, China</p>
         <p><strong>Collateral:</strong> 500k tons copper (Chile) + 500k tons niobium (Brazil) ≈ $25B</p>
@@ -466,13 +282,13 @@
 
       <h3>The Problem This Is Trying to Solve</h3>
       <p>
-        Latin America controls a large share of strategic minerals (rare earths, copper, niobium), but still 
-        operates inside a trade and debt system designed elsewhere. Commodity settlement is slow (days), opaque 
+        Latin America controls a large share of strategic minerals (rare earths, copper, niobium), but still
+        operates inside a trade and debt system designed elsewhere. Commodity settlement is slow (days), opaque
         (off-chain pricing), and intermediary-heavy.
       </p>
       <p>
-        At the same time, the region sits in a structural geopolitical bind: China dominates processing capacity 
-        and is a major trade partner; the US is still the largest total trade bloc. Neutrality is hard to sustain 
+        At the same time, the region sits in a structural geopolitical bind: China dominates processing capacity
+        and is a major trade partner; the US is still the largest total trade bloc. Neutrality is hard to sustain
         without better infrastructure.
       </p>
       <p>
@@ -481,8 +297,8 @@
 
       <h3>The Proposal</h3>
       <p>
-        CONCORDIA treats strategic commodities as transparent, verifiable collateral for a neutral, 
-        instant-settlement trade layer. The stablecoin isn't the "product." The product is a settlement and 
+        CONCORDIA treats strategic commodities as transparent, verifiable collateral for a neutral,
+        instant-settlement trade layer. The stablecoin isn't the "product." The product is a settlement and
         coordination system.
       </p>
 
@@ -511,10 +327,10 @@
       </ul>
 
       <h3>Core Mechanics (Condensed)</h3>
-      
+
       <h4>Dynamic Collateralization:</h4>
       <p>
-        Brazil enters at a lower CR target (around 120%) due to higher debt pressure. Chile enters higher 
+        Brazil enters at a lower CR target (around 120%) due to higher debt pressure. Chile enters higher
         (around 145%) with more stability cushion. System CR floats between ranges with transparent rebalancing.
       </p>
 
@@ -536,27 +352,27 @@
       </ul>
 
       <h3>Key Innovations</h3>
-      
-      <div class="highlight-box" style="background: var(--white);">
+
+      <div class="highlight-box" style="background: #ffffff;">
         <h4>1) TradeLimit (Pilot-Sandbox)</h4>
         <p>
-          A hard cap on DeFi exposure during the pilot: 20% max per country, optional opt-in. Prevents systemic 
+          A hard cap on DeFi exposure during the pilot: 20% max per country, optional opt-in. Prevents systemic
           collapse if experiments fail while preserving a conservative core.
         </p>
       </div>
 
-      <div class="highlight-box" style="background: var(--white);">
+      <div class="highlight-box" style="background: #ffffff;">
         <h4>2) Multi-Sovereign Equal Governance</h4>
         <p>
-          One key per country, 3-of-4 required for major moves. Prevents capture by any single party, including 
+          One key per country, 3-of-4 required for major moves. Prevents capture by any single party, including
           superpowers.
         </p>
       </div>
 
-      <div class="highlight-box" style="background: var(--white);">
+      <div class="highlight-box" style="background: #ffffff;">
         <h4>3) Debt-to-Leverage Conversion</h4>
         <p>
-          Reserves become strategic liquidity without forcing asset sales — meaning debt negotiations can be 
+          Reserves become strategic liquidity without forcing asset sales — meaning debt negotiations can be
           linked to enforceable mineral access instead of informal political bargaining.
         </p>
       </div>
@@ -571,7 +387,7 @@
       </ul>
 
       <p style="margin-top: 1rem; font-style: italic; font-size: 1rem;">
-        <strong>CONCORDIA is less about "a new stablecoin" and more about proving that public, verifiable 
+        <strong>CONCORDIA is less about "a new stablecoin" and more about proving that public, verifiable
         stable infrastructures can unlock geopolitical coordination that traditional finance can't.</strong>
       </p>
     </section>
@@ -579,8 +395,8 @@
     <!-- $DUX -->
     <section id="dux" class="experiment-section">
       <h2>$DUX — Receivables-Backed Stablecoin</h2>
-      
-      <div class="highlight-box" style="background: var(--white);">
+
+      <div class="highlight-box" style="background: #ffffff;">
         <h4>Quick Facts</h4>
         <p><strong>Geography:</strong> Brazil (creator economy focus)</p>
         <p><strong>Peg:</strong> BRL 1:1</p>
@@ -589,15 +405,15 @@
 
       <h3>The Problem</h3>
       <p>
-        Creators with verified brand contracts often wait 30–90 days for payment. Traditional factoring is 
-        expensive (monthly fees that add up fast), and DeFi rarely touches receivables in emerging markets 
+        Creators with verified brand contracts often wait 30–90 days for payment. Traditional factoring is
+        expensive (monthly fees that add up fast), and DeFi rarely touches receivables in emerging markets
         because verification and underwriting are messy.
       </p>
 
       <h3>The Proposal</h3>
       <p>
-        $DUX blends company-backed liquidity with DeFi transparency. It's explicitly not trying to be maximally 
-        decentralized in phase one — it's trying to solve a real cash-flow problem without pretending the 
+        $DUX blends company-backed liquidity with DeFi transparency. It's explicitly not trying to be maximally
+        decentralized in phase one — it's trying to solve a real cash-flow problem without pretending the
         off-chain part doesn't exist.
       </p>
 
@@ -625,13 +441,13 @@
 
       <h3>Circuit Breakers (Five)</h3>
       <p>
-        CR thresholds, peg deviation rules, crypto drawdown alerts, receivables default limits, and 
+        CR thresholds, peg deviation rules, crypto drawdown alerts, receivables default limits, and
         redemption-velocity caps.
       </p>
 
       <h3>Main Vulnerability</h3>
       <p>
-        <strong>Operator risk and underwriting quality.</strong> The system lives or dies by credit discipline 
+        <strong>Operator risk and underwriting quality.</strong> The system lives or dies by credit discipline
         — which is why centralization is accepted upfront, not papered over.
       </p>
     </section>
@@ -642,7 +458,7 @@
       <div class="card">
         <p><strong>CONCORDIA:</strong> Stable backing (commodities) + abundant liquidity → optimizes for efficiency and neutrality</p>
         <p><strong>$DUX:</strong> Flexible backing (mixed assets) + volatile liquidity → optimizes for utility and yield</p>
-        
+
         <p style="margin-top: 1.5rem;"><strong>Shared patterns:</strong></p>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
           <li>Both address real-world problems, not abstract ideals</li>
@@ -700,11 +516,11 @@
     <!-- Strategic Design Moves -->
     <section class="section">
       <h2>Strategic Design Moves That Matter</h2>
-      
+
       <div class="card" style="margin-bottom: 1rem;">
         <h3>1. Pilot-Sandbox Deployment</h3>
         <p>
-          Safe core + limited-exposure experimentation beats "ship everything at once." If you can't bound risk, 
+          Safe core + limited-exposure experimentation beats "ship everything at once." If you can't bound risk,
           you can't learn safely.
         </p>
       </div>
@@ -712,7 +528,7 @@
       <div class="card" style="margin-bottom: 1rem;">
         <h3>2. Explicit Trade-off Acknowledgment</h3>
         <p>
-          CONCORDIA accepts coordination friction for neutrality. $DUX accepts operator risk for cash flow 
+          CONCORDIA accepts coordination friction for neutrality. $DUX accepts operator risk for cash flow
           efficiency. Honesty about limitations builds trust.
         </p>
       </div>
@@ -727,7 +543,7 @@
       <div class="card">
         <h3>4. Real-World Utility First</h3>
         <p>
-          Stablecoins don't stay stable because the math is pretty. They stay stable because people need them 
+          Stablecoins don't stay stable because the math is pretty. They stay stable because people need them
           in non-speculative contexts.
         </p>
       </div>
@@ -775,7 +591,7 @@
       <div class="insight-card">
         <h3>6. Context is part of the design space</h3>
         <p>
-          CONCORDIA's contribution is showing stablecoins can be coordination infrastructure, not just 
+          CONCORDIA's contribution is showing stablecoins can be coordination infrastructure, not just
           financial instruments. $DUX shows they can be cash flow tools, not just stores of value.
         </p>
       </div>
@@ -791,14 +607,57 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>

@@ -139,6 +139,7 @@
       <button class="filter-chip border-stroke-weight border-deep-ink px-5 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all" data-filter="community" data-i18n="filter-community">Community</button>
       <button class="filter-chip border-stroke-weight border-deep-ink px-5 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all" data-filter="refi" data-i18n="filter-refi">ReFi</button>
       <button class="filter-chip border-stroke-weight border-deep-ink px-5 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all" data-filter="impact" data-i18n="filter-impact">Impact</button>
+      <button class="filter-chip border-stroke-weight border-deep-ink px-5 py-2 font-bold text-caption uppercase tracking-widest hover:bg-warm-amber transition-all" data-filter="security" data-i18n="filter-security">Security Analysis</button>
     </div>
 
     <!-- Article List -->
@@ -180,6 +181,18 @@
               <h3 class="font-bold text-body-md">Meet The Builders</h3>
               <p class="text-caption text-on-surface-variant flex-grow">6-part profile series on Latin America's Web3 builders — CeLatam · 2025</p>
               <a href="https://medium.com/@celatamorg/meet-the-builders-part-1-romina-from-eth-kipu-a86cffda6227" target="_blank" rel="noopener" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-4 py-2 font-bold uppercase tracking-widest text-caption self-start hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">Read Series →</a>
+            </div>
+          </article>
+
+          <article class="article-item border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all" data-category="security research">
+            <div class="bg-warm-amber border-b-stroke-weight border-deep-ink px-4 py-3 flex items-center gap-2">
+              <span class="font-bold uppercase tracking-widest text-caption">Featured</span>
+              <span class="material-symbols-outlined text-deep-ink text-base">star</span>
+            </div>
+            <div class="p-5 flex flex-col gap-3 flex-grow">
+              <h3 class="font-bold text-body-md">DeFi Security Research</h3>
+              <p class="text-caption text-on-surface-variant flex-grow">Attack modeling, protocol security analysis, and adversary profiling for DeFi infrastructure — including PCC threat modeling and Mento Protocol vulnerability research.</p>
+              <a href="defi-research.html" class="inline-block bg-warm-amber border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] px-4 py-2 font-bold uppercase tracking-widest text-caption self-start hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">View Research →</a>
             </div>
           </article>
 
@@ -361,6 +374,15 @@
             <p class="text-caption text-on-surface-variant mt-1">CryptoCommons Association (Medium)</p>
           </article>
 
+          <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="security research">
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="bg-terracotta text-paper-cream text-caption font-bold px-2 py-0.5 border border-deep-ink">SECURITY ANALYSIS</span>
+            </div>
+            <h3 class="font-bold text-body-md"><a href="defi-research.html" class="hover:text-terracotta hover:underline">DeFi Security Research — Attack Modeling &amp; Protocol Vulnerability Analysis</a></h3>
+            <p class="text-caption text-on-surface-variant mt-1">Mento Protocol, Sonne Finance, Velodrome · 2024</p>
+            <p class="text-body-md text-on-surface-variant mt-2">Attack modeling and adversary profiling for DeFi protocols, including PCC organized crime threat model and economic viability analysis of attacks on small stablecoins.</p>
+          </article>
+
           <article class="article-item p-5 hover:bg-surface-container-low transition-all" data-category="research">
             <h3 class="font-bold text-body-md">Classification System for the Sovereign Sustainable Bonds of Brazil</h3>
             <p class="text-caption text-on-surface-variant mt-1">Project Winner — 2 tracks — National Treasury Tokenization Challenge</p>
@@ -499,6 +521,7 @@
         'filter-community': 'Community',
         'filter-refi': 'ReFi',
         'filter-impact': 'Impact',
+        'filter-security': 'Security Analysis',
         'section-academic': 'Academic &amp; Early Work',
         'archive-section-label': 'FIELD ARCHIVE',
       },
@@ -510,6 +533,7 @@
         'filter-community': 'Comunidade',
         'filter-refi': 'ReFi',
         'filter-impact': 'Impacto',
+        'filter-security': 'Análise de Segurança',
         'section-academic': 'Trabalhos Acadêmicos',
         'archive-section-label': 'ARQUIVO DE CAMPO',
       },
@@ -519,6 +543,7 @@
         'archive-subheading': 'Una selección de escritos y publicaciones, más recientes primero.',
         'filter-all': 'Todos', 'filter-research': 'Investigación',
         'filter-community': 'Comunidad', 'filter-refi': 'ReFi', 'filter-impact': 'Impacto',
+        'filter-security': 'Análisis de Seguridad',
         'section-academic': 'Trabajos Académicos',
       },
       zh: {
@@ -527,6 +552,7 @@
         'archive-subheading': '精选文章与出版物，最新在前。',
         'filter-all': '全部', 'filter-research': '研究',
         'filter-community': '社区', 'filter-refi': 'ReFi', 'filter-impact': '影响力',
+        'filter-security': '安全分析',
         'section-academic': '学术与早期作品',
       },
       ja: {
@@ -535,6 +561,7 @@
         'archive-subheading': '執筆と出版物のセレクション（新しい順）。',
         'filter-all': 'すべて', 'filter-research': '研究',
         'filter-community': 'コミュニティ', 'filter-refi': 'ReFi', 'filter-impact': 'インパクト',
+        'filter-security': 'セキュリティ分析',
         'section-academic': '学術・初期作品',
       }
     };

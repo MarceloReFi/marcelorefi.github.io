@@ -5,225 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Depeg Events: cREAL & WETH Analysis — MarceloReFi</title>
   <meta name="description" content="Analysis of cREAL micro-depegs and WETH catastrophic depeg following Celo's L2 migration—examining liquidity crises, arbitrage failure, and systemic lessons." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--green);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero .meta {
-      font-size: .9rem;
-      color: var(--gray);
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--black);
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1rem;
-    }
-
-    .creal-section {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .weth-section {
-      background: var(--pink);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .lessons-section {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .incident-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .incident-card h4 {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      font-weight: 700;
-    }
-
-    .stat-highlight {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .stat-highlight .number {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--black);
-      display: block;
-    }
-
-    .critical-box {
-      background: #ffe6e6;
-      border: 3px solid #cc0000;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      box-shadow: 4px 4px 0 var(--black);
-    }
-
-    .critical-box h3 {
-      color: #cc0000;
-      font-size: 1.2rem;
-      margin-bottom: .75rem;
-    }
-
-    .timeline-item {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: .75rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .timeline-item .date {
-      display: inline-block;
-      background: var(--black);
-      color: var(--white);
-      padding: .25rem .75rem;
-      border-radius: 6px;
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .comparison-box {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 3px 3px 0 var(--black);
-    }
-
-    .comparison-box h4 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .comparison-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: .75rem;
-    }
-
-    .comparison-col {
-      padding: .75rem;
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 6px;
-    }
-
-    .lesson-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .lesson-card h4 {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      font-weight: 700;
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-2, .comparison-row {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Navigation -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
     <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
 
     <!-- Hero -->
     <div class="hero">
       <h1>Depeg Events: cREAL Micro-Depegs & WETH Crisis</h1>
       <p>
-        Celo's L2 migration gave me two contrasting cases to look at: cREAL's persistent 1-2% deviations 
-        revealing structural inefficiencies, and WETH's catastrophic 10-20% depeg demonstrating 
-        complete liquidity failure. This analysis examines why arbitrage failed, what this reveals 
-        about minimum viable liquidity, and why Mento's design validation paradoxically emerges 
+        Celo's L2 migration gave me two contrasting cases to look at: cREAL's persistent 1-2% deviations
+        revealing structural inefficiencies, and WETH's catastrophic 10-20% depeg demonstrating
+        complete liquidity failure. This analysis examines why arbitrage failed, what this reveals
+        about minimum viable liquidity, and why Mento's design validation paradoxically emerges
         from WETH's collapse.
       </p>
       <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
@@ -241,7 +147,7 @@
     <!-- Overview -->
     <section id="overview" class="section">
       <h2>Key Findings Summary</h2>
-      
+
       <div class="grid-2">
         <div class="incident-card">
           <h4>cREAL: Persistent Micro-Depegs</h4>
@@ -283,8 +189,8 @@
       <div class="card" style="margin-top: 1rem;">
         <h3>The Critical Context</h3>
         <p>
-          Both depegs occurred following Celo's March 2025 migration from Layer 1 to Layer 2 (Optimism 
-          Superchain). The migration created months of instability as liquidity fragmented across L1/L2 
+          Both depegs occurred following Celo's March 2025 migration from Layer 1 to Layer 2 (Optimism
+          Superchain). The migration created months of instability as liquidity fragmented across L1/L2
           chains and market makers waited for "dust to settle" before engaging.
         </p>
       </div>
@@ -293,12 +199,12 @@
     <!-- cREAL Analysis -->
     <section id="creal" class="creal-section">
       <h2>cREAL: The Persistent Micro-Depeg Pattern</h2>
-      
+
       <div class="incident-card">
         <h4>Observed Pattern (March-October 2025)</h4>
         <p>
-          Brazilian Real stablecoin exhibits chronic 1-2% deviations from its 1 BRL peg, both above 
-          and below parity. Unlike catastrophic depegs (Terra/LUNA), these are persistent low-grade 
+          Brazilian Real stablecoin exhibits chronic 1-2% deviations from its 1 BRL peg, both above
+          and below parity. Unlike catastrophic depegs (Terra/LUNA), these are persistent low-grade
           inefficiencies signaling structural problems.
         </p>
         <p><strong>Characteristics:</strong></p>
@@ -312,9 +218,9 @@
 
       <div class="incident-card">
         <h4>Root Cause 1: Insufficient DEX Liquidity</h4>
-        <p><strong>The Arbitrage Failure:</strong> For pegs to maintain, arbitrageurs must find it 
+        <p><strong>The Arbitrage Failure:</strong> For pegs to maintain, arbitrageurs must find it
         profitable to correct deviations. cREAL's low liquidity makes arbitrage unprofitable.</p>
-        
+
         <p><strong>Economic Example (Depeg Below Peg):</strong></p>
         <p class="meta">
           Scenario: cREAL trades at $0.98 (2% below peg)<br>
@@ -324,8 +230,8 @@
           4. <strong>LOSS: $20 (2% loss)</strong>
         </p>
 
-        <p><strong>Profitability Threshold:</strong> After gas fees (~$1-2), slippage (~0.5-1%), 
-        and execution risk, arbitrageurs need >2-3% deviation to profit. cREAL's 1-2% deviations 
+        <p><strong>Profitability Threshold:</strong> After gas fees (~$1-2), slippage (~0.5-1%),
+        and execution risk, arbitrageurs need >2-3% deviation to profit. cREAL's 1-2% deviations
         fall below this threshold → no one arbitrages → depegs persist.</p>
       </div>
 
@@ -337,8 +243,8 @@
           <strong>L1 Limit:</strong> ~$25,000 per day
         </p>
         <p class="meta">
-          Even if depeg becomes profitable (>3%), arbitrageurs cannot scale. Would take 30+ minutes 
-          to fully arbitrage a $300K depeg. By then, other factors may change, making risk/reward 
+          Even if depeg becomes profitable (>3%), arbitrageurs cannot scale. Would take 30+ minutes
+          to fully arbitrage a $300K depeg. By then, other factors may change, making risk/reward
           insufficient.
         </p>
       </div>
@@ -357,12 +263,12 @@
       <div class="incident-card">
         <h4>Root Cause 4: Oracle Update Frequency</h4>
         <p>
-          Mento's oracles update periodically (5-10 minutes), not continuously. During these windows, 
-          BRL forex movements create gaps that sophisticated arbitrageurs exploit, causing temporary 
+          Mento's oracles update periodically (5-10 minutes), not continuously. During these windows,
+          BRL forex movements create gaps that sophisticated arbitrageurs exploit, causing temporary
           micro-depegs.
         </p>
         <p class="meta">
-          BRL is more volatile than EUR or USD (emerging market currency) → more frequent intra-update 
+          BRL is more volatile than EUR or USD (emerging market currency) → more frequent intra-update
           movements → larger gaps → higher-frequency micro-depegs.
         </p>
       </div>
@@ -374,7 +280,7 @@
           Low Liquidity → Wide Spreads → Unprofitable Arbitrage → Low Trading Volume → Low Liquidity
         </p>
         <p>
-          <strong>Statistics:</strong> cREAL daily volume often <$10,000 (compare to cUSD: $100M+ daily). 
+          <strong>Statistics:</strong> cREAL daily volume often <$10,000 (compare to cUSD: $100M+ daily).
           Results in 2-5% bid-ask spreads vs 0.1% for cUSD.
         </p>
       </div>
@@ -399,7 +305,7 @@
 
       <div class="incident-card">
         <h4>Timeline of Collapse</h4>
-        
+
         <div class="timeline-item">
           <span class="date">March 26, 2025</span>
           <p><strong>L2 Migration Launch</strong> — Native WETH bridge goes live, initial supply ~1,000 WETH</p>
@@ -504,7 +410,7 @@
       <div class="card">
         <h3>Initial Observation</h3>
         <p>
-          One might assume WETH failure indicates all Celo assets are failing. Instead, it reveals 
+          One might assume WETH failure indicates all Celo assets are failing. Instead, it reveals
           the opposite: well-designed stablecoin infrastructure is MORE critical when bridge assets fail.
         </p>
       </div>
@@ -542,9 +448,9 @@
       <div class="card" style="background: var(--green);">
         <h3>The Validation</h3>
         <p>
-          Mento's cREAL has micro-depegs (1-2%) but never broke catastrophically (>10%). It's 
-          self-correcting within hours/days, reserve never at risk, users maintain confidence. 
-          When external assets (WETH) fail due to bridge/liquidity issues, native protocol assets 
+          Mento's cREAL has micro-depegs (1-2%) but never broke catastrophically (>10%). It's
+          self-correcting within hours/days, reserve never at risk, users maintain confidence.
+          When external assets (WETH) fail due to bridge/liquidity issues, native protocol assets
           (Mento stablecoins) become critical infrastructure for ecosystem survival.
         </p>
       </div>
@@ -552,13 +458,13 @@
       <div class="card">
         <h3>Celo DeFi After WETH Failure</h3>
         <p>
-          Protocols avoided WETH as collateral (too risky) and shifted to cUSD, cEUR as primary 
-          stablecoins. Mento became de facto "safe haven" during WETH crisis. Trading volume shifted 
+          Protocols avoided WETH as collateral (too risky) and shifted to cUSD, cEUR as primary
+          stablecoins. Mento became de facto "safe haven" during WETH crisis. Trading volume shifted
           from WETH pairs to Mento stablecoin pairs.
         </p>
         <p style="margin-top: .75rem;">
-          <strong>Systemic Importance:</strong> If Mento had ALSO failed during this period, Celo 
-          DeFi would have collapsed entirely. No reliable store of value = no lending, no trading, 
+          <strong>Systemic Importance:</strong> If Mento had ALSO failed during this period, Celo
+          DeFi would have collapsed entirely. No reliable store of value = no lending, no trading,
           no functionality.
         </p>
       </div>
@@ -571,8 +477,8 @@
       <div class="lesson-card">
         <h4>1. L2 Migrations Are High-Risk Events</h4>
         <p>
-          Migrating from L1 to L2 creates months of instability as liquidity fragments. Dual-chain 
-          existence creates confusion, bridge delays prevent arbitrage, market makers wait 6-12 months 
+          Migrating from L1 to L2 creates months of instability as liquidity fragments. Dual-chain
+          existence creates confusion, bridge delays prevent arbitrage, market makers wait 6-12 months
           to assess viability.
         </p>
         <p><strong>Best Practices:</strong></p>
@@ -600,7 +506,7 @@
           • For institutional users: >$50M expected
         </p>
         <p class="meta">
-          Why so high? 5% price impact on $10K trade is unacceptable. Institutional traders execute 
+          Why so high? 5% price impact on $10K trade is unacceptable. Institutional traders execute
           $100K-$1M orders. Lower liquidity = higher manipulation risk.
         </p>
       </div>
@@ -608,7 +514,7 @@
       <div class="lesson-card">
         <h4>3. CEX Integration Is Non-Optional</h4>
         <p>
-          Every successful L2 has CEX integration within 3 months (Arbitrum, Optimism, Base). CEXs 
+          Every successful L2 has CEX integration within 3 months (Arbitrum, Optimism, Base). CEXs
           provide arbitrage pathways, liquidity backstop, price discovery, and fiat on/off-ramps.
         </p>
         <p>
@@ -626,8 +532,8 @@
       <div class="lesson-card">
         <h4>4. Oracle System Redundancy Is Critical</h4>
         <p>
-          Single oracle = single point of failure. Iron Finance (single Chainlink feed) lost $1.75B. 
-          Venus Protocol (single oracle) manipulated multiple times. Mento Protocol (dual: Chainlink 
+          Single oracle = single point of failure. Iron Finance (single Chainlink feed) lost $1.75B.
+          Venus Protocol (single oracle) manipulated multiple times. Mento Protocol (dual: Chainlink
           + RedStone) has zero oracle exploits.
         </p>
         <p><strong>Best Practices:</strong></p>
@@ -650,7 +556,7 @@
         </p>
         <p><strong>Solution: Dynamic Limits</strong></p>
         <p>
-          Rather than static limits, implement adaptive system that adjusts based on market volatility, 
+          Rather than static limits, implement adaptive system that adjusts based on market volatility,
           trading volume anomalies, oracle warnings, and time of day.
         </p>
       </div>
@@ -658,9 +564,9 @@
       <div class="card" style="margin-top: 2rem; background: #ffe6e6;">
         <h3>⚠️ The Ultimate Lesson</h3>
         <p>
-          Technology alone doesn't ensure success. Mento Protocol's sophisticated architecture couldn't 
-          prevent cREAL micro-depegs because <strong>economics and liquidity matter more than code</strong>. 
-          Conversely, WETH's technical soundness (OP Stack audits, proven bridge) couldn't save it from 
+          Technology alone doesn't ensure success. Mento Protocol's sophisticated architecture couldn't
+          prevent cREAL micro-depegs because <strong>economics and liquidity matter more than code</strong>.
+          Conversely, WETH's technical soundness (OP Stack audits, proven bridge) couldn't save it from
           a liquidity death spiral.
         </p>
       </div>
@@ -677,14 +583,57 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>

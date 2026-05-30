@@ -5,197 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DeFi & Stablecoins Research — MarceloReFi</title>
   <meta name="description" content="Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design experiments." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    /* Additional styles specific to this research page */
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--yellow);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero .meta {
-      font-size: .9rem;
-      color: var(--gray);
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--black);
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .big-card {
-      padding: 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .big-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: .75rem;
-    }
-
-    .big-card p {
-      margin-bottom: .75rem;
-      flex-grow: 1;
-      font-size: .95rem;
-    }
-
-    .highlight-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .highlight-box h4 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .highlight-box ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .highlight-box li {
-      padding: .25rem 0;
-      font-size: .9rem;
-    }
-
-    .highlight-box li:before {
-      content: "▸ ";
-      font-weight: bold;
-      margin-right: .5rem;
-    }
-
-    .findings-section {
-      background: var(--pink);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .findings-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .finding-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .finding-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .finding-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .finding-card p {
-      font-size: .95rem;
-      line-height: 1.6;
-    }
-
-    .doc-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .doc-list li {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: .75rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .doc-list strong {
-      display: block;
-      margin-bottom: .25rem;
-      font-weight: 700;
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Home button -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <!-- Hero section -->
     <div class="hero">
       <h1>DeFi & Stablecoins Research</h1>
       <p>
-        Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design 
+        Comprehensive analysis of stablecoin sustainability, security vulnerabilities, and innovative design
         experiments for real-world applications in emerging markets.
       </p>
       <p class="meta">Research Project • Wonderland Research Challenge • 2024-2025</p>
@@ -216,19 +143,19 @@
       <h2>Research Overview</h2>
       <div class="card">
         <p>
-          This research examines stablecoin sustainability through three complementary lenses: <strong>comparative 
-          analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and 
-          <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins 
+          This research examines stablecoin sustainability through three complementary lenses: <strong>comparative
+          analysis</strong> of existing protocols, <strong>experimental design</strong> of novel architectures, and
+          <strong>security modeling</strong> of attack vectors. The goal is to understand what makes stablecoins
           resilient, identify systemic vulnerabilities, and design more robust protocols for real-world applications.
         </p>
         <p>
-          The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical 
-          implementations (CONCORDIA for commodity trade, $DUX for creator economy), while incorporating lessons 
+          The work spans theoretical frameworks (the "Impossible Triangle" of stablecoin design) and practical
+          implementations (CONCORDIA for commodity trade, $DUX for creator economy), while incorporating lessons
           from real-world incidents like the Silicon Valley Bank crisis and protocol-specific attacks.
         </p>
         <p>
-          <strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital 
-          efficiency, and decentralization while addressing real-world market needs—particularly in emerging 
+          <strong>Core Research Question:</strong> How can we design stablecoins that maintain stability, capital
+          efficiency, and decentralization while addressing real-world market needs—particularly in emerging
           economies like Latin America?
         </p>
       </div>
@@ -237,16 +164,16 @@
     <!-- Research Components -->
     <section class="section">
       <h2>Research Components</h2>
-      
+
       <div class="grid-3">
         <!-- Comparative Analysis -->
         <div id="comparative" class="big-card">
           <h3>Comparative Analysis</h3>
           <p>
-            In-depth examination of three distinct stablecoin approaches through the framework of Purpose, 
+            In-depth examination of three distinct stablecoin approaches through the framework of Purpose,
             Infrastructure, and Governance.
           </p>
-          
+
           <div class="highlight-box">
             <h4>Stablecoins Analyzed</h4>
             <ul>
@@ -313,8 +240,8 @@
       <h2>Research Methodology</h2>
       <div class="card">
         <p>
-          This research employs a multi-dimensional analytical framework examining stablecoins across technical, 
-          economic, and governance dimensions. The methodology combines academic rigor with practical implementation 
+          This research employs a multi-dimensional analytical framework examining stablecoins across technical,
+          economic, and governance dimensions. The methodology combines academic rigor with practical implementation
           insights.
         </p>
       </div>
@@ -324,7 +251,7 @@
           <h3>Three-Dimensional Framework</h3>
           <p class="meta">Analysis Approach</p>
           <p>
-            Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture), 
+            Every protocol analyzed through: Purpose (market need), Infrastructure (technical architecture),
             and Governance (decision-making).
           </p>
         </div>
@@ -333,7 +260,7 @@
           <h3>Attack Simulation</h3>
           <p class="meta">Security Modeling</p>
           <p>
-            Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime, 
+            Modeling adversarial scenarios with realistic threat actors (financial attackers, organized crime,
             state-sponsored) and economic constraints.
           </p>
         </div>
@@ -342,7 +269,7 @@
           <h3>Comparative Analysis</h3>
           <p class="meta">Protocol Evaluation</p>
           <p>
-            Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization, 
+            Side-by-side evaluation of protocols across collateral types, capital efficiency, decentralization,
             and governance models.
           </p>
         </div>
@@ -351,7 +278,7 @@
           <h3>Design Experimentation</h3>
           <p class="meta">Architecture Testing</p>
           <p>
-            Creating experimental architectures to test hypotheses about collateral types, market fit, and 
+            Creating experimental architectures to test hypotheses about collateral types, market fit, and
             governance structures.
           </p>
         </div>
@@ -360,7 +287,7 @@
           <h3>Case Study Integration</h3>
           <p class="meta">Real-World Validation</p>
           <p>
-            Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate 
+            Incorporating real-world incidents (SVB crisis, specific protocol exploits, depeg events) to validate
             theoretical findings.
           </p>
         </div>
@@ -369,7 +296,7 @@
           <h3>Geographic Focus</h3>
           <p class="meta">Latin America</p>
           <p>
-            Special attention to LatAm markets, examining how stablecoins can address regional challenges 
+            Special attention to LatAm markets, examining how stablecoins can address regional challenges
             (debt, trade, financial inclusion).
           </p>
         </div>
@@ -383,8 +310,8 @@
       <div class="finding-card">
         <h3>The Impossible Triangle</h3>
         <p>
-          Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability. 
-          Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital 
+          Stablecoin projects cannot simultaneously optimize capital efficiency, decentralization, and stability.
+          Every design involves trade-offs—USDC chooses centralization for stability, DAI sacrifices capital
           efficiency for decentralization, and experimental designs explore new compromises.
         </p>
       </div>
@@ -392,8 +319,8 @@
       <div class="finding-card">
         <h3>Oracle-Circuit Breaker Gap</h3>
         <p>
-          Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable 
-          arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and 
+          Critical vulnerability: Circuit breakers that monitor oracle feeds but not external market prices enable
+          arbitrage attacks during depeg events. Attackers exploit the gap between oracle-reported prices and
           real market prices to extract value while appearing compliant with safety mechanisms.
         </p>
       </div>
@@ -401,8 +328,8 @@
       <div class="finding-card">
         <h3>Stability vs. Liquidity Distinction</h3>
         <p>
-          Protocols may maintain price pegs (stability) while experiencing severe liquidity disruptions. 
-          Seemingly minor depegs (1-2%) can indicate deeper structural vulnerabilities that manifest as liquidity 
+          Protocols may maintain price pegs (stability) while experiencing severe liquidity disruptions.
+          Seemingly minor depegs (1-2%) can indicate deeper structural vulnerabilities that manifest as liquidity
           crises rather than immediate price collapse.
         </p>
       </div>
@@ -410,8 +337,8 @@
       <div class="finding-card">
         <h3>Geopolitical Design Space</h3>
         <p>
-          Web3 infrastructure can address geopolitical coordination problems, not just financial ones. CONCORDIA 
-          demonstrates how public blockchains enable neutral infrastructure for nations with competing interests 
+          Web3 infrastructure can address geopolitical coordination problems, not just financial ones. CONCORDIA
+          demonstrates how public blockchains enable neutral infrastructure for nations with competing interests
           by providing verifiable fairness through transparent, multi-sovereign governance.
         </p>
       </div>
@@ -419,8 +346,8 @@
       <div class="finding-card">
         <h3>Multi-Layered Security Necessity</h3>
         <p>
-          Single-layer protections are insufficient against sophisticated adversaries. Effective security requires 
-          overlapping systems with different monitoring approaches—but even multi-layered defense has exploitable 
+          Single-layer protections are insufficient against sophisticated adversaries. Effective security requires
+          overlapping systems with different monitoring approaches—but even multi-layered defense has exploitable
           gaps when layers share assumptions.
         </p>
       </div>
@@ -428,8 +355,8 @@
       <div class="finding-card">
         <h3>Real-World Asset Integration</h3>
         <p>
-          RWA-backed stablecoins face unique challenges: custody complexity, redemption logistics, and regulatory 
-          compliance. Success requires not reinventing traditional infrastructure but integrating it transparently 
+          RWA-backed stablecoins face unique challenges: custody complexity, redemption logistics, and regulatory
+          compliance. Success requires not reinventing traditional infrastructure but integrating it transparently
           with blockchain rails. The innovation is transparency, not replacement.
         </p>
       </div>
@@ -449,20 +376,84 @@
         <li><strong>Security Analysis</strong></li>
       </ul>
 
-      <div class="card" style="margin-top: 1.5rem; background: var(--yellow);">
+      <div class="card" style="margin-top: 1.5rem; background: #E8A838;">
         <p><strong>Want to dive deeper into the full documentation?</strong></p>
         <p>Reach out to <a href="https://x.com/MarceloReFi" target="_blank">@MarceloReFi</a> on X or connect on <a href="https://www.linkedin.com/in/marcelo-silva-0581b9216/" target="_blank">LinkedIn</a>.</p>
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <!-- Footer -->
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: {
+        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
+        'footer-contact': 'Contact'
+      },
+      pt: {
+        'nav-archive': 'Arquivo', 'nav-projects': 'Projetos',
+        'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato',
+        'footer-contact': 'Contato'
+      },
+      es: {
+        'nav-archive': 'Archivo', 'nav-projects': 'Proyectos',
+        'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto',
+        'footer-contact': 'Contacto'
+      },
+      zh: {
+        'nav-archive': '文章', 'nav-projects': '项目',
+        'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系',
+        'footer-contact': '联系'
+      },
+      ja: {
+        'nav-archive': '記事', 'nav-projects': 'プロジェクト',
+        'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡',
+        'footer-contact': '連絡'
+      }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>

@@ -5,519 +5,134 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Attack Modeling & Simulations — MarceloReFi</title>
   <meta name="description" content="I wanted to know what it actually costs to break a small stablecoin: economically viable attacks on DeFi protocols." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    /* Page-specific styles */
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--pink);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      line-height: 1.6;
-    }
-
-    .hero p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .hero strong {
-      display: block;
-      margin-top: .75rem;
-      font-size: 1.05rem;
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .protocol-card {
-      padding: 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-    }
-
-    .protocol-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-    }
-
-    .protocol-card .meta {
-      font-size: .85rem;
-      color: var(--gray);
-      margin-bottom: .75rem;
-    }
-
-    .protocol-card p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .5rem;
-    }
-
-    .protocol-card ul {
-      margin: .5rem 0 0 1.25rem;
-      font-size: .95rem;
-    }
-
-    .protocol-card li {
-      margin-bottom: .35rem;
-    }
-
-    .adversary-section {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .adversary-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .adversary-section h3 {
-      font-size: 1.2rem;
-      margin: 1.25rem 0 .75rem;
-    }
-
-    .adversary-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .adversary-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: .75rem;
-    }
-
-    .adversary-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .adversary-card p {
-      font-size: .9rem;
-      margin-bottom: 0;
-    }
-
-    .scenario-section {
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .scenario-section.scenario-1 {
-      background: #ffdddd;
-    }
-
-    .scenario-section.scenario-2 {
-      background: #ddffdd;
-    }
-
-    .scenario-section.scenario-3 {
-      background: #ffddff;
-    }
-
-    .scenario-section h2 {
-      font-size: 1.7rem;
-      margin-bottom: .75rem;
-    }
-
-    .scenario-section h3 {
-      font-size: 1.3rem;
-      margin: 1.25rem 0 .75rem;
-    }
-
-    .scenario-section h4 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 1rem 0 .5rem;
-    }
-
-    .scenario-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .scenario-section ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .scenario-section li {
-      margin-bottom: .35rem;
-    }
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: .9rem;
-      background: var(--white);
-      border: 2px solid var(--black);
-    }
-
-    .data-table th {
-      background: var(--black);
-      color: var(--white);
-      padding: .75rem .5rem;
-      text-align: left;
-      font-weight: 700;
-      border: 1px solid var(--black);
-    }
-
-    .data-table td {
-      padding: .75rem .5rem;
-      border: 1px solid var(--black);
-    }
-
-    .data-table tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-
-    .highlight-box {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .highlight-box h4 {
-      font-size: .9rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .highlight-box p {
-      font-size: .9rem;
-      margin-bottom: .5rem;
-    }
-
-    .highlight-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight-box ul {
-      margin: .5rem 0 0 1rem;
-      font-size: .9rem;
-    }
-
-    .highlight-box li {
-      margin-bottom: .25rem;
-    }
-
-    .defense-section {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .defense-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .defense-section h3 {
-      font-size: 1.2rem;
-      margin: 1.25rem 0 .75rem;
-    }
-
-    .defense-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .defense-section ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .defense-section li {
-      margin-bottom: .35rem;
-    }
-
-    .insight-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .insight-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .insight-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .insight-card p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .5rem;
-    }
-
-    .insight-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .alert-box {
-      background: #fff3cd;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-
-    .alert-box strong {
-      display: block;
-      margin-bottom: .5rem;
-      font-size: 1rem;
-    }
-
-    .alert-box p {
-      margin-bottom: 0;
-      font-size: .95rem;
-    }
-
-    .pcc-profile {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .pcc-profile h2 {
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    .pcc-profile h3 {
-      font-size: 1.25rem;
-      margin: 1.5rem 0 .75rem;
-    }
-
-    .pcc-profile p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .pcc-profile ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .pcc-profile li {
-      margin-bottom: .35rem;
-      line-height: 1.5;
-    }
-
-    .pcc-profile a {
-      text-decoration: underline;
-    }
-
-    .pcc-data-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      margin-bottom: .75rem;
-    }
-
-    .pcc-data-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .pcc-data-card p {
-      font-size: .9rem;
-      margin-bottom: .5rem;
-    }
-
-    .pcc-data-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .vulnerability-section {
-      background: #ffdddd;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .vulnerability-section h2 {
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    .vulnerability-section h3 {
-      font-size: 1.25rem;
-      margin: 1.5rem 0 .75rem;
-    }
-
-    .vulnerability-section p {
-      font-size: .95rem;
-      line-height: 1.6;
-      margin-bottom: .75rem;
-    }
-
-    .vulnerability-section ul {
-      margin: .5rem 0 .75rem 1.25rem;
-      font-size: .95rem;
-    }
-
-    .vulnerability-section li {
-      margin-bottom: .35rem;
-      line-height: 1.5;
-    }
-
-    .vulnerability-section a {
-      text-decoration: underline;
-    }
-
-    .attack-comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
-    .attack-comparison .comparison-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-
-    .attack-comparison .comparison-card h4 {
-      font-size: .95rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .attack-comparison .comparison-card p {
-      font-size: .9rem;
-      margin-bottom: .35rem;
-    }
-
-    .critical-finding {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 8px;
-      padding: 1.25rem;
-      margin: 1.25rem 0;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .critical-finding strong {
-      color: var(--yellow);
-    }
-
-    @media (max-width: 720px) {
-      .attack-comparison {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-
-      .data-table {
-        font-size: .8rem;
-      }
-
-      .data-table th,
-      .data-table td {
-        padding: .5rem .35rem;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .folder-tab { clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%); }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Home button -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
 
     <!-- Hero section -->
     <div class="hero">
       <h1>Attack Modeling & Simulations</h1>
       <p>
-        I wanted to know what it actually costs to break a small stablecoin. Can a $372K stablecoin be profitably 
-        attacked with just $100K in capital? We modeled economically viable attacks on three interconnected 
+        I wanted to know what it actually costs to break a small stablecoin. Can a $372K stablecoin be profitably
+        attacked with just $100K in capital? We modeled economically viable attacks on three interconnected
         DeFi protocols.
       </p>
-      <strong>Critical Finding: We discovered a profitable attack that existing security measures fail to prevent. 
+      <strong>Critical Finding: We discovered a profitable attack that existing security measures fail to prevent.
       Defense cost: $5K-10K. Attack profit: $8K-31K.</strong>
       <p style="margin-top: .75rem; font-style: italic;">
-        Something I came to believe: vulnerabilities don't get exploited because they're possible, they get exploited when they're worth it. Once economics change, 
+        Something I came to believe: vulnerabilities don't get exploited because they're possible, they get exploited when they're worth it. Once economics change,
         attacks emerge.
       </p>
     </div>
@@ -545,7 +160,7 @@
       <h2>Why Optimism?</h2>
       <div class="card">
         <p>
-          Mature ecosystem with recent precedent: Sonne Finance $20M exploit (May 2024), SVB crisis (March 2023). 
+          Mature ecosystem with recent precedent: Sonne Finance $20M exploit (May 2024), SVB crisis (March 2023).
           This provides real-world validation for our attack models.
         </p>
       </div>
@@ -554,7 +169,7 @@
     <!-- The Three Protocols -->
     <section id="protocols" class="section">
       <h2>The Three Protocols</h2>
-      
+
       <div class="grid-3">
         <div class="protocol-card">
           <h3>Mento Protocol</h3>
@@ -596,7 +211,7 @@
       <div class="alert-box" style="margin-top: 1.5rem;">
         <strong>The Fragile Web</strong>
         <p>
-          All three protocols share: USDC/DAI foundation, Chainlink oracles, Velodrome liquidity. 
+          All three protocols share: USDC/DAI foundation, Chainlink oracles, Velodrome liquidity.
           <strong>Cascade risk:</strong> Sonne exploit → Velodrome panic → Mento depeg → System-wide instability.
         </p>
         <p style="margin-top: .5rem;">
@@ -860,7 +475,7 @@
     <!-- Scenario 1 -->
     <section id="scenarios" class="scenario-section scenario-1">
       <h2>Scenario 1: "Slow Bleed" Attack (Work at small scale) </h2>
-      
+
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
         <p><strong>Target:</strong> Mento cReal ($372K market cap)</p>
@@ -869,7 +484,7 @@
       </div>
 
       <h3>Economic Analysis — Five Simulations</h3>
-      
+
       <table class="data-table">
         <thead>
           <tr>
@@ -933,11 +548,11 @@
 
       <h3>Critical Insight</h3>
       <p>
-        <strong>Attack scales with market cap.</strong> At $3M (8x growth), profit becomes $248K—justifying 
+        <strong>Attack scales with market cap.</strong> At $3M (8x growth), profit becomes $248K—justifying
         sophisticated attacks from nation-states and organized crime.
       </p>
       <p>
-        The currency (cReal) is paradoxically protected by being "too small to care about" — but this protection 
+        The currency (cReal) is paradoxically protected by being "too small to care about" — but this protection
         disappears as adoption grows.
       </p>
     </section>
@@ -945,7 +560,7 @@
     <!-- Scenario 2 -->
     <section class="scenario-section scenario-2">
       <h2>Scenario 2: "Flash Crisis" (Failed attempt) </h2>
-      
+
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
         <p><strong>Target:</strong> Mento cUSD ($16.9M market cap)</p>
@@ -970,7 +585,7 @@
       <div class="alert-box" style="background: #d4edda; border-color: #28a745;">
         <strong>Strategic Recommendation: NOT VIABLE</strong>
         <p>
-          Exclude from realistic attack portfolio. Circuit breakers are effective against flash attacks. 
+          Exclude from realistic attack portfolio. Circuit breakers are effective against flash attacks.
         </p>
       </div>
     </section>
@@ -978,7 +593,7 @@
     <!-- Scenario 3 -->
     <section class="scenario-section scenario-3">
       <h2>Scenario 3: "Systemic Cascade" Attack</h2>
-      
+
       <div class="highlight-box">
         <h4>Attack Parameters</h4>
         <p><strong>Target:</strong> cReal </p>
@@ -1005,8 +620,8 @@
       <div class="alert-box" style="background: #f8d7da; border-color: #dc3545;">
         <strong>Strategic Recommendation: Maximum Threat</strong>
         <p>
-          Most profitable scenario for patient, well-capitalized adversaries. Requires external catalyst but 
-          offers extraordinary returns. Cannot be prevented by protocol-level defenses alone—requires ecosystem 
+          Most profitable scenario for patient, well-capitalized adversaries. Requires external catalyst but
+          offers extraordinary returns. Cannot be prevented by protocol-level defenses alone—requires ecosystem
           coordination and stress testing.
         </p>
       </div>
@@ -1015,23 +630,23 @@
     <!-- Strategic Assessment -->
     <section class="section">
       <h2>Strategic Assessment</h2>
-      
+
       <div class="card">
         <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Attack Hierarchy</h3>
-        
-        <div style="background: #fff3cd; padding: 1rem; border: 2px solid var(--black); border-radius: 8px; margin-bottom: .75rem;">
+
+        <div style="background: #fff3cd; padding: 1rem; border: 2px solid #1A1A1A; border-radius: 8px; margin-bottom: .75rem;">
           <p style="margin: 0;"><strong>🔴 Immediate Threat:</strong> Scenario 1 "Micro" — works NOW, $2.8K profit, 60-70% success</p>
         </div>
-        
-        <div style="background: #ffe0e0; padding: 1rem; border: 2px solid var(--black); border-radius: 8px; margin-bottom: .75rem;">
+
+        <div style="background: #ffe0e0; padding: 1rem; border: 2px solid #1A1A1A; border-radius: 8px; margin-bottom: .75rem;">
           <p style="margin: 0;"><strong>💰 High-Profit Threat:</strong> Scenario 1 "Patient" — wait for $0.15, $25-35K profit</p>
         </div>
-        
-        <div style="background: #ffe0ff; padding: 1rem; border: 2px solid var(--black); border-radius: 8px; margin-bottom: .75rem;">
+
+        <div style="background: #ffe0ff; padding: 1rem; border: 2px solid #1A1A1A; border-radius: 8px; margin-bottom: .75rem;">
           <p style="margin: 0;"><strong>💥 Maximum Threat:</strong> Scenario 3 "Cascade" — $5M-20M potential, catalyst-dependent</p>
         </div>
-        
-        <div style="background: #e0ffe0; padding: 1rem; border: 2px solid var(--black); border-radius: 8px;">
+
+        <div style="background: #e0ffe0; padding: 1rem; border: 2px solid #1A1A1A; border-radius: 8px;">
           <p style="margin: 0;"><strong>✓ Non-Viable:</strong> Scenario 2 "Flash Crisis" — circuit breakers prevent, &lt;5% success</p>
         </div>
       </div>
@@ -1039,7 +654,7 @@
       <div class="card" style="margin-top: 1.5rem;">
         <h3 style="font-size: 1.1rem; margin-bottom: .75rem;">Why "Too Small" for Sophisticated Actors</h3>
         <p>
-          Absolute returns ($8K-31K) are insufficient for nation-states or large teams with operational overhead. 
+          Absolute returns ($8K-31K) are insufficient for nation-states or large teams with operational overhead.
           However, these attacks are viable for:
         </p>
         <ul style="margin-left: 1.25rem; margin-top: .5rem;">
@@ -1048,7 +663,7 @@
           <li>Phase 1 of larger, multi-stage attacks</li>
         </ul>
         <p style="margin-top: .75rem;">
-          <strong>Critical threshold:</strong> Once cReal reaches $1-2M market cap, attacks become viable for 
+          <strong>Critical threshold:</strong> Once cReal reaches $1-2M market cap, attacks become viable for
           sophisticated adversaries with professional infrastructure.
         </p>
       </div>
@@ -1074,7 +689,7 @@
       </div>
 
       <h3>Immediate Actions (High Priority)</h3>
-      
+
       <div class="highlight-box" style="background: #d4edda;">
         <h4>Priority 1: Trading Limits | Cost: $5K-10K</h4>
         <p><strong>RENDERS ALL ATTACKS UNPROFITABLE</strong></p>
@@ -1125,7 +740,7 @@
       <div class="insight-card">
         <h3>1. Economic Viability ≠ Technical Feasibility</h3>
         <p>
-          Defense should prioritize making attacks <strong>unprofitable</strong>, not impossible. Scenario 2 is 
+          Defense should prioritize making attacks <strong>unprofitable</strong>, not impossible. Scenario 2 is
           technically possible but economically non-viable — this is good defense design.
         </p>
       </div>
@@ -1133,7 +748,7 @@
       <div class="insight-card">
         <h3>2. Slow Attacks Evade Fast Defenses</h3>
         <p>
-          Circuit breakers detect rapid changes. Sophisticated attacks are slow (weeks-long, distributed, 
+          Circuit breakers detect rapid changes. Sophisticated attacks are slow (weeks-long, distributed,
           multi-phase), staying below velocity thresholds. Defense must account for patient adversaries.
         </p>
       </div>
@@ -1141,7 +756,7 @@
       <div class="insight-card">
         <h3>3. Small Markets Are Deceptively Vulnerable</h3>
         <p>
-          Lower defense budgets + easier manipulation. Attack costs scale DOWN with market cap, while defense 
+          Lower defense budgets + easier manipulation. Attack costs scale DOWN with market cap, while defense
           costs scale UP. Critical lesson: <strong>Implement defenses BEFORE growth.</strong>
         </p>
       </div>
@@ -1149,7 +764,7 @@
       <div class="insight-card">
         <h3>4. Defense ROI is Asymmetric</h3>
         <p>
-          $5K-10K investment (trading limits) prevents $8K-31K+ in attack profit. Small defensive investments 
+          $5K-10K investment (trading limits) prevents $8K-31K+ in attack profit. Small defensive investments
           have massive returns. The best security spending has extraordinary ROI.
         </p>
       </div>
@@ -1159,9 +774,9 @@
     <section class="section">
       <h2>Responsible Disclosure</h2>
       <div class="card" style="background: #f0f0f0;">
-       
+
         <p>
-          <strong>No attacks were executed.</strong> All analysis is theoretical/simulated. This research was 
+          <strong>No attacks were executed.</strong> All analysis is theoretical/simulated. This research was
           conducted to improve protocol security, not to exploit vulnerabilities.
         </p>
       </div>
@@ -1177,14 +792,58 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <!-- Footer -->
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
