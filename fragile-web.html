@@ -5,194 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Fragile Web: Stablecoin Dependencies — MarceloReFi</title>
   <meta name="description" content="Analysis of stablecoin dependencies and systemic risk in Optimism's DeFi ecosystem through Mento, Sonne, and Velodrome protocols." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "paper-cream": "#FAF7F2",
+          "deep-ink": "#1A1A1A",
+          "warm-amber": "#E8A838",
+          "terracotta": "#C4533A",
+          "olive-drab": "#6B7C3F",
+          "primary": "#805600",
+          "primary-container": "#e8a838",
+          "tertiary-container": "#a8bb77",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ee",
+          "surface-container-high": "#ebe8e3",
+          "surface-container-highest": "#e5e2dd",
+          "on-surface": "#1c1c19",
+          "on-surface-variant": "#504535",
+          "outline-variant": "#d5c4af",
+          "outline": "#837563",
+          "surface-dim": "#dcdad5",
+          "secondary": "#a43c25",
+          "secondary-container": "#fd7e61",
+          "tertiary": "#54642a",
+          "error": "#ba1a1a"
+        },
+        spacing: {
+          "stroke-weight": "3px",
+          "gutter": "24px",
+          "base": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "container-max": "1120px",
+          "shadow-offset-sm": "4px",
+          "shadow-offset-lg": "8px"
+        },
+        borderWidth: {
+          "stroke-weight": "3px"
+        },
+        fontFamily: {
+          "headline-xl": ["Courier Prime"],
+          "headline-lg": ["Courier Prime"],
+          "headline-md": ["Courier Prime"],
+          "body-lg": ["Courier Prime"],
+          "body-md": ["Courier Prime"],
+          "label-caps": ["Courier Prime"],
+          "caption": ["Courier Prime"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+  </script>
   <style>
-    .hero {
-      padding: 2rem 1.5rem;
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      background: var(--pink);
-      box-shadow: 4px 4px 0 var(--black);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-    }
-
-    .hero .meta {
-      font-size: .9rem;
-      color: var(--gray);
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--black);
-    }
-
-    .nav-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 2rem;
-      position: sticky;
-      top: .5rem;
-      background: var(--white);
-      padding: .75rem 0;
-      z-index: 10;
-      border-bottom: 2px dashed var(--black);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .protocol-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 3px 3px 0 var(--black);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .protocol-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: .75rem;
-    }
-
-    .protocol-card .stat-box {
-      background: #f5f5f5;
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: .75rem;
-      margin: .75rem 0;
-    }
-
-    .protocol-card .stat-box h4 {
-      font-size: .85rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      text-transform: uppercase;
-    }
-
-    .alert-box {
-      background: #ffe6e6;
-      border: 3px solid #cc0000;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 2rem 0;
-      box-shadow: 4px 4px 0 var(--black);
-    }
-
-    .alert-box h3 {
-      color: #cc0000;
-      font-size: 1.2rem;
-      margin-bottom: .75rem;
-    }
-
-    .dependency-section {
-      background: var(--yellow);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .cascade-section {
-      background: var(--green);
-      border: 2px solid var(--black);
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 4px 4px 0 var(--black);
-      margin: 2rem 0;
-    }
-
-    .phase-card {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    .phase-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .phase-card h4 {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      font-weight: 700;
-    }
-
-    .phase-card .phase-number {
-      display: inline-block;
-      background: var(--black);
-      color: var(--white);
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 24px;
-      font-size: .85rem;
-      font-weight: 700;
-      margin-right: .5rem;
-    }
-
-    .lesson-box {
-      background: var(--white);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 2px 2px 0 var(--black);
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-chips {
-        position: relative;
-        top: 0;
-      }
-    }
+    body { font-family: 'Courier Prime', monospace; background-color: #FAF7F2; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48; vertical-align: middle; }
+    .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
+    .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
   </style>
 </head>
-<body>
-  <div class="wrap">
+<body class="bg-paper-cream text-deep-ink">
 
-    <!-- Navigation -->
-    <a href="index.html" class="chip home-btn">🏠 Home</a>
+  <!-- Nav -->
+  <nav class="w-full sticky top-0 z-50 bg-paper-cream border-b-stroke-weight border-deep-ink shadow-[8px_8px_0px_0px_#1A1A1A]">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-[1120px] mx-auto h-20">
+      <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
+      <div class="hidden md:flex gap-gutter items-center flex-nowrap">
+        <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-terracotta underline decoration-4 underline-offset-8" data-i18n="nav-archive">Archive</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
+        <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
+        <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
+          <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+          <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+          <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+          <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+          <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+        </div>
+        <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink shadow-[4px_4px_0px_0px_#1A1A1A] font-bold active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-i18n="nav-connect">Connect</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-deep-ink">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
+      <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
+      <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
+      <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
+        <button onclick="applyLang('pt')" data-lang="pt" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">PT</button>
+        <button onclick="applyLang('en')" data-lang="en" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">EN</button>
+        <button onclick="applyLang('es')" data-lang="es" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">ES</button>
+        <button onclick="applyLang('zh')" data-lang="zh" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">中文</button>
+        <button onclick="applyLang('ja')" data-lang="ja" class="lang-btn px-2 py-1 font-bold text-caption uppercase tracking-widest border-stroke-weight border-deep-ink hover:bg-warm-amber transition-all">日本語</button>
+      </div>
+      <a href="mailto:marcelo@refaz.xyz" class="bg-warm-amber px-6 py-2 border-stroke-weight border-deep-ink font-bold self-start" data-i18n="nav-connect">Connect</a>
+    </div>
+  </nav>
+
+  <main class="max-w-[1120px] mx-auto px-margin-mobile md:px-margin-desktop py-12">
+
     <a href="defi-research.html" class="chip" style="background: #f5f5f5; margin-bottom: 1.5rem;">← DeFi Research</a>
 
     <!-- Hero -->
     <div class="hero">
       <h1>The Fragile Web: Stablecoin Dependencies in Optimism DeFi</h1>
       <p>
-        The more I looked at how Optimism DeFi protocols connect to each other, the more fragile the whole structure seemed of stablecoin 
-        dependencies. This analysis examines how Mento Protocol, Sonne Finance, and Velodrome Finance 
-        create systemic risk through shared reliance on USDC and DAI—where one failure can cascade 
+        The more I looked at how Optimism DeFi protocols connect to each other, the more fragile the whole structure seemed of stablecoin
+        dependencies. This analysis examines how Mento Protocol, Sonne Finance, and Velodrome Finance
+        create systemic risk through shared reliance on USDC and DAI—where one failure can cascade
         across the entire ecosystem.
       </p>
       <p class="meta">Phase 2: DeFi Ecosystem & Security Research • Wonderland Research Challenge</p>
@@ -212,14 +148,14 @@
       <h2>The Illusion of Stability</h2>
       <div class="card">
         <p>
-          The Optimism Superchain represents one of the most ambitious experiments in scaling 
-          decentralized finance. With billions flowing through its protocols, it promises faster 
-          transactions and lower fees. But this efficiency comes with a hidden cost: systemic risk 
+          The Optimism Superchain represents one of the most ambitious experiments in scaling
+          decentralized finance. With billions flowing through its protocols, it promises faster
+          transactions and lower fees. But this efficiency comes with a hidden cost: systemic risk
           concentrated around a handful of stablecoin assets.
         </p>
         <p>
-          I wanted to understand the intricate dependencies between three critical protocols that 
-          collectively demonstrate how stablecoin reliance creates cascading failure points in 
+          I wanted to understand the intricate dependencies between three critical protocols that
+          collectively demonstrate how stablecoin reliance creates cascading failure points in
           modern DeFi architecture.
         </p>
       </div>
@@ -227,9 +163,9 @@
       <div class="alert-box">
         <h3>⚠️ Critical Finding</h3>
         <p>
-          All three protocols share fundamental dependency on USDC and DAI. A single USDC depegging 
-          event would simultaneously: devalue Mento's reserve collateral, trigger mass liquidations 
-          on Sonne, and drain liquidity from Velodrome's pools. This creates what systems theorists 
+          All three protocols share fundamental dependency on USDC and DAI. A single USDC depegging
+          event would simultaneously: devalue Mento's reserve collateral, trigger mass liquidations
+          on Sonne, and drain liquidity from Velodrome's pools. This creates what systems theorists
           call "common mode failure"—where a single event disables multiple systems simultaneously.
         </p>
       </div>
@@ -238,13 +174,13 @@
     <!-- Three Protocols -->
     <section id="protocols" class="section">
       <h2>The Three Pillars of Optimism DeFi</h2>
-      
+
       <div class="grid-3">
         <!-- Mento -->
         <div class="protocol-card">
           <h3>Mento Protocol</h3>
           <p class="meta">Multi-Currency Stablecoin System</p>
-          
+
           <div class="stat-box">
             <h4>Key Statistics</h4>
             <p><strong>Reserves:</strong> $65.4M backing $22M stablecoins</p>
@@ -254,8 +190,8 @@
           </div>
 
           <p>
-            Mento enables creation of stablecoins pegged to various fiat currencies—from Brazilian 
-            Real (cREAL) to Kenyan Shilling (cKES). Uses hybrid model combining over-collateralization 
+            Mento enables creation of stablecoins pegged to various fiat currencies—from Brazilian
+            Real (cREAL) to Kenyan Shilling (cKES). Uses hybrid model combining over-collateralization
             with algorithmic minting and virtual AMM.
           </p>
 
@@ -268,7 +204,7 @@
           </div>
 
           <p style="margin-top: auto;">
-            <strong>Critical Dependency:</strong> Holds USDC as major reserve component. USDC depeg 
+            <strong>Critical Dependency:</strong> Holds USDC as major reserve component. USDC depeg
             threatens backing of all 15+ stablecoins.
           </p>
         </div>
@@ -277,7 +213,7 @@
         <div class="protocol-card">
           <h3>Sonne Finance</h3>
           <p class="meta">Lending & Borrowing Protocol</p>
-          
+
           <div class="stat-box">
             <h4>Key Statistics</h4>
             <p><strong>Type:</strong> Compound V2 fork</p>
@@ -287,8 +223,8 @@
           </div>
 
           <p>
-            Built as a fork of Compound Finance, Sonne launched on Optimism with promise of proven 
-            lending technology. Users deposit assets for interest-bearing tokens (soTokens), borrowers 
+            Built as a fork of Compound Finance, Sonne launched on Optimism with promise of proven
+            lending technology. Users deposit assets for interest-bearing tokens (soTokens), borrowers
             take loans against collateral.
           </p>
 
@@ -301,7 +237,7 @@
           </div>
 
           <p style="margin-top: auto;">
-            <strong>Critical Dependency:</strong> Relies on USDC/DAI as safest collateral. Depeg 
+            <strong>Critical Dependency:</strong> Relies on USDC/DAI as safest collateral. Depeg
             triggers mass liquidations as collateral values become uncertain.
           </p>
         </div>
@@ -310,7 +246,7 @@
         <div class="protocol-card">
           <h3>Velodrome Finance</h3>
           <p class="meta">Primary DEX & Liquidity Hub</p>
-          
+
           <div class="stat-box">
             <h4>Key Statistics</h4>
             <p><strong>TVL:</strong> $128 million</p>
@@ -320,8 +256,8 @@
           </div>
 
           <p>
-            Central nervous system of Optimism DeFi. Offers stable pools (USDC/DAI), volatile pools 
-            (ETH/USDC), and concentrated liquidity. ve(3,3) tokenomics create flywheel: lock VELO → 
+            Central nervous system of Optimism DeFi. Offers stable pools (USDC/DAI), volatile pools
+            (ETH/USDC), and concentrated liquidity. ve(3,3) tokenomics create flywheel: lock VELO →
             get veVELO → vote on emissions → earn 100% of fees.
           </p>
 
@@ -333,7 +269,7 @@
           </div>
 
           <p style="margin-top: auto;">
-            <strong>Critical Dependency:</strong> Largest pools involve stablecoin pairs. USDC/DAI 
+            <strong>Critical Dependency:</strong> Largest pools involve stablecoin pairs. USDC/DAI
             depeg drains liquidity as panic trading overwhelms AMM capacity.
           </p>
         </div>
@@ -353,15 +289,15 @@
     <section id="dependencies" class="dependency-section">
       <h2>The Web of Dependencies</h2>
       <p style="margin-bottom: 1.5rem;">
-        The real danger emerges not from examining each protocol in isolation, but from mapping 
-        the interconnections between them. These create cascading failure points where efficiency 
+        The real danger emerges not from examining each protocol in isolation, but from mapping
+        the interconnections between them. These create cascading failure points where efficiency
         becomes fragility.
       </p>
 
       <div class="lesson-box">
         <h3>1. The Stablecoin Foundation</h3>
         <p>
-          All three protocols converge on the same stablecoin assets: USDC and DAI. This creates 
+          All three protocols converge on the same stablecoin assets: USDC and DAI. This creates
           "common mode failure" where a single event disables multiple systems.
         </p>
         <p><strong>USDC Depeg Impact Chain:</strong></p>
@@ -372,7 +308,7 @@
           → Ecosystem-wide contagion
         </p>
         <p class="meta" style="margin-top: .75rem;">
-          The March 2023 USDC depeg (SVB crisis, $0.88) previewed this scenario. DeFi TVL dropped 
+          The March 2023 USDC depeg (SVB crisis, $0.88) previewed this scenario. DeFi TVL dropped
           15% in 48 hours as protocols scrambled to adjust.
         </p>
       </div>
@@ -380,8 +316,8 @@
       <div class="lesson-box">
         <h3>2. The Liquidity Nexus</h3>
         <p>
-          Velodrome's role as primary DEX creates second-layer interconnection. Sonne uses Velodrome 
-          for SONNE token liquidity, actively bribing voters for emissions. Mento stablecoins require 
+          Velodrome's role as primary DEX creates second-layer interconnection. Sonne uses Velodrome
+          for SONNE token liquidity, actively bribing voters for emissions. Mento stablecoins require
           Velodrome pools to be tradable.
         </p>
         <p><strong>Velodrome Failure Impact:</strong></p>
@@ -396,8 +332,8 @@
       <div class="lesson-box">
         <h3>3. The Oracle Overlay</h3>
         <p>
-          Both Mento and Sonne rely on external price feeds. Most DeFi protocols use the same oracle 
-          provider—primarily Chainlink. Oracle manipulation or Chainlink compromise would simultaneously 
+          Both Mento and Sonne rely on external price feeds. Most DeFi protocols use the same oracle
+          provider—primarily Chainlink. Oracle manipulation or Chainlink compromise would simultaneously
           affect multiple protocols.
         </p>
         <p><strong>Oracle Dependency Risk:</strong></p>
@@ -408,7 +344,7 @@
           • Single Chainlink compromise affects all three
         </p>
         <p class="meta" style="margin-top: .75rem;">
-          Oracle manipulation has been vector in numerous exploits, including 2024 Rodeo Finance 
+          Oracle manipulation has been vector in numerous exploits, including 2024 Rodeo Finance
           hack specifically referenced in Mento documentation.
         </p>
       </div>
@@ -418,15 +354,15 @@
     <section id="cascade" class="cascade-section">
       <h2>The Cascade Scenario: How One Failure Becomes Many</h2>
       <p style="margin-bottom: 1.5rem;">
-        The most realistic and devastating attack doesn't target protocols in isolation but exploits 
+        The most realistic and devastating attack doesn't target protocols in isolation but exploits
         their interconnections. Here's how such an attack might unfold:
       </p>
 
       <div class="phase-card">
         <h4><span class="phase-number">1</span>Initial Breach</h4>
         <p>
-          Attacker exploits Sonne Finance using variation of proven donation attack, amplified with 
-          flash loans. Drains significant value from lending pools, triggers mass liquidations as 
+          Attacker exploits Sonne Finance using variation of proven donation attack, amplified with
+          flash loans. Drains significant value from lending pools, triggers mass liquidations as
           collateral values plummet.
         </p>
       </div>
@@ -434,7 +370,7 @@
       <div class="phase-card">
         <h4><span class="phase-number">2</span>Market Panic</h4>
         <p>
-          News of Sonne exploit spreads rapidly. USDC and DAI holders on Optimism begin withdrawing 
+          News of Sonne exploit spreads rapidly. USDC and DAI holders on Optimism begin withdrawing
           from all protocols, not just Sonne. Bank run scenario emerges across ecosystem.
         </p>
       </div>
@@ -442,8 +378,8 @@
       <div class="phase-card">
         <h4><span class="phase-number">3</span>Liquidity Drain</h4>
         <p>
-          Velodrome's stablecoin pools face massive one-sided selling. AMM pricing curves can't 
-          absorb this pressure, causing significant slippage and impermanent loss. Smart LPs withdraw 
+          Velodrome's stablecoin pools face massive one-sided selling. AMM pricing curves can't
+          absorb this pressure, causing significant slippage and impermanent loss. Smart LPs withdraw
           liquidity entirely, further reducing pool depth.
         </p>
       </div>
@@ -451,8 +387,8 @@
       <div class="phase-card">
         <h4><span class="phase-number">4</span>Collateral Cascade</h4>
         <p>
-          As Velodrome liquidity drains, tokens used as Sonne collateral become harder to liquidate. 
-          Liquidation bots struggle to find buyers, bad debt accumulates. Reduced trading volume 
+          As Velodrome liquidity drains, tokens used as Sonne collateral become harder to liquidate.
+          Liquidation bots struggle to find buyers, bad debt accumulates. Reduced trading volume
           crashes VELO price, affecting those who used VELO as collateral.
         </p>
       </div>
@@ -460,8 +396,8 @@
       <div class="phase-card">
         <h4><span class="phase-number">5</span>Mento Stress Test</h4>
         <p>
-          Chaos in USDC/DAI markets stresses Mento reserves. If USDC depegs during this period, 
-          Mento's collateralization ratio effectively drops. Arbitrageurs test trading restrictions, 
+          Chaos in USDC/DAI markets stresses Mento reserves. If USDC depegs during this period,
+          Mento's collateralization ratio effectively drops. Arbitrageurs test trading restrictions,
           minting at maximum allowed rates and immediately selling, slowly draining reserve.
         </p>
       </div>
@@ -469,9 +405,9 @@
       <div class="phase-card">
         <h4><span class="phase-number">6</span>Ecosystem Collapse</h4>
         <p>
-          With Velodrome liquidity gone, Sonne exploited, and Mento reserves depleted, entire 
-          Optimism DeFi ecosystem loses core infrastructure. Protocols built on these foundational 
-          layers find themselves unable to operate. Superchain vision of interconnected L2s becomes 
+          With Velodrome liquidity gone, Sonne exploited, and Mento reserves depleted, entire
+          Optimism DeFi ecosystem loses core infrastructure. Protocols built on these foundational
+          layers find themselves unable to operate. Superchain vision of interconnected L2s becomes
           liability as contagion spreads.
         </p>
       </div>
@@ -484,7 +420,7 @@
       <div class="lesson-box">
         <h3>1. Efficiency and Resilience Exist in Tension</h3>
         <p>
-          Tight integration creates capital efficiency and better UX, but also correlation in failure 
+          Tight integration creates capital efficiency and better UX, but also correlation in failure
           modes. A more fragmented, less efficient system might actually be more robust.
         </p>
       </div>
@@ -492,8 +428,8 @@
       <div class="lesson-box">
         <h3>2. Stablecoin Diversification Is Illusory</h3>
         <p>
-          Having both USDC and DAI doesn't meaningfully reduce risk when DAI holds USDC as significant 
-          portion of reserves. True diversification requires fundamentally different stability mechanisms 
+          Having both USDC and DAI doesn't meaningfully reduce risk when DAI holds USDC as significant
+          portion of reserves. True diversification requires fundamentally different stability mechanisms
           and backing assets.
         </p>
       </div>
@@ -501,8 +437,8 @@
       <div class="lesson-box">
         <h3>3. Infrastructure Protocols Require Different Security Models</h3>
         <p>
-          When a protocol becomes systemically important (like Velodrome), security requirements should 
-          escalate. Critical infrastructure needs insurance funds, conservative parameters, or circuit 
+          When a protocol becomes systemically important (like Velodrome), security requirements should
+          escalate. Critical infrastructure needs insurance funds, conservative parameters, or circuit
           breakers at ecosystem level.
         </p>
       </div>
@@ -510,20 +446,20 @@
       <div class="lesson-box">
         <h3>4. Oracle Dependency Creates Single Points of Failure</h3>
         <p>
-          DeFi community needs oracle redundancy, manipulation-resistant aggregation, and fallback 
+          DeFi community needs oracle redundancy, manipulation-resistant aggregation, and fallback
           systems that maintain operations when price feeds become unreliable.
         </p>
       </div>
 
-      <div class="card" style="margin-top: 2rem; background: var(--pink);">
+      <div class="card" style="margin-top: 2rem; background: #C4533A;">
         <h3>For the Ecosystem</h3>
         <p>
-          Perhaps not every protocol should integrate with every other protocol. Perhaps critical 
-          infrastructure needs different governance than experimental DeFi protocols. Perhaps the 
+          Perhaps not every protocol should integrate with every other protocol. Perhaps critical
+          infrastructure needs different governance than experimental DeFi protocols. Perhaps the
           most efficient system isn't always the most desirable system.
         </p>
         <p style="margin-top: .75rem;">
-          The web of dependencies mapped here isn't just theoretical—it's a blueprint for the next 
+          The web of dependencies mapped here isn't just theoretical—it's a blueprint for the next
           major DeFi crisis, unless we address these vulnerabilities now.
         </p>
       </div>
@@ -541,14 +477,57 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-inner">© <span id="y"></span> Marcelo Silva.</div>
+  <footer class="w-full mt-[64px] bg-paper-cream border-t-stroke-weight border-deep-ink">
+    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-margin-mobile gap-gutter max-w-[1120px] mx-auto">
+      <div class="text-headline-md font-bold text-deep-ink uppercase">Marcelo Silva</div>
+      <div class="text-caption font-bold uppercase tracking-widest text-on-surface-variant">© <span class="year"></span> Marcelo Silva</div>
+      <div class="flex gap-4">
+        <a href="mailto:marcelo@refaz.xyz" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline" data-i18n="footer-contact">Contact</a>
+        <a href="https://linkedin.com/in/marcelo-silva-0581b9216/" class="text-caption uppercase text-on-surface-variant hover:text-terracotta underline">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const PAGE_TRANSLATIONS = { en: {}, pt: {}, es: {}, zh: {}, ja: {} };
+  </script>
+  <script>
+    document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+    const SHARED_TRANSLATIONS = {
+      en: { 'nav-archive': 'Archive', 'nav-projects': 'Projects', 'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect', 'footer-contact': 'Contact' },
+      pt: { 'nav-archive': 'Arquivo', 'nav-projects': 'Projetos', 'nav-impact': 'Impacto', 'nav-about': 'Sobre', 'nav-connect': 'Contato', 'footer-contact': 'Contato' },
+      es: { 'nav-archive': 'Archivo', 'nav-projects': 'Proyectos', 'nav-impact': 'Impacto', 'nav-about': 'Acerca', 'nav-connect': 'Contacto', 'footer-contact': 'Contacto' },
+      zh: { 'nav-archive': '文章', 'nav-projects': '项目', 'nav-impact': '影响力', 'nav-about': '关于', 'nav-connect': '联系', 'footer-contact': '联系' },
+      ja: { 'nav-archive': '記事', 'nav-projects': 'プロジェクト', 'nav-impact': '影響', 'nav-about': '概要', 'nav-connect': '連絡', 'footer-contact': '連絡' }
+    };
+    const translations = {
+      en: { ...SHARED_TRANSLATIONS.en, ...PAGE_TRANSLATIONS.en },
+      pt: { ...SHARED_TRANSLATIONS.pt, ...PAGE_TRANSLATIONS.pt },
+      es: { ...SHARED_TRANSLATIONS.es, ...(PAGE_TRANSLATIONS.es || {}) },
+      zh: { ...SHARED_TRANSLATIONS.zh, ...(PAGE_TRANSLATIONS.zh || {}) },
+      ja: { ...SHARED_TRANSLATIONS.ja, ...(PAGE_TRANSLATIONS.ja || {}) },
+    };
+    function updateLangButtons(l) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-warm-amber', btn.getAttribute('data-lang') === l);
+      });
+    }
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[l]?.[key]) el.innerHTML = translations[l][key];
+      });
+      updateLangButtons(l);
+    }
+    let lang = localStorage.getItem('lang') || 'en';
+    applyLang(lang);
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
