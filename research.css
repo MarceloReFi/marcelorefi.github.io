@@ -34,6 +34,13 @@
 .machinations-label { font-size: .85rem; color: var(--gray); text-align: center; padding: .5rem; border-top: 3px solid var(--black); background: #f0ede9; }
 section[id] { scroll-margin-top: 9rem; }
 section[id] > *:first-child { margin-top: 1.5rem; }
+section > h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; border-left: 4px solid var(--yellow); padding-left: 1rem; }
+section > h3 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: .75rem; }
+section > h4 { font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: .5rem; font-weight: 700; }
+section > p { margin-bottom: 1rem; line-height: 1.7; }
+section > ul, section > ol { margin-bottom: 1rem; padding-left: 2rem; line-height: 1.7; }
+section li { margin-bottom: .5rem; }
+section strong { font-weight: 700; }
 @media (max-width: 720px) {
   .hero h1 { font-size: 1.5rem; }
   .grid-3 { grid-template-columns: 1fr; }
