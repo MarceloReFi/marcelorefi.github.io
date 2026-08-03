@@ -78,6 +78,19 @@
     .folder-tab { clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%); }
     .neobrutalist-shadow { box-shadow: 8px 8px 0px 0px #1A1A1A; }
     .neobrutalist-shadow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px 0px #1A1A1A; }
+
+    .protocol-card { background: #fff; border: 3px solid var(--black); border-radius: 0; padding: 1.5rem; box-shadow: 4px 4px 0 var(--black); height: 100%; display: flex; flex-direction: column; }
+    .protocol-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+    .protocol-card .meta { font-size: .85rem; color: var(--gray); margin-bottom: .75rem; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .data-table th, .data-table td { border: 2px solid var(--black); padding: .5rem .75rem; text-align: left; font-size: .9rem; }
+    .data-table th { background: var(--black); color: #fff; }
+
+    .difficulty { display: inline-block; padding: .25rem .6rem; border: 2px solid var(--black); font-size: .75rem; font-weight: bold; text-transform: uppercase; margin-top: .5rem; }
+    .difficulty.diff-high { background: var(--pink); color: #fff; }
+    .difficulty.diff-medium { background: var(--yellow); }
+    .difficulty.diff-low { background: var(--green); color: #fff; }
   </style>
 </head>
 <body class="bg-paper-cream text-deep-ink">
@@ -498,7 +511,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="background: #ffdddd;">
+          <tr style="background: #E8A838;">
             <td><strong>Micro</strong></td>
             <td>10%</td>
             <td>$0.16</td>
@@ -530,7 +543,7 @@
             <td>15.4%</td>
             <td>55-65%</td>
           </tr>
-          <tr style="background: #ffffdd;">
+          <tr style="background: #F2C86A;">
             <td><strong>Patient</strong></td>
             <td>30%</td>
             <td>$0.15</td>
