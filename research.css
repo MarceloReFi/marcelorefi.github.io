@@ -2,8 +2,8 @@
 
 .section { margin-top: 2.5rem; }
 .section h2 { font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; }
-.card { padding: 1rem; border: 3px solid var(--black); border-radius: 0; background: #fff; box-shadow: 4px 4px 0 var(--black); }
-.card h3 { font-size: 1.1rem; margin-bottom: .25rem; }
+.card, .adversary-card, .comparison-card, .lesson-card, .lesson-box, .pcc-data-card { padding: 1rem; border: 3px solid var(--black); border-radius: 0; background: #fff; box-shadow: 4px 4px 0 var(--black); }
+.card h3, .adversary-card h4, .comparison-card h4, .lesson-card h4, .lesson-box h3, .pcc-data-card h4 { font-size: 1.1rem; margin-bottom: .25rem; }
 .card p.meta { font-size: .9rem; color: var(--gray); margin-bottom: .5rem; }
 .chip { display: inline-block; padding: .35rem .85rem; border-radius: 0; border: 3px solid var(--black); font-weight: bold; font-size: .9rem; background: #fff; box-shadow: 4px 4px 0 var(--black); }
 .chip.pink { background: var(--pink); color: #fff; }
@@ -14,7 +14,9 @@
 .hero p { font-size: 1rem; margin-bottom: .5rem; color: var(--black); }
 .hero .meta { font-size: .9rem; color: var(--gray); margin-top: 1rem; padding-top: 1rem; border-top: 3px solid var(--black); }
 .nav-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; position: sticky; top: 5.5rem; background: var(--white); padding: .75rem 0; z-index: 10; border-bottom: 3px dashed var(--black); }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.grid-3, .attack-comparison, .comparison-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.comparison-row { display: contents; }
+.comparison-col { padding: 1rem; border: 3px solid var(--black); background: #fff; }
 .big-card { padding: 1.5rem; border: 3px solid var(--black); border-radius: 0; background: var(--white); box-shadow: 8px 8px 0 var(--black); height: 100%; display: flex; flex-direction: column; }
 .big-card h3 { font-size: 1.2rem; margin-bottom: .75rem; }
 .big-card p { margin-bottom: .75rem; flex-grow: 1; font-size: .95rem; }
@@ -36,6 +38,13 @@
 .insight-card:last-child { margin-bottom: 0; }
 .insight-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
 .insight-card p { font-size: .95rem; line-height: 1.6; }
+.alert-box { background: var(--yellow); border: 3px solid var(--black); border-radius: 0; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 8px 8px 0 var(--black); }
+.alert-box h3, .alert-box strong:first-child { color: var(--black); }
+.critical-finding { background: var(--pink); color: #fff; border: 3px solid var(--black); border-radius: 0; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 8px 8px 0 var(--black); }
+.phase-card { background: #fff; border: 3px solid var(--black); border-radius: 0; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 4px 4px 0 var(--black); }
+.phase-number { display: inline-flex; align-items: center; justify-content: center; width: 1.75rem; height: 1.75rem; background: var(--black); color: #fff; border-radius: 50%; font-weight: bold; margin-right: .5rem; }
+.stat-box { background: #f0ede9; border: 3px solid var(--black); border-radius: 0; padding: 1rem; margin: 1rem 0; }
+.stat-box h4 { font-size: .95rem; margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .5px; }
 section[id] { scroll-margin-top: 9rem; }
 section[id] > *:first-child { margin-top: 1.5rem; }
 section > h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; border-left: 4px solid var(--yellow); padding-left: 1rem; }
