@@ -87,7 +87,7 @@
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
       <div class="hidden md:flex gap-gutter items-center flex-nowrap">
         <a href="articles.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-archive">Archive</a>
-        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects &amp; Trajectory</a>
         <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
         <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
         <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
@@ -105,7 +105,7 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
       <a href="articles.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-archive">Archive</a>
-      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects &amp; Trajectory</a>
       <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
       <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
       <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
@@ -220,7 +220,7 @@
       <article class="md:col-span-4 border-stroke-weight border-deep-ink bg-white neobrutalist-shadow flex flex-col transition-all">
         <div class="p-6 flex flex-col gap-4 h-full">
           <span class="material-symbols-outlined text-4xl text-olive-drab">folder</span>
-          <h3 class="text-headline-md font-bold" data-i18n="projects-card-title">Projects</h3>
+          <h3 class="text-headline-md font-bold" data-i18n="projects-card-title">Projects &amp; Trajectory</h3>
           <p class="text-body-md text-on-surface-variant flex-grow" data-i18n="projects-card-desc">Active, seasonal, and past contributions across LatAm.</p>
           <div>
             <a href="projects.html" class="inline-block bg-olive-drab text-paper-cream border-stroke-weight border-deep-ink px-6 py-2 font-bold uppercase tracking-widest text-caption hover:opacity-90 transition-all" data-i18n="projects-card-btn">See Projects →</a>
@@ -275,7 +275,7 @@
         'about-card-btn': 'View →',
         'archive-card-desc': 'Writing on ReFi, RWAs, stablecoins, and local-first innovation.',
         'archive-card-btn': 'Browse →',
-        'projects-card-title': 'Projects',
+        'projects-card-title': 'Projects &amp; Trajectory',
         'projects-card-desc': 'Active, seasonal, and past contributions across LatAm.',
         'projects-card-btn': 'See Projects →',
         'impact-card-desc': 'Monitoring &amp; Evaluation — $3.5M mobilized, 30k certificates, 29+ countries.',
@@ -343,7 +343,7 @@
     document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
     const SHARED_TRANSLATIONS = {
       en: {
-        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-archive': 'Archive', 'nav-projects': 'Projects &amp; Trajectory',
         'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
         'footer-contact': 'Contact'
       },
