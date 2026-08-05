@@ -89,7 +89,7 @@
       <a href="index.html" class="text-headline-md font-bold uppercase tracking-tighter text-deep-ink">MARCELO SILVA</a>
       <div class="hidden md:flex gap-gutter items-center flex-nowrap">
         <a href="articles.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-archive">Archive</a>
-        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects</a>
+        <a href="projects.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-projects">Projects &amp; Trajectory</a>
         <a href="impact.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-impact">Impact</a>
         <a href="about.html" class="text-body-md font-bold text-deep-ink hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all" data-i18n="nav-about">About</a>
         <div class="flex gap-1 flex-nowrap shrink-0" id="lang-switcher">
@@ -107,7 +107,7 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t-stroke-weight border-deep-ink bg-paper-cream px-margin-mobile py-4 flex flex-col gap-4">
       <a href="articles.html" class="text-terracotta underline decoration-4 underline-offset-8 text-headline-md font-bold" data-i18n="nav-archive">Archive</a>
-      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects</a>
+      <a href="projects.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-projects">Projects &amp; Trajectory</a>
       <a href="impact.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-impact">Impact</a>
       <a href="about.html" class="text-headline-md font-bold text-deep-ink" data-i18n="nav-about">About</a>
       <div class="flex gap-1 flex-wrap self-start" id="lang-switcher-mobile">
@@ -464,7 +464,7 @@
         </div>
 
         <!-- Academic & Early Work Section -->
-        <div class="mb-2 mt-8">
+        <div id="academic" class="mb-2 mt-8">
           <div class="folder-tab bg-deep-ink text-paper-cream inline-block px-6 py-2 font-bold uppercase tracking-widest text-caption" data-i18n="section-academic">Academic &amp; Early Work</div>
         </div>
         <div class="border-stroke-weight border-deep-ink bg-white p-1">
@@ -494,9 +494,19 @@
             <p class="text-caption text-on-surface-variant mt-1">Coluna ANPOF</p>
           </article>
 
-          <article class="article-item p-5 hover:bg-surface-container-low transition-all" data-category="research">
+          <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="research">
             <h3 class="font-bold text-body-md"><a href="https://cataloniaglobal.cat/en/elections-in-brazil-the-origins-of-polarization/" target="_blank" rel="noopener" class="hover:text-terracotta hover:underline">Elections in Brazil, the origins of polarization</a></h3>
             <p class="text-caption text-on-surface-variant mt-1">Catalonia Global</p>
+          </article>
+
+          <article class="article-item border-b border-outline-variant p-5 hover:bg-surface-container-low transition-all" data-category="research">
+            <h3 class="font-bold text-body-md">Justiça e sociedade liberal em Richard Rorty: justiça como lealdade e o projeto social de uma utopia</h3>
+            <p class="text-caption text-on-surface-variant mt-1">Simbiótica — Revista Eletrônica · 2014</p>
+          </article>
+
+          <article class="article-item p-5 hover:bg-surface-container-low transition-all" data-category="research">
+            <h3 class="font-bold text-body-md">11 academic conference presentations and talks (2013–2018)</h3>
+            <p class="text-caption text-on-surface-variant mt-1">Institutional theory, political philosophy, and pragmatism · <a href="http://lattes.cnpq.br/3349089601661862" target="_blank" rel="noopener" class="font-bold text-primary hover:underline">full list on Lattes</a></p>
           </article>
 
         </div>
@@ -575,7 +585,7 @@
     document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
     const SHARED_TRANSLATIONS = {
       en: {
-        'nav-archive': 'Archive', 'nav-projects': 'Projects',
+        'nav-archive': 'Archive', 'nav-projects': 'Projects &amp; Trajectory',
         'nav-impact': 'Impact', 'nav-about': 'About', 'nav-connect': 'Connect',
         'footer-contact': 'Contact'
       },
